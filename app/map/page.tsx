@@ -911,12 +911,12 @@ export default function MapPage() {
           onClick={() => setSelectedVideo(null)}
         >
           <div
-            className="bg-[--color-bg-secondary] rounded-2xl overflow-hidden max-w-3xl w-full"
+            className="bg-[--color-bg-secondary] rounded-2xl overflow-hidden max-w-3xl w-full max-h-[90vh] flex flex-col"
             onClick={(e) => e.stopPropagation()}
           >
             {selectedVideo.id.startsWith("placeholder") ? (
               // Placeholder location - Coming Soon
-              <div className="aspect-video flex flex-col items-center justify-center" style={{ backgroundColor: categoryColors[selectedVideo.category] }}>
+              <div className="aspect-video flex-shrink-0 flex flex-col items-center justify-center" style={{ backgroundColor: categoryColors[selectedVideo.category] }}>
                 <svg className="w-20 h-20 text-white/80 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
@@ -930,7 +930,7 @@ export default function MapPage() {
                 )}
               </div>
             ) : (
-              <div className="aspect-video">
+              <div className="aspect-video flex-shrink-0 m-4 mb-0 rounded-xl overflow-hidden">
                 <iframe
                   src={`https://www.youtube.com/embed/${selectedVideo.id}?autoplay=1`}
                   title={selectedVideo.title}
@@ -940,7 +940,7 @@ export default function MapPage() {
                 />
               </div>
             )}
-            <div className="p-4">
+            <div className="p-4 overflow-y-auto flex-1">
               <div className="flex items-start justify-between gap-4">
                 <div>
                   <h3 className="text-lg font-semibold text-[--color-text-primary]">
@@ -949,12 +949,24 @@ export default function MapPage() {
                   <p className="text-[--color-text-tertiary] text-sm mt-1">
                     {selectedVideo.location}
                   </p>
-                  <span
-                    className="inline-block mt-2 px-3 py-1 rounded-full text-xs font-medium text-white"
-                    style={{ backgroundColor: categoryColors[selectedVideo.category] }}
-                  >
-                    {selectedVideo.category}
-                  </span>
+                  <div className="flex items-center gap-2 mt-2">
+                    <span
+                      className="px-3 py-1 rounded-full text-xs font-medium text-white"
+                      style={{ backgroundColor: categoryColors[selectedVideo.category] }}
+                    >
+                      {selectedVideo.category}
+                    </span>
+                    {!selectedVideo.id.startsWith("placeholder") && (
+                      <a
+                        href={`https://www.youtube.com/watch?v=${selectedVideo.id}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="px-3 py-1 rounded-full text-xs font-medium bg-[#FF0000] hover:bg-[#CC0000] text-white transition-colors"
+                      >
+                        Watch on YouTube
+                      </a>
+                    )}
+                  </div>
                 </div>
                 <button
                   onClick={() => setSelectedVideo(null)}
@@ -965,7 +977,7 @@ export default function MapPage() {
                   </svg>
                 </button>
               </div>
-              {selectedVideo.id.startsWith("placeholder") ? (
+              {selectedVideo.id.startsWith("placeholder") && (
                 <div className="mt-4">
                   <button
                     onClick={() => handleVote(selectedVideo.id)}
@@ -995,18 +1007,6 @@ export default function MapPage() {
                   <p className="text-center text-[--color-text-tertiary] text-xs mt-2">
                     Help us decide where to camp next!
                   </p>
-                </div>
-              ) : (
-                <div className="mt-4">
-                  <a
-                    href={`https://www.youtube.com/watch?v=${selectedVideo.id}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <Button className="w-full bg-[#FF0000] hover:bg-[#CC0000]">
-                      Watch on YouTube
-                    </Button>
-                  </a>
                 </div>
               )}
 
