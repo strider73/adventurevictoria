@@ -1,0 +1,30 @@
+# Dependencies (installed in container)
+node_modules
+
+# Build output (built in container)
+.next
+
+# Git
+.git
+.gitignore
+
+# Environment files (secrets)
+.env
+.env.local
+.env.production.local
+
+# IDE
+.idea
+.vscode
+
+# Debug
+npm-debug.log*
+
+# Docker
+Dockerfile
+docker-compose.yml
+.dockerignore
+
+# Misc
+README.md
+.DS_Store

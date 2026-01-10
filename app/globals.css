@@ -1,26 +1,55 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  /* Colors - Brand */
+  --color-brand: #5e6ad2;
+  --color-brand-hover: #828fff;
+  --color-brand-tint: #18182f;
+  --color-brand-text: #ffffff;
+
+  /* Colors - Background */
+  --color-bg-primary: #08090a;
+  --color-bg-secondary: #1c1c1f;
+  --color-bg-tertiary: #232326;
+
+  /* Colors - Text */
+  --color-text-primary: #f7f8f8;
+  --color-text-secondary: #d0d6e0;
+  --color-text-tertiary: #8a8f98;
+
+  /* Colors - Border */
+  --color-border-primary: #23252a;
+  --color-border-secondary: #34343a;
+
+  /* Colors - Accent */
+  --color-accent: #7170ff;
+  --color-accent-hover: #828fff;
+
+  /* Colors - Semantic */
+  --color-red: #eb5757;
+  --color-orange: #fc7840;
+  --color-yellow: #f2c94c;
+  --color-green: #4cb782;
+  --color-blue: #4ea7fc;
+
+  /* Border Radius */
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --radius-xl: 10px;
+  --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-low: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  --shadow-medium: 0px 4px 24px rgba(0, 0, 0, 0.2);
+  --shadow-high: 0px 7px 32px rgba(0, 0, 0, 0.35);
+
+  /* Font */
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: #08090a;
+  color: #f7f8f8;
 }
