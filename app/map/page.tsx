@@ -484,17 +484,127 @@ const getUserVoted = (): string[] => {
   return stored ? JSON.parse(stored) : [];
 };
 
+// Type for community video submissions
+interface CommunityVideo {
+  youtubeId: string;
+  submittedAt: string;
+  locationId: string;
+}
+
+// Helper to get community videos from localStorage
+const getCommunityVideos = (): Record<string, CommunityVideo[]> => {
+  if (typeof window === "undefined") return {};
+  const stored = localStorage.getItem("communityVideos");
+  return stored ? JSON.parse(stored) : {};
+};
+
+// Helper to extract YouTube video ID from URL
+const extractYouTubeId = (url: string): string | null => {
+  const patterns = [
+    /(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/)([a-zA-Z0-9_-]{11})/,
+    /^([a-zA-Z0-9_-]{11})$/,
+  ];
+  for (const pattern of patterns) {
+    const match = url.match(pattern);
+    if (match) return match[1];
+  }
+  return null;
+};
+
+// Helper to get video recommendations from localStorage
+const getVideoRecommendations = (): Record<string, number> => {
+  if (typeof window === "undefined") return {};
+  const stored = localStorage.getItem("videoRecommendations");
+  return stored ? JSON.parse(stored) : {};
+};
+
+// Helper to get user's recommended videos
+const getUserRecommendedVideos = (): string[] => {
+  if (typeof window === "undefined") return [];
+  const stored = localStorage.getItem("userRecommendedVideos");
+  return stored ? JSON.parse(stored) : [];
+};
+
 export default function MapPage() {
   const [selectedVideo, setSelectedVideo] = useState<typeof videoLocations[0] | null>(null);
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
   const [votes, setVotes] = useState<Record<string, number>>({});
   const [userVoted, setUserVoted] = useState<string[]>([]);
+  const [communityVideos, setCommunityVideos] = useState<Record<string, CommunityVideo[]>>({});
+  const [videoUrl, setVideoUrl] = useState("");
+  const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
+  const [showSubmitForm, setShowSubmitForm] = useState(false);
+  const [videoRecommendations, setVideoRecommendations] = useState<Record<string, number>>({});
+  const [userRecommendedVideos, setUserRecommendedVideos] = useState<string[]>([]);
 
-  // Load votes from localStorage on mount
+  // Load votes, community videos, and recommendations from localStorage on mount
   useEffect(() => {
     setVotes(getVotes());
     setUserVoted(getUserVoted());
+    setCommunityVideos(getCommunityVideos());
+    setVideoRecommendations(getVideoRecommendations());
+    setUserRecommendedVideos(getUserRecommendedVideos());
   }, []);
+
+  // Reset form state when modal closes or location changes
+  useEffect(() => {
+    setVideoUrl("");
+    setSubmitStatus("idle");
+    setShowSubmitForm(false);
+  }, [selectedVideo]);
+
+  // Handle community video submission
+  const handleVideoSubmit = () => {
+    if (!selectedVideo) return;
+
+    const youtubeId = extractYouTubeId(videoUrl);
+    if (!youtubeId) {
+      setSubmitStatus("error");
+      return;
+    }
+
+    const newVideo: CommunityVideo = {
+      youtubeId,
+      submittedAt: new Date().toISOString(),
+      locationId: selectedVideo.id,
+    };
+
+    const locationVideos = communityVideos[selectedVideo.id] || [];
+
+    // Check if video already exists
+    if (locationVideos.some(v => v.youtubeId === youtubeId)) {
+      setSubmitStatus("error");
+      return;
+    }
+
+    const updatedVideos = {
+      ...communityVideos,
+      [selectedVideo.id]: [...locationVideos, newVideo],
+    };
+
+    setCommunityVideos(updatedVideos);
+    localStorage.setItem("communityVideos", JSON.stringify(updatedVideos));
+    setVideoUrl("");
+    setSubmitStatus("success");
+    setShowSubmitForm(false);
+  };
+
+  // Handle recommend for a community video
+  const handleRecommend = (youtubeId: string) => {
+    if (userRecommendedVideos.includes(youtubeId)) return; // Already recommended
+
+    const newRecommendations = {
+      ...videoRecommendations,
+      [youtubeId]: (videoRecommendations[youtubeId] || 0) + 1
+    };
+    const newUserRecommended = [...userRecommendedVideos, youtubeId];
+
+    setVideoRecommendations(newRecommendations);
+    setUserRecommendedVideos(newUserRecommended);
+
+    localStorage.setItem("videoRecommendations", JSON.stringify(newRecommendations));
+    localStorage.setItem("userRecommendedVideos", JSON.stringify(newUserRecommended));
+  };
 
   // Handle vote/request for a location
   const handleVote = (locationId: string) => {
@@ -568,35 +678,144 @@ export default function MapPage() {
             </p>
           </div>
 
-          {/* Category Filter */}
-          <div className="flex flex-wrap justify-center gap-2 mb-6">
-            <button
-              onClick={() => setActiveCategory(null)}
-              className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
-                activeCategory === null
-                  ? "bg-[--color-brand] text-white"
-                  : "bg-[--color-bg-secondary] text-[--color-text-secondary] hover:text-[--color-text-primary]"
-              }`}
-            >
-              All Locations
-            </button>
-            {categories.map((category) => (
+          {/* Category Filter - Grouped by Type */}
+          <div className="mb-6 space-y-4">
+            {/* All Locations Button */}
+            <div className="flex justify-center">
               <button
-                key={category}
-                onClick={() => setActiveCategory(category)}
-                className={`px-4 py-2 rounded-full text-sm font-medium transition-colors flex items-center gap-2 ${
-                  activeCategory === category
+                onClick={() => setActiveCategory(null)}
+                className={`px-5 py-2 rounded-full text-sm font-medium transition-colors ${
+                  activeCategory === null
                     ? "bg-[--color-brand] text-white"
                     : "bg-[--color-bg-secondary] text-[--color-text-secondary] hover:text-[--color-text-primary]"
                 }`}
               >
-                <span
-                  className="w-2 h-2 rounded-full"
-                  style={{ backgroundColor: categoryColors[category] }}
-                />
-                {category}
+                All Locations
               </button>
-            ))}
+            </div>
+
+            {/* Grouped Categories - Grid Layout */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 max-w-4xl mx-auto">
+              {/* Nature Group */}
+              <div className="bg-[--color-bg-secondary] rounded-xl p-3">
+                <span className="text-xs text-[--color-text-tertiary] block mb-2">Nature</span>
+                <div className="flex flex-wrap gap-1.5">
+                  {["National Parks", "State Forests", "Bush Camping"].map((category) => (
+                    <button
+                      key={category}
+                      onClick={() => setActiveCategory(activeCategory === category ? null : category)}
+                      className={`px-2.5 py-1 rounded-full text-xs font-medium transition-colors flex items-center gap-1.5 ${
+                        activeCategory === category
+                          ? "bg-[--color-brand] text-white"
+                          : "bg-[--color-bg-tertiary] text-[--color-text-secondary] hover:text-[--color-text-primary]"
+                      }`}
+                    >
+                      {activeCategory === category ? (
+                        <svg className="w-3 h-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                        </svg>
+                      ) : (
+                        <span
+                          className="w-2 h-2 rounded-full flex-shrink-0"
+                          style={{ backgroundColor: categoryColors[category] }}
+                        />
+                      )}
+                      {category}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Coastal Group */}
+              <div className="bg-[--color-bg-secondary] rounded-xl p-3">
+                <span className="text-xs text-[--color-text-tertiary] block mb-2">Coastal</span>
+                <div className="flex flex-wrap gap-1.5">
+                  {["Great Ocean Road"].map((category) => (
+                    <button
+                      key={category}
+                      onClick={() => setActiveCategory(activeCategory === category ? null : category)}
+                      className={`px-2.5 py-1 rounded-full text-xs font-medium transition-colors flex items-center gap-1.5 ${
+                        activeCategory === category
+                          ? "bg-[--color-brand] text-white"
+                          : "bg-[--color-bg-tertiary] text-[--color-text-secondary] hover:text-[--color-text-primary]"
+                      }`}
+                    >
+                      {activeCategory === category ? (
+                        <svg className="w-3 h-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                        </svg>
+                      ) : (
+                        <span
+                          className="w-2 h-2 rounded-full flex-shrink-0"
+                          style={{ backgroundColor: categoryColors[category] }}
+                        />
+                      )}
+                      {category}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Activities Group */}
+              <div className="bg-[--color-bg-secondary] rounded-xl p-3">
+                <span className="text-xs text-[--color-text-tertiary] block mb-2">Activities</span>
+                <div className="flex flex-wrap gap-1.5">
+                  {["Hiking", "Water Activities"].map((category) => (
+                    <button
+                      key={category}
+                      onClick={() => setActiveCategory(activeCategory === category ? null : category)}
+                      className={`px-2.5 py-1 rounded-full text-xs font-medium transition-colors flex items-center gap-1.5 ${
+                        activeCategory === category
+                          ? "bg-[--color-brand] text-white"
+                          : "bg-[--color-bg-tertiary] text-[--color-text-secondary] hover:text-[--color-text-primary]"
+                      }`}
+                    >
+                      {activeCategory === category ? (
+                        <svg className="w-3 h-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                        </svg>
+                      ) : (
+                        <span
+                          className="w-2 h-2 rounded-full flex-shrink-0"
+                          style={{ backgroundColor: categoryColors[category] }}
+                        />
+                      )}
+                      {category}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Family Group */}
+              <div className="bg-[--color-bg-secondary] rounded-xl p-3">
+                <span className="text-xs text-[--color-text-tertiary] block mb-2">Family</span>
+                <div className="flex flex-wrap gap-1.5">
+                  {["Holiday Parks", "Family Holidays"].map((category) => (
+                    <button
+                      key={category}
+                      onClick={() => setActiveCategory(activeCategory === category ? null : category)}
+                      className={`px-2.5 py-1 rounded-full text-xs font-medium transition-colors flex items-center gap-1.5 ${
+                        activeCategory === category
+                          ? "bg-[--color-brand] text-white"
+                          : "bg-[--color-bg-tertiary] text-[--color-text-secondary] hover:text-[--color-text-primary]"
+                      }`}
+                    >
+                      {activeCategory === category ? (
+                        <svg className="w-3 h-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                        </svg>
+                      ) : (
+                        <span
+                          className="w-2 h-2 rounded-full flex-shrink-0"
+                          style={{ backgroundColor: categoryColors[category] }}
+                        />
+                      )}
+                      {category}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            </div>
           </div>
 
           {/* Map Container - Using OpenStreetMap tiles */}
@@ -622,13 +841,13 @@ export default function MapPage() {
               <div className="absolute inset-0 bg-black/10 pointer-events-none" />
 
               {/* Video Location Markers */}
-              {filteredLocations.map((video) => {
+              {filteredLocations.map((video, index) => {
                 const x = lngToX(video.lng);
                 const y = latToY(video.lat);
                 const isPlaceholder = video.id.startsWith("placeholder");
                 return (
                   <button
-                    key={video.id}
+                    key={`marker-${video.id}-${index}`}
                     onClick={() => setSelectedVideo(video)}
                     className="absolute transform -translate-x-1/2 -translate-y-1/2 group z-10"
                     style={{ left: `${x}%`, top: `${y}%` }}
@@ -672,8 +891,8 @@ export default function MapPage() {
 
           {/* Legend */}
           <div className="mt-6 flex flex-wrap justify-center gap-4 text-sm">
-            {categories.map((category) => (
-              <div key={category} className="flex items-center gap-2">
+            {categories.map((category, index) => (
+              <div key={`legend-${category}-${index}`} className="flex items-center gap-2">
                 <span
                   className="w-3 h-3 rounded-full"
                   style={{ backgroundColor: categoryColors[category] }}
@@ -790,6 +1009,176 @@ export default function MapPage() {
                   </a>
                 </div>
               )}
+
+              {/* Community Videos Section */}
+              {!selectedVideo.id.startsWith("placeholder") && (
+                <div className="mt-6 pt-6 border-t border-[--color-border-primary]">
+                  <div className="flex items-center justify-between mb-4">
+                    <h4 className="text-sm font-semibold text-[--color-text-primary] flex items-center gap-2">
+                      <svg className="w-4 h-4 text-[--color-brand]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                      </svg>
+                      Community Videos
+                      {communityVideos[selectedVideo.id]?.length > 0 && (
+                        <span className="text-xs text-[--color-text-tertiary]">
+                          ({communityVideos[selectedVideo.id].length})
+                        </span>
+                      )}
+                    </h4>
+                    {!showSubmitForm && (
+                      <button
+                        onClick={() => setShowSubmitForm(true)}
+                        className="text-xs text-[--color-brand] hover:text-[--color-brand-hover] font-medium flex items-center gap-1"
+                      >
+                        <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
+                        </svg>
+                        Share Your Video
+                      </button>
+                    )}
+                  </div>
+
+                  {/* Submit Form */}
+                  {showSubmitForm && (
+                    <div className="mb-4 p-4 bg-[--color-bg-tertiary] rounded-lg">
+                      <p className="text-xs text-[--color-text-secondary] mb-3">
+                        Share your adventure video at this location with the community!
+                      </p>
+                      <div className="flex gap-2">
+                        <input
+                          type="text"
+                          value={videoUrl}
+                          onChange={(e) => {
+                            setVideoUrl(e.target.value);
+                            setSubmitStatus("idle");
+                          }}
+                          placeholder="Paste YouTube URL..."
+                          className="flex-1 px-3 py-2 bg-[--color-bg-secondary] border border-[--color-border-primary] rounded-lg text-sm text-[--color-text-primary] placeholder:text-[--color-text-tertiary] focus:outline-none focus:border-[--color-brand]"
+                        />
+                        <button
+                          onClick={handleVideoSubmit}
+                          disabled={!videoUrl.trim()}
+                          className="px-4 py-2 bg-[--color-brand] hover:bg-[--color-brand-hover] disabled:bg-[--color-bg-secondary] disabled:text-[--color-text-tertiary] text-white text-sm font-medium rounded-lg transition-colors"
+                        >
+                          Submit
+                        </button>
+                        <button
+                          onClick={() => {
+                            setShowSubmitForm(false);
+                            setVideoUrl("");
+                            setSubmitStatus("idle");
+                          }}
+                          className="px-3 py-2 bg-[--color-bg-secondary] hover:bg-[--color-border-primary] text-[--color-text-secondary] text-sm rounded-lg transition-colors"
+                        >
+                          Cancel
+                        </button>
+                      </div>
+                      {submitStatus === "error" && (
+                        <p className="text-xs text-[--color-red] mt-2">
+                          Invalid YouTube URL or video already submitted. Please check and try again.
+                        </p>
+                      )}
+                    </div>
+                  )}
+
+                  {/* Success Message */}
+                  {submitStatus === "success" && (
+                    <div className="mb-4 p-3 bg-[--color-green]/10 border border-[--color-green]/20 rounded-lg flex items-center gap-2">
+                      <svg className="w-4 h-4 text-[--color-green]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                      </svg>
+                      <p className="text-xs text-[--color-green]">
+                        Thank you! Your video has been added to the community collection.
+                      </p>
+                    </div>
+                  )}
+
+                  {/* Community Video List */}
+                  {communityVideos[selectedVideo.id]?.length > 0 ? (
+                    <div className="space-y-3">
+                      {communityVideos[selectedVideo.id].map((video, index) => {
+                        const recommendCount = videoRecommendations[video.youtubeId] || 0;
+                        const hasRecommended = userRecommendedVideos.includes(video.youtubeId);
+                        return (
+                          <div
+                            key={`community-${video.youtubeId}-${index}`}
+                            className="flex items-center gap-3 p-2 bg-[--color-bg-tertiary] rounded-lg"
+                          >
+                            {/* Video Thumbnail */}
+                            <a
+                              href={`https://www.youtube.com/watch?v=${video.youtubeId}`}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="group relative w-24 h-14 flex-shrink-0 rounded-md overflow-hidden"
+                            >
+                              <img
+                                src={`https://img.youtube.com/vi/${video.youtubeId}/mqdefault.jpg`}
+                                alt="Community video"
+                                className="w-full h-full object-cover group-hover:scale-105 transition-transform"
+                              />
+                              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors flex items-center justify-center">
+                                <svg
+                                  className="w-6 h-6 text-white opacity-0 group-hover:opacity-100 transition-opacity"
+                                  fill="currentColor"
+                                  viewBox="0 0 24 24"
+                                >
+                                  <path d="M8 5v14l11-7z" />
+                                </svg>
+                              </div>
+                            </a>
+
+                            {/* Video Info */}
+                            <div className="flex-1 min-w-0">
+                              <a
+                                href={`https://www.youtube.com/watch?v=${video.youtubeId}`}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-xs text-[--color-text-primary] hover:text-[--color-brand] transition-colors line-clamp-1"
+                              >
+                                Community Video #{index + 1}
+                              </a>
+                              <div className="flex items-center gap-2 mt-1">
+                                <span className="text-[10px] text-[--color-text-tertiary] flex items-center gap-1">
+                                  <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                                  </svg>
+                                  Member
+                                </span>
+                              </div>
+                            </div>
+
+                            {/* Recommend Button */}
+                            <button
+                              onClick={() => handleRecommend(video.youtubeId)}
+                              disabled={hasRecommended}
+                              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium transition-all ${
+                                hasRecommended
+                                  ? "bg-[--color-green]/20 text-[--color-green] cursor-default"
+                                  : "bg-[--color-bg-secondary] hover:bg-[--color-brand] text-[--color-text-secondary] hover:text-white cursor-pointer"
+                              }`}
+                            >
+                              {hasRecommended ? (
+                                <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
+                                  <path d="M14 9V5a3 3 0 00-3-3l-4 9v11h11.28a2 2 0 002-1.7l1.38-9a2 2 0 00-2-2.3H14zM7 22H4a2 2 0 01-2-2v-7a2 2 0 012-2h3" />
+                                </svg>
+                              ) : (
+                                <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 9V5a3 3 0 00-3-3l-4 9v11h11.28a2 2 0 002-1.7l1.38-9a2 2 0 00-2-2.3H14zM7 22H4a2 2 0 01-2-2v-7a2 2 0 012-2h3" />
+                                </svg>
+                              )}
+                              {recommendCount > 0 ? recommendCount : "Recommend"}
+                            </button>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  ) : (
+                    <p className="text-xs text-[--color-text-tertiary] text-center py-4">
+                      No community videos yet. Be the first to share your adventure!
+                    </p>
+                  )}
+                </div>
+              )}
             </div>
           </div>
         </div>
@@ -802,12 +1191,12 @@ export default function MapPage() {
             All Camping Locations ({sortedLocations.length})
           </h2>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
-            {sortedLocations.map((video) => {
+            {sortedLocations.map((video, index) => {
               const isPlaceholder = video.id.startsWith("placeholder");
               const voteCount = votes[video.id] || 0;
               return (
                 <button
-                  key={video.id}
+                  key={`card-${video.id}-${index}`}
                   onClick={() => setSelectedVideo(video)}
                   className="group text-left"
                 >
