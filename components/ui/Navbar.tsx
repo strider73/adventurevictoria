@@ -53,9 +53,9 @@ export function Navbar({
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-1">
-            {links.map((link) => (
+            {links.map((link, index) => (
               <Link
-                key={link.href}
+                key={`nav-${link.label}-${index}`}
                 href={link.href}
                 className={`
                   px-4 py-2 rounded-[--radius-lg] text-sm font-medium
@@ -99,9 +99,9 @@ export function Navbar({
         {isMobileMenuOpen && (
           <div className="md:hidden py-4 border-t border-[--color-border-primary]">
             <div className="flex flex-col gap-1">
-              {links.map((link) => (
+              {links.map((link, index) => (
                 <Link
-                  key={link.href}
+                  key={`mobile-nav-${link.label}-${index}`}
                   href={link.href}
                   onClick={() => setIsMobileMenuOpen(false)}
                   className={`

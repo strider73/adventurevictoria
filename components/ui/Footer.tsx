@@ -86,8 +86,8 @@ export function Footer({
                   {section.title}
                 </h3>
                 <ul className="space-y-3">
-                  {section.links.map((link) => (
-                    <li key={link.href}>
+                  {section.links.map((link, linkIndex) => (
+                    <li key={`footer-${section.title}-${link.label}-${linkIndex}`}>
                       <Link
                         href={link.href}
                         className="text-[--color-text-tertiary] hover:text-[--color-text-primary] text-sm transition-colors"
@@ -107,9 +107,9 @@ export function Footer({
           <p className="text-[--color-text-tertiary] text-sm">{copyright}</p>
           {bottomLinks.length > 0 && (
             <div className="flex items-center gap-6">
-              {bottomLinks.map((link) => (
+              {bottomLinks.map((link, index) => (
                 <Link
-                  key={link.href}
+                  key={`bottom-${link.label}-${index}`}
                   href={link.href}
                   className="text-[--color-text-tertiary] hover:text-[--color-text-primary] text-sm transition-colors"
                 >
