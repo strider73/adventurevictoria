@@ -79,6 +79,7 @@ const categoryColors: Record<string, string> = {
 const navLinks = [
   { label: "Home", href: "/" },
   { label: "Map Playground", href: "/map", isActive: true },
+  { label: "Map Playground-Korea", href: "/map-korea" },
   { label: "About", href: "/about" },
 ];
 
