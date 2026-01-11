@@ -812,7 +812,35 @@ export default function MapPage() {
       <section className="py-12 px-4 sm:px-6 lg:px-8 bg-[--color-bg-secondary]">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-2xl font-bold text-[--color-text-primary] mb-6">
-            All Camping Locations ({sortedLocations.length})
+            {(() => {
+              // Build dynamic title based on filters
+              const activityLabels: Record<string, string> = {
+                all: "",
+                camping: "Camping",
+                hiking: "Hiking",
+                beach: "Beach",
+                family: "Family",
+              };
+              const videoLabels: Record<string, string> = {
+                all: "",
+                hasVideo: "with Videos",
+                myVideos: "My Videos",
+              };
+
+              const activity = activityLabels[activityFilter];
+              const video = videoLabels[videoFilter];
+
+              if (videoFilter === "myVideos") {
+                // "My Videos" or "My Hiking Videos"
+                return activity ? `My ${activity} Videos` : "My Videos";
+              } else if (videoFilter === "hasVideo") {
+                // "Camping Locations with Videos" or "All Locations with Videos"
+                return activity ? `${activity} Locations with Videos` : "All Locations with Videos";
+              } else {
+                // "Camping Locations" or "All Camping Locations"
+                return activity ? `${activity} Locations` : "All Camping Locations";
+              }
+            })()} ({sortedLocations.length})
           </h2>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
             {sortedLocations.map((video, index) => {
