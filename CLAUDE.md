@@ -9,6 +9,13 @@ A Next.js web application project based on the Linear theme.
 
 ## Important Rules
 
+### 0. Feature Documentation (MANDATORY)
+- **Always update `FEATURES.md` when creating new features or functions**
+- The `FEATURES.md` file contains a comprehensive list of all features, functions, and capabilities
+- After implementing any new feature, filter, component, or functionality, add it to the appropriate section in `FEATURES.md`
+- Keep the "Last Updated" date current
+- This ensures the project documentation stays in sync with the codebase
+
 ### 1. UI Component Usage Rules
 - **Always check and use components from `/components/ui` folder first**
 - Do not create new components if existing ones can solve the problem
