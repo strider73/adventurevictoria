@@ -229,6 +229,7 @@ export default function MapPage() {
   const [showSubmitForm, setShowSubmitForm] = useState(false);
   const [videoRecommendations, setVideoRecommendations] = useState<Record<string, number>>({});
   const [userRecommendedVideos, setUserRecommendedVideos] = useState<string[]>([]);
+  const [currentPlayingVideoId, setCurrentPlayingVideoId] = useState<string | null>(null);
 
   // Load votes, community videos, and recommendations from localStorage on mount
   useEffect(() => {
@@ -244,6 +245,8 @@ export default function MapPage() {
     setVideoUrl("");
     setSubmitStatus("idle");
     setShowSubmitForm(false);
+    // Set the current playing video to the location's own video (if it has one)
+    setCurrentPlayingVideoId(selectedVideo?.youtubeId || null);
   }, [selectedVideo]);
 
   // Handle community video submission
@@ -537,8 +540,8 @@ export default function MapPage() {
             className="bg-[--color-bg-secondary] rounded-2xl overflow-hidden max-w-3xl w-full max-h-[90vh] flex flex-col"
             onClick={(e) => e.stopPropagation()}
           >
-            {!selectedVideo.hasVideo ? (
-              // Placeholder location - Coming Soon
+            {!currentPlayingVideoId ? (
+              // Placeholder location - Coming Soon (no video playing)
               <div className="aspect-video flex-shrink-0 flex flex-col items-center justify-center" style={{ backgroundColor: categoryColors[selectedVideo.category] }}>
                 <svg className="w-20 h-20 text-white/80 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
@@ -555,7 +558,8 @@ export default function MapPage() {
             ) : (
               <div className="aspect-video flex-shrink-0 m-4 mb-0 rounded-xl overflow-hidden">
                 <iframe
-                  src={`https://www.youtube.com/embed/${selectedVideo.youtubeId}?autoplay=1`}
+                  key={currentPlayingVideoId}
+                  src={`https://www.youtube.com/embed/${currentPlayingVideoId}?autoplay=1`}
                   title={selectedVideo.videoTitle || selectedVideo.title}
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                   allowFullScreen
@@ -718,90 +722,146 @@ export default function MapPage() {
                     </div>
                   )}
 
-                  {/* Community Video List */}
-                  {communityVideos[selectedVideo.id]?.length > 0 ? (
-                    <div className="space-y-3">
-                      {communityVideos[selectedVideo.id].map((video, index) => {
-                        const recommendCount = videoRecommendations[video.youtubeId] || 0;
-                        const hasRecommended = userRecommendedVideos.includes(video.youtubeId);
-                        return (
-                          <div
-                            key={`community-${video.youtubeId}-${index}`}
-                            className="flex items-center gap-3 p-2 bg-[--color-bg-tertiary] rounded-lg"
-                          >
-                            {/* Video Thumbnail */}
-                            <a
-                              href={`https://www.youtube.com/watch?v=${video.youtubeId}`}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="group relative w-24 h-14 flex-shrink-0 rounded-md overflow-hidden"
-                            >
-                              <img
-                                src={`https://img.youtube.com/vi/${video.youtubeId}/mqdefault.jpg`}
-                                alt="Community video"
-                                className="w-full h-full object-cover group-hover:scale-105 transition-transform"
-                              />
-                              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors flex items-center justify-center">
-                                <svg
-                                  className="w-6 h-6 text-white opacity-0 group-hover:opacity-100 transition-opacity"
-                                  fill="currentColor"
-                                  viewBox="0 0 24 24"
-                                >
-                                  <path d="M8 5v14l11-7z" />
-                                </svg>
-                              </div>
-                            </a>
+                  {/* Video Playlist - Original video first, then community videos */}
+                  {(() => {
+                    // Build combined video list: original video first (if exists), then community videos
+                    const allVideos: Array<{
+                      youtubeId: string;
+                      title: string;
+                      channelName: string;
+                      isOriginal: boolean;
+                    }> = [];
 
-                            {/* Video Info */}
-                            <div className="flex-1 min-w-0">
-                              <a
-                                href={`https://www.youtube.com/watch?v=${video.youtubeId}`}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="text-xs text-[--color-text-primary] hover:text-[--color-brand] transition-colors line-clamp-2"
-                              >
-                                {video.title || `Community Video #${index + 1}`}
-                              </a>
-                              <div className="flex items-center gap-2 mt-1">
-                                <span className="text-[10px] text-[--color-text-tertiary] flex items-center gap-1">
-                                  <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                                  </svg>
-                                  {video.channelName || "Member"}
-                                </span>
-                              </div>
-                            </div>
+                    // Add original video first if it exists
+                    if (selectedVideo.hasVideo && selectedVideo.youtubeId) {
+                      allVideos.push({
+                        youtubeId: selectedVideo.youtubeId,
+                        title: selectedVideo.videoTitle || selectedVideo.title,
+                        channelName: "Adventure Victoria",
+                        isOriginal: true,
+                      });
+                    }
 
-                            {/* Recommend Button */}
+                    // Add community videos
+                    const communityList = communityVideos[selectedVideo.id] || [];
+                    communityList.forEach((video) => {
+                      allVideos.push({
+                        youtubeId: video.youtubeId,
+                        title: video.title || "Community Video",
+                        channelName: video.channelName || "Member",
+                        isOriginal: false,
+                      });
+                    });
+
+                    if (allVideos.length === 0) {
+                      return (
+                        <p className="text-xs text-[--color-text-tertiary] text-center py-4">
+                          No community videos yet. Be the first to share your adventure!
+                        </p>
+                      );
+                    }
+
+                    return (
+                      <div className="space-y-2">
+                        {allVideos.map((video, index) => {
+                          const isPlaying = currentPlayingVideoId === video.youtubeId;
+                          const recommendCount = videoRecommendations[video.youtubeId] || 0;
+                          const hasRecommended = userRecommendedVideos.includes(video.youtubeId);
+
+                          return (
                             <button
-                              onClick={() => handleRecommend(video.youtubeId)}
-                              disabled={hasRecommended}
-                              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium transition-all ${
-                                hasRecommended
-                                  ? "bg-[--color-green]/20 text-[--color-green] cursor-default"
-                                  : "bg-[--color-bg-secondary] hover:bg-[--color-brand] text-[--color-text-secondary] hover:text-white cursor-pointer"
+                              key={`playlist-${video.youtubeId}-${index}`}
+                              onClick={() => setCurrentPlayingVideoId(video.youtubeId)}
+                              className={`w-full flex items-center gap-3 p-2 rounded-lg text-left transition-all ${
+                                isPlaying
+                                  ? "bg-[--color-brand]/20 ring-2 ring-[--color-brand]"
+                                  : "bg-[--color-bg-tertiary] hover:bg-[--color-bg-tertiary]/80"
                               }`}
                             >
-                              {hasRecommended ? (
-                                <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
-                                  <path d="M14 9V5a3 3 0 00-3-3l-4 9v11h11.28a2 2 0 002-1.7l1.38-9a2 2 0 00-2-2.3H14zM7 22H4a2 2 0 01-2-2v-7a2 2 0 012-2h3" />
-                                </svg>
-                              ) : (
-                                <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 9V5a3 3 0 00-3-3l-4 9v11h11.28a2 2 0 002-1.7l1.38-9a2 2 0 00-2-2.3H14zM7 22H4a2 2 0 01-2-2v-7a2 2 0 012-2h3" />
-                                </svg>
+                              {/* Video Thumbnail */}
+                              <div className="relative w-24 h-14 flex-shrink-0 rounded-md overflow-hidden">
+                                <img
+                                  src={`https://img.youtube.com/vi/${video.youtubeId}/mqdefault.jpg`}
+                                  alt={video.title}
+                                  className="w-full h-full object-cover"
+                                />
+                                {isPlaying ? (
+                                  <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
+                                    <div className="flex items-center gap-0.5">
+                                      <span className="w-1 h-3 bg-white rounded-full animate-pulse" />
+                                      <span className="w-1 h-4 bg-white rounded-full animate-pulse" style={{ animationDelay: "0.2s" }} />
+                                      <span className="w-1 h-3 bg-white rounded-full animate-pulse" style={{ animationDelay: "0.4s" }} />
+                                    </div>
+                                  </div>
+                                ) : (
+                                  <div className="absolute inset-0 bg-black/0 hover:bg-black/30 transition-colors flex items-center justify-center group">
+                                    <svg
+                                      className="w-6 h-6 text-white opacity-0 group-hover:opacity-100 transition-opacity"
+                                      fill="currentColor"
+                                      viewBox="0 0 24 24"
+                                    >
+                                      <path d="M8 5v14l11-7z" />
+                                    </svg>
+                                  </div>
+                                )}
+                                {video.isOriginal && (
+                                  <div className="absolute top-1 left-1 px-1.5 py-0.5 bg-[#FF0000] rounded text-[8px] font-bold text-white">
+                                    ORIGINAL
+                                  </div>
+                                )}
+                              </div>
+
+                              {/* Video Info */}
+                              <div className="flex-1 min-w-0">
+                                <p className={`text-xs line-clamp-2 ${isPlaying ? "text-[--color-brand] font-medium" : "text-[--color-text-primary]"}`}>
+                                  {video.title}
+                                </p>
+                                <div className="flex items-center gap-2 mt-1">
+                                  <span className="text-[10px] text-[--color-text-tertiary] flex items-center gap-1">
+                                    <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                                    </svg>
+                                    {video.channelName}
+                                  </span>
+                                  {isPlaying && (
+                                    <span className="text-[10px] text-[--color-brand] font-medium">
+                                      Now Playing
+                                    </span>
+                                  )}
+                                </div>
+                              </div>
+
+                              {/* Recommend Button - only for community videos */}
+                              {!video.isOriginal && (
+                                <div
+                                  onClick={(e) => {
+                                    e.stopPropagation();
+                                    handleRecommend(video.youtubeId);
+                                  }}
+                                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium transition-all ${
+                                    hasRecommended
+                                      ? "bg-[--color-green]/20 text-[--color-green] cursor-default"
+                                      : "bg-[--color-bg-secondary] hover:bg-[--color-brand] text-[--color-text-secondary] hover:text-white cursor-pointer"
+                                  }`}
+                                >
+                                  {hasRecommended ? (
+                                    <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
+                                      <path d="M14 9V5a3 3 0 00-3-3l-4 9v11h11.28a2 2 0 002-1.7l1.38-9a2 2 0 00-2-2.3H14zM7 22H4a2 2 0 01-2-2v-7a2 2 0 012-2h3" />
+                                    </svg>
+                                  ) : (
+                                    <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 9V5a3 3 0 00-3-3l-4 9v11h11.28a2 2 0 002-1.7l1.38-9a2 2 0 00-2-2.3H14zM7 22H4a2 2 0 01-2-2v-7a2 2 0 012-2h3" />
+                                    </svg>
+                                  )}
+                                  {recommendCount > 0 ? recommendCount : "Recommend"}
+                                </div>
                               )}
-                              {recommendCount > 0 ? recommendCount : "Recommend"}
                             </button>
-                          </div>
-                        );
-                      })}
-                    </div>
-                  ) : (
-                    <p className="text-xs text-[--color-text-tertiary] text-center py-4">
-                      No community videos yet. Be the first to share your adventure!
-                    </p>
-                  )}
+                          );
+                        })}
+                      </div>
+                    );
+                  })()}
               </div>
             </div>
           </div>
