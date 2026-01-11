@@ -133,3 +133,17 @@ body {
   padding: 2px 8px !important;
   border-radius: 4px !important;
 }
+
+/* Ensure Leaflet container doesn't overlap modals */
+.leaflet-container {
+  z-index: 1 !important;
+}
+
+.leaflet-pane {
+  z-index: 1 !important;
+}
+
+.leaflet-top,
+.leaflet-bottom {
+  z-index: 10 !important;
+}
