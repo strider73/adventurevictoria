@@ -11,6 +11,7 @@ import {
 const navLinks = [
   { label: "Home", href: "/" },
   { label: "Map Playground", href: "/map" },
+  { label: "Map Playground-Korea", href: "/map-korea" },
   { label: "About", href: "/about", isActive: true },
 ];
 

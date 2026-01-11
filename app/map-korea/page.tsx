@@ -1,10 +1,53 @@
 "use client";
 
-import { useState, useMemo } from "react";
-import { Navbar, Footer, SocialIcons, Button, Badge } from "@/components/ui";
+import { useState, useMemo, useEffect } from "react";
+import { Navbar, Footer, SocialIcons, Button, Badge, NotificationBadge } from "@/components/ui";
 import dynamic from "next/dynamic";
 import koreaVideoData from "@/data/korea-travel-video.json";
 import type { KoreaVideo } from "./MapComponent";
+
+// Type for community video submissions
+interface CommunityVideo {
+  youtubeId: string;
+  submittedAt: string;
+  locationId: string;
+  title?: string;
+  channelName?: string;
+}
+
+// Helper to get community videos from localStorage
+const getCommunityVideos = (): Record<string, CommunityVideo[]> => {
+  if (typeof window === "undefined") return {};
+  const stored = localStorage.getItem("koreaMapCommunityVideos");
+  return stored ? JSON.parse(stored) : {};
+};
+
+// Helper to extract YouTube video ID from URL
+const extractYouTubeId = (url: string): string | null => {
+  const patterns = [
+    /(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/)([a-zA-Z0-9_-]{11})/,
+    /^([a-zA-Z0-9_-]{11})$/,
+  ];
+  for (const pattern of patterns) {
+    const match = url.match(pattern);
+    if (match) return match[1];
+  }
+  return null;
+};
+
+// Helper to get video recommendations from localStorage
+const getVideoRecommendations = (): Record<string, number> => {
+  if (typeof window === "undefined") return {};
+  const stored = localStorage.getItem("koreaVideoRecommendations");
+  return stored ? JSON.parse(stored) : {};
+};
+
+// Helper to get user's recommended videos
+const getUserRecommendedVideos = (): string[] => {
+  if (typeof window === "undefined") return [];
+  const stored = localStorage.getItem("koreaUserRecommendedVideos");
+  return stored ? JSON.parse(stored) : [];
+};
 
 // Dynamic import for Leaflet map (SSR disabled)
 const MapComponent = dynamic(() => import("./MapComponent"), {
@@ -162,6 +205,90 @@ const categoryIcons: Record<string, React.ReactNode> = {
 export default function MapKoreaPage() {
   const [selectedVideo, setSelectedVideo] = useState<KoreaVideo | null>(null);
   const [categoryFilter, setCategoryFilter] = useState<CategoryType>("all");
+  const [communityVideos, setCommunityVideos] = useState<Record<string, CommunityVideo[]>>({});
+  const [videoUrl, setVideoUrl] = useState("");
+  const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
+  const [showSubmitForm, setShowSubmitForm] = useState(false);
+  const [videoRecommendations, setVideoRecommendations] = useState<Record<string, number>>({});
+  const [userRecommendedVideos, setUserRecommendedVideos] = useState<string[]>([]);
+  const [currentPlayingVideoId, setCurrentPlayingVideoId] = useState<string | null>(null);
+
+  // Load community videos and recommendations from localStorage on mount
+  useEffect(() => {
+    setCommunityVideos(getCommunityVideos());
+    setVideoRecommendations(getVideoRecommendations());
+    setUserRecommendedVideos(getUserRecommendedVideos());
+  }, []);
+
+  // Reset form state when modal closes or location changes
+  useEffect(() => {
+    setVideoUrl("");
+    setSubmitStatus("idle");
+    setShowSubmitForm(false);
+    // Set the current playing video: original video first
+    if (selectedVideo?.videoId) {
+      setCurrentPlayingVideoId(selectedVideo.videoId);
+    } else if (selectedVideo) {
+      // No original video, check for community videos
+      const locationCommunityVideos = communityVideos[selectedVideo.videoId] || [];
+      setCurrentPlayingVideoId(locationCommunityVideos[0]?.youtubeId || null);
+    } else {
+      setCurrentPlayingVideoId(null);
+    }
+  }, [selectedVideo, communityVideos]);
+
+  // Handle community video submission
+  const handleVideoSubmit = () => {
+    if (!selectedVideo) return;
+
+    const youtubeId = extractYouTubeId(videoUrl);
+    if (!youtubeId) {
+      setSubmitStatus("error");
+      return;
+    }
+
+    const newVideo: CommunityVideo = {
+      youtubeId,
+      submittedAt: new Date().toISOString(),
+      locationId: selectedVideo.videoId,
+    };
+
+    const locationVideos = communityVideos[selectedVideo.videoId] || [];
+
+    // Check if video already exists
+    if (locationVideos.some(v => v.youtubeId === youtubeId)) {
+      setSubmitStatus("error");
+      return;
+    }
+
+    const updatedVideos = {
+      ...communityVideos,
+      [selectedVideo.videoId]: [...locationVideos, newVideo],
+    };
+
+    setCommunityVideos(updatedVideos);
+    localStorage.setItem("koreaMapCommunityVideos", JSON.stringify(updatedVideos));
+    setVideoUrl("");
+    setSubmitStatus("success");
+    setShowSubmitForm(false);
+  };
+
+  // Handle recommend for a community video
+  const handleRecommend = (youtubeId: string) => {
+    if (userRecommendedVideos.includes(youtubeId)) return; // Already recommended
+
+    const newRecommendations = {
+      ...videoRecommendations,
+      [youtubeId]: (videoRecommendations[youtubeId] || 0) + 1
+    };
+    const newUserRecommended = [...userRecommendedVideos, youtubeId];
+
+    setVideoRecommendations(newRecommendations);
+    setUserRecommendedVideos(newUserRecommended);
+
+    localStorage.setItem("koreaVideoRecommendations", JSON.stringify(newRecommendations));
+    localStorage.setItem("koreaUserRecommendedVideos", JSON.stringify(newUserRecommended));
+  };
 
   // Load videos from JSON
   const videos: KoreaVideo[] = koreaVideoData.videos;
@@ -336,53 +463,58 @@ export default function MapKoreaPage() {
             {categoryFilter === "all" ? "All Videos" : `${categoryFilter} Videos`} ({sortedVideos.length})
           </h2>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
-            {sortedVideos.map((video, index) => (
-              <button
-                key={`card-${video.videoId}-${index}`}
-                onClick={() => setSelectedVideo(video)}
-                className="group text-left"
-              >
-                <div className="relative mb-2">
-                  <div className="relative aspect-video rounded-xl overflow-hidden">
-                    <img
-                      src={`https://img.youtube.com/vi/${video.videoId}/mqdefault.jpg`}
-                      alt={video.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform"
-                    />
-                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center">
-                      <svg
-                        className="w-12 h-12 text-white opacity-0 group-hover:opacity-100 transition-opacity"
-                        fill="currentColor"
-                        viewBox="0 0 24 24"
+            {sortedVideos.map((video, index) => {
+              const communityVideoCount = communityVideos[video.videoId]?.length || 0;
+              return (
+                <button
+                  key={`card-${video.videoId}-${index}`}
+                  onClick={() => setSelectedVideo(video)}
+                  className="group text-left"
+                >
+                  <div className="relative mb-2">
+                    {/* Community video count badge */}
+                    <NotificationBadge count={communityVideoCount} />
+                    <div className="relative aspect-video rounded-xl overflow-hidden">
+                      <img
+                        src={`https://img.youtube.com/vi/${video.videoId}/mqdefault.jpg`}
+                        alt={video.title}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform"
+                      />
+                      <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center">
+                        <svg
+                          className="w-12 h-12 text-white opacity-0 group-hover:opacity-100 transition-opacity"
+                          fill="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path d="M8 5v14l11-7z" />
+                        </svg>
+                      </div>
+                      <span
+                        className="absolute top-2 right-2 px-2 py-0.5 rounded text-[10px] font-medium text-white"
+                        style={{ backgroundColor: categoryColors[video.category] }}
                       >
-                        <path d="M8 5v14l11-7z" />
-                      </svg>
+                        {video.category}
+                      </span>
+                      <span className="absolute bottom-2 right-2 px-2 py-0.5 rounded text-[10px] font-medium text-white bg-black/70">
+                        {video.duration}
+                      </span>
                     </div>
-                    <span
-                      className="absolute top-2 right-2 px-2 py-0.5 rounded text-[10px] font-medium text-white"
-                      style={{ backgroundColor: categoryColors[video.category] }}
-                    >
-                      {video.category}
-                    </span>
-                    <span className="absolute bottom-2 right-2 px-2 py-0.5 rounded text-[10px] font-medium text-white bg-black/70">
-                      {video.duration}
-                    </span>
                   </div>
-                </div>
-                <h3 className="text-sm font-medium text-[--color-text-primary] line-clamp-2 group-hover:text-[--color-brand] transition-colors">
-                  {video.title}
-                </h3>
-                <div className="flex items-center gap-2 mt-1">
-                  <p className="text-xs text-[--color-text-tertiary]">
-                    {formatViews(video.views)} views
-                  </p>
-                  <span className="text-xs text-[--color-text-tertiary]">•</span>
-                  <p className="text-xs text-[--color-text-tertiary]">
-                    {video.uploadedAgo}
-                  </p>
-                </div>
-              </button>
-            ))}
+                  <h3 className="text-sm font-medium text-[--color-text-primary] line-clamp-2 group-hover:text-[--color-brand] transition-colors">
+                    {video.title}
+                  </h3>
+                  <div className="flex items-center gap-2 mt-1">
+                    <p className="text-xs text-[--color-text-tertiary]">
+                      {formatViews(video.views)} views
+                    </p>
+                    <span className="text-xs text-[--color-text-tertiary]">•</span>
+                    <p className="text-xs text-[--color-text-tertiary]">
+                      {video.uploadedAgo}
+                    </p>
+                  </div>
+                </button>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -390,70 +522,282 @@ export default function MapKoreaPage() {
       {/* Video Modal */}
       {selectedVideo && (
         <div
-          className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4"
+          className="fixed inset-0 bg-black/80 z-[9999] flex items-center justify-center p-4"
           onClick={closeModal}
         >
           <div
-            className="bg-[--color-bg-secondary] rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-hidden"
+            className="bg-[--color-bg-secondary] rounded-2xl overflow-hidden max-w-3xl w-full max-h-[90vh] flex flex-col"
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Modal Header */}
-            <div className="flex items-center justify-between p-4 border-b border-[--color-border-primary]">
-              <div className="flex items-center gap-3">
-                <Badge
-                  variant="default"
-                  style={{ backgroundColor: categoryColors[selectedVideo.category] || "#8a8f98" }}
-                >
-                  {selectedVideo.category}
-                </Badge>
-                <span className="text-[--color-text-tertiary] text-sm">
-                  {selectedVideo.location}
-                </span>
-              </div>
-              <button
-                onClick={closeModal}
-                className="text-[--color-text-tertiary] hover:text-[--color-text-primary] transition-colors"
-              >
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                </svg>
-              </button>
-            </div>
-
             {/* Video Player */}
-            <div className="aspect-video bg-black">
+            <div className="aspect-video flex-shrink-0 m-4 mb-0 rounded-xl overflow-hidden">
               <iframe
-                src={`https://www.youtube.com/embed/${selectedVideo.videoId}?autoplay=1`}
+                key={currentPlayingVideoId}
+                src={`https://www.youtube.com/embed/${currentPlayingVideoId || selectedVideo.videoId}?autoplay=1`}
                 title={selectedVideo.title}
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 allowFullScreen
                 className="w-full h-full"
               />
             </div>
 
             {/* Video Info */}
-            <div className="p-4">
-              <h3 className="text-lg font-semibold text-[--color-text-primary] mb-2">
-                {selectedVideo.title}
-              </h3>
-              <div className="flex items-center gap-4 text-sm text-[--color-text-tertiary]">
-                <span>{formatViews(selectedVideo.views)} views</span>
-                <span>{selectedVideo.uploadedAgo}</span>
-                <span>{selectedVideo.duration}</span>
-              </div>
-              <div className="mt-4 flex gap-2">
-                <a
-                  href={`https://www.youtube.com/watch?v=${selectedVideo.videoId}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
+            <div className="p-4 overflow-y-auto flex-1">
+              <div className="flex items-start justify-between gap-4">
+                <div>
+                  <h3 className="text-lg font-semibold text-[--color-text-primary]">
+                    {selectedVideo.title}
+                  </h3>
+                  <p className="text-[--color-text-tertiary] text-sm mt-1">
+                    {selectedVideo.location}
+                  </p>
+                  <div className="flex items-center gap-2 mt-2">
+                    <span
+                      className="px-3 py-1 rounded-full text-xs font-medium text-white"
+                      style={{ backgroundColor: categoryColors[selectedVideo.category] }}
+                    >
+                      {selectedVideo.category}
+                    </span>
+                    <a
+                      href={`https://www.youtube.com/watch?v=${selectedVideo.videoId}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-[#FF0000] hover:bg-[#CC0000] text-white transition-colors"
+                    >
+                      <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+                      </svg>
+                      Watch on YouTube
+                    </a>
+                  </div>
+                  <div className="flex items-center gap-4 text-sm text-[--color-text-tertiary] mt-2">
+                    <span>{formatViews(selectedVideo.views)} views</span>
+                    <span>{selectedVideo.uploadedAgo}</span>
+                    <span>{selectedVideo.duration}</span>
+                  </div>
+                </div>
+                <button
+                  onClick={closeModal}
+                  className="p-2 rounded-lg bg-[--color-bg-tertiary] hover:bg-[--color-border-primary] transition-colors"
                 >
-                  <Button size="sm" className="bg-[#FF0000] hover:bg-[#CC0000]">
-                    <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                  <svg className="w-5 h-5 text-[--color-text-secondary]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
+              </div>
+
+              {/* Community Videos Section */}
+              <div className="mt-6 pt-6 border-t border-[--color-border-primary]">
+                <div className="flex items-center justify-between mb-4">
+                  <h4 className="text-sm font-semibold text-[--color-text-primary] flex items-center gap-2">
+                    <svg className="w-4 h-4 text-[--color-brand]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                     </svg>
-                    Watch on YouTube
-                  </Button>
-                </a>
+                    Community Videos
+                    {communityVideos[selectedVideo.videoId]?.length > 0 && (
+                      <span className="text-xs text-[--color-text-tertiary]">
+                        ({communityVideos[selectedVideo.videoId].length})
+                      </span>
+                    )}
+                  </h4>
+                  {!showSubmitForm && (
+                    <button
+                      onClick={() => setShowSubmitForm(true)}
+                      className="text-xs text-[--color-brand] hover:text-[--color-brand-hover] font-medium flex items-center gap-1"
+                    >
+                      <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
+                      </svg>
+                      Share Your Video
+                    </button>
+                  )}
+                </div>
+
+                {/* Submit Form */}
+                {showSubmitForm && (
+                  <div className="mb-4 p-4 bg-[--color-bg-tertiary] rounded-lg">
+                    <p className="text-xs text-[--color-text-secondary] mb-3">
+                      Share your adventure video at this location with the community!
+                    </p>
+                    <div className="flex gap-2">
+                      <input
+                        type="text"
+                        value={videoUrl}
+                        onChange={(e) => {
+                          setVideoUrl(e.target.value);
+                          setSubmitStatus("idle");
+                        }}
+                        placeholder="Paste YouTube URL..."
+                        className="flex-1 px-3 py-2 bg-[--color-bg-secondary] border border-[--color-border-primary] rounded-lg text-sm text-[--color-text-primary] placeholder:text-[--color-text-tertiary] focus:outline-none focus:border-[--color-brand]"
+                      />
+                      <button
+                        onClick={handleVideoSubmit}
+                        disabled={!videoUrl.trim()}
+                        className="px-4 py-2 bg-[--color-brand] hover:bg-[--color-brand-hover] disabled:bg-[--color-bg-secondary] disabled:text-[--color-text-tertiary] text-white text-sm font-medium rounded-lg transition-colors"
+                      >
+                        Submit
+                      </button>
+                      <button
+                        onClick={() => {
+                          setShowSubmitForm(false);
+                          setVideoUrl("");
+                          setSubmitStatus("idle");
+                        }}
+                        className="px-3 py-2 bg-[--color-bg-secondary] hover:bg-[--color-border-primary] text-[--color-text-secondary] text-sm rounded-lg transition-colors"
+                      >
+                        Cancel
+                      </button>
+                    </div>
+                    {submitStatus === "error" && (
+                      <p className="text-xs text-[--color-red] mt-2">
+                        Invalid YouTube URL or video already submitted. Please check and try again.
+                      </p>
+                    )}
+                  </div>
+                )}
+
+                {/* Success Message */}
+                {submitStatus === "success" && (
+                  <div className="mb-4 p-3 bg-[--color-green]/10 border border-[--color-green]/20 rounded-lg flex items-center gap-2">
+                    <svg className="w-4 h-4 text-[--color-green]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                    <p className="text-xs text-[--color-green]">
+                      Thank you! Your video has been added to the community collection.
+                    </p>
+                  </div>
+                )}
+
+                {/* Video Playlist - Original video first, then community videos */}
+                {(() => {
+                  // Build combined video list: original video first, then community videos
+                  const allVideos: Array<{
+                    youtubeId: string;
+                    title: string;
+                    channelName: string;
+                    isOriginal: boolean;
+                  }> = [];
+
+                  // Add original video first
+                  allVideos.push({
+                    youtubeId: selectedVideo.videoId,
+                    title: selectedVideo.title,
+                    channelName: "Outboundscape",
+                    isOriginal: true,
+                  });
+
+                  // Add community videos
+                  const communityList = communityVideos[selectedVideo.videoId] || [];
+                  communityList.forEach((video) => {
+                    allVideos.push({
+                      youtubeId: video.youtubeId,
+                      title: video.title || "Community Video",
+                      channelName: video.channelName || "Member",
+                      isOriginal: false,
+                    });
+                  });
+
+                  return (
+                    <div className="space-y-2">
+                      {allVideos.map((video, index) => {
+                        const isPlaying = currentPlayingVideoId === video.youtubeId;
+                        const recommendCount = videoRecommendations[video.youtubeId] || 0;
+                        const hasRecommended = userRecommendedVideos.includes(video.youtubeId);
+
+                        return (
+                          <button
+                            key={`playlist-${video.youtubeId}-${index}`}
+                            onClick={() => setCurrentPlayingVideoId(video.youtubeId)}
+                            className={`w-full flex items-center gap-3 p-2 rounded-lg text-left transition-all ${
+                              isPlaying
+                                ? "bg-[--color-brand]/20 ring-2 ring-[--color-brand]"
+                                : "bg-[--color-bg-tertiary] hover:bg-[--color-bg-tertiary]/80"
+                            }`}
+                          >
+                            {/* Video Thumbnail */}
+                            <div className="relative w-24 h-14 flex-shrink-0 rounded-md overflow-hidden">
+                              <img
+                                src={`https://img.youtube.com/vi/${video.youtubeId}/mqdefault.jpg`}
+                                alt={video.title}
+                                className="w-full h-full object-cover"
+                              />
+                              {isPlaying ? (
+                                <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
+                                  <div className="flex items-center gap-0.5">
+                                    <span className="w-1 h-3 bg-white rounded-full animate-pulse" />
+                                    <span className="w-1 h-4 bg-white rounded-full animate-pulse" style={{ animationDelay: "0.2s" }} />
+                                    <span className="w-1 h-3 bg-white rounded-full animate-pulse" style={{ animationDelay: "0.4s" }} />
+                                  </div>
+                                </div>
+                              ) : (
+                                <div className="absolute inset-0 bg-black/0 hover:bg-black/30 transition-colors flex items-center justify-center group">
+                                  <svg
+                                    className="w-6 h-6 text-white opacity-0 group-hover:opacity-100 transition-opacity"
+                                    fill="currentColor"
+                                    viewBox="0 0 24 24"
+                                  >
+                                    <path d="M8 5v14l11-7z" />
+                                  </svg>
+                                </div>
+                              )}
+                              {video.isOriginal && (
+                                <div className="absolute top-1 left-1 px-1.5 py-0.5 bg-[#FF0000] rounded text-[8px] font-bold text-white">
+                                  ORIGINAL
+                                </div>
+                              )}
+                            </div>
+
+                            {/* Video Info */}
+                            <div className="flex-1 min-w-0">
+                              <p className={`text-xs line-clamp-2 ${isPlaying ? "text-[--color-brand] font-medium" : "text-[--color-text-primary]"}`}>
+                                {video.title}
+                              </p>
+                              <div className="flex items-center gap-2 mt-1">
+                                <span className="text-[10px] text-[--color-text-tertiary] flex items-center gap-1">
+                                  <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                                  </svg>
+                                  {video.channelName}
+                                </span>
+                                {isPlaying && (
+                                  <span className="text-[10px] text-[--color-brand] font-medium">
+                                    Now Playing
+                                  </span>
+                                )}
+                              </div>
+                            </div>
+
+                            {/* Recommend Button - only for community videos */}
+                            {!video.isOriginal && (
+                              <div
+                                onClick={(e) => {
+                                  e.stopPropagation();
+                                  handleRecommend(video.youtubeId);
+                                }}
+                                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium transition-all ${
+                                  hasRecommended
+                                    ? "bg-[--color-green]/20 text-[--color-green] cursor-default"
+                                    : "bg-[--color-bg-secondary] hover:bg-[--color-brand] text-[--color-text-secondary] hover:text-white cursor-pointer"
+                                }`}
+                              >
+                                {hasRecommended ? (
+                                  <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M14 9V5a3 3 0 00-3-3l-4 9v11h11.28a2 2 0 002-1.7l1.38-9a2 2 0 00-2-2.3H14zM7 22H4a2 2 0 01-2-2v-7a2 2 0 012-2h3" />
+                                  </svg>
+                                ) : (
+                                  <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 9V5a3 3 0 00-3-3l-4 9v11h11.28a2 2 0 002-1.7l1.38-9a2 2 0 00-2-2.3H14zM7 22H4a2 2 0 01-2-2v-7a2 2 0 012-2h3" />
+                                  </svg>
+                                )}
+                                {recommendCount > 0 ? recommendCount : "Recommend"}
+                              </div>
+                            )}
+                          </button>
+                        );
+                      })}
+                    </div>
+                  );
+                })()}
               </div>
             </div>
           </div>
