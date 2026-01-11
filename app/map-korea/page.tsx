@@ -450,41 +450,42 @@ export default function MapKoreaPage() {
             </div>
           </div>
 
-          {/* Fullscreen backdrop */}
+          {/* Fullscreen Map Overlay */}
           {isFullscreen && (
-            <div
-              className="fixed inset-0 bg-black/90 z-[9997]"
-              onClick={toggleFullscreen}
-            />
+            <div className="fixed inset-0 z-[9999] bg-[--color-bg-primary]">
+              {/* Close button */}
+              <button
+                onClick={toggleFullscreen}
+                className="absolute top-4 right-4 z-10 p-3 bg-[--color-bg-secondary] hover:bg-[--color-bg-tertiary] rounded-full border border-[--color-border-primary] transition-colors shadow-lg"
+                title="Exit fullscreen"
+              >
+                <svg className="w-6 h-6 text-[--color-text-primary]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+
+              {/* Fullscreen Map */}
+              <div className="w-full h-full">
+                <MapComponent key="fullscreen" videos={filteredVideos} onMarkerClick={handleMarkerClick} />
+              </div>
+            </div>
           )}
 
-          {/* Interactive Map Container */}
-          <div
-            className={`relative rounded-2xl overflow-hidden border border-[--color-border-primary] transition-all duration-300 ${
-              isFullscreen
-                ? "fixed inset-4 z-[9998] bg-[--color-bg-primary]"
-                : ""
-            }`}
-          >
+          {/* Interactive Map Container (normal mode) */}
+          <div className="relative rounded-2xl overflow-hidden border border-[--color-border-primary]">
             {/* Fullscreen toggle button */}
             <button
               onClick={toggleFullscreen}
               className="absolute top-4 right-4 z-20 p-2 bg-[--color-bg-secondary] hover:bg-[--color-bg-tertiary] rounded-lg border border-[--color-border-primary] transition-colors"
-              title={isFullscreen ? "Exit fullscreen" : "Enter fullscreen"}
+              title="Enter fullscreen"
             >
-              {isFullscreen ? (
-                <svg className="w-5 h-5 text-[--color-text-primary]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M9 9V4.5M9 9H4.5M9 9L3.75 3.75M9 15v4.5M9 15H4.5M9 15l-5.25 5.25M15 9h4.5M15 9V4.5M15 9l5.25-5.25M15 15h4.5M15 15v4.5m0-4.5l5.25 5.25" />
-                </svg>
-              ) : (
-                <svg className="w-5 h-5 text-[--color-text-primary]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 3.75v4.5m0-4.5h4.5m-4.5 0L9 9M3.75 20.25v-4.5m0 4.5h4.5m-4.5 0L9 15M20.25 3.75h-4.5m4.5 0v4.5m0-4.5L15 9m5.25 11.25h-4.5m4.5 0v-4.5m0 4.5L15 15" />
-                </svg>
-              )}
+              <svg className="w-5 h-5 text-[--color-text-primary]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 3.75v4.5m0-4.5h4.5m-4.5 0L9 9M3.75 20.25v-4.5m0 4.5h4.5m-4.5 0L9 15M20.25 3.75h-4.5m4.5 0v4.5m0-4.5L15 9m5.25 11.25h-4.5m4.5 0v-4.5m0 4.5L15 15" />
+              </svg>
             </button>
 
-            <div className={`relative w-full ${isFullscreen ? "h-full" : "aspect-[2/1]"}`} style={isFullscreen ? { height: 'calc(100vh - 32px)' } : undefined}>
-              <MapComponent key={isFullscreen ? "fullscreen" : "normal"} videos={filteredVideos} onMarkerClick={handleMarkerClick} />
+            <div className="relative w-full aspect-[2/1]">
+              <MapComponent key="normal" videos={filteredVideos} onMarkerClick={handleMarkerClick} />
             </div>
           </div>
 
