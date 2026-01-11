@@ -6,6 +6,7 @@ import { Navbar, Footer, SocialIcons, Button } from "@/components/ui";
 
 // Import camping sites data
 import campingData from "@/data/victoria-camping-sites.json";
+import videoData from "@/data/chris-video.json";
 
 // Dynamic import for Leaflet map (SSR disabled)
 const MapComponent = dynamic(() => import("./MapComponent"), {
@@ -17,16 +18,32 @@ const MapComponent = dynamic(() => import("./MapComponent"), {
   ),
 });
 
-// Use camping sites from JSON data (all are placeholders until YouTube videos are added)
-const videoLocations = campingData.campingSites.map((site) => ({
-  id: site.id,
-  title: site.title,
-  location: site.location,
-  lat: site.lat,
-  lng: site.lng,
-  category: site.category,
-  description: site.description,
-}));
+// Create a map of campingSiteId to video data for quick lookup
+const videosByCampingSiteId = new Map(
+  videoData.videos
+    .filter((v) => v.campingSiteId)
+    .map((v) => [v.campingSiteId, v])
+);
+
+// Use camping sites from JSON data, linking with actual YouTube videos where available
+const videoLocations = campingData.campingSites.map((site) => {
+  const linkedVideo = videosByCampingSiteId.get(site.id);
+  return {
+    id: site.id,
+    title: site.title,
+    location: site.location,
+    lat: site.lat,
+    lng: site.lng,
+    category: site.category,
+    description: site.description,
+    // Add YouTube video data if we have a video for this site
+    youtubeId: linkedVideo?.videoId || null,
+    videoTitle: linkedVideo?.title || null,
+    duration: linkedVideo?.duration || null,
+    views: linkedVideo?.views || null,
+    hasVideo: !!linkedVideo,
+  };
+});
 
 // Category colors
 const categoryColors: Record<string, string> = {
@@ -144,9 +161,18 @@ const getUserRecommendedVideos = (): string[] => {
   return stored ? JSON.parse(stored) : [];
 };
 
+// Activity filter mapping to categories
+const activityMapping: Record<string, string[]> = {
+  camping: ["National Parks", "State Forests", "Bush Camping"],
+  hiking: ["Hiking"],
+  beach: ["Great Ocean Road", "Water Activities"],
+  family: ["Holiday Parks", "Family Holidays"],
+};
+
 export default function MapPage() {
   const [selectedVideo, setSelectedVideo] = useState<typeof videoLocations[0] | null>(null);
-  const [activeCategory, setActiveCategory] = useState<string | null>(null);
+  const [videoFilter, setVideoFilter] = useState<"all" | "hasVideo" | "myVideos">("all");
+  const [activityFilter, setActivityFilter] = useState<"all" | "camping" | "hiking" | "beach" | "family">("all");
   const [votes, setVotes] = useState<Record<string, number>>({});
   const [userVoted, setUserVoted] = useState<string[]>([]);
   const [communityVideos, setCommunityVideos] = useState<Record<string, CommunityVideo[]>>({});
@@ -239,21 +265,38 @@ export default function MapPage() {
     localStorage.setItem("userVotedLocations", JSON.stringify(newUserVoted));
   };
 
-  const categories = [...new Set(videoLocations.map((v) => v.category))];
+  // Calculate counts for filter badges
+  const totalCount = videoLocations.length;
+  const hasVideoCount = videoLocations.filter((v) => v.hasVideo || (communityVideos[v.id]?.length > 0)).length;
+  const myVideosCount = videoLocations.filter((v) => v.hasVideo).length;
 
-  const filteredLocations = activeCategory
-    ? videoLocations.filter((v) => v.category === activeCategory)
-    : videoLocations;
+  // Apply filters
+  const filteredLocations = videoLocations.filter((v) => {
+    // Video source filter
+    if (videoFilter === "hasVideo" && !v.hasVideo && !(communityVideos[v.id]?.length > 0)) {
+      return false;
+    }
+    if (videoFilter === "myVideos" && !v.hasVideo) {
+      return false;
+    }
 
-  // Sort placeholder locations by votes (most requested first)
+    // Activity filter
+    if (activityFilter !== "all") {
+      const allowedCategories = activityMapping[activityFilter];
+      if (!allowedCategories.includes(v.category)) {
+        return false;
+      }
+    }
+
+    return true;
+  });
+
+  // Sort locations: videos first, then by votes for locations without videos
   const sortedLocations = [...filteredLocations].sort((a, b) => {
-    const aIsPlaceholder = a.id.startsWith("placeholder");
-    const bIsPlaceholder = b.id.startsWith("placeholder");
-
     // Real videos first, then placeholders sorted by votes
-    if (!aIsPlaceholder && bIsPlaceholder) return -1;
-    if (aIsPlaceholder && !bIsPlaceholder) return 1;
-    if (aIsPlaceholder && bIsPlaceholder) {
+    if (a.hasVideo && !b.hasVideo) return -1;
+    if (!a.hasVideo && b.hasVideo) return 1;
+    if (!a.hasVideo && !b.hasVideo) {
       return (votes[b.id] || 0) - (votes[a.id] || 0);
     }
     return 0;
@@ -297,142 +340,117 @@ export default function MapPage() {
             </p>
           </div>
 
-          {/* Category Filter - Grouped by Type */}
-          <div className="mb-6 space-y-4">
-            {/* All Locations Button */}
-            <div className="flex justify-center">
-              <button
-                onClick={() => setActiveCategory(null)}
-                className={`px-5 py-2 rounded-full text-sm font-medium transition-colors ${
-                  activeCategory === null
-                    ? "bg-[--color-brand] text-white"
-                    : "bg-[--color-bg-secondary] text-[--color-text-secondary] hover:text-[--color-text-primary]"
-                }`}
-              >
-                All Locations
-              </button>
+          {/* Filter Section */}
+          <div className="mb-6 space-y-4 max-w-2xl mx-auto">
+            {/* Video Source Filter */}
+            <div className="bg-[--color-bg-secondary] rounded-xl p-4">
+              <span className="text-xs text-[--color-text-tertiary] block mb-3">Video Source</span>
+              <div className="flex flex-wrap justify-center gap-2">
+                <button
+                  onClick={() => setVideoFilter("all")}
+                  className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
+                    videoFilter === "all"
+                      ? "bg-[--color-brand] text-white"
+                      : "bg-[--color-bg-tertiary] text-[--color-text-secondary] hover:text-[--color-text-primary]"
+                  }`}
+                >
+                  All ({totalCount})
+                </button>
+                <button
+                  onClick={() => setVideoFilter("hasVideo")}
+                  className={`px-4 py-2 rounded-full text-sm font-medium transition-colors flex items-center gap-2 ${
+                    videoFilter === "hasVideo"
+                      ? "bg-[--color-brand] text-white"
+                      : "bg-[--color-bg-tertiary] text-[--color-text-secondary] hover:text-[--color-text-primary]"
+                  }`}
+                >
+                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M8 5v14l11-7z" />
+                  </svg>
+                  Has Video ({hasVideoCount})
+                </button>
+                <button
+                  onClick={() => setVideoFilter("myVideos")}
+                  className={`px-4 py-2 rounded-full text-sm font-medium transition-colors flex items-center gap-2 ${
+                    videoFilter === "myVideos"
+                      ? "bg-[#FF0000] text-white"
+                      : "bg-[--color-bg-tertiary] text-[--color-text-secondary] hover:text-[--color-text-primary]"
+                  }`}
+                >
+                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+                  </svg>
+                  My Videos ({myVideosCount})
+                </button>
+              </div>
             </div>
 
-            {/* Grouped Categories - Grid Layout */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 max-w-4xl mx-auto">
-              {/* Nature Group */}
-              <div className="bg-[--color-bg-secondary] rounded-xl p-3">
-                <span className="text-xs text-[--color-text-tertiary] block mb-2">Nature</span>
-                <div className="flex flex-wrap gap-1.5">
-                  {["National Parks", "State Forests", "Bush Camping"].map((category) => (
-                    <button
-                      key={category}
-                      onClick={() => setActiveCategory(activeCategory === category ? null : category)}
-                      className={`px-2.5 py-1 rounded-full text-xs font-medium transition-colors flex items-center gap-1.5 ${
-                        activeCategory === category
-                          ? "bg-[--color-brand] text-white"
-                          : "bg-[--color-bg-tertiary] text-[--color-text-secondary] hover:text-[--color-text-primary]"
-                      }`}
-                    >
-                      {activeCategory === category ? (
-                        <svg className="w-3 h-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
-                          <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                        </svg>
-                      ) : (
-                        <span
-                          className="w-2 h-2 rounded-full flex-shrink-0"
-                          style={{ backgroundColor: categoryColors[category] }}
-                        />
-                      )}
-                      {category}
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              {/* Coastal Group */}
-              <div className="bg-[--color-bg-secondary] rounded-xl p-3">
-                <span className="text-xs text-[--color-text-tertiary] block mb-2">Coastal</span>
-                <div className="flex flex-wrap gap-1.5">
-                  {["Great Ocean Road"].map((category) => (
-                    <button
-                      key={category}
-                      onClick={() => setActiveCategory(activeCategory === category ? null : category)}
-                      className={`px-2.5 py-1 rounded-full text-xs font-medium transition-colors flex items-center gap-1.5 ${
-                        activeCategory === category
-                          ? "bg-[--color-brand] text-white"
-                          : "bg-[--color-bg-tertiary] text-[--color-text-secondary] hover:text-[--color-text-primary]"
-                      }`}
-                    >
-                      {activeCategory === category ? (
-                        <svg className="w-3 h-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
-                          <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                        </svg>
-                      ) : (
-                        <span
-                          className="w-2 h-2 rounded-full flex-shrink-0"
-                          style={{ backgroundColor: categoryColors[category] }}
-                        />
-                      )}
-                      {category}
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              {/* Activities Group */}
-              <div className="bg-[--color-bg-secondary] rounded-xl p-3">
-                <span className="text-xs text-[--color-text-tertiary] block mb-2">Activities</span>
-                <div className="flex flex-wrap gap-1.5">
-                  {["Hiking", "Water Activities"].map((category) => (
-                    <button
-                      key={category}
-                      onClick={() => setActiveCategory(activeCategory === category ? null : category)}
-                      className={`px-2.5 py-1 rounded-full text-xs font-medium transition-colors flex items-center gap-1.5 ${
-                        activeCategory === category
-                          ? "bg-[--color-brand] text-white"
-                          : "bg-[--color-bg-tertiary] text-[--color-text-secondary] hover:text-[--color-text-primary]"
-                      }`}
-                    >
-                      {activeCategory === category ? (
-                        <svg className="w-3 h-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
-                          <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                        </svg>
-                      ) : (
-                        <span
-                          className="w-2 h-2 rounded-full flex-shrink-0"
-                          style={{ backgroundColor: categoryColors[category] }}
-                        />
-                      )}
-                      {category}
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              {/* Family Group */}
-              <div className="bg-[--color-bg-secondary] rounded-xl p-3">
-                <span className="text-xs text-[--color-text-tertiary] block mb-2">Family</span>
-                <div className="flex flex-wrap gap-1.5">
-                  {["Holiday Parks", "Family Holidays"].map((category) => (
-                    <button
-                      key={category}
-                      onClick={() => setActiveCategory(activeCategory === category ? null : category)}
-                      className={`px-2.5 py-1 rounded-full text-xs font-medium transition-colors flex items-center gap-1.5 ${
-                        activeCategory === category
-                          ? "bg-[--color-brand] text-white"
-                          : "bg-[--color-bg-tertiary] text-[--color-text-secondary] hover:text-[--color-text-primary]"
-                      }`}
-                    >
-                      {activeCategory === category ? (
-                        <svg className="w-3 h-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
-                          <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                        </svg>
-                      ) : (
-                        <span
-                          className="w-2 h-2 rounded-full flex-shrink-0"
-                          style={{ backgroundColor: categoryColors[category] }}
-                        />
-                      )}
-                      {category}
-                    </button>
-                  ))}
-                </div>
+            {/* Activity Filter */}
+            <div className="bg-[--color-bg-secondary] rounded-xl p-4">
+              <span className="text-xs text-[--color-text-tertiary] block mb-3">Activity</span>
+              <div className="flex flex-wrap justify-center gap-2">
+                <button
+                  onClick={() => setActivityFilter("all")}
+                  className={`px-3 py-1.5 rounded-full text-xs font-medium transition-colors ${
+                    activityFilter === "all"
+                      ? "bg-[--color-brand] text-white"
+                      : "bg-[--color-bg-tertiary] text-[--color-text-secondary] hover:text-[--color-text-primary]"
+                  }`}
+                >
+                  All
+                </button>
+                <button
+                  onClick={() => setActivityFilter("camping")}
+                  className={`px-3 py-1.5 rounded-full text-xs font-medium transition-colors flex items-center gap-1.5 ${
+                    activityFilter === "camping"
+                      ? "bg-[--color-green] text-white"
+                      : "bg-[--color-bg-tertiary] text-[--color-text-secondary] hover:text-[--color-text-primary]"
+                  }`}
+                >
+                  <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 2L2 22h20L12 2z" />
+                  </svg>
+                  Camping
+                </button>
+                <button
+                  onClick={() => setActivityFilter("hiking")}
+                  className={`px-3 py-1.5 rounded-full text-xs font-medium transition-colors flex items-center gap-1.5 ${
+                    activityFilter === "hiking"
+                      ? "bg-[--color-yellow] text-black"
+                      : "bg-[--color-bg-tertiary] text-[--color-text-secondary] hover:text-[--color-text-primary]"
+                  }`}
+                >
+                  <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+                  </svg>
+                  Hiking
+                </button>
+                <button
+                  onClick={() => setActivityFilter("beach")}
+                  className={`px-3 py-1.5 rounded-full text-xs font-medium transition-colors flex items-center gap-1.5 ${
+                    activityFilter === "beach"
+                      ? "bg-[--color-blue] text-white"
+                      : "bg-[--color-bg-tertiary] text-[--color-text-secondary] hover:text-[--color-text-primary]"
+                  }`}
+                >
+                  <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M20.893 13.393l-1.135-1.135a2.252 2.252 0 01-.421-.585l-1.08-2.16a.414.414 0 00-.663-.107.827.827 0 01-.812.21l-1.273-.363a.89.89 0 00-.738 1.595l.587.39c.59.395.674 1.23.172 1.732l-.2.2c-.212.212-.33.498-.33.796v.41c0 .409-.11.809-.32 1.158l-1.315 2.191a2.11 2.11 0 01-1.81 1.025 1.055 1.055 0 01-1.055-1.055v-1.172c0-.92-.56-1.747-1.414-2.089l-.655-.261a2.25 2.25 0 01-1.383-2.46l.007-.042a2.25 2.25 0 01.29-.787l.09-.15a2.25 2.25 0 012.37-1.048l1.178.236a1.125 1.125 0 001.302-.795l.208-.73a1.125 1.125 0 00-.578-1.315l-.665-.332-.091.091a2.25 2.25 0 01-1.591.659h-.18c-.249 0-.487.1-.662.274a.931.931 0 01-1.458-1.137l1.411-2.353a2.25 2.25 0 00.286-.76m11.928 9.869A9 9 0 008.965 3.525m11.928 9.868A9 9 0 118.965 3.525" />
+                  </svg>
+                  Beach
+                </button>
+                <button
+                  onClick={() => setActivityFilter("family")}
+                  className={`px-3 py-1.5 rounded-full text-xs font-medium transition-colors flex items-center gap-1.5 ${
+                    activityFilter === "family"
+                      ? "bg-[--color-orange] text-white"
+                      : "bg-[--color-bg-tertiary] text-[--color-text-secondary] hover:text-[--color-text-primary]"
+                  }`}
+                >
+                  <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z" />
+                  </svg>
+                  Family
+                </button>
               </div>
             </div>
           </div>
@@ -449,8 +467,8 @@ export default function MapPage() {
 
           {/* Legend */}
           <div className="mt-6 flex flex-wrap justify-center gap-4 text-sm">
-            {categories.map((category, index) => (
-              <div key={`legend-${category}-${index}`} className="flex items-center gap-2">
+            {Object.keys(categoryColors).map((category) => (
+              <div key={`legend-${category}`} className="flex items-center gap-2">
                 <span
                   className="w-3 h-3 rounded-full"
                   style={{ backgroundColor: categoryColors[category] }}
@@ -472,7 +490,7 @@ export default function MapPage() {
             className="bg-[--color-bg-secondary] rounded-2xl overflow-hidden max-w-3xl w-full max-h-[90vh] flex flex-col"
             onClick={(e) => e.stopPropagation()}
           >
-            {selectedVideo.id.startsWith("placeholder") ? (
+            {!selectedVideo.hasVideo ? (
               // Placeholder location - Coming Soon
               <div className="aspect-video flex-shrink-0 flex flex-col items-center justify-center" style={{ backgroundColor: categoryColors[selectedVideo.category] }}>
                 <svg className="w-20 h-20 text-white/80 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -490,8 +508,8 @@ export default function MapPage() {
             ) : (
               <div className="aspect-video flex-shrink-0 m-4 mb-0 rounded-xl overflow-hidden">
                 <iframe
-                  src={`https://www.youtube.com/embed/${selectedVideo.id}?autoplay=1`}
-                  title={selectedVideo.title}
+                  src={`https://www.youtube.com/embed/${selectedVideo.youtubeId}?autoplay=1`}
+                  title={selectedVideo.videoTitle || selectedVideo.title}
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                   allowFullScreen
                   className="w-full h-full"
@@ -514,9 +532,9 @@ export default function MapPage() {
                     >
                       {selectedVideo.category}
                     </span>
-                    {!selectedVideo.id.startsWith("placeholder") && (
+                    {selectedVideo.hasVideo && selectedVideo.youtubeId && (
                       <a
-                        href={`https://www.youtube.com/watch?v=${selectedVideo.id}`}
+                        href={`https://www.youtube.com/watch?v=${selectedVideo.youtubeId}`}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-[#FF0000] hover:bg-[#CC0000] text-white transition-colors"
@@ -538,7 +556,7 @@ export default function MapPage() {
                   </svg>
                 </button>
               </div>
-              {selectedVideo.id.startsWith("placeholder") && (
+              {!selectedVideo.hasVideo && (
                 <div className="mt-4">
                   <button
                     onClick={() => handleVote(selectedVideo.id)}
@@ -572,7 +590,7 @@ export default function MapPage() {
               )}
 
               {/* Community Videos Section */}
-              {!selectedVideo.id.startsWith("placeholder") && (
+              {selectedVideo.hasVideo && (
                 <div className="mt-6 pt-6 border-t border-[--color-border-primary]">
                   <div className="flex items-center justify-between mb-4">
                     <h4 className="text-sm font-semibold text-[--color-text-primary] flex items-center gap-2">
@@ -753,7 +771,6 @@ export default function MapPage() {
           </h2>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
             {sortedLocations.map((video, index) => {
-              const isPlaceholder = video.id.startsWith("placeholder");
               const voteCount = votes[video.id] || 0;
               return (
                 <button
@@ -762,7 +779,7 @@ export default function MapPage() {
                   className="group text-left"
                 >
                   <div className="relative aspect-video rounded-xl overflow-hidden mb-2">
-                    {isPlaceholder ? (
+                    {!video.hasVideo ? (
                       <div
                         className="w-full h-full flex flex-col items-center justify-center"
                         style={{ backgroundColor: categoryColors[video.category] }}
@@ -775,13 +792,13 @@ export default function MapPage() {
                       </div>
                     ) : (
                       <img
-                        src={`https://img.youtube.com/vi/${video.id}/mqdefault.jpg`}
+                        src={`https://img.youtube.com/vi/${video.youtubeId}/mqdefault.jpg`}
                         alt={video.title}
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform"
                       />
                     )}
                     <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center">
-                      {!isPlaceholder && (
+                      {video.hasVideo && (
                         <svg
                           className="w-12 h-12 text-white opacity-0 group-hover:opacity-100 transition-opacity"
                           fill="currentColor"
@@ -797,8 +814,8 @@ export default function MapPage() {
                     >
                       {video.category}
                     </span>
-                    {/* Vote count badge for placeholders */}
-                    {isPlaceholder && voteCount > 0 && (
+                    {/* Vote count badge for locations without videos */}
+                    {!video.hasVideo && voteCount > 0 && (
                       <span className="absolute top-2 left-2 px-2 py-0.5 rounded text-[10px] font-medium text-white bg-[--color-brand] flex items-center gap-1">
                         <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 24 24">
                           <path d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />

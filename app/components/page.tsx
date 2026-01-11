@@ -90,7 +90,7 @@ export default function ComponentsPage() {
           <div className="space-y-2">
             <h2 className="text-2xl font-semibold text-[--color-text-primary]">Navbar</h2>
             <p className="text-[--color-text-tertiary]">
-              반응형 네비게이션 바 (로고, 메뉴, CTA 버튼)
+              Responsive navigation bar with logo, menu, and CTA button
             </p>
           </div>
 
@@ -111,7 +111,7 @@ export default function ComponentsPage() {
           <div className="space-y-2">
             <h2 className="text-2xl font-semibold text-[--color-text-primary]">Hero Section</h2>
             <p className="text-[--color-text-tertiary]">
-              랜딩 페이지 히어로 섹션 (그라데이션 배경, 제목, CTA)
+              Landing page hero section with gradient background, title, and CTA
             </p>
           </div>
 
@@ -165,7 +165,7 @@ export default function ComponentsPage() {
           <div className="space-y-2">
             <h2 className="text-2xl font-semibold text-[--color-text-primary]">Carousel</h2>
             <p className="text-[--color-text-tertiary]">
-              이미지/콘텐츠 슬라이더 (자동재생, 네비게이션, 도트 인디케이터)
+              Image/content slider with autoplay, navigation, and dot indicators
             </p>
           </div>
 
@@ -190,7 +190,7 @@ export default function ComponentsPage() {
           <div className="space-y-2">
             <h2 className="text-2xl font-semibold text-[--color-text-primary]">Button</h2>
             <p className="text-[--color-text-tertiary]">
-              다양한 변형과 사이즈를 지원하는 버튼 컴포넌트
+              Button component supporting various variants and sizes
             </p>
           </div>
 
@@ -244,7 +244,7 @@ export default function ComponentsPage() {
           <div className="space-y-2">
             <h2 className="text-2xl font-semibold text-[--color-text-primary]">Input</h2>
             <p className="text-[--color-text-tertiary]">
-              폼 입력을 위한 텍스트 인풋 컴포넌트
+              Text input component for form entries
             </p>
           </div>
 
@@ -320,7 +320,7 @@ export default function ComponentsPage() {
           <div className="space-y-2">
             <h2 className="text-2xl font-semibold text-[--color-text-primary]">Card</h2>
             <p className="text-[--color-text-tertiary]">
-              콘텐츠를 그룹화하는 카드 컴포넌트
+              Card component for grouping content
             </p>
           </div>
 
@@ -332,19 +332,19 @@ export default function ComponentsPage() {
               <Card variant="default">
                 <CardHeader title="Default Card" subtitle="With border style" />
                 <CardContent className="mt-4">
-                  <p className="text-sm">기본 카드 스타일입니다.</p>
+                  <p className="text-sm">Default card style with border.</p>
                 </CardContent>
               </Card>
               <Card variant="elevated">
                 <CardHeader title="Elevated Card" subtitle="With shadow" />
                 <CardContent className="mt-4">
-                  <p className="text-sm">그림자 효과가 적용된 카드입니다.</p>
+                  <p className="text-sm">Card with shadow effect applied.</p>
                 </CardContent>
               </Card>
               <Card variant="outlined">
                 <CardHeader title="Outlined Card" subtitle="Transparent bg" />
                 <CardContent className="mt-4">
-                  <p className="text-sm">투명한 배경에 테두리만 있는 카드입니다.</p>
+                  <p className="text-sm">Card with transparent background and border only.</p>
                 </CardContent>
               </Card>
             </div>
@@ -364,7 +364,7 @@ export default function ComponentsPage() {
                 <div className="p-4 space-y-3">
                   <CardHeader title="Featured Project" subtitle="Design System" />
                   <CardContent>
-                    <p className="text-sm">이미지가 포함된 카드 예시입니다.</p>
+                    <p className="text-sm">Example card with image included.</p>
                   </CardContent>
                   <CardFooter>
                     <Button size="sm" variant="secondary">View</Button>
@@ -385,7 +385,7 @@ export default function ComponentsPage() {
                     action={<Badge variant="success">Live</Badge>}
                   />
                   <CardContent>
-                    <p className="text-sm">뱃지와 함께 사용된 카드입니다.</p>
+                    <p className="text-sm">Card used with a badge.</p>
                   </CardContent>
                 </div>
               </Card>
@@ -399,7 +399,7 @@ export default function ComponentsPage() {
                 <div className="p-4 space-y-3">
                   <CardHeader title="Coming Soon" subtitle="Q1 2026" />
                   <CardContent>
-                    <p className="text-sm">준비 중인 기능 카드입니다.</p>
+                    <p className="text-sm">Card for upcoming features.</p>
                   </CardContent>
                   <CardFooter>
                     <Button size="sm">Notify Me</Button>
@@ -417,7 +417,7 @@ export default function ComponentsPage() {
           <div className="space-y-2">
             <h2 className="text-2xl font-semibold text-[--color-text-primary]">Badge</h2>
             <p className="text-[--color-text-tertiary]">
-              상태나 카테고리를 표시하는 뱃지 컴포넌트
+              Badge component for displaying status or categories
             </p>
           </div>
 
@@ -503,7 +503,7 @@ export default function ComponentsPage() {
           <div className="space-y-2">
             <h2 className="text-2xl font-semibold text-[--color-text-primary]">Combined Example</h2>
             <p className="text-[--color-text-tertiary]">
-              컴포넌트들을 조합한 실제 사용 예시
+              Real-world example combining multiple components
             </p>
           </div>
 
@@ -531,7 +531,7 @@ export default function ComponentsPage() {
           <div className="space-y-2">
             <h2 className="text-2xl font-semibold text-[--color-text-primary]">Footer</h2>
             <p className="text-[--color-text-tertiary]">
-              웹사이트 하단 푸터 (링크 섹션, 소셜 아이콘, 저작권)
+              Website footer with link sections, social icons, and copyright
             </p>
           </div>
         </div>

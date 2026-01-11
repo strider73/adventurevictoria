@@ -33,6 +33,11 @@ interface VideoLocation {
   lng: number;
   category: string;
   description: string;
+  youtubeId?: string | null;
+  videoTitle?: string | null;
+  duration?: string | null;
+  views?: number | null;
+  hasVideo?: boolean;
 }
 
 interface MapComponentProps {
@@ -42,10 +47,9 @@ interface MapComponentProps {
 
 // Create custom marker icon with YouTube thumbnail
 const createMarkerIcon = (video: VideoLocation) => {
-  const isPlaceholder = video.id.startsWith("placeholder");
   const color = categoryColors[video.category] || "#8a8f98";
 
-  const iconHtml = isPlaceholder
+  const iconHtml = !video.hasVideo
     ? `<div class="leaflet-custom-marker" style="background-color: ${color};">
         <svg class="placeholder-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
@@ -53,7 +57,7 @@ const createMarkerIcon = (video: VideoLocation) => {
         </svg>
       </div>`
     : `<div class="leaflet-custom-marker" style="background-color: ${color};">
-        <img src="https://img.youtube.com/vi/${video.id}/mqdefault.jpg" alt="${video.title}" />
+        <img src="https://img.youtube.com/vi/${video.youtubeId}/mqdefault.jpg" alt="${video.title}" />
       </div>`;
 
   return L.divIcon({
@@ -84,7 +88,6 @@ export default function MapComponent({ locations, onMarkerClick }: MapComponentP
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
       {locations.map((video, index) => {
-        const isPlaceholder = video.id.startsWith("placeholder");
         return (
           <Marker
             key={`marker-${video.id}-${index}`}
@@ -96,7 +99,7 @@ export default function MapComponent({ locations, onMarkerClick }: MapComponentP
           >
             <Tooltip direction="top" offset={[0, -20]} opacity={1}>
               <span className="font-medium">{video.title}</span>
-              {isPlaceholder && (
+              {!video.hasVideo && (
                 <span className="text-gray-500 ml-1">(Coming Soon)</span>
               )}
             </Tooltip>
