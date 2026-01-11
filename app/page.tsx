@@ -188,9 +188,8 @@ const videoCategories = [
 
 const navLinks = [
   { label: "Home", href: "/", isActive: true },
-  { label: "Map", href: "/map" },
-  { label: "YouTube", href: "https://www.youtube.com/@Adventurevictoria/videos" },
-  { label: "About Us", href: "/about" },
+  { label: "Map Playground", href: "/map" },
+  { label: "About", href: "/about" },
 ];
 
 const footerSections = [

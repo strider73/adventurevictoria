@@ -33,11 +33,11 @@ interface VideoLocation {
   lng: number;
   category: string;
   description: string;
-  youtubeId?: string | null;
-  videoTitle?: string | null;
-  duration?: string | null;
-  views?: number | null;
-  hasVideo?: boolean;
+  youtubeId: string | null;
+  videoTitle: string | null;
+  duration: string | null;
+  views: number | null;
+  hasVideo: boolean;
 }
 
 interface MapComponentProps {
