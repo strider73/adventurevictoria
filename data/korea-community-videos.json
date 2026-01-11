@@ -1,0 +1,63 @@
+{
+  "description": "Community videos from other YouTube channels featuring locations in the Korea travel map",
+  "lastUpdated": "2026-01-11",
+  "instructions": "To add new videos: Find the videoId (11-character code from YouTube URL), add title and channelName. The videoId links to a location via the original video's videoId from korea-travel-video.json",
+  "communityVideos": [
+    {
+      "campingSiteId": "J6VoP8lKyxA",
+      "locationName": "Seoraksan, Gangwon",
+      "videos": [
+        {
+          "videoId": "NJtTUBwvtPg",
+          "title": "We Hiked Seoraksan National Park - Gangwon-do Korea Travel Vlog",
+          "channelName": "Where's Anne?"
+        }
+      ]
+    },
+    {
+      "campingSiteId": "cclWwATX7zo",
+      "locationName": "Bukhansan, Seoul",
+      "videos": []
+    },
+    {
+      "campingSiteId": "O6NHfE-Po1M",
+      "locationName": "Gyeongbokgung, Seoul",
+      "videos": []
+    },
+    {
+      "campingSiteId": "KdzfXQF7reE",
+      "locationName": "Ssanggok Valley, Goesan",
+      "videos": []
+    },
+    {
+      "campingSiteId": "6im6VHHY3pE",
+      "locationName": "Nami Island, Chuncheon",
+      "videos": []
+    },
+    {
+      "campingSiteId": "7iymWiyV4V4",
+      "locationName": "Chiaksan, Wonju",
+      "videos": []
+    },
+    {
+      "campingSiteId": "r9y-nH90WlQ",
+      "locationName": "Taean, Chungnam",
+      "videos": []
+    },
+    {
+      "campingSiteId": "laIBOkXZRR8",
+      "locationName": "Danyang, Chungbuk",
+      "videos": []
+    },
+    {
+      "campingSiteId": "t6YoYd7DVbs",
+      "locationName": "Wolchulsan, Yeongam",
+      "videos": []
+    },
+    {
+      "campingSiteId": "DCDFdct0sQQ",
+      "locationName": "Suncheon, Jeonnam",
+      "videos": []
+    }
+  ]
+}

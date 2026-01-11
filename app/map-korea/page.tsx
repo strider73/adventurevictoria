@@ -4,6 +4,7 @@ import { useState, useMemo, useEffect } from "react";
 import { Navbar, Footer, SocialIcons, Button, Badge, NotificationBadge } from "@/components/ui";
 import dynamic from "next/dynamic";
 import koreaVideoData from "@/data/korea-travel-video.json";
+import koreaCommunityVideoData from "@/data/korea-community-videos.json";
 import type { KoreaVideo } from "./MapComponent";
 
 // Type for community video submissions
@@ -15,11 +16,41 @@ interface CommunityVideo {
   channelName?: string;
 }
 
-// Helper to get community videos from localStorage
+// Convert pre-loaded community videos to the CommunityVideo format
+const getPreloadedCommunityVideos = (): Record<string, CommunityVideo[]> => {
+  const preloaded: Record<string, CommunityVideo[]> = {};
+  koreaCommunityVideoData.communityVideos.forEach((location) => {
+    preloaded[location.campingSiteId] = location.videos
+      .filter((v) => v.videoId.length === 11) // Only include valid YouTube IDs (11 chars)
+      .map((v) => ({
+        youtubeId: v.videoId,
+        submittedAt: "preloaded",
+        locationId: location.campingSiteId,
+        title: v.title,
+        channelName: v.channelName,
+      }));
+  });
+  return preloaded;
+};
+
+// Helper to get community videos from localStorage and merge with preloaded
 const getCommunityVideos = (): Record<string, CommunityVideo[]> => {
-  if (typeof window === "undefined") return {};
+  const preloaded = getPreloadedCommunityVideos();
+  if (typeof window === "undefined") return preloaded;
+
   const stored = localStorage.getItem("koreaMapCommunityVideos");
-  return stored ? JSON.parse(stored) : {};
+  const userSubmitted: Record<string, CommunityVideo[]> = stored ? JSON.parse(stored) : {};
+
+  // Merge preloaded with user-submitted, avoiding duplicates
+  const merged: Record<string, CommunityVideo[]> = { ...preloaded };
+  Object.keys(userSubmitted).forEach((locationId) => {
+    const existing = merged[locationId] || [];
+    const existingIds = new Set(existing.map((v) => v.youtubeId));
+    const newVideos = userSubmitted[locationId].filter((v) => !existingIds.has(v.youtubeId));
+    merged[locationId] = [...existing, ...newVideos];
+  });
+
+  return merged;
 };
 
 // Helper to extract YouTube video ID from URL
