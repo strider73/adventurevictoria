@@ -7,6 +7,7 @@ import { Navbar, Footer, SocialIcons, Button } from "@/components/ui";
 // Import camping sites data
 import campingData from "@/data/victoria-camping-sites.json";
 import videoData from "@/data/chris-video.json";
+import communityVideoData from "@/data/community-videos.json";
 
 // Dynamic import for Leaflet map (SSR disabled)
 const MapComponent = dynamic(() => import("./MapComponent"), {
@@ -140,13 +141,45 @@ interface CommunityVideo {
   youtubeId: string;
   submittedAt: string;
   locationId: string;
+  title?: string;
+  channelName?: string;
 }
 
-// Helper to get community videos from localStorage
+// Convert pre-loaded community videos to the CommunityVideo format
+const getPreloadedCommunityVideos = (): Record<string, CommunityVideo[]> => {
+  const preloaded: Record<string, CommunityVideo[]> = {};
+  communityVideoData.communityVideos.forEach((location) => {
+    preloaded[location.campingSiteId] = location.videos
+      .filter((v) => v.videoId.length === 11) // Only include valid YouTube IDs (11 chars)
+      .map((v) => ({
+        youtubeId: v.videoId,
+        submittedAt: "preloaded",
+        locationId: location.campingSiteId,
+        title: v.title,
+        channelName: v.channelName,
+      }));
+  });
+  return preloaded;
+};
+
+// Helper to get community videos from localStorage and merge with preloaded
 const getCommunityVideos = (): Record<string, CommunityVideo[]> => {
-  if (typeof window === "undefined") return {};
+  const preloaded = getPreloadedCommunityVideos();
+  if (typeof window === "undefined") return preloaded;
+
   const stored = localStorage.getItem("communityVideos");
-  return stored ? JSON.parse(stored) : {};
+  const userSubmitted: Record<string, CommunityVideo[]> = stored ? JSON.parse(stored) : {};
+
+  // Merge preloaded with user-submitted, avoiding duplicates
+  const merged: Record<string, CommunityVideo[]> = { ...preloaded };
+  Object.keys(userSubmitted).forEach((locationId) => {
+    const existing = merged[locationId] || [];
+    const existingIds = new Set(existing.map((v) => v.youtubeId));
+    const newVideos = userSubmitted[locationId].filter((v) => !existingIds.has(v.youtubeId));
+    merged[locationId] = [...existing, ...newVideos];
+  });
+
+  return merged;
 };
 
 // Helper to extract YouTube video ID from URL
@@ -725,16 +758,16 @@ export default function MapPage() {
                                 href={`https://www.youtube.com/watch?v=${video.youtubeId}`}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="text-xs text-[--color-text-primary] hover:text-[--color-brand] transition-colors line-clamp-1"
+                                className="text-xs text-[--color-text-primary] hover:text-[--color-brand] transition-colors line-clamp-2"
                               >
-                                Community Video #{index + 1}
+                                {video.title || `Community Video #${index + 1}`}
                               </a>
                               <div className="flex items-center gap-2 mt-1">
                                 <span className="text-[10px] text-[--color-text-tertiary] flex items-center gap-1">
                                   <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                                   </svg>
-                                  Member
+                                  {video.channelName || "Member"}
                                 </span>
                               </div>
                             </div>
