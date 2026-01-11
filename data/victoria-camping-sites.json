@@ -1,0 +1,748 @@
+{
+  "campingSites": [
+    {
+      "id": "wilsons-prom-tidal-river",
+      "title": "Tidal River",
+      "location": "Wilsons Promontory National Park",
+      "lat": -39.0305,
+      "lng": 146.3183,
+      "category": "National Parks",
+      "description": "Premier camping destination with 484 sites. Main hub for beach camping."
+    },
+    {
+      "id": "wilsons-prom-sealers-cove",
+      "title": "Sealers Cove",
+      "location": "Wilsons Promontory National Park",
+      "lat": -39.1094,
+      "lng": 146.4206,
+      "category": "National Parks",
+      "description": "Remote beach camping via 10km hiking trail through rainforest."
+    },
+    {
+      "id": "grampians-troopers-creek",
+      "title": "Troopers Creek",
+      "location": "Grampians National Park",
+      "lat": -37.2789,
+      "lng": 142.5831,
+      "category": "National Parks",
+      "description": "Northern Grampians amongst tall Eucalypts with views of Mt Difficult."
+    },
+    {
+      "id": "grampians-borough-huts",
+      "title": "Borough Huts",
+      "location": "Grampians National Park",
+      "lat": -37.2456,
+      "lng": 142.5234,
+      "category": "National Parks",
+      "description": "Grampian Mountains location near Halls Gap."
+    },
+    {
+      "id": "grampians-boreang",
+      "title": "Boreang",
+      "location": "Grampians National Park",
+      "lat": -37.3012,
+      "lng": 142.5567,
+      "category": "National Parks",
+      "description": "Camping area in the Grampians."
+    },
+    {
+      "id": "grampians-smiths-mill",
+      "title": "Smiths Mill",
+      "location": "Grampians National Park",
+      "lat": -37.2945,
+      "lng": 142.5234,
+      "category": "National Parks",
+      "description": "Grampians camping location."
+    },
+    {
+      "id": "grampians-stapylton",
+      "title": "Stapylton",
+      "location": "Grampians National Park",
+      "lat": -37.2123,
+      "lng": 142.5890,
+      "category": "National Parks",
+      "description": "Western Grampians camping area."
+    },
+    {
+      "id": "grampians-stony-creek",
+      "title": "Stony Creek",
+      "location": "Grampians National Park",
+      "lat": -37.2634,
+      "lng": 142.5345,
+      "category": "National Parks",
+      "description": "Grampians camping site."
+    },
+    {
+      "id": "otway-blanket-bay",
+      "title": "Blanket Bay",
+      "location": "Great Otway National Park",
+      "lat": -38.8234,
+      "lng": 143.5876,
+      "category": "National Parks",
+      "description": "Sheltered swimming with rock pools. 22 campsites, great for families."
+    },
+    {
+      "id": "otway-johanna-beach",
+      "title": "Johanna Beach",
+      "location": "Great Otway National Park",
+      "lat": -38.7500,
+      "lng": 143.3900,
+      "category": "Great Ocean Road",
+      "description": "Excellent for surfers with impressive waves. Dog-friendly camping."
+    },
+    {
+      "id": "otway-aire-river-east",
+      "title": "Aire River East",
+      "location": "Great Otway National Park",
+      "lat": -38.7645,
+      "lng": 143.4834,
+      "category": "National Parks",
+      "description": "Serene estuary location with fish and birdlife."
+    },
+    {
+      "id": "otway-aire-river-west",
+      "title": "Aire River West",
+      "location": "Great Otway National Park",
+      "lat": -38.7667,
+      "lng": 143.4756,
+      "category": "National Parks",
+      "description": "Western banks of Aire River estuary."
+    },
+    {
+      "id": "otway-lake-elizabeth",
+      "title": "Lake Elizabeth",
+      "location": "Great Otway National Park",
+      "lat": -38.6500,
+      "lng": 143.8000,
+      "category": "National Parks",
+      "description": "Freshwater lake camping area. Platypus spotting."
+    },
+    {
+      "id": "otway-allenvale",
+      "title": "Allenvale",
+      "location": "Great Otway National Park",
+      "lat": -38.7234,
+      "lng": 143.8567,
+      "category": "National Parks",
+      "description": "First-come, first-served free camping."
+    },
+    {
+      "id": "lake-eildon-devils-cove",
+      "title": "Devil's Cove",
+      "location": "Lake Eildon National Park",
+      "lat": -37.2300,
+      "lng": 145.9000,
+      "category": "National Parks",
+      "description": "Picturesque campground with Koala reintroduction area."
+    },
+    {
+      "id": "lake-eildon-candlebark",
+      "title": "Candlebark",
+      "location": "Lake Eildon National Park",
+      "lat": -37.2445,
+      "lng": 145.9567,
+      "category": "National Parks",
+      "description": "Named after candlebark eucalypt. Main camping hub."
+    },
+    {
+      "id": "lake-eildon-jerusalem-creek",
+      "title": "Jerusalem Creek",
+      "location": "Lake Eildon National Park",
+      "lat": -37.2234,
+      "lng": 145.8945,
+      "category": "National Parks",
+      "description": "Creek-side camping location."
+    },
+    {
+      "id": "lake-eildon-lakeside",
+      "title": "Lakeside",
+      "location": "Lake Eildon National Park",
+      "lat": -37.2678,
+      "lng": 145.9123,
+      "category": "National Parks",
+      "description": "Direct lake access camping."
+    },
+    {
+      "id": "croajingolong-peachtree",
+      "title": "Peachtree Creek",
+      "location": "Croajingolong National Park",
+      "lat": -37.5234,
+      "lng": 149.2567,
+      "category": "National Parks",
+      "description": "Eastern Victoria wilderness camping."
+    },
+    {
+      "id": "croajingolong-shipwreck",
+      "title": "Shipwreck Creek",
+      "location": "Croajingolong National Park",
+      "lat": -37.4156,
+      "lng": 149.3234,
+      "category": "National Parks",
+      "description": "Coastal Gippsland camping."
+    },
+    {
+      "id": "croajingolong-wingan",
+      "title": "Wingan Inlet",
+      "location": "Croajingolong National Park",
+      "lat": -37.5567,
+      "lng": 149.3456,
+      "category": "National Parks",
+      "description": "Easternmost Gippsland camping."
+    },
+    {
+      "id": "croajingolong-thurra",
+      "title": "Thurra River",
+      "location": "Croajingolong National Park",
+      "lat": -37.5800,
+      "lng": 149.2800,
+      "category": "National Parks",
+      "description": "Remote river camping location."
+    },
+    {
+      "id": "lower-glenelg-battersbys",
+      "title": "Battersbys",
+      "location": "Lower Glenelg National Park",
+      "lat": -38.0500,
+      "lng": 140.9500,
+      "category": "National Parks",
+      "description": "Western Victoria on Glenelg River."
+    },
+    {
+      "id": "mt-buffalo-lake-catani",
+      "title": "Lake Catani",
+      "location": "Mount Buffalo National Park",
+      "lat": -36.7400,
+      "lng": 146.8200,
+      "category": "National Parks",
+      "description": "High country adventure camping by alpine lake."
+    },
+    {
+      "id": "hattah-kulkyne-lake-hattah",
+      "title": "Lake Hattah",
+      "location": "Hattah-Kulkyne National Park",
+      "lat": -34.7700,
+      "lng": 142.3200,
+      "category": "National Parks",
+      "description": "Mallee region camping. 580km north-west of Melbourne."
+    },
+    {
+      "id": "hattah-kulkyne-lake-mournpall",
+      "title": "Lake Mournpall",
+      "location": "Hattah-Kulkyne National Park",
+      "lat": -34.7900,
+      "lng": 142.3500,
+      "category": "National Parks",
+      "description": "Sister lake to Lake Hattah in Mallee country."
+    },
+    {
+      "id": "budj-bim",
+      "title": "Budj Bim",
+      "location": "Budj Bim National Park",
+      "lat": -38.0700,
+      "lng": 141.8500,
+      "category": "National Parks",
+      "description": "Ancient lava flows near Lake Surprise crater lake. UNESCO site."
+    },
+    {
+      "id": "alpine-howmans-gap",
+      "title": "Howmans Gap",
+      "location": "Alpine National Park",
+      "lat": -36.8700,
+      "lng": 147.2800,
+      "category": "National Parks",
+      "description": "High country camping near Falls Creek."
+    },
+    {
+      "id": "alpine-langford-gap",
+      "title": "Langford Gap",
+      "location": "Alpine National Park",
+      "lat": -36.9200,
+      "lng": 147.3500,
+      "category": "National Parks",
+      "description": "Alpine region bush camping."
+    },
+    {
+      "id": "90-mile-beach-seaspray",
+      "title": "90 Mile Beach - Seaspray",
+      "location": "Gippsland Lakes Coastal Park",
+      "lat": -38.3600,
+      "lng": 147.1800,
+      "category": "Water Activities",
+      "description": "Free beach camping. Dog-friendly sections 1-6."
+    },
+    {
+      "id": "90-mile-beach-golden",
+      "title": "90 Mile Beach - Golden Beach",
+      "location": "Gippsland Lakes Coastal Park",
+      "lat": -38.2200,
+      "lng": 147.3800,
+      "category": "Water Activities",
+      "description": "Free beach camping along Shoreline Drive."
+    },
+    {
+      "id": "gippsland-paradise-beach",
+      "title": "Paradise Beach",
+      "location": "Gippsland Lakes Coastal Park",
+      "lat": -38.0800,
+      "lng": 147.5200,
+      "category": "Water Activities",
+      "description": "Paradise Beach camping area."
+    },
+    {
+      "id": "snowy-river-jacksons",
+      "title": "Jacksons Crossing",
+      "location": "Snowy River National Park",
+      "lat": -37.3500,
+      "lng": 148.4500,
+      "category": "Bush Camping",
+      "description": "Free bush camping with lush forests and river scenery."
+    },
+    {
+      "id": "snowy-river-balley-hooley",
+      "title": "Balley Hooley",
+      "location": "Snowy River National Park",
+      "lat": -37.4500,
+      "lng": 148.2000,
+      "category": "Bush Camping",
+      "description": "River camping location."
+    },
+    {
+      "id": "snowy-river-mckillops",
+      "title": "McKillops Bridge",
+      "location": "Snowy River National Park",
+      "lat": -37.3800,
+      "lng": 148.3800,
+      "category": "Bush Camping",
+      "description": "Historic bridge crossing camping."
+    },
+    {
+      "id": "lerderderg-sp",
+      "title": "Lerderderg",
+      "location": "Lerderderg State Park",
+      "lat": -37.4500,
+      "lng": 144.3500,
+      "category": "State Forests",
+      "description": "Secluded camping close to Melbourne. Dog-friendly."
+    },
+    {
+      "id": "cathedral-range-neds-gully",
+      "title": "Neds Gully",
+      "location": "Cathedral Range State Park",
+      "lat": -37.3700,
+      "lng": 145.8200,
+      "category": "Hiking",
+      "description": "Bush camping with minimal facilities. Popular hiking spot."
+    },
+    {
+      "id": "toorongo-falls",
+      "title": "Toorongo Falls",
+      "location": "Toorongo Falls Reserve",
+      "lat": -37.8800,
+      "lng": 146.1200,
+      "category": "State Forests",
+      "description": "Scenic camping near Noojee with excellent waterfalls."
+    },
+    {
+      "id": "bunyip-mortimer",
+      "title": "Mortimer",
+      "location": "Bunyip State Park",
+      "lat": -37.9800,
+      "lng": 145.6500,
+      "category": "State Forests",
+      "description": "Free camping, no bookings needed."
+    },
+    {
+      "id": "bunyip-nash-creek",
+      "title": "Nash Creek",
+      "location": "Bunyip State Park",
+      "lat": -37.9900,
+      "lng": 145.6800,
+      "category": "State Forests",
+      "description": "Free camping location in Bunyip."
+    },
+    {
+      "id": "wombat-firth-park",
+      "title": "Firth Park",
+      "location": "Wombat State Forest",
+      "lat": -37.4000,
+      "lng": 144.2000,
+      "category": "State Forests",
+      "description": "State forest camping near Daylesford."
+    },
+    {
+      "id": "blackwood",
+      "title": "Blackwood",
+      "location": "Wombat State Forest",
+      "lat": -37.4700,
+      "lng": 144.3000,
+      "category": "State Forests",
+      "description": "Historic gold mining town forest camping."
+    },
+    {
+      "id": "inverloch-foreshore",
+      "title": "Inverloch Foreshore",
+      "location": "Inverloch",
+      "lat": -38.6300,
+      "lng": 145.7300,
+      "category": "Water Activities",
+      "description": "Powered and unpowered sites by Anderson Inlet."
+    },
+    {
+      "id": "rosebud-foreshore",
+      "title": "Rosebud Foreshore",
+      "location": "Mornington Peninsula",
+      "lat": -38.3600,
+      "lng": 144.9000,
+      "category": "Family Holidays",
+      "description": "800+ campsites along Port Phillip Bay."
+    },
+    {
+      "id": "rye-foreshore",
+      "title": "Rye Foreshore",
+      "location": "Mornington Peninsula",
+      "lat": -38.3700,
+      "lng": 144.8200,
+      "category": "Family Holidays",
+      "description": "Beach camping on Port Phillip Bay."
+    },
+    {
+      "id": "sorrento-foreshore",
+      "title": "Sorrento Foreshore",
+      "location": "Mornington Peninsula",
+      "lat": -38.3400,
+      "lng": 144.7400,
+      "category": "Family Holidays",
+      "description": "Sheltered northern coastline camping."
+    },
+    {
+      "id": "anglesea-caravan",
+      "title": "Anglesea Family Caravan Park",
+      "location": "Anglesea",
+      "lat": -38.4100,
+      "lng": 144.1900,
+      "category": "Holiday Parks",
+      "description": "250+ powered sites on Great Ocean Road."
+    },
+    {
+      "id": "apollo-bay-holiday",
+      "title": "Apollo Bay Holiday Park",
+      "location": "Apollo Bay",
+      "lat": -38.7600,
+      "lng": 143.6700,
+      "category": "Holiday Parks",
+      "description": "Close to beach on Great Ocean Road."
+    },
+    {
+      "id": "mallacoota-foreshore",
+      "title": "Mallacoota Foreshore",
+      "location": "Mallacoota",
+      "lat": -37.5600,
+      "lng": 149.7600,
+      "category": "Holiday Parks",
+      "description": "Camping on shores of Mallacoota Inlet."
+    },
+    {
+      "id": "port-fairy-gardens",
+      "title": "Gardens Caravan Park",
+      "location": "Port Fairy",
+      "lat": -38.3800,
+      "lng": 142.2300,
+      "category": "Holiday Parks",
+      "description": "Next to Botanic Gardens, near East Beach."
+    },
+    {
+      "id": "warrnambool-riverside",
+      "title": "Warrnambool Riverside",
+      "location": "Warrnambool",
+      "lat": -38.3800,
+      "lng": 142.4900,
+      "category": "Holiday Parks",
+      "description": "Pet-friendly with heated pools and waterslide."
+    },
+    {
+      "id": "portland-bay",
+      "title": "Portland Bay Holiday Park",
+      "location": "Portland",
+      "lat": -38.3400,
+      "lng": 141.6000,
+      "category": "Holiday Parks",
+      "description": "Clifftop with Southern Ocean views. Whale watching."
+    },
+    {
+      "id": "lake-burrumbeet",
+      "title": "Lake Burrumbeet",
+      "location": "Lake Burrumbeet Foreshore",
+      "lat": -37.4600,
+      "lng": 143.6400,
+      "category": "Bush Camping",
+      "description": "Free camping 20km west of Ballarat."
+    },
+    {
+      "id": "mt-franklin",
+      "title": "Mount Franklin",
+      "location": "Mount Franklin Reserve",
+      "lat": -37.2900,
+      "lng": 144.0800,
+      "category": "Bush Camping",
+      "description": "12.5km north of Daylesford. Basic facilities."
+    },
+    {
+      "id": "halls-gap-plantation",
+      "title": "Plantation Campground",
+      "location": "Halls Gap",
+      "lat": -37.1300,
+      "lng": 142.5200,
+      "category": "Bush Camping",
+      "description": "Pine plantations on eastern Grampians. Base for northern exploration."
+    },
+    {
+      "id": "french-island",
+      "title": "French Island",
+      "location": "French Island National Park",
+      "lat": -38.3500,
+      "lng": 145.3800,
+      "category": "National Parks",
+      "description": "Victoria's best-kept secret. Rich in koalas and wildlife."
+    },
+    {
+      "id": "mornington-np",
+      "title": "Mornington Peninsula NP",
+      "location": "Mornington Peninsula National Park",
+      "lat": -38.4800,
+      "lng": 144.9200,
+      "category": "National Parks",
+      "description": "Scenic beachside camping on the peninsula."
+    },
+    {
+      "id": "port-campbell-np",
+      "title": "Port Campbell",
+      "location": "Port Campbell National Park",
+      "lat": -38.6200,
+      "lng": 143.0000,
+      "category": "Great Ocean Road",
+      "description": "Home of the 12 Apostles. Coastal camping."
+    },
+    {
+      "id": "12-apostles",
+      "title": "12 Apostles Area",
+      "location": "Princetown",
+      "lat": -38.6600,
+      "lng": 143.1000,
+      "category": "Great Ocean Road",
+      "description": "Near the iconic 12 Apostles rock formations."
+    },
+    {
+      "id": "surf-coast-walk",
+      "title": "Surf Coast Walk",
+      "location": "Point Addis",
+      "lat": -38.3500,
+      "lng": 144.3000,
+      "category": "Great Ocean Road",
+      "description": "Point Addis via Bells Beach coastal camping."
+    },
+    {
+      "id": "lerderderg-gorge",
+      "title": "Lerderderg Gorge",
+      "location": "Lerderderg Gorge Walk",
+      "lat": -37.4800,
+      "lng": 144.3800,
+      "category": "Hiking",
+      "description": "Spectacular gorge hiking and camping."
+    },
+    {
+      "id": "mt-oberon",
+      "title": "Mt Oberon",
+      "location": "Wilsons Promontory",
+      "lat": -39.0500,
+      "lng": 146.3500,
+      "category": "Hiking",
+      "description": "Summit hike with panoramic views."
+    },
+    {
+      "id": "macedon-regional",
+      "title": "Macedon Regional Park",
+      "location": "Macedon",
+      "lat": -37.3500,
+      "lng": 144.5500,
+      "category": "Hiking",
+      "description": "Day walks and picnic areas near Melbourne."
+    },
+    {
+      "id": "big4-yarra-valley",
+      "title": "BIG4 Yarra Valley",
+      "location": "Park Lane Holiday Park",
+      "lat": -37.7500,
+      "lng": 145.5000,
+      "category": "Holiday Parks",
+      "description": "Family holiday park in wine country."
+    },
+    {
+      "id": "andersons-camping",
+      "title": "Anderson's Camping",
+      "location": "Anderson's Camping Ground",
+      "lat": -37.6000,
+      "lng": 145.8000,
+      "category": "Holiday Parks",
+      "description": "Traditional camping ground."
+    },
+    {
+      "id": "dandos-camping",
+      "title": "Dandos Camping",
+      "location": "Dandos Camping Ground",
+      "lat": -37.3000,
+      "lng": 145.6000,
+      "category": "Holiday Parks",
+      "description": "Family camping ground."
+    },
+    {
+      "id": "phillip-island",
+      "title": "Phillip Island",
+      "location": "Phillip Island",
+      "lat": -38.4800,
+      "lng": 145.2300,
+      "category": "Family Holidays",
+      "description": "Famous for penguins and wildlife."
+    },
+    {
+      "id": "squeaky-beach",
+      "title": "Squeaky Beach",
+      "location": "Wilsons Promontory",
+      "lat": -39.0300,
+      "lng": 146.3200,
+      "category": "Water Activities",
+      "description": "Famous squeaky white sand beach."
+    },
+    {
+      "id": "howqua-hills",
+      "title": "Howqua Hills",
+      "location": "Mt Buller Region",
+      "lat": -37.1500,
+      "lng": 146.4500,
+      "category": "Water Activities",
+      "description": "River camping near Mt Buller."
+    },
+    {
+      "id": "diggers-track",
+      "title": "Digger's Track",
+      "location": "Lerderderg",
+      "lat": -37.5000,
+      "lng": 144.3200,
+      "category": "Bush Camping",
+      "description": "Historic gold mining trail camping."
+    },
+    {
+      "id": "briagolong-quarries",
+      "title": "The Quarries",
+      "location": "Briagolong State Forest",
+      "lat": -37.8500,
+      "lng": 147.1000,
+      "category": "State Forests",
+      "description": "Scenic quarry camping in Gippsland."
+    },
+    {
+      "id": "nolans-creek",
+      "title": "Nolans Creek",
+      "location": "Nolans Creek Camping Area",
+      "lat": -37.5500,
+      "lng": 145.7000,
+      "category": "State Forests",
+      "description": "Creek-side bush camping."
+    },
+    {
+      "id": "cape-otway",
+      "title": "Cape Otway",
+      "location": "Cape Otway Lightstation",
+      "lat": -38.8600,
+      "lng": 143.5100,
+      "category": "Great Ocean Road",
+      "description": "Historic lighthouse area camping."
+    },
+    {
+      "id": "lorne-foreshore",
+      "title": "Lorne",
+      "location": "Lorne Foreshore",
+      "lat": -38.5400,
+      "lng": 143.9800,
+      "category": "Great Ocean Road",
+      "description": "Popular Great Ocean Road town."
+    },
+    {
+      "id": "toolangi-sf",
+      "title": "Toolangi State Forest",
+      "location": "Toolangi",
+      "lat": -37.5300,
+      "lng": 145.4800,
+      "category": "State Forests",
+      "description": "Mountain ash forest camping."
+    },
+    {
+      "id": "baw-baw-np",
+      "title": "Baw Baw National Park",
+      "location": "Mount Baw Baw",
+      "lat": -37.8400,
+      "lng": 146.2700,
+      "category": "National Parks",
+      "description": "Alpine camping and skiing area."
+    },
+    {
+      "id": "daylesford-jubilee",
+      "title": "Daylesford",
+      "location": "Jubilee Lake Holiday Park",
+      "lat": -37.3500,
+      "lng": 144.1400,
+      "category": "Holiday Parks",
+      "description": "Spa country holiday destination."
+    },
+    {
+      "id": "bright-holiday",
+      "title": "Bright",
+      "location": "Bright Holiday Park",
+      "lat": -36.7300,
+      "lng": 146.9600,
+      "category": "Holiday Parks",
+      "description": "Gateway to Alpine National Park."
+    },
+    {
+      "id": "bendigo-lake-eppalock",
+      "title": "Lake Eppalock",
+      "location": "Bendigo Region",
+      "lat": -36.8800,
+      "lng": 144.5500,
+      "category": "Water Activities",
+      "description": "Large lake for water sports and fishing."
+    },
+    {
+      "id": "echuca-murray",
+      "title": "Murray River - Echuca",
+      "location": "Echuca Region",
+      "lat": -36.1300,
+      "lng": 144.7500,
+      "category": "Water Activities",
+      "description": "Historic paddle steamer town on Murray River."
+    },
+    {
+      "id": "lakes-entrance",
+      "title": "Lakes Entrance",
+      "location": "Gippsland Lakes",
+      "lat": -37.8800,
+      "lng": 147.9800,
+      "category": "Water Activities",
+      "description": "Gateway to Gippsland Lakes system."
+    }
+  ],
+  "metadata": {
+    "totalSites": 85,
+    "categories": [
+      "National Parks",
+      "State Forests",
+      "Great Ocean Road",
+      "Hiking",
+      "Holiday Parks",
+      "Family Holidays",
+      "Water Activities",
+      "Bush Camping"
+    ],
+    "source": "Parks Victoria, Hipcamp, Visit Victoria",
+    "lastUpdated": "2026-01-11"
+  }
+}

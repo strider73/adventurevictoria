@@ -1,18 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import dynamic from "next/dynamic";
 import { Navbar, Footer, SocialIcons, Button } from "@/components/ui";
-
-// Dynamic import for Leaflet map (SSR disabled)
-const MapComponent = dynamic(() => import("./MapComponent"), {
-  ssr: false,
-  loading: () => (
-    <div className="w-full aspect-[2/1] bg-[--color-bg-tertiary] rounded-2xl animate-pulse flex items-center justify-center">
-      <span className="text-[--color-text-tertiary]">Loading map...</span>
-    </div>
-  ),
-});
 
 // Video locations with coordinates (approximate locations in Victoria)
 const videoLocations = [
@@ -439,6 +428,47 @@ const CampingLogo = () => (
   </svg>
 );
 
+// Convert lat/lng to map position (percentage)
+// Using zoom 8 for better detail and selecting tiles that center Melbourne
+
+const tileToLng = (x: number, z: number) => (x / Math.pow(2, z)) * 360 - 180;
+const tileToLat = (y: number, z: number) => {
+  const n = Math.PI - (2 * Math.PI * y) / Math.pow(2, z);
+  return (180 / Math.PI) * Math.atan(0.5 * (Math.exp(n) - Math.exp(-n)));
+};
+
+// Tile configuration for zoom 8
+// Melbourne is around -37.8, 145 - this puts it in tile (229, 157) at zoom 8
+// We'll use tiles 226-233 (8 wide) x 155-158 (4 tall) to cover Victoria
+// This centers Melbourne and covers all camping locations
+const zoom = 8;
+const tilesX = { start: 226, end: 234 }; // 8 tiles wide
+const tilesY = { start: 155, end: 159 }; // 4 tiles tall
+
+const mapBounds = {
+  west: tileToLng(tilesX.start, zoom),
+  east: tileToLng(tilesX.end, zoom),
+  north: tileToLat(tilesY.start, zoom),
+  south: tileToLat(tilesY.end, zoom),
+};
+
+// Simple coordinate conversion - no CSS offsets, tiles fill container exactly
+const latToY = (lat: number) => {
+  // Use Web Mercator projection
+  const latRad = (lat * Math.PI) / 180;
+  const mercY = Math.log(Math.tan(Math.PI / 4 + latRad / 2));
+
+  const northRad = (mapBounds.north * Math.PI) / 180;
+  const southRad = (mapBounds.south * Math.PI) / 180;
+  const mercNorth = Math.log(Math.tan(Math.PI / 4 + northRad / 2));
+  const mercSouth = Math.log(Math.tan(Math.PI / 4 + southRad / 2));
+
+  return ((mercNorth - mercY) / (mercNorth - mercSouth)) * 100;
+};
+
+const lngToX = (lng: number) => {
+  return ((lng - mapBounds.west) / (mapBounds.east - mapBounds.west)) * 100;
+};
 
 // Helper to get votes from localStorage
 const getVotes = (): Record<string, number> => {
@@ -788,13 +818,74 @@ export default function MapPage() {
             </div>
           </div>
 
-          {/* Interactive Map Container - Using Leaflet with OpenStreetMap */}
+          {/* Map Container - Using OpenStreetMap tiles */}
           <div className="relative rounded-2xl overflow-hidden border border-[--color-border-primary]">
             <div className="relative aspect-[2/1]">
-              <MapComponent
-                locations={filteredLocations}
-                onMarkerClick={(video) => setSelectedVideo(video)}
-              />
+              {/* OpenStreetMap Static Tiles - Victoria region (zoom 8) */}
+              {/* 8 tiles wide (226-233) x 4 tiles tall (155-158) - centers Melbourne */}
+              <div className="absolute inset-0 grid grid-cols-8 grid-rows-4">
+                {/* Generate all tiles programmatically */}
+                {[155, 156, 157, 158].flatMap((y) =>
+                  [226, 227, 228, 229, 230, 231, 232, 233].map((x) => (
+                    <img
+                      key={`tile-${x}-${y}`}
+                      src={`https://tile.openstreetmap.org/8/${x}/${y}.png`}
+                      alt=""
+                      className="w-full h-full object-cover"
+                    />
+                  ))
+                )}
+              </div>
+
+              {/* Dark overlay for better visibility */}
+              <div className="absolute inset-0 bg-black/10 pointer-events-none" />
+
+              {/* Video Location Markers */}
+              {filteredLocations.map((video, index) => {
+                const x = lngToX(video.lng);
+                const y = latToY(video.lat);
+                const isPlaceholder = video.id.startsWith("placeholder");
+                return (
+                  <button
+                    key={`marker-${video.id}-${index}`}
+                    onClick={() => setSelectedVideo(video)}
+                    className="absolute transform -translate-x-1/2 -translate-y-1/2 group z-10"
+                    style={{ left: `${x}%`, top: `${y}%` }}
+                  >
+                    {/* Marker */}
+                    <div
+                      className="w-8 h-8 sm:w-10 sm:h-10 rounded-full border-2 border-white shadow-lg overflow-hidden transition-transform hover:scale-125 hover:z-20 flex items-center justify-center"
+                      style={{ backgroundColor: categoryColors[video.category] }}
+                    >
+                      {isPlaceholder ? (
+                        <svg className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                        </svg>
+                      ) : (
+                        <img
+                          src={`https://img.youtube.com/vi/${video.id}/mqdefault.jpg`}
+                          alt={video.title}
+                          className="w-full h-full object-cover"
+                        />
+                      )}
+                    </div>
+                    {/* Tooltip */}
+                    <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-3 py-1.5 bg-[--color-bg-primary] text-[--color-text-primary] text-xs font-medium rounded-lg shadow-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none border border-[--color-border-primary]">
+                      {video.title}
+                      {isPlaceholder && <span className="text-[--color-text-tertiary]"> (Coming Soon)</span>}
+                      <div
+                        className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-[--color-bg-primary]"
+                      />
+                    </div>
+                  </button>
+                );
+              })}
+
+              {/* OSM Attribution */}
+              <div className="absolute bottom-2 right-2 bg-white/80 px-2 py-1 rounded text-[10px] text-gray-600">
+                © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer" className="underline">OpenStreetMap</a>
+              </div>
             </div>
           </div>
 
