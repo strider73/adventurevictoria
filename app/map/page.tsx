@@ -603,9 +603,8 @@ export default function MapPage() {
                 </div>
               )}
 
-              {/* Community Videos Section */}
-              {selectedVideo.hasVideo && (
-                <div className="mt-6 pt-6 border-t border-[--color-border-primary]">
+              {/* Community Videos Section - Show for all locations */}
+              <div className="mt-6 pt-6 border-t border-[--color-border-primary]">
                   <div className="flex items-center justify-between mb-4">
                     <h4 className="text-sm font-semibold text-[--color-text-primary] flex items-center gap-2">
                       <svg className="w-4 h-4 text-[--color-brand]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -770,8 +769,7 @@ export default function MapPage() {
                       No community videos yet. Be the first to share your adventure!
                     </p>
                   )}
-                </div>
-              )}
+              </div>
             </div>
           </div>
         </div>
