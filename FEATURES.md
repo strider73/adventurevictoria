@@ -1,6 +1,6 @@
 # Adventure Victoria - Features & Functions List
 
-> Last Updated: 2026-01-11
+> Last Updated: 2026-01-11 (Community video thumbnails for all views)
 
 ## Navigation Menu
 
@@ -56,9 +56,9 @@
 
 ### Interactive Map
 - Leaflet-based map centered on Victoria
-- Custom markers with YouTube thumbnails (for locations with videos)
-- Placeholder markers (for locations without videos)
-- Tooltips showing location name on hover
+- Custom markers with YouTube thumbnails (original video OR first community video)
+- Placeholder markers only for locations without any videos
+- Tooltips showing location name on hover (with "Coming Soon" for no-video locations)
 - Click marker to open modal
 
 ### Map Thumbnail Row
@@ -79,17 +79,20 @@
 
 ### Location Cards Grid
 - Responsive grid of location cards
-- Shows thumbnail, category badge, title, location
+- Shows thumbnail from original video OR first community video
+- Category badge, title, location displayed
 - NotificationBadge shows community video count
-- "Coming Soon" overlay for locations without videos
+- "Coming Soon" overlay only for locations without any videos
+- Play button overlay on cards with videos (original or community)
 - Click card to open modal
 
 ### Location Modal
 
 #### Video Player
 - Plays YouTube video in embedded iframe
-- Auto-plays when modal opens
-- Shows "Video Coming Soon" placeholder for locations without videos
+- Auto-plays when modal opens (original video OR first community video)
+- Shows "Video Coming Soon" placeholder only for locations without any videos
+- Automatically starts with first available video (original takes priority)
 
 #### Location Info
 - Location title and description

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import dynamic from "next/dynamic";
 import { Navbar, Footer, SocialIcons, Button, NotificationBadge } from "@/components/ui";
 
@@ -33,6 +33,8 @@ interface VideoLocation {
   duration: string | null;
   views: number | null;
   hasVideo: boolean;
+  // Computed field: first available video ID (original or community) for thumbnail display
+  displayThumbnailId?: string | null;
 }
 
 // Create a map of campingSiteId to video data for quick lookup
@@ -245,9 +247,17 @@ export default function MapPage() {
     setVideoUrl("");
     setSubmitStatus("idle");
     setShowSubmitForm(false);
-    // Set the current playing video to the location's own video (if it has one)
-    setCurrentPlayingVideoId(selectedVideo?.youtubeId || null);
-  }, [selectedVideo]);
+    // Set the current playing video: original video first, otherwise first community video
+    if (selectedVideo?.youtubeId) {
+      setCurrentPlayingVideoId(selectedVideo.youtubeId);
+    } else if (selectedVideo) {
+      // No original video, check for community videos
+      const locationCommunityVideos = communityVideos[selectedVideo.id] || [];
+      setCurrentPlayingVideoId(locationCommunityVideos[0]?.youtubeId || null);
+    } else {
+      setCurrentPlayingVideoId(null);
+    }
+  }, [selectedVideo, communityVideos]);
 
   // Handle community video submission
   const handleVideoSubmit = () => {
@@ -316,13 +326,30 @@ export default function MapPage() {
     localStorage.setItem("userVotedLocations", JSON.stringify(newUserVoted));
   };
 
+  // Enrich locations with displayThumbnailId (original video or first community video)
+  const enrichedLocations = useMemo(() => {
+    return videoLocations.map((location) => {
+      // If location has original video, use that
+      if (location.hasVideo && location.youtubeId) {
+        return { ...location, displayThumbnailId: location.youtubeId };
+      }
+      // Otherwise, check for community videos
+      const locationCommunityVideos = communityVideos[location.id] || [];
+      if (locationCommunityVideos.length > 0) {
+        return { ...location, displayThumbnailId: locationCommunityVideos[0].youtubeId };
+      }
+      // No videos at all
+      return { ...location, displayThumbnailId: null };
+    });
+  }, [communityVideos]);
+
   // Calculate counts for filter badges
-  const totalCount = videoLocations.length;
-  const hasVideoCount = videoLocations.filter((v) => v.hasVideo || (communityVideos[v.id]?.length > 0)).length;
-  const myVideosCount = videoLocations.filter((v) => v.hasVideo).length;
+  const totalCount = enrichedLocations.length;
+  const hasVideoCount = enrichedLocations.filter((v) => v.hasVideo || (communityVideos[v.id]?.length > 0)).length;
+  const myVideosCount = enrichedLocations.filter((v) => v.hasVideo).length;
 
   // Apply filters
-  const filteredLocations = videoLocations.filter((v) => {
+  const filteredLocations = enrichedLocations.filter((v) => {
     // Video source filter
     if (videoFilter === "hasVideo" && !v.hasVideo && !(communityVideos[v.id]?.length > 0)) {
       return false;
@@ -916,7 +943,8 @@ export default function MapPage() {
                     {/* Community video count badge - outside overflow container */}
                     <NotificationBadge count={communityVideoCount} />
                     <div className="relative aspect-video rounded-xl overflow-hidden">
-                      {!video.hasVideo ? (
+                      {!video.displayThumbnailId ? (
+                        // No video at all - show placeholder
                         <div
                           className="w-full h-full flex flex-col items-center justify-center"
                           style={{ backgroundColor: categoryColors[video.category] }}
@@ -928,14 +956,15 @@ export default function MapPage() {
                           <span className="text-white/70 text-xs mt-1">Coming Soon</span>
                         </div>
                       ) : (
+                        // Has video (original or community) - show thumbnail
                         <img
-                          src={`https://img.youtube.com/vi/${video.youtubeId}/mqdefault.jpg`}
+                          src={`https://img.youtube.com/vi/${video.displayThumbnailId}/mqdefault.jpg`}
                           alt={video.title}
                           className="w-full h-full object-cover group-hover:scale-105 transition-transform"
                         />
                       )}
                       <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center">
-                        {video.hasVideo && (
+                        {video.displayThumbnailId && (
                           <svg
                             className="w-12 h-12 text-white opacity-0 group-hover:opacity-100 transition-opacity"
                             fill="currentColor"
@@ -951,8 +980,8 @@ export default function MapPage() {
                       >
                         {video.category}
                       </span>
-                      {/* Vote count badge for locations without videos */}
-                      {!video.hasVideo && voteCount > 0 && (
+                      {/* Vote count badge for locations without any videos */}
+                      {!video.displayThumbnailId && voteCount > 0 && (
                         <span className="absolute top-2 left-2 px-2 py-0.5 rounded text-[10px] font-medium text-white bg-[--color-brand] flex items-center gap-1">
                           <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 24 24">
                             <path d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
