@@ -29,3 +29,6 @@ export type { HeroProps, HeroVariant, HeroSize } from "./Hero";
 
 export { Carousel, CarouselSlide } from "./Carousel";
 export type { CarouselProps, CarouselSlideProps } from "./Carousel";
+
+export { NotificationBadge } from "./NotificationBadge";
+export type { NotificationBadgeProps } from "./NotificationBadge";

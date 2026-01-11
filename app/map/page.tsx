@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import dynamic from "next/dynamic";
-import { Navbar, Footer, SocialIcons, Button } from "@/components/ui";
+import { Navbar, Footer, SocialIcons, Button, NotificationBadge } from "@/components/ui";
 
 // Import camping sites data
 import campingData from "@/data/victoria-camping-sites.json";
@@ -817,57 +817,62 @@ export default function MapPage() {
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
             {sortedLocations.map((video, index) => {
               const voteCount = votes[video.id] || 0;
+              const communityVideoCount = communityVideos[video.id]?.length || 0;
               return (
                 <button
                   key={`card-${video.id}-${index}`}
                   onClick={() => setSelectedVideo(video)}
                   className="group text-left"
                 >
-                  <div className="relative aspect-video rounded-xl overflow-hidden mb-2">
-                    {!video.hasVideo ? (
-                      <div
-                        className="w-full h-full flex flex-col items-center justify-center"
+                  <div className="relative mb-2">
+                    {/* Community video count badge - outside overflow container */}
+                    <NotificationBadge count={communityVideoCount} />
+                    <div className="relative aspect-video rounded-xl overflow-hidden">
+                      {!video.hasVideo ? (
+                        <div
+                          className="w-full h-full flex flex-col items-center justify-center"
+                          style={{ backgroundColor: categoryColors[video.category] }}
+                        >
+                          <svg className="w-10 h-10 text-white/80" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                          </svg>
+                          <span className="text-white/70 text-xs mt-1">Coming Soon</span>
+                        </div>
+                      ) : (
+                        <img
+                          src={`https://img.youtube.com/vi/${video.youtubeId}/mqdefault.jpg`}
+                          alt={video.title}
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform"
+                        />
+                      )}
+                      <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center">
+                        {video.hasVideo && (
+                          <svg
+                            className="w-12 h-12 text-white opacity-0 group-hover:opacity-100 transition-opacity"
+                            fill="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path d="M8 5v14l11-7z" />
+                          </svg>
+                        )}
+                      </div>
+                      <span
+                        className="absolute top-2 right-2 px-2 py-0.5 rounded text-[10px] font-medium text-white"
                         style={{ backgroundColor: categoryColors[video.category] }}
                       >
-                        <svg className="w-10 h-10 text-white/80" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                        </svg>
-                        <span className="text-white/70 text-xs mt-1">Coming Soon</span>
-                      </div>
-                    ) : (
-                      <img
-                        src={`https://img.youtube.com/vi/${video.youtubeId}/mqdefault.jpg`}
-                        alt={video.title}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform"
-                      />
-                    )}
-                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center">
-                      {video.hasVideo && (
-                        <svg
-                          className="w-12 h-12 text-white opacity-0 group-hover:opacity-100 transition-opacity"
-                          fill="currentColor"
-                          viewBox="0 0 24 24"
-                        >
-                          <path d="M8 5v14l11-7z" />
-                        </svg>
+                        {video.category}
+                      </span>
+                      {/* Vote count badge for locations without videos */}
+                      {!video.hasVideo && voteCount > 0 && (
+                        <span className="absolute top-2 left-2 px-2 py-0.5 rounded text-[10px] font-medium text-white bg-[--color-brand] flex items-center gap-1">
+                          <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
+                          </svg>
+                          {voteCount}
+                        </span>
                       )}
                     </div>
-                    <span
-                      className="absolute top-2 right-2 px-2 py-0.5 rounded text-[10px] font-medium text-white"
-                      style={{ backgroundColor: categoryColors[video.category] }}
-                    >
-                      {video.category}
-                    </span>
-                    {/* Vote count badge for locations without videos */}
-                    {!video.hasVideo && voteCount > 0 && (
-                      <span className="absolute top-2 left-2 px-2 py-0.5 rounded text-[10px] font-medium text-white bg-[--color-brand] flex items-center gap-1">
-                        <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 24 24">
-                          <path d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
-                        </svg>
-                        {voteCount}
-                      </span>
-                    )}
                   </div>
                   <h3 className="text-sm font-medium text-[--color-text-primary] line-clamp-1 group-hover:text-[--color-brand] transition-colors">
                     {video.title}
