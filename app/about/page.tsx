@@ -10,9 +10,8 @@ import {
 
 const navLinks = [
   { label: "Home", href: "/" },
-  { label: "Map", href: "/map" },
-  { label: "YouTube", href: "https://www.youtube.com/@Adventurevictoria/videos" },
-  { label: "About Us", href: "/about", isActive: true },
+  { label: "Map Playground", href: "/map" },
+  { label: "About", href: "/about", isActive: true },
 ];
 
 const footerSections = [
