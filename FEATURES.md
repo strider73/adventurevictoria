@@ -1,6 +1,6 @@
 # Adventure Victoria - Features & Functions List
 
-> Last Updated: 2026-01-11 (Community video thumbnails for all views)
+> Last Updated: 2026-01-12 (Share Your Video button styling)
 
 ## Navigation Menu
 
@@ -112,7 +112,7 @@
 | In-Modal Playback | Click any video to play in modal (not redirect to YouTube) |
 | Now Playing Indicator | Shows which video is currently playing |
 | Recommend Button | Upvote community videos |
-| Share Your Video | Submit YouTube URL to add community video |
+| Share Your Video | Styled button with brand background color; Submit YouTube URL to add community video |
 | Video Count | Shows number of community videos |
 
 #### NotificationBadge Component
