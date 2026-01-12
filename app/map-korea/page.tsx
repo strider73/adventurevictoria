@@ -672,7 +672,8 @@ export default function MapKoreaPage() {
                   {!showSubmitForm && (
                     <button
                       onClick={() => setShowSubmitForm(true)}
-                      className="text-xs text-[--color-brand] hover:text-[--color-brand-hover] font-medium flex items-center gap-1"
+                      className="px-3 py-1.5 text-white text-xs font-medium rounded-lg transition-colors flex items-center gap-1.5"
+                      style={{ backgroundColor: 'var(--color-brand)' }}
                     >
                       <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
