@@ -94,6 +94,7 @@ const navLinks = [
   { label: "Home", href: "/" },
   { label: "Map Playground", href: "/map" },
   { label: "Map Playground-Korea", href: "/map-korea", isActive: true },
+  { label: "iOS - AdventureTube", href: "/ios-adventuretube" },
   { label: "About", href: "/about" },
 ];
 
