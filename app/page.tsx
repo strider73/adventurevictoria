@@ -186,10 +186,12 @@ const videoCategories = [
   },
 ];
 
+// Navigation links for the site
 const navLinks = [
   { label: "Home", href: "/", isActive: true },
   { label: "Map Playground", href: "/map" },
   { label: "Map Playground-Korea", href: "/map-korea" },
+  { label: "iOS - AdventureTube", href: "/ios-adventuretube" },
   { label: "About", href: "/about" },
 ];
 
@@ -498,6 +500,83 @@ export default function Home() {
               <p className="text-[--color-text-tertiary] text-sm text-center">
                 Latest: Bush Camping at Digger&apos;s track in Lerderderg
               </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* iOS App Preview Section */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-[--color-bg-secondary]">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            {/* Left side - App Preview */}
+            <div className="relative flex justify-center">
+              <div className="w-[473px] sm:w-[541px] aspect-[9/16] rounded-2xl overflow-hidden shadow-2xl">
+                <iframe
+                  src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fproto%2FRZCJw60n7wgWTN4jMYfkoy%2FAdventureVictoria%3Fpage-id%3D0%253A1%26node-id%3D6-2%26p%3Df%26m%3Ddev%26scaling%3Dscale-down%26content-scaling%3Dfixed%26starting-point-node-id%3D6%253A2%26hide-ui%3D1"
+                  className="w-full h-full border-0"
+                  title="AdventureTube iOS App Preview"
+                />
+              </div>
+            </div>
+
+            {/* Right side - Content */}
+            <div>
+              <Badge variant="warning" className="mb-4">Coming Soon</Badge>
+              <h2 className="text-3xl sm:text-4xl font-bold text-[--color-text-primary] mb-6">
+                AdventureTube iOS App
+              </h2>
+              <p className="text-[--color-text-secondary] mb-6">
+                We&apos;re building an iOS app to help you discover camping adventures on an interactive map.
+                Browse locations, watch videos, and plan your next family trip - all in one place.
+              </p>
+
+              <div className="space-y-4 mb-8">
+                <div className="flex items-start gap-3">
+                  <div className="w-8 h-8 rounded-lg bg-[--color-brand]/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <svg className="w-4 h-4 text-[--color-brand]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
+                    </svg>
+                  </div>
+                  <div>
+                    <h4 className="text-[--color-text-primary] font-medium">Interactive Map</h4>
+                    <p className="text-[--color-text-tertiary] text-sm">Explore camping locations across Victoria and Korea</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <div className="w-8 h-8 rounded-lg bg-[--color-green]/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <svg className="w-4 h-4 text-[--color-green]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                  </div>
+                  <div>
+                    <h4 className="text-[--color-text-primary] font-medium">Video Integration</h4>
+                    <p className="text-[--color-text-tertiary] text-sm">Watch camping videos directly in the app</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <div className="w-8 h-8 rounded-lg bg-[--color-orange]/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <svg className="w-4 h-4 text-[--color-orange]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                    </svg>
+                  </div>
+                  <div>
+                    <h4 className="text-[--color-text-primary] font-medium">Community Sharing</h4>
+                    <p className="text-[--color-text-tertiary] text-sm">Share your own camping videos and discoveries</p>
+                  </div>
+                </div>
+              </div>
+
+              <a href="/ios-adventuretube">
+                <Button size="lg" className="gap-2">
+                  <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                  </svg>
+                  View Interactive Prototype
+                </Button>
+              </a>
             </div>
           </div>
         </div>
