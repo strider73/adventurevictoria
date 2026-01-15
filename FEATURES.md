@@ -1,13 +1,15 @@
 # Adventure Victoria - Features & Functions List
 
-> Last Updated: 2026-01-12 (Share Your Video button styling)
+> Last Updated: 2026-01-15 (iOS prototype layout update - larger size, no borders)
 
 ## Navigation Menu
 
 | Menu Item | Route | Description |
 |-----------|-------|-------------|
 | Home | `/` | Main landing page with video carousel |
-| Map Playground | `/map` | Interactive map with camping locations |
+| Map Playground | `/map` | Interactive map with camping locations (Victoria) |
+| Map Playground-Korea | `/map-korea` | Interactive map with camping locations (Korea) |
+| iOS - Adventuretube | `/ios-adventuretube` | iOS app Figma prototype preview |
 | About | `/about` | About page |
 | Subscribe | External | Links to YouTube channel subscription |
 
@@ -121,6 +123,77 @@
 - Positioned at top-right corner with overlap
 - Blur background with shadow
 - Only counts community videos (not original)
+
+---
+
+## iOS - Adventuretube (`/ios-adventuretube`)
+
+### Overview
+- Preview page for the upcoming AdventureTube iOS app
+- Embeds interactive Figma prototype with custom flows sidebar
+- Dark theme matching site design (no white Figma UI)
+
+### Page Sections
+
+#### Hero Section
+- "iOS App Prototype" badge
+- Title: "AdventureTube iOS App"
+- Description of the prototype
+- Status badges: "Interactive Prototype", "Work in Progress"
+
+#### Flows Links
+Simple text links on left side of prototype:
+| Flow | Name |
+|------|------|
+| 1 | Splash Screen |
+| 2 | Onboarding |
+| 3 | Home Feed |
+| 4 | Map View |
+| 5 | Video Player |
+| 6 | Profile |
+
+- Click flow to load that prototype screen
+- Selected flow highlighted with brand color
+- "Open in Figma" link below flows
+- Hidden on mobile (sm breakpoint)
+
+#### Figma Embed
+| Feature | Description |
+|---------|-------------|
+| Large Phone Size | 541px wide, 9:16 aspect ratio |
+| No Borders | Clean display without white lines |
+| No Figma UI | `hide-ui=1` parameter removes white sidebar |
+| Dynamic Loading | Changes when flow is selected |
+| Shadow Effect | Subtle shadow for depth |
+
+#### Instructions Cards
+| Card | Description |
+|------|-------------|
+| Click to Navigate | Click buttons to navigate through screens |
+| Fullscreen Mode | Expand icon for better viewing |
+| Send Feedback | Leave suggestions about the design |
+
+### Prototype Info
+- **Figma Project**: AdventureVictoria
+- **Project URL**: figma.com/design/RZCJw60n7wgWTN4jMYfkoy
+- **Starting Node**: 6-2
+
+---
+
+## Home Page iOS App Section
+
+### Location
+- Appears after "About Us" section
+- Before "Ready for Your Next Adventure?" CTA
+
+### Features
+| Feature | Description |
+|---------|-------------|
+| Large Prototype | 541px wide Figma embed, no borders |
+| Clean Display | No phone frame, just rounded corners with shadow |
+| "Coming Soon" Badge | Indicates app is in development |
+| Feature List | Interactive Map, Video Integration, Community Sharing |
+| CTA Button | "View Interactive Prototype" links to `/ios-adventuretube` |
 
 ---
 
