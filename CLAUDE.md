@@ -31,6 +31,28 @@ A Next.js web application project based on the Linear theme.
 - Use CSS variables: `var(--color-*)` format
 - Use Tailwind with CSS variables together
 
+### 4. Playwright Visual Validation (MANDATORY)
+- **NEVER run Playwright tools directly in the main conversation**
+- **ALWAYS use the Task tool to spawn a sub-agent for all Playwright operations**
+- This prevents verbose Playwright output (page snapshots, console logs) from consuming context
+
+**Required pattern:**
+```
+Task tool with:
+  - subagent_type: "general-purpose"
+  - prompt: "Navigate to [URL], [actions], take screenshot, verify [what to check]. Report findings concisely."
+```
+
+**Example:**
+```
+Task(
+  subagent_type="general-purpose",
+  prompt="Navigate to http://localhost:3000, scroll to iOS section, take screenshot. Verify the prototype displays correctly. Report concisely."
+)
+```
+
+**Why:** Playwright outputs large page snapshots and console logs that rapidly consume conversation context. Sub-agents run in separate context and return only a brief summary.
+
 ---
 
 ## Theme (Linear Theme)
