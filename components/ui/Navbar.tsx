@@ -7,6 +7,7 @@ export interface NavLink {
   label: string;
   href: string;
   isActive?: boolean;
+  target?: string;
 }
 
 export interface NavbarProps {
@@ -53,23 +54,42 @@ export function Navbar({
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-1">
-            {links.map((link, index) => (
-              <Link
-                key={`nav-${link.label}-${index}`}
-                href={link.href}
-                className={`
-                  px-4 py-2 rounded-[--radius-lg] text-sm font-medium
-                  transition-colors duration-150
-                  ${
-                    link.isActive
-                      ? "text-[--color-text-primary] bg-[--color-bg-secondary]"
-                      : "text-[--color-text-tertiary] hover:text-[--color-text-primary] hover:bg-[--color-bg-secondary]"
-                  }
-                `}
-              >
-                {link.label}
-              </Link>
-            ))}
+            {links.map((link, index) => {
+              const isExternal = link.href.startsWith("http");
+              const linkClass = `
+                px-4 py-2 rounded-[--radius-lg] text-sm font-medium
+                transition-colors duration-150
+                ${
+                  link.isActive
+                    ? "text-[--color-text-primary] bg-[--color-bg-secondary]"
+                    : "text-[--color-text-tertiary] hover:text-[--color-text-primary] hover:bg-[--color-bg-secondary]"
+                }
+              `;
+
+              if (isExternal) {
+                return (
+                  <a
+                    key={`nav-${link.label}-${index}`}
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={linkClass}
+                  >
+                    {link.label}
+                  </a>
+                );
+              }
+
+              return (
+                <Link
+                  key={`nav-${link.label}-${index}`}
+                  href={link.href}
+                  className={linkClass}
+                >
+                  {link.label}
+                </Link>
+              );
+            })}
           </div>
 
           {/* CTA Button & Mobile Menu Button */}
@@ -99,24 +119,44 @@ export function Navbar({
         {isMobileMenuOpen && (
           <div className="md:hidden py-4 border-t border-[--color-border-primary]">
             <div className="flex flex-col gap-1">
-              {links.map((link, index) => (
-                <Link
-                  key={`mobile-nav-${link.label}-${index}`}
-                  href={link.href}
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className={`
-                    px-4 py-3 rounded-[--radius-lg] text-sm font-medium
-                    transition-colors duration-150
-                    ${
-                      link.isActive
-                        ? "text-[--color-text-primary] bg-[--color-bg-secondary]"
-                        : "text-[--color-text-tertiary] hover:text-[--color-text-primary] hover:bg-[--color-bg-secondary]"
-                    }
-                  `}
-                >
-                  {link.label}
-                </Link>
-              ))}
+              {links.map((link, index) => {
+                const isExternal = link.href.startsWith("http");
+                const mobileClass = `
+                  px-4 py-3 rounded-[--radius-lg] text-sm font-medium
+                  transition-colors duration-150
+                  ${
+                    link.isActive
+                      ? "text-[--color-text-primary] bg-[--color-bg-secondary]"
+                      : "text-[--color-text-tertiary] hover:text-[--color-text-primary] hover:bg-[--color-bg-secondary]"
+                  }
+                `;
+
+                if (isExternal) {
+                  return (
+                    <a
+                      key={`mobile-nav-${link.label}-${index}`}
+                      href={link.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={() => setIsMobileMenuOpen(false)}
+                      className={mobileClass}
+                    >
+                      {link.label}
+                    </a>
+                  );
+                }
+
+                return (
+                  <Link
+                    key={`mobile-nav-${link.label}-${index}`}
+                    href={link.href}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className={mobileClass}
+                  >
+                    {link.label}
+                  </Link>
+                );
+              })}
               {ctaButton && <div className="mt-3 px-4 sm:hidden">{ctaButton}</div>}
             </div>
           </div>
