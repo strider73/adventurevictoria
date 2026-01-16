@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Option 1: Classic Location Detail - Wireframe</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Comic Sans MS', cursive;
+            background: #f5f5f5;
+            color: #333;
+            padding: 20px;
+        }
+
+        .close-button {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background: #5e6ad2;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            font-size: 24px;
+            cursor: pointer;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            transition: all 0.2s;
+        }
+
+        .close-button:hover {
+            background: #4a5bc4;
+            transform: scale(1.1);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border: 2px solid #333;
+        }
+        
+        /* Balsamiq-style elements */
+        .box {
+            border: 2px solid #333;
+            padding: 15px;
+            margin: 10px 0;
+            background: white;
+        }
+        
+        .gray-box {
+            background: #e0e0e0;
+            border: 2px dashed #666;
+            padding: 20px;
+            text-align: center;
+            color: #666;
+        }
+        
+        h1, h2, h3, h4 {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        h1 { font-size: 32px; }
+        h2 { font-size: 24px; }
+        h3 { font-size: 18px; }
+        h4 { font-size: 16px; }
+        
+        p { 
+            line-height: 1.6; 
+            margin-bottom: 10px;
+        }
+        
+        .grid {
+            display: grid;
+            gap: 15px;
+        }
+        
+        .grid-2 { grid-template-columns: 1fr 1fr; }
+        .grid-3 { grid-template-columns: repeat(3, 1fr); }
+        .grid-4 { grid-template-columns: repeat(4, 1fr); }
+        
+        .flex {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        
+        .flex-between {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .button {
+            border: 2px solid #333;
+            padding: 10px 20px;
+            background: #ddd;
+            cursor: pointer;
+            display: inline-block;
+            text-align: center;
+        }
+        
+        .button-primary {
+            background: #5e6ad2;
+            color: white;
+            border-color: #5e6ad2;
+        }
+        
+        .badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border: 1px solid #333;
+            border-radius: 4px;
+            font-size: 12px;
+            background: #f0f0f0;
+        }
+        
+        .badge-success { background: #4cb782; color: white; border-color: #4cb782; }
+        .badge-info { background: #4ea7fc; color: white; border-color: #4ea7fc; }
+        
+        .nav {
+            border-bottom: 2px solid #333;
+            padding: 15px 20px;
+            background: #fafafa;
+        }
+        
+        .stats {
+            display: flex;
+            gap: 30px;
+            padding: 15px 0;
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-value {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        
+        .stat-label {
+            font-size: 14px;
+            color: #666;
+        }
+        
+        .tag-reuse {
+            position: absolute;
+            top: 4px;
+            right: 4px;
+            background: #4CAF50;
+            color: white;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 10px;
+            font-family: Arial, sans-serif;
+            font-weight: bold;
+            z-index: 10;
+        }
+        
+        .tag-new {
+            position: absolute;
+            top: 4px;
+            right: 4px;
+            background: #FF9800;
+            color: white;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 10px;
+            font-family: Arial, sans-serif;
+            font-weight: bold;
+            z-index: 10;
+        }
+        
+        .relative {
+            position: relative;
+        }
+        
+        .section {
+            padding: 20px;
+            border-bottom: 2px solid #ddd;
+        }
+        
+        .review-card {
+            border: 2px solid #ddd;
+            padding: 15px;
+            margin-bottom: 10px;
+        }
+        
+        .avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #ccc;
+            border: 2px solid #666;
+        }
+        
+        .star {
+            color: #f2c94c;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <button class="close-button" onclick="window.close()" title="Close wireframe">&times;</button>
+    <div class="container">
+        <!-- REUSABLE: Navbar from components/ui/Navbar.tsx -->
+        <div class="relative">
+            <span class="tag-reuse" title="components/ui/Navbar.tsx">[REUSE] Navbar</span>
+            <div class="nav flex-between">
+                <div class="flex">
+                    <div style="width: 40px; height: 40px; border: 2px solid #333; background: #5e6ad2;"></div>
+                    <strong>Adventure Victoria</strong>
+                </div>
+                <div class="flex">
+                    <span>Home</span>
+                    <span>Map</span>
+                    <span>About</span>
+                </div>
+                <!-- REUSABLE: Button from components/ui/Button.tsx -->
+                <div class="relative" style="display: inline-block;">
+                    <span class="tag-reuse" title="components/ui/Button.tsx" style="top: -8px; right: -8px;">[REUSE] Button</span>
+                    <div class="button button-primary">Subscribe</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Hero Section with Location Image -->
+        <div class="section">
+            <div class="gray-box" style="height: 400px; font-size: 18px;">
+                [Location Hero Image: 1200x400]<br>
+                Wilsons Promontory National Park<br>
+                <small>Full-width panoramic photo of the campsite</small>
+            </div>
+        </div>
+
+        <!-- Location Info Section -->
+        <div class="section">
+            <div class="grid grid-2" style="gap: 40px;">
+                <!-- Left Column: Main Info -->
+                <div>
+                    <div class="flex-between" style="margin-bottom: 20px;">
+                        <div>
+                            <h1>Wilsons Promontory National Park</h1>
+                            <p style="color: #666;">Stock Yard Camping Area, Victoria</p>
+                        </div>
+                        <!-- REUSABLE: Badge from components/ui/Badge.tsx -->
+                        <div class="relative" style="display: inline-block;">
+                            <span class="tag-reuse" title="components/ui/Badge.tsx" style="top: -8px; right: -8px;">[REUSE] Badge</span>
+                            <div class="badge badge-success">National Park</div>
+                        </div>
+                    </div>
+
+                    <!-- Stats Row -->
+                    <div class="stats">
+                        <div class="stat-item">
+                            <div class="stat-value">4.8</div>
+                            <div class="stat-label">★★★★☆</div>
+                            <div class="stat-label">127 Reviews</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">45</div>
+                            <div class="stat-label">Videos</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">$</div>
+                            <div class="stat-label">Free Camping</div>
+                        </div>
+                    </div>
+
+                    <!-- Description -->
+                    <div style="margin-top: 30px;">
+                        <h3>About This Location</h3>
+                        <p>Wilsons Promontory is Victoria's southernmost point, offering spectacular coastal scenery, pristine beaches, and diverse wildlife. Stock Yard is a popular camping area with excellent facilities for families.</p>
+                        <p>Best visited during spring and autumn for mild weather. The area features numerous walking tracks, beach access, and abundant wildlife viewing opportunities.</p>
+                    </div>
+
+                    <!-- Key Features -->
+                    <div style="margin-top: 20px;">
+                        <h4>Key Features</h4>
+                        <div class="grid grid-2" style="margin-top: 10px;">
+                            <div>✓ Powered sites available</div>
+                            <div>✓ Hot showers & toilets</div>
+                            <div>✓ Beach access (2km)</div>
+                            <div>✓ Bush walking tracks</div>
+                            <div>✓ Wildlife viewing</div>
+                            <div>✓ BBQ facilities</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column: Quick Info -->
+                <div>
+                    <!-- NEW COMPONENT: InfoCard -->
+                    <div class="relative">
+                        <span class="tag-new" title="To be created at components/ui/InfoCard.tsx">[NEW] InfoCard</span>
+                        <div class="box" style="background: #fafafa;">
+                            <h4>Essential Information</h4>
+                            <div style="margin-top: 15px;">
+                                <div style="padding: 8px 0; border-bottom: 1px solid #ddd;">
+                                    <strong>Best Season:</strong> Spring, Autumn
+                                </div>
+                                <div style="padding: 8px 0; border-bottom: 1px solid #ddd;">
+                                    <strong>Booking:</strong> Required (Parks Victoria)
+                                </div>
+                                <div style="padding: 8px 0; border-bottom: 1px solid #ddd;">
+                                    <strong>Cost:</strong> $30-50/night
+                                </div>
+                                <div style="padding: 8px 0; border-bottom: 1px solid #ddd;">
+                                    <strong>Max Stay:</strong> 7 nights
+                                </div>
+                                <div style="padding: 8px 0; border-bottom: 1px solid #ddd;">
+                                    <strong>Fires:</strong> Designated areas only
+                                </div>
+                                <div style="padding: 8px 0;">
+                                    <strong>Pets:</strong> Not permitted
+                                </div>
+                            </div>
+                            <!-- REUSABLE: Button from components/ui/Button.tsx -->
+                            <div class="relative" style="margin-top: 20px; display: inline-block;">
+                                <span class="tag-reuse" title="components/ui/Button.tsx" style="top: -8px; right: -8px;">[REUSE] Button</span>
+                                <div class="button button-primary" style="width: 100%;">Book Now</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Location Map -->
+                    <div style="margin-top: 20px;">
+                        <div class="gray-box" style="height: 200px;">
+                            [Map Widget]<br>
+                            Interactive map showing location
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Video Section -->
+        <div class="section">
+            <div class="flex-between" style="margin-bottom: 20px;">
+                <h2>Videos from Adventure Victoria</h2>
+                <!-- REUSABLE: Badge from components/ui/Badge.tsx -->
+                <div class="relative" style="display: inline-block;">
+                    <span class="tag-reuse" title="components/ui/Badge.tsx" style="top: -8px; right: -8px;">[REUSE] Badge</span>
+                    <div class="badge badge-info">3 Videos</div>
+                </div>
+            </div>
+            <div class="grid grid-3">
+                <!-- REUSABLE: Card from components/ui/Card.tsx -->
+                <div class="relative">
+                    <span class="tag-reuse" title="components/ui/Card.tsx">[REUSE] Card</span>
+                    <div class="box" style="padding: 0;">
+                        <div class="gray-box" style="height: 150px; margin: 0; border: none; border-bottom: 2px solid #333;">
+                            [Video Thumbnail]<br>
+                            <small>Stock Yard Camping</small>
+                        </div>
+                        <div style="padding: 10px;">
+                            <strong>Part 1: Setup & Tour</strong>
+                            <p style="font-size: 14px; color: #666;">5:24 • 2.5K views</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative">
+                    <span class="tag-reuse" title="components/ui/Card.tsx">[REUSE] Card</span>
+                    <div class="box" style="padding: 0;">
+                        <div class="gray-box" style="height: 150px; margin: 0; border: none; border-bottom: 2px solid #333;">
+                            [Video Thumbnail]
+                        </div>
+                        <div style="padding: 10px;">
+                            <strong>Part 2: Hiking Adventures</strong>
+                            <p style="font-size: 14px; color: #666;">8:15 • 1.8K views</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative">
+                    <span class="tag-reuse" title="components/ui/Card.tsx">[REUSE] Card</span>
+                    <div class="box" style="padding: 0;">
+                        <div class="gray-box" style="height: 150px; margin: 0; border: none; border-bottom: 2px solid #333;">
+                            [Video Thumbnail]
+                        </div>
+                        <div style="padding: 10px;">
+                            <strong>Part 3: Beach & Wildlife</strong>
+                            <p style="font-size: 14px; color: #666;">6:42 • 2.1K views</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Community Videos Section -->
+        <div class="section" style="background: #fafafa;">
+            <div class="flex-between" style="margin-bottom: 20px;">
+                <h2>Community Videos</h2>
+                <div class="flex">
+                    <!-- REUSABLE: Badge from components/ui/Badge.tsx -->
+                    <div class="relative" style="display: inline-block;">
+                        <span class="tag-reuse" title="components/ui/Badge.tsx" style="top: -8px; right: -8px;">[REUSE] Badge</span>
+                        <div class="badge">28 Videos</div>
+                    </div>
+                    <!-- REUSABLE: Button from components/ui/Button.tsx -->
+                    <div class="relative" style="display: inline-block;">
+                        <span class="tag-reuse" title="components/ui/Button.tsx" style="top: -8px; right: -8px;">[REUSE] Button</span>
+                        <div class="button">Share Your Video</div>
+                    </div>
+                </div>
+            </div>
+            <div class="grid grid-4">
+                <div class="box" style="padding: 0;">
+                    <div class="gray-box" style="height: 120px; margin: 0; border: none; border-bottom: 2px solid #333;">
+                        [Thumbnail]
+                    </div>
+                    <div style="padding: 8px;">
+                        <strong style="font-size: 14px;">Summer 2025 Trip</strong>
+                        <p style="font-size: 12px; color: #666;">by Sarah M.</p>
+                    </div>
+                </div>
+                <div class="box" style="padding: 0;">
+                    <div class="gray-box" style="height: 120px; margin: 0; border: none; border-bottom: 2px solid #333;">
+                        [Thumbnail]
+                    </div>
+                    <div style="padding: 8px;">
+                        <strong style="font-size: 14px;">Family Adventure</strong>
+                        <p style="font-size: 12px; color: #666;">by Mike T.</p>
+                    </div>
+                </div>
+                <div class="box" style="padding: 0;">
+                    <div class="gray-box" style="height: 120px; margin: 0; border: none; border-bottom: 2px solid #333;">
+                        [Thumbnail]
+                    </div>
+                    <div style="padding: 8px;">
+                        <strong style="font-size: 14px;">Wildlife Spotting</strong>
+                        <p style="font-size: 12px; color: #666;">by Emma K.</p>
+                    </div>
+                </div>
+                <div class="box" style="padding: 0;">
+                    <div class="gray-box" style="height: 120px; margin: 0; border: none; border-bottom: 2px solid #333;">
+                        [Thumbnail]
+                    </div>
+                    <div style="padding: 8px;">
+                        <strong style="font-size: 14px;">Sunrise Hike</strong>
+                        <p style="font-size: 12px; color: #666;">by John L.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- REUSABLE: Button from components/ui/Button.tsx -->
+            <div class="relative" style="margin-top: 20px; text-align: center;">
+                <span class="tag-reuse" title="components/ui/Button.tsx" style="top: -8px; right: -8px;">[REUSE] Button</span>
+                <div class="button" style="display: inline-block;">View All 28 Videos</div>
+            </div>
+        </div>
+
+        <!-- Reviews Section -->
+        <div class="section">
+            <div class="flex-between" style="margin-bottom: 20px;">
+                <h2>Recent Reviews</h2>
+                <div class="flex">
+                    <!-- REUSABLE: Button from components/ui/Button.tsx -->
+                    <div class="relative" style="display: inline-block;">
+                        <span class="tag-reuse" title="components/ui/Button.tsx" style="top: -8px; right: -8px;">[REUSE] Button</span>
+                        <div class="button button-primary">Write a Review</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- NEW COMPONENT: ReviewCard -->
+            <div class="relative">
+                <span class="tag-new" title="To be created at components/ReviewCard.tsx">[NEW] ReviewCard</span>
+                <div class="review-card">
+                    <div class="flex" style="margin-bottom: 10px;">
+                        <div class="avatar"></div>
+                        <div>
+                            <strong>Jennifer M.</strong>
+                            <div style="font-size: 14px; color: #666;">
+                                <span class="star">★★★★★</span> 5 days ago
+                            </div>
+                        </div>
+                    </div>
+                    <p>"Amazing campsite! The facilities were clean and well-maintained. Perfect location for beach access and hiking. Our kids loved exploring the rock pools."</p>
+                    <div style="margin-top: 10px; font-size: 14px; color: #666;">
+                        Visited: December 2025 • With family
+                    </div>
+                </div>
+            </div>
+
+            <div class="relative">
+                <span class="tag-new" title="To be created at components/ReviewCard.tsx">[NEW] ReviewCard</span>
+                <div class="review-card">
+                    <div class="flex" style="margin-bottom: 10px;">
+                        <div class="avatar"></div>
+                        <div>
+                            <strong>David K.</strong>
+                            <div style="font-size: 14px; color: #666;">
+                                <span class="star">★★★★☆</span> 2 weeks ago
+                            </div>
+                        </div>
+                    </div>
+                    <p>"Great spot for a weekend getaway. Book early as it fills up fast during peak season. The walking tracks are excellent and well-marked."</p>
+                    <div style="margin-top: 10px; font-size: 14px; color: #666;">
+                        Visited: November 2025 • Solo camping
+                    </div>
+                </div>
+            </div>
+
+            <!-- REUSABLE: Button from components/ui/Button.tsx -->
+            <div class="relative" style="margin-top: 20px; text-align: center;">
+                <span class="tag-reuse" title="components/ui/Button.tsx" style="top: -8px; right: -8px;">[REUSE] Button</span>
+                <div class="button" style="display: inline-block;">Load More Reviews</div>
+            </div>
+        </div>
+
+        <!-- REUSABLE: Footer from components/ui/Footer.tsx -->
+        <div class="relative">
+            <span class="tag-reuse" title="components/ui/Footer.tsx">[REUSE] Footer</span>
+            <div class="section" style="background: #333; color: white; border: none;">
+                <div class="grid grid-3">
+                    <div>
+                        <h4>About Adventure Victoria</h4>
+                        <p style="font-size: 14px; color: #ccc;">Family camping adventures across Victoria, Australia.</p>
+                    </div>
+                    <div>
+                        <h4>Quick Links</h4>
+                        <p style="font-size: 14px; color: #ccc;">Home • Map • About • Contact</p>
+                    </div>
+                    <div>
+                        <h4>Connect</h4>
+                        <p style="font-size: 14px; color: #ccc;">YouTube • Instagram</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

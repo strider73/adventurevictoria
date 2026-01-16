@@ -36,6 +36,12 @@ yarn-error.log*
 # local config
 .mcp.json
 package-lock.json
+yarn.lock
+CLAUDE.md
+APP_FLOW.md
+
+# project todo (local tracking)
+TODO.md
 
 # env files (can opt-in for committing if needed)
 .env*
@@ -46,3 +52,9 @@ package-lock.json
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# iOS project (separate repo)
+/iOS/
+
+# Kombai wireframe resources (originals copied to public/wireframes)
+.kombai/

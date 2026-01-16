@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Option 2: Immersive Story-Driven Layout - Wireframe</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Comic Sans MS', cursive;
+            background: #f5f5f5;
+            color: #333;
+            padding: 20px;
+        }
+
+        .close-button {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background: #5e6ad2;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            font-size: 24px;
+            cursor: pointer;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            transition: all 0.2s;
+        }
+
+        .close-button:hover {
+            background: #4a5bc4;
+            transform: scale(1.1);
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border: 2px solid #333;
+        }
+        
+        .box {
+            border: 2px solid #333;
+            padding: 15px;
+            margin: 10px 0;
+            background: white;
+        }
+        
+        .gray-box {
+            background: #e0e0e0;
+            border: 2px dashed #666;
+            padding: 20px;
+            text-align: center;
+            color: #666;
+        }
+        
+        h1, h2, h3, h4 {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        h1 { font-size: 36px; }
+        h2 { font-size: 28px; }
+        h3 { font-size: 20px; }
+        h4 { font-size: 16px; }
+        
+        p { 
+            line-height: 1.6; 
+            margin-bottom: 10px;
+        }
+        
+        .grid {
+            display: grid;
+            gap: 15px;
+        }
+        
+        .grid-2 { grid-template-columns: 2fr 1fr; }
+        .grid-3 { grid-template-columns: repeat(3, 1fr); }
+        .grid-masonry { grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); }
+        
+        .flex {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        
+        .flex-between {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .button {
+            border: 2px solid #333;
+            padding: 10px 20px;
+            background: #ddd;
+            cursor: pointer;
+            display: inline-block;
+            text-align: center;
+        }
+        
+        .button-primary {
+            background: #5e6ad2;
+            color: white;
+            border-color: #5e6ad2;
+        }
+        
+        .badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border: 1px solid #333;
+            border-radius: 4px;
+            font-size: 12px;
+            background: #f0f0f0;
+        }
+        
+        .badge-success { background: #4cb782; color: white; border-color: #4cb782; }
+        
+        .nav {
+            border-bottom: 2px solid #333;
+            padding: 15px 20px;
+            background: #fafafa;
+        }
+        
+        .tag-reuse {
+            position: absolute;
+            top: 4px;
+            right: 4px;
+            background: #4CAF50;
+            color: white;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 10px;
+            font-family: Arial, sans-serif;
+            font-weight: bold;
+            z-index: 10;
+        }
+        
+        .tag-new {
+            position: absolute;
+            top: 4px;
+            right: 4px;
+            background: #FF9800;
+            color: white;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 10px;
+            font-family: Arial, sans-serif;
+            font-weight: bold;
+            z-index: 10;
+        }
+        
+        .relative {
+            position: relative;
+        }
+        
+        .section {
+            padding: 30px;
+            border-bottom: 2px solid #ddd;
+        }
+        
+        .sidebar {
+            position: sticky;
+            top: 20px;
+        }
+        
+        .timeline-item {
+            border-left: 3px solid #5e6ad2;
+            padding-left: 20px;
+            margin-bottom: 30px;
+            position: relative;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            width: 15px;
+            height: 15px;
+            background: #5e6ad2;
+            border: 3px solid white;
+            border-radius: 50%;
+            position: absolute;
+            left: -9px;
+            top: 0;
+        }
+        
+        .tab {
+            display: inline-block;
+            padding: 10px 20px;
+            border: 2px solid #333;
+            background: #f0f0f0;
+            margin-right: 5px;
+            cursor: pointer;
+        }
+        
+        .tab-active {
+            background: white;
+            border-bottom-color: white;
+        }
+    </style>
+</head>
+<body>
+    <button class="close-button" onclick="window.close()" title="Close wireframe">&times;</button>
+    <div class="container">
+        <!-- REUSABLE: Navbar from components/ui/Navbar.tsx -->
+        <div class="relative">
+            <span class="tag-reuse" title="components/ui/Navbar.tsx">[REUSE] Navbar</span>
+            <div class="nav flex-between">
+                <div class="flex">
+                    <div style="width: 40px; height: 40px; border: 2px solid #333; background: #5e6ad2;"></div>
+                    <strong>Adventure Victoria</strong>
+                </div>
+                <div class="flex">
+                    <span>Home</span>
+                    <span>Map</span>
+                    <span>About</span>
+                </div>
+                <!-- REUSABLE: Button from components/ui/Button.tsx -->
+                <div class="relative" style="display: inline-block;">
+                    <span class="tag-reuse" title="components/ui/Button.tsx" style="top: -8px; right: -8px;">[REUSE] Button</span>
+                    <div class="button button-primary">Subscribe</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Full-Width Hero with Overlay -->
+        <div class="relative" style="position: relative;">
+            <div class="gray-box" style="height: 500px; font-size: 18px; position: relative;">
+                [Full-Width Hero Image: 1400x500]<br>
+                Stunning panoramic photo of Wilsons Prom
+                <div style="position: absolute; bottom: 30px; left: 30px; text-align: left; background: rgba(0,0,0,0.7); padding: 30px; color: white; max-width: 600px;">
+                    <h1 style="color: white; font-size: 42px; margin-bottom: 15px;">Wilsons Promontory<br>National Park</h1>
+                    <p style="font-size: 18px; color: #ddd;">Stock Yard Camping Area • Victoria's Premier Coastal Destination</p>
+                    <div style="margin-top: 20px;">
+                        <!-- REUSABLE: Badge from components/ui/Badge.tsx -->
+                        <div class="relative" style="display: inline-block;">
+                            <span class="tag-reuse" title="components/ui/Badge.tsx" style="top: -8px; right: -8px;">[REUSE] Badge</span>
+                            <span class="badge badge-success">National Park</span>
+                        </div>
+                        <span class="badge" style="background: rgba(255,255,255,0.2); color: white; border-color: white;">★ 4.8 (127 reviews)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content Grid -->
+        <div class="section">
+            <div class="grid grid-2" style="gap: 40px;">
+                <!-- Left Column: Story Content -->
+                <div>
+                    <!-- Sticky Tab Navigation -->
+                    <div style="margin-bottom: 30px; border-bottom: 2px solid #333;">
+                        <span class="tab tab-active">Our Experience</span>
+                        <span class="tab">Community Stories</span>
+                        <span class="tab">Practical Info</span>
+                        <span class="tab">Reviews</span>
+                    </div>
+
+                    <!-- NEW COMPONENT: StoryTimeline -->
+                    <div class="relative">
+                        <span class="tag-new" title="To be created at components/StoryTimeline.tsx">[NEW] StoryTimeline</span>
+                        <div>
+                            <h2>Our Family Adventure</h2>
+                            <p style="color: #666; margin-bottom: 30px;">Follow along as we explore Wilsons Prom over 3 days in December 2025</p>
+
+                            <!-- Timeline Items -->
+                            <div class="timeline-item">
+                                <h3>Day 1: Arrival & Camp Setup</h3>
+                                <div class="gray-box" style="height: 250px; margin: 15px 0;">
+                                    [Video Player: Setup Tour]<br>
+                                    YouTube embed - 5:24
+                                </div>
+                                <p>We arrived at Stock Yard around 2pm and were amazed by how well-maintained the facilities were. The kids immediately wanted to explore while we set up camp.</p>
+                                <div style="margin-top: 15px; font-size: 14px; color: #666;">
+                                    📍 Stock Yard Campground • 🎥 Watch full video above
+                                </div>
+                            </div>
+
+                            <div class="timeline-item">
+                                <h3>Day 2: Mt Oberon Summit Hike</h3>
+                                <div class="grid grid-3" style="margin: 15px 0;">
+                                    <div class="gray-box" style="height: 150px; padding: 10px;">
+                                        [Photo 1]<br>
+                                        Trail view
+                                    </div>
+                                    <div class="gray-box" style="height: 150px; padding: 10px;">
+                                        [Photo 2]<br>
+                                        Summit
+                                    </div>
+                                    <div class="gray-box" style="height: 150px; padding: 10px;">
+                                        [Photo 3]<br>
+                                        Family
+                                    </div>
+                                </div>
+                                <p>The 7km return hike to Mt Oberon summit was challenging but absolutely worth it. The 360-degree views from the top are breathtaking. Pack plenty of water!</p>
+                                <div style="margin-top: 15px; font-size: 14px; color: #666;">
+                                    ⏱️ 3.5 hours • ⛰️ 7km return • 📸 13 photos in gallery
+                                </div>
+                            </div>
+
+                            <div class="timeline-item">
+                                <h3>Day 3: Squeaky Beach & Wildlife</h3>
+                                <div class="gray-box" style="height: 250px; margin: 15px 0;">
+                                    [Video Player: Beach & Wildlife]<br>
+                                    YouTube embed - 6:42
+                                </div>
+                                <p>Spent the morning at Squeaky Beach - the sand really does squeak! Saw wombats, kangaroos, and even a few emus. Perfect ending to our trip.</p>
+                                <div style="margin-top: 15px; font-size: 14px; color: #666;">
+                                    🏖️ Squeaky Beach • 🦘 Wildlife encounters • 🎥 Watch highlights
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Community Highlights -->
+                    <div style="margin-top: 50px;">
+                        <h2>Community Highlights</h2>
+                        <p style="color: #666; margin-bottom: 20px;">See what other campers experienced at this location</p>
+                        
+                        <!-- NEW COMPONENT: CommunityHighlight -->
+                        <div class="relative">
+                            <span class="tag-new" title="To be created at components/CommunityHighlight.tsx">[NEW] CommunityHighlight</span>
+                            <div class="box" style="margin-bottom: 15px;">
+                                <div class="flex" style="margin-bottom: 10px;">
+                                    <div style="width: 40px; height: 40px; border-radius: 50%; background: #ccc; border: 2px solid #666;"></div>
+                                    <div>
+                                        <strong>Sarah's Winter Trip</strong>
+                                        <p style="font-size: 14px; color: #666;">Visited July 2025</p>
+                                    </div>
+                                </div>
+                                <div class="gray-box" style="height: 180px; margin: 10px 0;">
+                                    [Video Thumbnail]<br>
+                                    Community video preview
+                                </div>
+                                <p>"Amazing winter camping! Cold nights but magical misty mornings. Perfect for experienced campers seeking solitude."</p>
+                                <div style="margin-top: 10px; font-size: 14px; color: #666;">
+                                    👍 45 helpful • 💬 12 comments
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="relative">
+                            <span class="tag-new" title="To be created at components/CommunityHighlight.tsx">[NEW] CommunityHighlight</span>
+                            <div class="box">
+                                <div class="flex" style="margin-bottom: 10px;">
+                                    <div style="width: 40px; height: 40px; border-radius: 50%; background: #ccc; border: 2px solid #666;"></div>
+                                    <div>
+                                        <strong>Mike's Family Easter</strong>
+                                        <p style="font-size: 14px; color: #666;">Visited April 2025</p>
+                                    </div>
+                                </div>
+                                <div class="gray-box" style="height: 180px; margin: 10px 0;">
+                                    [Video Thumbnail]
+                                </div>
+                                <p>"Perfect Easter getaway with the family. Kids loved the beach and we spotted so much wildlife. Highly recommend!"</p>
+                                <div style="margin-top: 10px; font-size: 14px; color: #666;">
+                                    👍 62 helpful • 💬 8 comments
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- REUSABLE: Button from components/ui/Button.tsx -->
+                        <div class="relative" style="margin-top: 20px; text-align: center;">
+                            <span class="tag-reuse" title="components/ui/Button.tsx" style="top: -8px; right: -8px;">[REUSE] Button</span>
+                            <div class="button">View All 28 Community Stories</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column: Sticky Sidebar -->
+                <div class="sidebar">
+                    <!-- Quick Actions -->
+                    <div class="relative">
+                        <span class="tag-new" title="To be created at components/ActionCard.tsx">[NEW] ActionCard</span>
+                        <div class="box" style="background: #fafafa;">
+                            <h3>Quick Actions</h3>
+                            <!-- REUSABLE: Button from components/ui/Button.tsx -->
+                            <div class="relative" style="margin-top: 15px;">
+                                <span class="tag-reuse" title="components/ui/Button.tsx" style="top: -8px; right: -8px;">[REUSE] Button</span>
+                                <div class="button button-primary" style="width: 100%; margin-bottom: 10px;">Book Campsite</div>
+                            </div>
+                            <div class="relative">
+                                <span class="tag-reuse" title="components/ui/Button.tsx" style="top: -8px; right: -8px;">[REUSE] Button</span>
+                                <div class="button" style="width: 100%; margin-bottom: 10px;">Save to Wishlist</div>
+                            </div>
+                            <div class="relative">
+                                <span class="tag-reuse" title="components/ui/Button.tsx" style="top: -8px; right: -8px;">[REUSE] Button</span>
+                                <div class="button" style="width: 100%; margin-bottom: 10px;">Share Your Story</div>
+                            </div>
+                            <div class="relative">
+                                <span class="tag-reuse" title="components/ui/Button.tsx" style="top: -8px; right: -8px;">[REUSE] Button</span>
+                                <div class="button" style="width: 100%;">Get Directions</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- At a Glance -->
+                    <div class="box" style="margin-top: 20px;">
+                        <h4>At a Glance</h4>
+                        <div style="margin-top: 15px;">
+                            <div style="padding: 10px 0; border-bottom: 1px solid #ddd;">
+                                <strong>📍 Location</strong><br>
+                                <span style="font-size: 14px; color: #666;">Wilsons Prom, Victoria</span>
+                            </div>
+                            <div style="padding: 10px 0; border-bottom: 1px solid #ddd;">
+                                <strong>💰 Cost</strong><br>
+                                <span style="font-size: 14px; color: #666;">$30-50/night</span>
+                            </div>
+                            <div style="padding: 10px 0; border-bottom: 1px solid #ddd;">
+                                <strong>🌤️ Best Time</strong><br>
+                                <span style="font-size: 14px; color: #666;">Spring, Autumn</span>
+                            </div>
+                            <div style="padding: 10px 0; border-bottom: 1px solid #ddd;">
+                                <strong>👥 Difficulty</strong><br>
+                                <span style="font-size: 14px; color: #666;">Family-friendly</span>
+                            </div>
+                            <div style="padding: 10px 0;">
+                                <strong>⏱️ Suggested Stay</strong><br>
+                                <span style="font-size: 14px; color: #666;">2-4 nights</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- What's Nearby -->
+                    <div class="box" style="margin-top: 20px;">
+                        <h4>What's Nearby</h4>
+                        <div style="margin-top: 15px;">
+                            <div style="padding: 8px 0; font-size: 14px;">🏖️ Squeaky Beach (3km)</div>
+                            <div style="padding: 8px 0; font-size: 14px;">⛰️ Mt Oberon (5km)</div>
+                            <div style="padding: 8px 0; font-size: 14px;">🏪 General Store (2km)</div>
+                            <div style="padding: 8px 0; font-size: 14px;">🚰 Water Points (on-site)</div>
+                        </div>
+                    </div>
+
+                    <!-- Weather Widget -->
+                    <div class="gray-box" style="height: 150px; margin-top: 20px;">
+                        [Weather Widget]<br>
+                        5-day forecast
+                    </div>
+
+                    <!-- Map -->
+                    <div class="gray-box" style="height: 200px; margin-top: 20px;">
+                        [Interactive Map]<br>
+                        Location & nearby POIs
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- REUSABLE: Footer from components/ui/Footer.tsx -->
+        <div class="relative">
+            <span class="tag-reuse" title="components/ui/Footer.tsx">[REUSE] Footer</span>
+            <div class="section" style="background: #333; color: white; border: none;">
+                <div class="grid grid-3">
+                    <div>
+                        <h4>About Adventure Victoria</h4>
+                        <p style="font-size: 14px; color: #ccc;">Family camping adventures across Victoria, Australia.</p>
+                    </div>
+                    <div>
+                        <h4>Quick Links</h4>
+                        <p style="font-size: 14px; color: #ccc;">Home • Map • About • Contact</p>
+                    </div>
+                    <div>
+                        <h4>Connect</h4>
+                        <p style="font-size: 14px; color: #ccc;">YouTube • Instagram</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
