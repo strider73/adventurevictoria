@@ -91,10 +91,9 @@ const MapComponent = dynamic(() => import("./MapComponent"), {
 });
 
 const navLinks = [
-  { label: "Home", href: "/" },
-  { label: "Channel", href: "/channel" },
-  { label: "My Profile", href: "/profile/adventurevictoria" },
+  { label: "Map - Victoria", href: "/" },
   { label: "Map - Korea", href: "/map-korea", isActive: true },
+  { label: "My Profile", href: "/profile/adventurevictoria" },
   { label: "iOS App", href: "/ios-adventuretube" },
   { label: "Wireframes", href: "/wireframes" },
   { label: "About", href: "/about" },

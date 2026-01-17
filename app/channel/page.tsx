@@ -187,10 +187,9 @@ const videoCategories = [
 
 // Navigation links for the site
 const navLinks = [
-  { label: "Home", href: "/" },
-  { label: "Channel", href: "/channel", isActive: true },
-  { label: "My Profile", href: "/profile/adventurevictoria" },
+  { label: "Map - Victoria", href: "/" },
   { label: "Map - Korea", href: "/map-korea" },
+  { label: "My Profile", href: "/profile/adventurevictoria" },
   { label: "iOS App", href: "/ios-adventuretube" },
   { label: "Wireframes", href: "/wireframes" },
   { label: "About", href: "/about" },

@@ -14,10 +14,9 @@ const flows = [
 ];
 
 const navLinks = [
-  { label: "Home", href: "/" },
-  { label: "Channel", href: "/channel" },
-  { label: "My Profile", href: "/profile/adventurevictoria" },
+  { label: "Map - Victoria", href: "/" },
   { label: "Map - Korea", href: "/map-korea" },
+  { label: "My Profile", href: "/profile/adventurevictoria" },
   { label: "iOS App", href: "/ios-adventuretube", isActive: true },
   { label: "Wireframes", href: "/wireframes" },
   { label: "About", href: "/about" },
