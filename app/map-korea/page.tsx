@@ -96,7 +96,7 @@ const navLinks = [
   { label: "My Profile", href: "/profile/adventurevictoria" },
   { label: "iOS App", href: "/ios-adventuretube" },
   { label: "Wireframes", href: "/wireframes" },
-  { label: "About", href: "/about" },
+  { label: "About AdventureTube", href: "/about" },
 ];
 
 const footerSections = [
