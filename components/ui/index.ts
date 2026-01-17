@@ -32,3 +32,15 @@ export type { CarouselProps, CarouselSlideProps } from "./Carousel";
 
 export { NotificationBadge } from "./NotificationBadge";
 export type { NotificationBadgeProps } from "./NotificationBadge";
+
+export { StatsCard } from "./StatsCard";
+export type { StatsCardProps, StatItem } from "./StatsCard";
+
+export { FilterTabs } from "./FilterTabs";
+export type { FilterTabsProps, FilterTab } from "./FilterTabs";
+
+export { VideoCard } from "./VideoCard";
+export type { VideoCardProps } from "./VideoCard";
+
+export { ProfileHero } from "./ProfileHero";
+export type { ProfileHeroProps } from "./ProfileHero";

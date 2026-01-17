@@ -25,7 +25,7 @@ const categoryColors: Record<string, string> = {
   "Bush Camping": "#8a8f98",
 };
 
-interface VideoLocation {
+export interface VideoLocation {
   id: string;
   title: string;
   location: string;
@@ -45,6 +45,8 @@ interface VideoLocation {
 interface MapComponentProps {
   locations: VideoLocation[];
   onMarkerClick: (video: VideoLocation) => void;
+  center?: [number, number];
+  zoom?: number;
 }
 
 // Create custom marker icon with YouTube thumbnail (original or community video)
@@ -72,14 +74,16 @@ const createMarkerIcon = (video: VideoLocation) => {
   });
 };
 
-export default function MapComponent({ locations, onMarkerClick }: MapComponentProps) {
-  // Victoria center coordinates
-  const victoriaCenter: [number, number] = [-37.4, 145.5];
-
+export default function MapComponent({
+  locations,
+  onMarkerClick,
+  center = [-37.4, 145.5], // Victoria center coordinates by default
+  zoom = 7
+}: MapComponentProps) {
   return (
     <MapContainer
-      center={victoriaCenter}
-      zoom={7}
+      center={center}
+      zoom={zoom}
       scrollWheelZoom={true}
       zoomControl={true}
       dragging={true}

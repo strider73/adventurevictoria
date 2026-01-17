@@ -6,9 +6,10 @@ import Link from "next/link";
 // Navigation links for the site
 const navLinks = [
   { label: "Home", href: "/" },
-  { label: "Map Playground", href: "/map" },
-  { label: "Map Playground-Korea", href: "/map-korea" },
-  { label: "iOS - AdventureTube", href: "/ios-adventuretube" },
+  { label: "Channel", href: "/channel" },
+  { label: "My Profile", href: "/profile/adventurevictoria" },
+  { label: "Map - Korea", href: "/map-korea" },
+  { label: "iOS App", href: "/ios-adventuretube" },
   { label: "Wireframes", href: "/wireframes", isActive: true },
   { label: "About", href: "/about" },
 ];

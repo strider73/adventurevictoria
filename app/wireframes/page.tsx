@@ -6,9 +6,10 @@ import Link from "next/link";
 // Navigation links for the site
 const navLinks = [
   { label: "Home", href: "/" },
-  { label: "Map Playground", href: "/map" },
-  { label: "Map Playground-Korea", href: "/map-korea" },
-  { label: "iOS - AdventureTube", href: "/ios-adventuretube" },
+  { label: "Channel", href: "/channel" },
+  { label: "My Profile", href: "/profile/adventurevictoria" },
+  { label: "Map - Korea", href: "/map-korea" },
+  { label: "iOS App", href: "/ios-adventuretube" },
   { label: "Wireframes", href: "/wireframes", isActive: true },
   { label: "About", href: "/about" },
 ];
@@ -199,8 +200,6 @@ export default function WireframesPage() {
                       <div className={`w-16 h-16 rounded-xl flex items-center justify-center flex-shrink-0 ${
                         section.status === "complete"
                           ? "bg-[--color-green]/10 text-[--color-green]"
-                          : section.status === "in-progress"
-                          ? "bg-[--color-orange]/10 text-[--color-orange]"
                           : "bg-[--color-bg-tertiary] text-[--color-text-tertiary]"
                       }`}>
                         {section.icon}
