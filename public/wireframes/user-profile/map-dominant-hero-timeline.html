@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Option 3: Map-Dominant Hero with Timeline</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      background: #ffffff;
+      color: #333;
+      padding: 20px;
+    }
+    .wireframe-header {
+      text-align: center;
+      margin-bottom: 30px;
+      padding-bottom: 20px;
+      border-bottom: 3px solid #333;
+    }
+    .wireframe-header h1 {
+      font-size: 28px;
+      margin-bottom: 10px;
+    }
+    .wireframe-header p {
+      color: #666;
+      font-size: 14px;
+    }
+    .badge {
+      display: inline-block;
+      background: #4CAF50;
+      color: white;
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-size: 11px;
+      font-family: Arial, sans-serif;
+      font-weight: bold;
+      position: absolute;
+      z-index: 10;
+    }
+    .badge.new {
+      background: #FF9800;
+    }
+    
+    /* Navbar */
+    .navbar {
+      position: relative;
+      border: 2px solid #333;
+      padding: 15px 20px;
+      margin-bottom: 20px;
+      background: #f9f9f9;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo-area {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .logo-box {
+      width: 40px;
+      height: 40px;
+      border: 2px solid #666;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+    }
+    .nav-links {
+      display: flex;
+      gap: 15px;
+    }
+    .nav-link {
+      padding: 8px 15px;
+      border: 2px solid #999;
+      background: #fff;
+    }
+    .button {
+      padding: 10px 20px;
+      border: 2px solid #333;
+      background: #fff;
+      cursor: pointer;
+    }
+    .button.primary {
+      background: #333;
+      color: #fff;
+    }
+    
+    /* Hero Map Section */
+    .hero-map {
+      position: relative;
+      border: 2px solid #333;
+      margin-bottom: 20px;
+      background: #fff;
+    }
+    .hero-overlay {
+      position: relative;
+      padding: 30px;
+      background: rgba(255, 255, 255, 0.95);
+      border-bottom: 2px solid #333;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .hero-info {
+      flex: 1;
+    }
+    .hero-title {
+      font-size: 28px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+    .hero-description {
+      color: #666;
+      margin-bottom: 15px;
+    }
+    .hero-stats {
+      display: flex;
+      gap: 20px;
+    }
+    .hero-stat {
+      text-align: center;
+    }
+    .hero-stat-number {
+      font-size: 20px;
+      font-weight: bold;
+    }
+    .hero-stat-label {
+      font-size: 11px;
+      color: #666;
+    }
+    .hero-actions {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+    
+    /* Large Map */
+    .large-map {
+      height: 400px;
+      background: #e8f5e9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #666;
+      position: relative;
+    }
+    .map-pin {
+      position: absolute;
+      width: 25px;
+      height: 25px;
+      background: #f44336;
+      border-radius: 50% 50% 50% 0;
+      transform: rotate(-45deg);
+      border: 2px solid #333;
+      cursor: pointer;
+    }
+    .map-pin.pin1 { top: 20%; left: 25%; }
+    .map-pin.pin2 { top: 35%; left: 55%; }
+    .map-pin.pin3 { top: 50%; left: 35%; }
+    .map-pin.pin4 { top: 65%; left: 65%; }
+    .map-pin.pin5 { top: 75%; left: 45%; }
+    
+    /* Map Controls */
+    .map-controls {
+      padding: 15px 30px;
+      border-top: 2px solid #333;
+      background: #f9f9f9;
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+    .control-group {
+      display: flex;
+      gap: 5px;
+    }
+    .control-button {
+      padding: 6px 12px;
+      border: 2px solid #999;
+      background: #fff;
+      font-size: 12px;
+    }
+    .control-button.active {
+      background: #333;
+      color: #fff;
+    }
+    
+    /* Timeline Section */
+    .timeline-section {
+      position: relative;
+      margin-bottom: 20px;
+    }
+    .timeline-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 15px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid #333;
+    }
+    .section-title {
+      font-size: 20px;
+      font-weight: bold;
+    }
+    .view-toggle {
+      display: flex;
+      gap: 5px;
+    }
+    .toggle-button {
+      padding: 6px 12px;
+      border: 2px solid #999;
+      background: #fff;
+      font-size: 12px;
+    }
+    .toggle-button.active {
+      background: #333;
+      color: #fff;
+    }
+    
+    /* Video Timeline */
+    .video-timeline {
+      position: relative;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .timeline-card {
+      position: relative;
+      border: 2px solid #999;
+      background: #fafafa;
+    }
+    .timeline-date {
+      padding: 8px 12px;
+      background: #e0e0e0;
+      border-bottom: 2px solid #999;
+      font-size: 12px;
+      font-weight: bold;
+    }
+    .video-thumbnail {
+      height: 160px;
+      background: #e0e0e0;
+      border-bottom: 2px solid #999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #999;
+      position: relative;
+    }
+    .duration-badge {
+      position: absolute;
+      bottom: 8px;
+      right: 8px;
+      background: rgba(0,0,0,0.8);
+      color: white;
+      padding: 3px 6px;
+      font-size: 11px;
+      border-radius: 2px;
+    }
+    .video-info {
+      padding: 15px;
+    }
+    .video-title {
+      font-weight: bold;
+      margin-bottom: 8px;
+      font-size: 14px;
+    }
+    .video-meta {
+      color: #666;
+      font-size: 12px;
+      margin-bottom: 8px;
+    }
+    .video-location {
+      display: inline-block;
+      padding: 4px 8px;
+      background: #fff3cd;
+      border: 1px solid #999;
+      font-size: 11px;
+      border-radius: 3px;
+    }
+    .video-type {
+      display: inline-block;
+      padding: 4px 8px;
+      background: #e3f2fd;
+      border: 1px solid #999;
+      font-size: 11px;
+      border-radius: 3px;
+      margin-left: 5px;
+    }
+    
+    /* Category Filter */
+    .category-filter {
+      position: relative;
+      display: flex;
+      gap: 8px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+    .category-chip {
+      padding: 8px 16px;
+      border: 2px solid #999;
+      background: #fff;
+      font-size: 13px;
+      cursor: pointer;
+    }
+    .category-chip.active {
+      background: #333;
+      color: #fff;
+    }
+    
+    /* Footer */
+    .footer {
+      position: relative;
+      border: 2px solid #333;
+      padding: 20px;
+      margin-top: 20px;
+      background: #f9f9f9;
+      text-align: center;
+    }
+    /* Close Button */
+    .close-button {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        width: 50px;
+        height: 50px;
+        background: #5e6ad2;
+        color: white;
+        border: none;
+        border-radius: 50%;
+        font-size: 24px;
+        cursor: pointer;
+        z-index: 1000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        transition: background 0.2s, transform 0.2s;
+    }
+    .close-button:hover {
+        background: #4a5bc4;
+        transform: scale(1.1);
+    }
+  </style>
+</head>
+<body>
+  <button class="close-button" onclick="window.close()" title="Close wireframe">&times;</button>
+  <div class="wireframe-header">
+    <h1>🎨 Option 3: Map-Dominant Hero with Timeline</h1>
+    <p>Immersive map experience with chronological video timeline showing adventure progression</p>
+  </div>
+
+  <!-- Navbar -->
+  <!-- REUSABLE: Navbar from components/ui/Navbar.tsx -->
+  <div style="position: relative;">
+    <span class="badge" style="top: -8px; right: -8px;" title="components/ui/Navbar.tsx">[REUSE] Navbar</span>
+    <div class="navbar">
+      <div class="logo-area">
+        <div class="logo-box">LOGO</div>
+        <strong>Creator Name</strong>
+      </div>
+      <div class="nav-links">
+        <div class="nav-link">Videos</div>
+        <div class="nav-link">Map</div>
+        <div class="nav-link">About</div>
+      </div>
+      <!-- REUSABLE: Button from components/ui/Button.tsx -->
+      <span class="badge" style="position: static; margin-left: 10px;" title="components/ui/Button.tsx">[REUSE] Button</span>
+      <div class="button primary">Subscribe</div>
+    </div>
+  </div>
+
+  <!-- Hero Map Section -->
+  <div class="hero-map">
+    <!-- Creator Info Overlay -->
+    <div class="hero-overlay">
+      <div class="hero-info">
+        <!-- REUSABLE: Badge from components/ui/Badge.tsx -->
+        <span class="badge" style="position: static; display: inline-block; margin-bottom: 10px;" title="components/ui/Badge.tsx">[REUSE] Badge</span>
+        <div style="margin-bottom: 10px;">
+          <span style="background: #4CAF50; color: white; padding: 4px 12px; border-radius: 4px; font-size: 12px;">7+ Years Experience</span>
+        </div>
+        <div class="hero-title">Adventure Victoria</div>
+        <div class="hero-description">Family Camping Adventures in Victoria, Australia</div>
+        <!-- NEW COMPONENT: StatsCard (to be created at components/StatsCard.tsx) -->
+        <span class="badge new" style="position: static; display: inline-block; margin-bottom: 10px;" title="To be created at components/StatsCard.tsx">[NEW] StatsCard</span>
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <div class="hero-stat-number">25</div>
+            <div class="hero-stat-label">Locations</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-number">44</div>
+            <div class="hero-stat-label">Videos</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-number">2</div>
+            <div class="hero-stat-label">Countries</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-number">496</div>
+            <div class="hero-stat-label">Subscribers</div>
+          </div>
+        </div>
+      </div>
+      <div class="hero-actions">
+        <div class="button primary">Subscribe</div>
+        <div class="button">Share Profile</div>
+      </div>
+    </div>
+
+    <!-- Large Interactive Map -->
+    <!-- NEW COMPONENT: MapView (to be created at components/ui/MapView.tsx) -->
+    <div style="position: relative;">
+      <span class="badge new" style="top: 10px; right: 10px; z-index: 11;" title="To be created at components/ui/MapView.tsx">[NEW] MapView</span>
+      <div class="large-map">
+        [Large Interactive Map - Click pins to filter videos]
+        <div class="map-pin pin1"></div>
+        <div class="map-pin pin2"></div>
+        <div class="map-pin pin3"></div>
+        <div class="map-pin pin4"></div>
+        <div class="map-pin pin5"></div>
+      </div>
+    </div>
+
+    <!-- Map Controls -->
+    <!-- NEW COMPONENT: MapControls (to be created at components/MapControls.tsx) -->
+    <div style="position: relative;">
+      <span class="badge new" style="top: 4px; right: 4px;" title="To be created at components/MapControls.tsx">[NEW] MapControls</span>
+      <div class="map-controls">
+        <strong>Filter by Region:</strong>
+        <div class="control-group">
+          <div class="control-button active">All</div>
+          <div class="control-button">Victoria</div>
+          <div class="control-button">Korea</div>
+        </div>
+        <div style="margin-left: auto; display: flex; gap: 10px;">
+          <div class="control-button">🔍 Zoom In</div>
+          <div class="control-button">🔍 Zoom Out</div>
+          <div class="control-button">🗺️ Full Screen</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Timeline Section -->
+  <div class="timeline-section">
+    <div class="timeline-header">
+      <div class="section-title">Adventure Timeline</div>
+      <div class="view-toggle">
+        <div class="toggle-button active">Timeline</div>
+        <div class="toggle-button">Grid</div>
+        <div class="toggle-button">List</div>
+      </div>
+    </div>
+
+    <!-- Category Filter -->
+    <!-- NEW COMPONENT: FilterTabs (to be created at components/FilterTabs.tsx) -->
+    <div style="position: relative;">
+      <span class="badge new" style="top: -8px; right: -8px;" title="To be created at components/FilterTabs.tsx">[NEW] FilterTabs</span>
+      <div class="category-filter">
+        <div class="category-chip active">All Videos (44)</div>
+        <div class="category-chip">🥾 Hiking (12)</div>
+        <div class="category-chip">⛺ Camping (18)</div>
+        <div class="category-chip">🍳 Cooking (8)</div>
+        <div class="category-chip">👨‍👩‍👧‍👦 Family (6)</div>
+      </div>
+    </div>
+
+    <!-- Video Timeline Grid -->
+    <!-- NEW COMPONENT: VideoCard (to be created at components/VideoCard.tsx) -->
+    <div style="position: relative;">
+      <span class="badge new" style="top: 4px; right: 4px; z-index: 11;" title="To be created at components/VideoCard.tsx">[NEW] VideoCard</span>
+      <div class="video-timeline">
+        <div class="timeline-card">
+          <div class="timeline-date">📅 2 months ago</div>
+          <div class="video-thumbnail">
+            [Video Thumbnail 16:9]
+            <span class="duration-badge">15:24</span>
+          </div>
+          <div class="video-info">
+            <div class="video-title">Lake Eildon National Park - Kayaking</div>
+            <div class="video-meta">2.5K views</div>
+            <div>
+              <span class="video-location">📍 Lake Eildon, VIC</span>
+              <span class="video-type">⛺ Camping</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-card">
+          <div class="timeline-date">📅 3 months ago</div>
+          <div class="video-thumbnail">
+            [Video Thumbnail 16:9]
+            <span class="duration-badge">18:12</span>
+          </div>
+          <div class="video-info">
+            <div class="video-title">Bush Camping - Great Otway</div>
+            <div class="video-meta">2.3K views</div>
+            <div>
+              <span class="video-location">📍 Great Otway, VIC</span>
+              <span class="video-type">🥾 Hiking</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-card">
+          <div class="timeline-date">📅 3 months ago</div>
+          <div class="video-thumbnail">
+            [Video Thumbnail 16:9]
+            <span class="duration-badge">22:45</span>
+          </div>
+          <div class="video-info">
+            <div class="video-title">Port Campbell Holiday Park</div>
+            <div class="video-meta">2.2K views</div>
+            <div>
+              <span class="video-location">📍 Port Campbell, VIC</span>
+              <span class="video-type">👨‍👩‍👧‍👦 Family</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-card">
+          <div class="timeline-date">📅 4 months ago</div>
+          <div class="video-thumbnail">
+            [Video Thumbnail 16:9]
+            <span class="duration-badge">16:30</span>
+          </div>
+          <div class="video-info">
+            <div class="video-title">Blackwood Forest - Cooking in Rain</div>
+            <div class="video-meta">1.9K views</div>
+            <div>
+              <span class="video-location">📍 Blackwood, VIC</span>
+              <span class="video-type">🍳 Cooking</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-card">
+          <div class="timeline-date">📅 5 months ago</div>
+          <div class="video-thumbnail">
+            [Video Thumbnail 16:9]
+            <span class="duration-badge">19:15</span>
+          </div>
+          <div class="video-info">
+            <div class="video-title">Wombat State Forest Hiking</div>
+            <div class="video-meta">1.2K views</div>
+            <div>
+              <span class="video-location">📍 Wombat, VIC</span>
+              <span class="video-type">🥾 Hiking</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-card">
+          <div class="timeline-date">📅 6 months ago</div>
+          <div class="video-thumbnail">
+            [Video Thumbnail 16:9]
+            <span class="duration-badge">21:00</span>
+          </div>
+          <div class="video-info">
+            <div class="video-title">Wilsons Promontory Part 1</div>
+            <div class="video-meta">1.1K views</div>
+            <div>
+              <span class="video-location">📍 Wilsons Prom, VIC</span>
+              <span class="video-type">⛺ Camping</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="text-align: center; margin-top: 20px;">
+      <div class="button">Load More Videos</div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <!-- REUSABLE: Footer from components/ui/Footer.tsx -->
+  <div style="position: relative;">
+    <span class="badge" style="top: 4px; right: 4px;" title="components/ui/Footer.tsx">[REUSE] Footer</span>
+    <div class="footer">
+      <div>© 2026 Creator Name • Privacy • Terms</div>
+    </div>
+  </div>
+
+</body>
+</html>

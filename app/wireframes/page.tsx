@@ -54,62 +54,84 @@ const CampingLogo = () => (
   </svg>
 );
 
-const wireframeOptions = [
+// All wireframe sections
+const wireframeSections = [
   {
-    id: 1,
-    title: "Classic Location Detail",
-    description: "Traditional two-column layout with hero image, location info, video grid, community videos, and reviews section.",
-    file: "classic-location-detail.html",
-    features: [
-      "Hero image banner",
-      "Two-column layout (info + sidebar)",
-      "Stats, description, features",
-      "Video grid sections",
-      "Reviews with ratings",
-    ],
-    newComponents: ["InfoCard", "ReviewCard"],
-    badge: "Classic",
-    badgeVariant: "info" as const,
+    id: "location-detail",
+    title: "Location Detail",
+    description: "Camping location detail pages showing videos, reviews, and information about camping spots.",
+    icon: (
+      <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+      </svg>
+    ),
+    optionsCount: 3,
+    status: "complete" as const,
+    href: "/wireframes/location-detail",
   },
   {
-    id: 2,
-    title: "Immersive Story-Driven",
-    description: "Narrative-focused design with timeline-based storytelling showing day-by-day adventure experience.",
-    file: "immersive-story-driven.html",
-    features: [
-      "Full-width hero with overlay",
-      "Tab navigation",
-      "Timeline storytelling",
-      "Community highlights",
-      "Sticky sidebar with actions",
-    ],
-    newComponents: ["StoryTimeline", "CommunityHighlight", "ActionCard"],
-    badge: "Storytelling",
-    badgeVariant: "success" as const,
+    id: "user-profile",
+    title: "User Profile",
+    description: "User profile pages showing personal info, saved locations, uploaded videos, and activity history.",
+    icon: (
+      <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+      </svg>
+    ),
+    optionsCount: 3,
+    status: "complete" as const,
+    href: "/wireframes/user-profile",
   },
   {
-    id: 3,
-    title: "Interactive Social Hub",
-    description: "Social media-style three-column layout with activity feeds, trending content, and community engagement.",
-    file: "interactive-social-hub.html",
-    features: [
-      "Split hero (image + stats)",
-      "Three-column layout",
-      "Social feed with filters",
-      "Trending & activity sidebar",
-      "Members online section",
-    ],
-    newComponents: ["SocialFeedItem"],
-    badge: "Social",
-    badgeVariant: "warning" as const,
+    id: "video-player",
+    title: "Video Player",
+    description: "Full video viewing experience with comments, related videos, and location information.",
+    icon: (
+      <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+      </svg>
+    ),
+    optionsCount: 0,
+    status: "planned" as const,
+    href: "/wireframes/video-player",
+  },
+  {
+    id: "search-results",
+    title: "Search & Filters",
+    description: "Search results and filtering interface for discovering camping locations and videos.",
+    icon: (
+      <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+      </svg>
+    ),
+    optionsCount: 0,
+    status: "planned" as const,
+    href: "/wireframes/search-results",
+  },
+  {
+    id: "home-feed",
+    title: "Home Feed",
+    description: "Main landing page with personalized content, featured locations, and recent activity.",
+    icon: (
+      <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+      </svg>
+    ),
+    optionsCount: 0,
+    status: "planned" as const,
+    href: "/wireframes/home-feed",
   },
 ];
 
-export default function WireframesPage() {
-  const openWireframe = (file: string) => {
-    window.open(`/wireframes/${file}`, "_blank");
-  };
+const statusConfig = {
+  complete: { label: "Complete", variant: "success" as const, color: "text-[--color-green]" },
+  "in-progress": { label: "In Progress", variant: "warning" as const, color: "text-[--color-orange]" },
+  planned: { label: "Planned", variant: "default" as const, color: "text-[--color-text-tertiary]" },
+};
 
+export default function WireframesPage() {
   return (
     <div className="min-h-screen bg-[--color-bg-primary]">
       {/* Navbar */}
@@ -140,132 +162,101 @@ export default function WireframesPage() {
         <div className="max-w-7xl mx-auto text-center">
           <Badge variant="info" className="mb-4">Design Phase</Badge>
           <h1 className="text-4xl sm:text-5xl font-bold text-[--color-text-primary] mb-4">
-            Location Detail Wireframes
+            Wireframes
           </h1>
           <p className="text-[--color-text-secondary] max-w-2xl mx-auto text-lg">
-            Explore three different layout options for the camping location detail page.
-            Each wireframe shows how users can discover videos, reviews, and information about camping spots.
+            Explore wireframe options for different sections of the AdventureTube app.
+            Each section has multiple layout variations to choose from.
           </p>
         </div>
       </section>
 
-      {/* Wireframe Cards */}
+      {/* Wireframe Sections */}
       <section className="py-12 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid md:grid-cols-3 gap-8">
-            {wireframeOptions.map((option) => (
-              <Card
-                key={option.id}
-                variant="elevated"
-                padding="none"
-                className="overflow-hidden hover:shadow-xl transition-shadow duration-300"
-              >
-                {/* Preview Area */}
-                <div
-                  className="h-64 bg-[--color-bg-tertiary] border-b border-[--color-border-primary] flex items-center justify-center cursor-pointer hover:bg-[--color-bg-secondary] transition-colors"
-                  onClick={() => openWireframe(option.file)}
+        <div className="max-w-5xl mx-auto">
+          <div className="space-y-4">
+            {wireframeSections.map((section) => {
+              const status = statusConfig[section.status];
+              const isClickable = section.status !== "planned";
+
+              return (
+                <Link
+                  key={section.id}
+                  href={isClickable ? section.href : "#"}
+                  className={`block ${!isClickable ? "pointer-events-none" : ""}`}
                 >
-                  <div className="text-center p-6">
-                    <div className="w-16 h-16 mx-auto mb-4 rounded-xl bg-[--color-bg-secondary] flex items-center justify-center">
-                      <svg className="w-8 h-8 text-[--color-brand]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 17V7m0 10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h2a2 2 0 012 2m0 10a2 2 0 002 2h2a2 2 0 002-2M9 7a2 2 0 012-2h2a2 2 0 012 2m0 10V7m0 10a2 2 0 002 2h2a2 2 0 002-2V7a2 2 0 00-2-2h-2a2 2 0 00-2 2" />
-                      </svg>
-                    </div>
-                    <p className="text-[--color-text-tertiary] text-sm">Click to view wireframe</p>
-                  </div>
-                </div>
-
-                {/* Content */}
-                <div className="p-6">
-                  <div className="flex items-center gap-2 mb-3">
-                    <Badge variant={option.badgeVariant}>{option.badge}</Badge>
-                    <span className="text-[--color-text-tertiary] text-sm">Option {option.id}</span>
-                  </div>
-
-                  <h3 className="text-xl font-semibold text-[--color-text-primary] mb-2">
-                    {option.title}
-                  </h3>
-                  <p className="text-[--color-text-secondary] text-sm mb-4">
-                    {option.description}
-                  </p>
-
-                  {/* Features */}
-                  <div className="mb-4">
-                    <h4 className="text-xs font-semibold text-[--color-text-tertiary] uppercase tracking-wider mb-2">
-                      Key Features
-                    </h4>
-                    <ul className="space-y-1">
-                      {option.features.map((feature, idx) => (
-                        <li key={idx} className="text-sm text-[--color-text-secondary] flex items-center gap-2">
-                          <svg className="w-4 h-4 text-[--color-green] flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                          </svg>
-                          {feature}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  {/* New Components */}
-                  <div className="mb-6">
-                    <h4 className="text-xs font-semibold text-[--color-text-tertiary] uppercase tracking-wider mb-2">
-                      New Components Needed
-                    </h4>
-                    <div className="flex flex-wrap gap-2">
-                      {option.newComponents.map((comp, idx) => (
-                        <span
-                          key={idx}
-                          className="px-2 py-1 text-xs bg-[--color-orange]/10 text-[--color-orange] rounded-md"
-                        >
-                          {comp}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Action Button */}
-                  <Button
-                    variant="secondary"
-                    fullWidth
-                    onClick={() => openWireframe(option.file)}
+                  <Card
+                    variant="elevated"
+                    padding="none"
+                    className={`overflow-hidden transition-all duration-300 ${
+                      isClickable
+                        ? "hover:shadow-xl hover:border-[--color-brand] cursor-pointer"
+                        : "opacity-60"
+                    }`}
                   >
-                    <svg className="w-4 h-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                    </svg>
-                    Open Wireframe
-                  </Button>
-                </div>
-              </Card>
-            ))}
+                    <div className="p-6 flex items-center gap-6">
+                      {/* Icon */}
+                      <div className={`w-16 h-16 rounded-xl flex items-center justify-center flex-shrink-0 ${
+                        section.status === "complete"
+                          ? "bg-[--color-green]/10 text-[--color-green]"
+                          : section.status === "in-progress"
+                          ? "bg-[--color-orange]/10 text-[--color-orange]"
+                          : "bg-[--color-bg-tertiary] text-[--color-text-tertiary]"
+                      }`}>
+                        {section.icon}
+                      </div>
+
+                      {/* Content */}
+                      <div className="flex-1 min-w-0">
+                        <div className="flex items-center gap-3 mb-1">
+                          <h3 className="text-xl font-semibold text-[--color-text-primary]">
+                            {section.title}
+                          </h3>
+                          <Badge variant={status.variant}>{status.label}</Badge>
+                        </div>
+                        <p className="text-[--color-text-secondary] text-sm">
+                          {section.description}
+                        </p>
+                        {section.optionsCount > 0 && (
+                          <p className="text-[--color-text-tertiary] text-xs mt-2">
+                            {section.optionsCount} layout options available
+                          </p>
+                        )}
+                      </div>
+
+                      {/* Arrow */}
+                      {isClickable && (
+                        <div className="flex-shrink-0 text-[--color-text-tertiary]">
+                          <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                          </svg>
+                        </div>
+                      )}
+                    </div>
+                  </Card>
+                </Link>
+              );
+            })}
           </div>
         </div>
       </section>
 
-      {/* Reusable Components Section */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-[--color-bg-secondary]">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-12">
-            <Badge variant="success" className="mb-4">Existing Components</Badge>
-            <h2 className="text-2xl sm:text-3xl font-bold text-[--color-text-primary] mb-4">
-              Reusable UI Components
-            </h2>
-            <p className="text-[--color-text-secondary] max-w-2xl mx-auto">
-              All three wireframes reuse these existing components from the design system
-            </p>
-          </div>
-
-          <div className="flex flex-wrap justify-center gap-4">
-            {["Navbar", "Footer", "Button", "Badge", "Card"].map((component) => (
-              <div
-                key={component}
-                className="px-4 py-2 bg-[--color-green]/10 text-[--color-green] rounded-lg text-sm font-medium flex items-center gap-2"
-              >
-                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                </svg>
-                {component}
-              </div>
-            ))}
+      {/* Legend */}
+      <section className="py-8 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-5xl mx-auto">
+          <div className="flex flex-wrap justify-center gap-6 text-sm">
+            <div className="flex items-center gap-2">
+              <div className="w-3 h-3 rounded-full bg-[--color-green]"></div>
+              <span className="text-[--color-text-secondary]">Complete - Ready for review</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <div className="w-3 h-3 rounded-full bg-[--color-orange]"></div>
+              <span className="text-[--color-text-secondary]">In Progress - Being designed</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <div className="w-3 h-3 rounded-full bg-[--color-text-tertiary]"></div>
+              <span className="text-[--color-text-secondary]">Planned - Coming soon</span>
+            </div>
           </div>
         </div>
       </section>
