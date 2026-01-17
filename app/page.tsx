@@ -214,18 +214,9 @@ const getUserRecommendedVideos = (): string[] => {
   return stored ? JSON.parse(stored) : [];
 };
 
-// Activity filter mapping to categories
-const activityMapping: Record<string, string[]> = {
-  camping: ["National Parks", "State Forests", "Bush Camping"],
-  hiking: ["Hiking"],
-  beach: ["Great Ocean Road", "Water Activities"],
-  family: ["Holiday Parks", "Family Holidays"],
-};
-
 export default function HomePage() {
   const [selectedVideo, setSelectedVideo] = useState<typeof videoLocations[0] | null>(null);
-  const [videoFilter, setVideoFilter] = useState<"all" | "hasVideo" | "myVideos">("all");
-  const [activityFilter, setActivityFilter] = useState<"all" | "camping" | "hiking" | "beach" | "family">("all");
+  const [categoryFilter, setCategoryFilter] = useState<string | null>(null);
   const [votes, setVotes] = useState<Record<string, number>>({});
   const [userVoted, setUserVoted] = useState<string[]>([]);
   const [communityVideos, setCommunityVideos] = useState<Record<string, CommunityVideo[]>>({});
@@ -352,30 +343,14 @@ export default function HomePage() {
     });
   }, [communityVideos]);
 
-  // Calculate counts for filter badges
-  const totalCount = enrichedLocations.length;
-  const hasVideoCount = enrichedLocations.filter((v) => v.hasVideo || (communityVideos[v.id]?.length > 0)).length;
-  const myVideosCount = enrichedLocations.filter((v) => v.hasVideo).length;
+  // All locations for count display
+  const allLocations = enrichedLocations;
+  const totalCount = allLocations.length;
 
-  // Apply filters
+  // Apply category filter
   const filteredLocations = enrichedLocations.filter((v) => {
-    // Video source filter
-    if (videoFilter === "hasVideo" && !v.hasVideo && !(communityVideos[v.id]?.length > 0)) {
-      return false;
-    }
-    if (videoFilter === "myVideos" && !v.hasVideo) {
-      return false;
-    }
-
-    // Activity filter
-    if (activityFilter !== "all") {
-      const allowedCategories = activityMapping[activityFilter];
-      if (!allowedCategories.includes(v.category)) {
-        return false;
-      }
-    }
-
-    return true;
+    if (categoryFilter === null) return true;
+    return v.category === categoryFilter;
   });
 
   // Sort locations: videos first, then by votes for locations without videos
@@ -430,115 +405,42 @@ export default function HomePage() {
             </p>
           </div>
 
-          {/* Filter Section */}
-          <div className="mb-6 space-y-4 max-w-2xl mx-auto">
-            {/* Video Source Filter */}
-            <div className="bg-[--color-bg-secondary] rounded-xl p-4">
-              <span className="text-xs text-[--color-text-tertiary] block mb-3">Video Source</span>
-              <div className="flex flex-wrap justify-center gap-2">
-                <Button
-                  size="sm"
-                  variant={videoFilter === "all" ? "primary" : "secondary"}
-                  onClick={() => setVideoFilter("all")}
-                  className="rounded-full"
+          {/* Category Filter - Clickable Legend Style */}
+          <div className="mb-6 flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm">
+            {/* All option */}
+            <button
+              onClick={() => setCategoryFilter(null)}
+              className={`flex items-center gap-2 px-2 py-1 rounded-lg transition-all ${
+                categoryFilter === null
+                  ? "bg-[--color-bg-tertiary] text-[--color-text-primary]"
+                  : "text-[--color-text-tertiary] hover:text-[--color-text-secondary]"
+              }`}
+            >
+              <span className="w-3 h-3 rounded-full bg-gradient-to-r from-[--color-green] to-[--color-brand]" />
+              <span>All ({totalCount})</span>
+            </button>
+            {/* Category options */}
+            {Object.entries(categoryColors).map(([category, color]) => {
+              const count = allLocations.filter(loc => loc.category === category).length;
+              const isActive = categoryFilter === category;
+              return (
+                <button
+                  key={category}
+                  onClick={() => setCategoryFilter(isActive ? null : category)}
+                  className={`flex items-center gap-2 px-2 py-1 rounded-lg transition-all ${
+                    isActive
+                      ? "bg-[--color-bg-tertiary] text-[--color-text-primary]"
+                      : "text-[--color-text-tertiary] hover:text-[--color-text-secondary]"
+                  }`}
                 >
-                  All ({totalCount})
-                </Button>
-                <Button
-                  size="sm"
-                  variant={videoFilter === "hasVideo" ? "primary" : "secondary"}
-                  onClick={() => setVideoFilter("hasVideo")}
-                  className="rounded-full"
-                  leftIcon={
-                    <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M8 5v14l11-7z" />
-                    </svg>
-                  }
-                >
-                  Has Video ({hasVideoCount})
-                </Button>
-                <Button
-                  size="sm"
-                  variant={videoFilter === "myVideos" ? "primary" : "secondary"}
-                  onClick={() => setVideoFilter("myVideos")}
-                  className={`rounded-full ${videoFilter === "myVideos" ? "bg-[#FF0000] hover:bg-[#CC0000]" : ""}`}
-                  leftIcon={
-                    <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
-                    </svg>
-                  }
-                >
-                  My Videos ({myVideosCount})
-                </Button>
-              </div>
-            </div>
-
-            {/* Activity Filter */}
-            <div className="bg-[--color-bg-secondary] rounded-xl p-4">
-              <span className="text-xs text-[--color-text-tertiary] block mb-3">Activity</span>
-              <div className="flex flex-wrap justify-center gap-2">
-                <Button
-                  size="sm"
-                  variant={activityFilter === "all" ? "primary" : "secondary"}
-                  onClick={() => setActivityFilter("all")}
-                  className="rounded-full text-xs px-3 py-1.5"
-                >
-                  All
-                </Button>
-                <Button
-                  size="sm"
-                  variant={activityFilter === "camping" ? "primary" : "secondary"}
-                  onClick={() => setActivityFilter("camping")}
-                  className={`rounded-full text-xs px-3 py-1.5 ${activityFilter === "camping" ? "bg-[--color-green] hover:bg-[--color-green]" : ""}`}
-                  leftIcon={
-                    <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M12 2L2 22h20L12 2z" />
-                    </svg>
-                  }
-                >
-                  Camping
-                </Button>
-                <Button
-                  size="sm"
-                  variant={activityFilter === "hiking" ? "primary" : "secondary"}
-                  onClick={() => setActivityFilter("hiking")}
-                  className={`rounded-full text-xs px-3 py-1.5 ${activityFilter === "hiking" ? "bg-[--color-yellow] hover:bg-[--color-yellow] text-black" : ""}`}
-                  leftIcon={
-                    <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
-                    </svg>
-                  }
-                >
-                  Hiking
-                </Button>
-                <Button
-                  size="sm"
-                  variant={activityFilter === "beach" ? "primary" : "secondary"}
-                  onClick={() => setActivityFilter("beach")}
-                  className={`rounded-full text-xs px-3 py-1.5 ${activityFilter === "beach" ? "bg-[--color-blue] hover:bg-[--color-blue]" : ""}`}
-                  leftIcon={
-                    <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M20.893 13.393l-1.135-1.135a2.252 2.252 0 01-.421-.585l-1.08-2.16a.414.414 0 00-.663-.107.827.827 0 01-.812.21l-1.273-.363a.89.89 0 00-.738 1.595l.587.39c.59.395.674 1.23.172 1.732l-.2.2c-.212.212-.33.498-.33.796v.41c0 .409-.11.809-.32 1.158l-1.315 2.191a2.11 2.11 0 01-1.81 1.025 1.055 1.055 0 01-1.055-1.055v-1.172c0-.92-.56-1.747-1.414-2.089l-.655-.261a2.25 2.25 0 01-1.383-2.46l.007-.042a2.25 2.25 0 01.29-.787l.09-.15a2.25 2.25 0 012.37-1.048l1.178.236a1.125 1.125 0 001.302-.795l.208-.73a1.125 1.125 0 00-.578-1.315l-.665-.332-.091.091a2.25 2.25 0 01-1.591.659h-.18c-.249 0-.487.1-.662.274a.931.931 0 01-1.458-1.137l1.411-2.353a2.25 2.25 0 00.286-.76m11.928 9.869A9 9 0 008.965 3.525m11.928 9.868A9 9 0 118.965 3.525" />
-                    </svg>
-                  }
-                >
-                  Beach
-                </Button>
-                <Button
-                  size="sm"
-                  variant={activityFilter === "family" ? "primary" : "secondary"}
-                  onClick={() => setActivityFilter("family")}
-                  className={`rounded-full text-xs px-3 py-1.5 ${activityFilter === "family" ? "bg-[--color-orange] hover:bg-[--color-orange]" : ""}`}
-                  leftIcon={
-                    <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z" />
-                    </svg>
-                  }
-                >
-                  Family
-                </Button>
-              </div>
-            </div>
+                  <span
+                    className={`w-3 h-3 rounded-full transition-transform ${isActive ? "scale-125" : ""}`}
+                    style={{ backgroundColor: color }}
+                  />
+                  <span>{category}</span>
+                </button>
+              );
+            })}
           </div>
 
           {/* Fullscreen Map Overlay */}
@@ -588,18 +490,6 @@ export default function HomePage() {
             </div>
           </div>
 
-          {/* Legend */}
-          <div className="mt-6 flex flex-wrap justify-center gap-4 text-sm">
-            {Object.keys(categoryColors).map((category) => (
-              <div key={`legend-${category}`} className="flex items-center gap-2">
-                <span
-                  className="w-3 h-3 rounded-full"
-                  style={{ backgroundColor: categoryColors[category] }}
-                />
-                <span className="text-[--color-text-tertiary]">{category}</span>
-              </div>
-            ))}
-          </div>
         </div>
       </section>
 
@@ -947,33 +837,8 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto">
           <h2 className="text-2xl font-bold text-[--color-text-primary] mb-6">
             {(() => {
-              // Build dynamic title based on filters
-              const activityLabels: Record<string, string> = {
-                all: "",
-                camping: "Camping",
-                hiking: "Hiking",
-                beach: "Beach",
-                family: "Family",
-              };
-              const videoLabels: Record<string, string> = {
-                all: "",
-                hasVideo: "with Videos",
-                myVideos: "My Videos",
-              };
-
-              const activity = activityLabels[activityFilter];
-              const video = videoLabels[videoFilter];
-
-              if (videoFilter === "myVideos") {
-                // "My Videos" or "My Hiking Videos"
-                return activity ? `My ${activity} Videos` : "My Videos";
-              } else if (videoFilter === "hasVideo") {
-                // "Camping Locations with Videos" or "All Locations with Videos"
-                return activity ? `${activity} Locations with Videos` : "All Locations with Videos";
-              } else {
-                // "Camping Locations" or "All Camping Locations"
-                return activity ? `${activity} Locations` : "All Camping Locations";
-              }
+              // Build dynamic title based on category filter
+              return categoryFilter ? categoryFilter : "All Locations";
             })()} ({sortedLocations.length})
           </h2>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
