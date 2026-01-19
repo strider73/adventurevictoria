@@ -1,5 +1,7 @@
 pipeline {
-    agent any
+    agent {
+        label 'jenkins-agent3'
+    }
 
     stages {
         stage('Pull Code') {
