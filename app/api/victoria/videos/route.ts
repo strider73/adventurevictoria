@@ -5,7 +5,7 @@ export async function GET() {
   try {
     const db = await getDatabase();
     const videos = await db
-      .collection("victoria_videos")
+      .collection("chris_video")
       .find({})
       .toArray();
 
