@@ -3,9 +3,17 @@
 import { useState, useMemo, useEffect } from "react";
 import { Navbar, Footer, SocialIcons, Button, Badge, NotificationBadge } from "@/components/ui";
 import dynamic from "next/dynamic";
-import koreaVideoData from "@/data/korea-travel-video.json";
-import koreaCommunityVideoData from "@/data/korea-community-videos.json";
 import type { KoreaVideo } from "./MapComponent";
+
+interface KoreaCommunityVideoEntry {
+  campingSiteId: string;
+  locationName?: string;
+  videos: Array<{
+    videoId: string;
+    title: string;
+    channelName: string;
+  }>;
+}
 
 // Type for community video submissions
 interface CommunityVideo {
@@ -17,9 +25,9 @@ interface CommunityVideo {
 }
 
 // Convert pre-loaded community videos to the CommunityVideo format
-const getPreloadedCommunityVideos = (): Record<string, CommunityVideo[]> => {
+const getPreloadedCommunityVideos = (communityVideoData: KoreaCommunityVideoEntry[]): Record<string, CommunityVideo[]> => {
   const preloaded: Record<string, CommunityVideo[]> = {};
-  koreaCommunityVideoData.communityVideos.forEach((location) => {
+  communityVideoData.forEach((location) => {
     preloaded[location.campingSiteId] = location.videos
       .filter((v) => v.videoId.length === 11) // Only include valid YouTube IDs (11 chars)
       .map((v) => ({
@@ -34,8 +42,8 @@ const getPreloadedCommunityVideos = (): Record<string, CommunityVideo[]> => {
 };
 
 // Helper to get community videos from localStorage and merge with preloaded
-const getCommunityVideos = (): Record<string, CommunityVideo[]> => {
-  const preloaded = getPreloadedCommunityVideos();
+const getCommunityVideos = (communityVideoData: KoreaCommunityVideoEntry[]): Record<string, CommunityVideo[]> => {
+  const preloaded = getPreloadedCommunityVideos(communityVideoData);
   if (typeof window === "undefined") return preloaded;
 
   const stored = localStorage.getItem("koreaMapCommunityVideos");
@@ -236,6 +244,8 @@ const categoryIcons: Record<string, React.ReactNode> = {
 };
 
 export default function MapKoreaPage() {
+  const [videos, setVideos] = useState<KoreaVideo[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
   const [selectedVideo, setSelectedVideo] = useState<KoreaVideo | null>(null);
   const [categoryFilter, setCategoryFilter] = useState<CategoryType>("all");
   const [communityVideos, setCommunityVideos] = useState<Record<string, CommunityVideo[]>>({});
@@ -252,9 +262,28 @@ export default function MapKoreaPage() {
     setIsFullscreen(!isFullscreen);
   };
 
-  // Load community videos and recommendations from localStorage on mount
+  // Fetch data from API routes on mount
   useEffect(() => {
-    setCommunityVideos(getCommunityVideos());
+    async function fetchData() {
+      try {
+        const [videosRes, communityRes] = await Promise.all([
+          fetch("/api/korea/videos"),
+          fetch("/api/korea/community-videos"),
+        ]);
+
+        const videosData: { channel: unknown; videos: KoreaVideo[] } = await videosRes.json();
+        const communityData: { communityVideos: KoreaCommunityVideoEntry[] } = await communityRes.json();
+
+        setVideos(videosData.videos);
+        setCommunityVideos(getCommunityVideos(communityData.communityVideos));
+      } catch (error) {
+        console.error("Failed to fetch data:", error);
+      } finally {
+        setIsLoading(false);
+      }
+    }
+
+    fetchData();
     setVideoRecommendations(getVideoRecommendations());
     setUserRecommendedVideos(getUserRecommendedVideos());
   }, []);
@@ -329,9 +358,6 @@ export default function MapKoreaPage() {
     localStorage.setItem("koreaUserRecommendedVideos", JSON.stringify(newUserRecommended));
   };
 
-  // Load videos from JSON
-  const videos: KoreaVideo[] = koreaVideoData.videos;
-
   // Calculate category counts
   const categoryCounts = useMemo(() => {
     const counts: Record<string, number> = {};
@@ -373,6 +399,17 @@ export default function MapKoreaPage() {
     "Hiking", "Nature", "Beach", "Urban", "Valley", "Temple",
     "Waterfall", "Cultural", "Garden", "International", "Palace", "Trail", "Camping", "Drive"
   ];
+
+  if (isLoading) {
+    return (
+      <div className="min-h-screen bg-[--color-bg-primary] flex items-center justify-center">
+        <div className="text-center">
+          <div className="w-12 h-12 border-4 border-[--color-brand] border-t-transparent rounded-full animate-spin mx-auto mb-4" />
+          <p className="text-[--color-text-secondary]">Loading Korea videos...</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-[--color-bg-primary]">

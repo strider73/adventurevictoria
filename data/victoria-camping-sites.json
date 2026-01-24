@@ -728,10 +728,1081 @@
       "lng": 147.9800,
       "category": "Water Activities",
       "description": "Gateway to Gippsland Lakes system."
+    },
+    {
+      "id": "yarrawonga-common",
+      "title": "Yarrawonga Common",
+      "location": "Yarrawonga Regional Park",
+      "lat": -36.0230,
+      "lng": 145.9780,
+      "category": "Bush Camping",
+      "description": "Free dispersed camping along the Murray River with River Red Gum forests. Pet-friendly with toilet facilities."
+    },
+    {
+      "id": "forges-bend-yarrawonga",
+      "title": "Forges Bend",
+      "location": "Yarrawonga Regional Park",
+      "lat": -36.0350,
+      "lng": 145.9250,
+      "category": "Bush Camping",
+      "description": "Split camp area with two beach access points on the Murray River. Free and pet-friendly with basic toilets."
+    },
+    {
+      "id": "cobram-scotts-beach",
+      "title": "Scotts Beach",
+      "location": "Cobram Regional Park",
+      "lat": -35.9200,
+      "lng": 145.6400,
+      "category": "Water Activities",
+      "description": "Popular free camping on sandy Murray River beach near Cobram. Swimming, fishing, and kayaking."
+    },
+    {
+      "id": "cobram-little-toms",
+      "title": "Little Toms Beach",
+      "location": "Cobram Regional Park",
+      "lat": -35.9100,
+      "lng": 145.6700,
+      "category": "Bush Camping",
+      "description": "Free bush camping on the Murray River just outside Cobram. One of the most popular free camps in the region."
+    },
+    {
+      "id": "lower-ovens-parolas-bend",
+      "title": "Parolas Bend",
+      "location": "Lower Ovens Wildlife Reserve",
+      "lat": -36.0800,
+      "lng": 146.0200,
+      "category": "Bush Camping",
+      "description": "Free bush camping on the Ovens River between Yarrawonga and Corowa. Most accessible site in the reserve."
+    },
+    {
+      "id": "mooroopna-common",
+      "title": "Mooroopna Common",
+      "location": "Shepparton Regional Park",
+      "lat": -36.3900,
+      "lng": 145.3500,
+      "category": "Bush Camping",
+      "description": "Free camping along the Goulburn River Heritage River near Shepparton. River Red Gum woodland setting."
+    },
+    {
+      "id": "nagambie-major-creek",
+      "title": "Major Creek Reserve",
+      "location": "Nagambie Region",
+      "lat": -36.8500,
+      "lng": 145.1000,
+      "category": "Bush Camping",
+      "description": "Free family camping 14km southwest of Nagambie with drop toilets and rainwater access."
+    },
+    {
+      "id": "murchison-goulburn",
+      "title": "Murchison Camping Area",
+      "location": "Goulburn River",
+      "lat": -36.6200,
+      "lng": 145.2100,
+      "category": "Water Activities",
+      "description": "Riverside camping and fishing on the Goulburn River south of Murchison. VFA managed site."
+    },
+    {
+      "id": "dimboola-recreation",
+      "title": "Dimboola Recreation Reserve",
+      "location": "Wimmera River",
+      "lat": -36.4500,
+      "lng": 142.0300,
+      "category": "Bush Camping",
+      "description": "Free camping beside the Wimmera River. Shaded sites near the football ground with dump point nearby."
+    },
+    {
+      "id": "horsham-wimmera-river",
+      "title": "Wimmera River Camping",
+      "location": "Horsham Crown Land",
+      "lat": -36.6900,
+      "lng": 141.9300,
+      "category": "Bush Camping",
+      "description": "Crown land camping on banks of the Wimmera River, 18-29km west of Horsham. Fishing and nature walks."
+    },
+    {
+      "id": "kilcunda-oceanview",
+      "title": "Kilcunda Oceanview",
+      "location": "Kilcunda",
+      "lat": -38.5500,
+      "lng": 145.4800,
+      "category": "Holiday Parks",
+      "description": "Beachfront holiday retreat overlooking Bass Strait between Wonthaggi and San Remo. Ocean view powered sites."
+    },
+    {
+      "id": "cape-paterson-caravan",
+      "title": "Cape Paterson Caravan Park",
+      "location": "Cape Paterson",
+      "lat": -38.6800,
+      "lng": 145.6300,
+      "category": "Holiday Parks",
+      "description": "Family camping near pristine beaches. Close to snorkelling spots for weedy seadragons."
+    },
+    {
+      "id": "powlett-river",
+      "title": "Powlett River Holiday Park",
+      "location": "Dalyston",
+      "lat": -38.5900,
+      "lng": 145.5600,
+      "category": "Holiday Parks",
+      "description": "Tent-based camping near the Powlett River mouth. Peaceful coastal setting on the Bass Coast."
+    },
+    {
+      "id": "glen-cromie",
+      "title": "Glen Cromie Reserve",
+      "location": "Drouin West",
+      "lat": -38.0100,
+      "lng": 145.9500,
+      "category": "Family Holidays",
+      "description": "55-acre Gippsland retreat on the Tarago River with bushwalking and family camping."
+    },
+    {
+      "id": "toorongo-valley",
+      "title": "Toorongo Valley Campground",
+      "location": "Noojee State Forest",
+      "lat": -37.8900,
+      "lng": 146.0400,
+      "category": "State Forests",
+      "description": "Free state forest camping near Noojee with 40 sites. Pet-friendly with hiking and fishing trails."
+    },
+    {
+      "id": "kinglake-the-gums",
+      "title": "The Gums Campground",
+      "location": "Kinglake National Park",
+      "lat": -37.4300,
+      "lng": 145.3400,
+      "category": "National Parks",
+      "description": "18 campsites nestled among tall eucalypts and ferns. Perfect base for exploring Kinglake NP, only 65km from Melbourne."
+    },
+    {
+      "id": "brisbane-ranges-boar-gully",
+      "title": "Boar Gully",
+      "location": "Brisbane Ranges National Park",
+      "lat": -37.7700,
+      "lng": 144.2100,
+      "category": "National Parks",
+      "description": "Remote bush camping with 7 sites in northern Brisbane Ranges. Drop toilets and water tank available."
+    },
+    {
+      "id": "brisbane-ranges-fridays",
+      "title": "Fridays Campground",
+      "location": "Brisbane Ranges National Park",
+      "lat": -37.8200,
+      "lng": 144.2300,
+      "category": "National Parks",
+      "description": "10 campsites near historic ghost town of Steiglitz. Trailhead for the 40km Burchell Trail."
+    },
+    {
+      "id": "marysville-holiday-park",
+      "title": "Marysville Holiday Park",
+      "location": "Marysville",
+      "lat": -37.5100,
+      "lng": 145.7500,
+      "category": "Holiday Parks",
+      "description": "Gateway to Lake Mountain Alpine Resort. Powered and unpowered sites in tall forest setting."
+    },
+    {
+      "id": "narbethong-free-camp",
+      "title": "Narbethong Free Camp",
+      "location": "Marysville State Forest",
+      "lat": -37.5400,
+      "lng": 145.6800,
+      "category": "State Forests",
+      "description": "Free bush camping on Winch Road near Narbethong. Close to Black Spur drive and waterfalls."
+    },
+    {
+      "id": "delatite-arm-reserve",
+      "title": "Delatite Arm Reserve",
+      "location": "Lake Eildon",
+      "lat": -37.2600,
+      "lng": 145.8500,
+      "category": "Bush Camping",
+      "description": "24 free camping sites on Lake Eildon's southern shore. Popular for fishing, swimming, and kayaking."
+    },
+    {
+      "id": "mansfield-holiday-park",
+      "title": "Mansfield Holiday Park",
+      "location": "Mansfield",
+      "lat": -37.0600,
+      "lng": 146.0900,
+      "category": "Holiday Parks",
+      "description": "Gateway to Mt Buller and Lake Eildon. Family park with powered sites and modern amenities."
+    },
+    {
+      "id": "bonnie-doon-caravan",
+      "title": "Bonnie Doon Caravan Park",
+      "location": "Bonnie Doon",
+      "lat": -37.0250,
+      "lng": 145.8700,
+      "category": "Holiday Parks",
+      "description": "Camping with views of Lake Eildon. Close to fishing, boating, and High Country access."
+    },
+    {
+      "id": "beechworth-holiday-park",
+      "title": "Beechworth Holiday Park",
+      "location": "Beechworth",
+      "lat": -36.3600,
+      "lng": 146.6900,
+      "category": "Holiday Parks",
+      "description": "Pet-friendly park near Chiltern-Mt Pilot National Park. Close to historic gold rush town."
+    },
+    {
+      "id": "chiltern-reedy-creek",
+      "title": "Reedy Creek Bush Camp",
+      "location": "Chiltern-Mt Pilot National Park",
+      "lat": -36.3100,
+      "lng": 146.5800,
+      "category": "Bush Camping",
+      "description": "Free bush camping along Reedy Creek in box-ironbark forest. Popular with prospectors and bushwalkers."
+    },
+    {
+      "id": "warby-ovens-wenhams",
+      "title": "Wenhams Camp",
+      "location": "Warby-Ovens National Park",
+      "lat": -36.4800,
+      "lng": 146.0900,
+      "category": "National Parks",
+      "description": "Free camping base for exploring granitic hills walking tracks. Suitable for tents and caravans with toilets and picnic tables."
+    },
+    {
+      "id": "warby-ovens-killawarra",
+      "title": "Killawarra Forest Camp",
+      "location": "Warby-Ovens National Park",
+      "lat": -36.5000,
+      "lng": 146.0500,
+      "category": "National Parks",
+      "description": "Historic WWII internment camp site surrounded by Box-Ironbark woodland. Free camping with fire places."
+    },
+    {
+      "id": "warby-ovens-wilsons-bend",
+      "title": "Wilsons Bend",
+      "location": "Warby-Ovens National Park",
+      "lat": -36.4200,
+      "lng": 146.2500,
+      "category": "National Parks",
+      "description": "Dispersed bush camping along the Ovens River with sandy beaches and river access near Wangaratta."
+    },
+    {
+      "id": "benalla-winton-wetlands",
+      "title": "Winton Wetlands",
+      "location": "Benalla Region",
+      "lat": -36.5800,
+      "lng": 146.1100,
+      "category": "Water Activities",
+      "description": "Camping near Australia's largest wetland restoration project. Birdwatching, fishing, and nature trails."
+    },
+    {
+      "id": "queenscliff-tourist-park",
+      "title": "Queenscliff Tourist Park",
+      "location": "Queenscliff",
+      "lat": -38.2700,
+      "lng": 144.6600,
+      "category": "Holiday Parks",
+      "description": "Beachside camping on the Bellarine Peninsula with ocean view cabins and powered sites."
+    },
+    {
+      "id": "point-lonsdale-royal-park",
+      "title": "Royal Park Campground",
+      "location": "Point Lonsdale",
+      "lat": -38.2900,
+      "lng": 144.6200,
+      "category": "Holiday Parks",
+      "description": "Foreshore camping among Coastal Moonah trees with beach access. Seasonal November to April."
+    },
+    {
+      "id": "barwon-heads-riverside",
+      "title": "Barwon Heads Riverside",
+      "location": "Barwon Heads",
+      "lat": -38.2700,
+      "lng": 144.5100,
+      "category": "Holiday Parks",
+      "description": "220+ unpowered riverside sites near the Bellarine Peninsula. Budget-friendly family camping."
+    },
+    {
+      "id": "torquay-foreshore",
+      "title": "Torquay Foreshore Caravan Park",
+      "location": "Torquay",
+      "lat": -38.3300,
+      "lng": 144.3200,
+      "category": "Great Ocean Road",
+      "description": "Camping at Australia's surfing capital. Start of the Great Ocean Road near Bells Beach."
+    },
+    {
+      "id": "aireys-inlet-holiday",
+      "title": "Aireys Inlet Holiday Park",
+      "location": "Aireys Inlet",
+      "lat": -38.4600,
+      "lng": 144.0900,
+      "category": "Great Ocean Road",
+      "description": "Tent sites on the Great Ocean Road. Close to Split Point Lighthouse and Surf Coast Walk."
+    },
+    {
+      "id": "hammonds-campground",
+      "title": "Hammonds Campground",
+      "location": "Great Otway National Park",
+      "lat": -38.4300,
+      "lng": 144.0500,
+      "category": "National Parks",
+      "description": "Bush camping 12km inland from Aireys Inlet. Kangaroos, walking and mountain biking trails."
+    },
+    {
+      "id": "dargo-mayford",
+      "title": "Mayford Campground",
+      "location": "Dargo River Valley",
+      "lat": -37.2100,
+      "lng": 147.0400,
+      "category": "Bush Camping",
+      "description": "One of the best camping spots in Victorian High Country. Grassy sites beside the Dargo River with mountain views."
+    },
+    {
+      "id": "dargo-high-plains-camp",
+      "title": "Dargo High Plains Camp",
+      "location": "Alpine National Park",
+      "lat": -37.1200,
+      "lng": 147.1300,
+      "category": "National Parks",
+      "description": "Free dispersed camping along the Dargo High Plains Road at 29km from Dargo. Basic amenities with great alpine views."
+    },
+    {
+      "id": "dargo-river-crown",
+      "title": "Dargo River Camping",
+      "location": "Dargo Crown Land",
+      "lat": -37.5000,
+      "lng": 147.2700,
+      "category": "Bush Camping",
+      "description": "Walk-in camping and fishing on the banks of the Dargo River, 8km south of Dargo township."
+    },
+    {
+      "id": "buchan-caves-campground",
+      "title": "Buchan Caves Campground",
+      "location": "Buchan Caves Reserve",
+      "lat": -37.5000,
+      "lng": 148.1700,
+      "category": "National Parks",
+      "description": "41 powered and 20 unpowered sites near limestone caves. Hot showers, laundry, and camp kitchen."
+    },
+    {
+      "id": "native-dog-flat",
+      "title": "Native Dog Flat",
+      "location": "Alpine National Park",
+      "lat": -37.2400,
+      "lng": 148.0300,
+      "category": "National Parks",
+      "description": "Basic alpine camping at 1400m altitude near headwaters of Buchan River. Connects Buchan to Omeo valley."
+    },
+    {
+      "id": "orbost-snowy-river",
+      "title": "Snowy River Rest Area",
+      "location": "Orbost-Marlo Road",
+      "lat": -37.7300,
+      "lng": 148.5200,
+      "category": "Bush Camping",
+      "description": "Free camping along the Snowy River between Orbost and Marlo. Self-sufficient only, no facilities."
+    },
+    {
+      "id": "cann-river-rainforest",
+      "title": "Cann River Rainforest Camp",
+      "location": "Cann River",
+      "lat": -37.5700,
+      "lng": 149.1600,
+      "category": "Bush Camping",
+      "description": "Free grassy campground on river banks surrounded by forest. Loop walk for lyrebird spotting. 72-hour limit."
+    },
+    {
+      "id": "genoa-campground",
+      "title": "Genoa Campground",
+      "location": "Genoa",
+      "lat": -37.4800,
+      "lng": 149.5900,
+      "category": "Bush Camping",
+      "description": "Free community camp with toilet block, BBQ, playground. 10 minutes from NSW border, 20 minutes from Mallacoota."
+    },
+    {
+      "id": "timbarra-east-gippsland",
+      "title": "Timbarra Campground",
+      "location": "Timbarra",
+      "lat": -37.3400,
+      "lng": 148.0100,
+      "category": "State Forests",
+      "description": "Maintained camping sites in the East Gippsland hills, 23km northwest of Buchan. Toilet facilities and firepits."
+    },
+    {
+      "id": "mueller-river",
+      "title": "Mueller River Campground",
+      "location": "Croajingolong National Park",
+      "lat": -37.6800,
+      "lng": 149.3200,
+      "category": "National Parks",
+      "description": "8 campsites on banks of Mueller Inlet. Access via Point Hicks Road off Tamboon Road from Cann River."
+    },
+    {
+      "id": "point-nepean-discovery",
+      "title": "Point Nepean Discovery Tents",
+      "location": "Point Nepean National Park",
+      "lat": -38.4200,
+      "lng": 144.6700,
+      "category": "National Parks",
+      "description": "Unique canvas tent camping in historic Quarantine Station precinct. Timber platforms with stretcher beds. September to April."
+    },
+    {
+      "id": "camperdown-lakes-craters",
+      "title": "Lakes and Craters Holiday Park",
+      "location": "Camperdown",
+      "lat": -38.2300,
+      "lng": 143.1500,
+      "category": "Holiday Parks",
+      "description": "Set on a ridge between Lake Bullen Merri and Lake Gnotuk. Panoramic crater views with powered and unpowered sites."
+    },
+    {
+      "id": "heathcote-graytown-np",
+      "title": "Dargile Campground",
+      "location": "Heathcote-Graytown National Park",
+      "lat": -36.8600,
+      "lng": 144.7800,
+      "category": "National Parks",
+      "description": "Box-ironbark forest camping near Lake Eppalock. Rich birdlife and gold mining history. Free camping."
+    },
+    {
+      "id": "bendigo-larni-yirrip",
+      "title": "Larni Yirrip Camping Village",
+      "location": "Bendigo Regional Park",
+      "lat": -36.7800,
+      "lng": 144.2500,
+      "category": "National Parks",
+      "description": "Dja Dja Wurrung cultural campground in Box Ironbark forest. Shelters, frog ponds, and landscaped trails."
+    },
+    {
+      "id": "waanyarra-dunolly",
+      "title": "Waanyarra Recreation Site",
+      "location": "Dunolly State Forest",
+      "lat": -36.8200,
+      "lng": 143.6700,
+      "category": "State Forests",
+      "description": "Large campground popular for bushwalking and gold prospecting in Dunolly State Forest."
+    },
+    {
+      "id": "aysons-campaspe-river",
+      "title": "Aysons Reserve",
+      "location": "Campaspe River",
+      "lat": -36.7400,
+      "lng": 144.6200,
+      "category": "Water Activities",
+      "description": "Free camping along the Campaspe River, 40 minutes from Bendigo. Swimming, fishing, and birdwatching."
+    },
+    {
+      "id": "creswick-slaty-creek",
+      "title": "Slaty Creek Campground",
+      "location": "Creswick Regional Park",
+      "lat": -37.4200,
+      "lng": 144.1200,
+      "category": "State Forests",
+      "description": "Three bush camping areas along Slaty Creek. Gold panning, birdwatching, and bushwalking. Free, no bookings."
+    },
+    {
+      "id": "enfield-state-park",
+      "title": "Enfield State Park",
+      "location": "Enfield",
+      "lat": -37.6600,
+      "lng": 143.8500,
+      "category": "State Forests",
+      "description": "4,400-hectare state park with multiple camping areas. Dog-friendly with walking, cycling, and 4WD tracks."
+    },
+    {
+      "id": "glenelg-river-moleside",
+      "title": "Moleside Canoe Camp",
+      "location": "Lower Glenelg National Park",
+      "lat": -38.0400,
+      "lng": 141.1200,
+      "category": "Water Activities",
+      "description": "Canoe-access-only camping on the Glenelg River. Part of the 75km canoe trail from Dartmoor to Nelson."
+    },
+    {
+      "id": "glenelg-river-wilson-hall",
+      "title": "Wilson Hall Campground",
+      "location": "Lower Glenelg National Park",
+      "lat": -38.0700,
+      "lng": 141.0100,
+      "category": "National Parks",
+      "description": "12 car-based camping sites on the Glenelg River. Accessible by road in the national park."
+    },
+    {
+      "id": "glenelg-river-forest-camp",
+      "title": "Forest Camp North",
+      "location": "Lower Glenelg National Park",
+      "lat": -38.0300,
+      "lng": 141.0600,
+      "category": "National Parks",
+      "description": "3 car-based camping sites in River Red Gum forest along the Glenelg River."
+    },
+    {
+      "id": "alpine-jb-plain",
+      "title": "JB Plain Camping Area",
+      "location": "Alpine National Park",
+      "lat": -36.9700,
+      "lng": 147.1800,
+      "category": "National Parks",
+      "description": "Walk-in camping between Hotham Village and Dinner Plain. Toilets, picnic tables, and fireplaces. Great for snow camping."
+    },
+    {
+      "id": "alpine-buckety-plain",
+      "title": "Buckety Plain",
+      "location": "Alpine National Park",
+      "lat": -36.8900,
+      "lng": 147.3100,
+      "category": "National Parks",
+      "description": "Bogong High Plains camping east of Falls Creek. Toilets, picnic tables, and fireplaces provided."
+    },
+    {
+      "id": "alpine-raspberry-hill",
+      "title": "Raspberry Hill",
+      "location": "Alpine National Park",
+      "lat": -36.8700,
+      "lng": 147.3400,
+      "category": "National Parks",
+      "description": "High plains camping with horse yards available. Sub-alpine setting east of Falls Creek."
+    },
+    {
+      "id": "alpine-mountain-creek",
+      "title": "Mountain Creek",
+      "location": "Alpine National Park",
+      "lat": -36.7900,
+      "lng": 147.2200,
+      "category": "National Parks",
+      "description": "Camping at the foot of Mt Bogong near Tawonga. Starting point for Bogong summit walks."
+    },
+    {
+      "id": "alpine-pineapple-flat",
+      "title": "Pineapple Flat",
+      "location": "Alpine National Park",
+      "lat": -37.0500,
+      "lng": 146.5100,
+      "category": "Bush Camping",
+      "description": "Camping beside the King River. Best accessed by 4WD. Popular for horse riding and bush camping."
+    },
+    {
+      "id": "jan-juc-farm-to-sea",
+      "title": "Farm to Sea Camp",
+      "location": "Jan Juc",
+      "lat": -38.3500,
+      "lng": 144.2900,
+      "category": "Great Ocean Road",
+      "description": "50 acres of grassy gum-tree-lined camping with 9 spacious tent and RV sites near Bells Beach."
+    },
+    {
+      "id": "warragul-gardens",
+      "title": "Warragul Gardens Holiday Park",
+      "location": "Warragul",
+      "lat": -38.1600,
+      "lng": 145.9300,
+      "category": "Holiday Parks",
+      "description": "Family holiday park in West Gippsland with BBQ areas, showers, and swimming facilities."
+    },
+    {
+      "id": "discovery-nagambie-lakes",
+      "title": "Discovery Parks Nagambie Lakes",
+      "location": "Nagambie",
+      "lat": -36.7800,
+      "lng": 145.1500,
+      "category": "Holiday Parks",
+      "description": "Gum-tree-filled grounds on Nagambie Lakes. Tent, caravan, and cabin options in the Goulburn Valley wine region."
+    },
+    {
+      "id": "euroa-caravan-park",
+      "title": "Euroa Caravan Park",
+      "location": "Euroa",
+      "lat": -36.7500,
+      "lng": 145.7600,
+      "category": "Holiday Parks",
+      "description": "Caravan park in the Strathbogie Ranges. Quiet stopover between Melbourne and the High Country."
+    },
+    {
+      "id": "wangaratta-ovens-river",
+      "title": "Ovens River Dispersed Camping",
+      "location": "Warby-Ovens National Park",
+      "lat": -36.3600,
+      "lng": 146.3000,
+      "category": "Bush Camping",
+      "description": "Free dispersed camping along the Ovens River near Wangaratta. Sandy beaches, fishing, no facilities."
+    },
+    {
+      "id": "rubicon-kendalls",
+      "title": "Kendalls Campground",
+      "location": "Rubicon State Forest",
+      "lat": -37.3800,
+      "lng": 145.8700,
+      "category": "State Forests",
+      "description": "Forest camping near Rubicon River. Close to historic timber tramway walks and Marysville."
+    },
+    {
+      "id": "lake-mountain-road-camp",
+      "title": "Lake Mountain Road Camp",
+      "location": "Yarra Ranges National Park",
+      "lat": -37.4800,
+      "lng": 145.8100,
+      "category": "State Forests",
+      "description": "Free roadside bush camping along Lake Mountain Road. Gateway to alpine snow play area."
+    },
+    {
+      "id": "jawbone-creek-taggerty",
+      "title": "Jawbone Creek",
+      "location": "Taggerty State Forest",
+      "lat": -37.3400,
+      "lng": 145.7300,
+      "category": "State Forests",
+      "description": "Free bush camping on Jawbone Creek Track near Taggerty. Secluded creek-side setting."
+    },
+    {
+      "id": "big-river-sf-camp",
+      "title": "Big River State Forest Camp",
+      "location": "Big River State Forest",
+      "lat": -37.4300,
+      "lng": 145.9200,
+      "category": "State Forests",
+      "description": "Remote state forest camping in the upper Yarra catchment. Mountain ash forests and fern gullies."
+    },
+    {
+      "id": "goughs-bay-eildon",
+      "title": "Goughs Bay Camping",
+      "location": "Lake Eildon",
+      "lat": -37.1800,
+      "lng": 145.9300,
+      "category": "Water Activities",
+      "description": "Lakeside camping at Goughs Bay on Lake Eildon. Boat ramp access for fishing and water sports."
+    },
+    {
+      "id": "raids-inlet-eildon",
+      "title": "Raids Inlet",
+      "location": "Lake Eildon",
+      "lat": -37.2300,
+      "lng": 145.8400,
+      "category": "Bush Camping",
+      "description": "Free camping on Delatite Plantation Road at Lake Eildon. Bush setting with lake access."
+    },
+    {
+      "id": "hepburn-springs-camp",
+      "title": "Hepburn Springs Camp",
+      "location": "Hepburn Regional Park",
+      "lat": -37.3100,
+      "lng": 144.1400,
+      "category": "State Forests",
+      "description": "Bush camping in the spa country near mineral springs. Walking trails through forest and fern gullies."
+    },
+    {
+      "id": "greater-bendigo-notleys",
+      "title": "Notleys Campground",
+      "location": "Greater Bendigo National Park",
+      "lat": -36.7200,
+      "lng": 144.3500,
+      "category": "National Parks",
+      "description": "Free camping in the Whipstick area of Greater Bendigo NP. Box-ironbark forest with gold mining history."
+    },
+    {
+      "id": "englishs-bridge-campaspe",
+      "title": "Englishs Bridge Reserve",
+      "location": "Campaspe River",
+      "lat": -36.7600,
+      "lng": 144.5800,
+      "category": "Water Activities",
+      "description": "Free streamside camping and swimming on the Campaspe River, 30 minutes from Bendigo."
+    },
+    {
+      "id": "big4-bellarine",
+      "title": "BIG4 Bellarine Holiday Park",
+      "location": "Bellarine Peninsula",
+      "lat": -38.2100,
+      "lng": 144.4200,
+      "category": "Holiday Parks",
+      "description": "Modern park in the heart of the Bellarine Peninsula. Large powered sites with family bathrooms and camp kitchens."
+    },
+    {
+      "id": "wye-river-holiday",
+      "title": "Wye River Foreshore",
+      "location": "Wye River",
+      "lat": -38.6300,
+      "lng": 143.8800,
+      "category": "Great Ocean Road",
+      "description": "Beachside camping in a small coastal village on the Great Ocean Road. Surrounded by Otway rainforest."
+    },
+    {
+      "id": "kennett-river-koalas",
+      "title": "Kennett River Holiday Park",
+      "location": "Kennett River",
+      "lat": -38.6700,
+      "lng": 143.8200,
+      "category": "Great Ocean Road",
+      "description": "Camping in a koala hotspot on the Great Ocean Road. Walking trails to Grey River and wild koala colonies."
+    },
+    {
+      "id": "gellibrand-river-camp",
+      "title": "Gellibrand River Camp",
+      "location": "Otway Forest Park",
+      "lat": -38.5200,
+      "lng": 143.5300,
+      "category": "State Forests",
+      "description": "Free riverside camping in the Otway hinterland. Quiet forest setting, walking and mountain biking trails."
+    },
+    {
+      "id": "princetown-recreation",
+      "title": "Princetown Recreation Reserve",
+      "location": "Princetown",
+      "lat": -38.6800,
+      "lng": 143.1700,
+      "category": "Great Ocean Road",
+      "description": "Budget camping near the Twelve Apostles. Walk to the beach along the Gellibrand River."
+    },
+    {
+      "id": "billy-goat-bend",
+      "title": "Billy Goat Bend",
+      "location": "Mitchell River National Park",
+      "lat": -37.7200,
+      "lng": 147.1800,
+      "category": "National Parks",
+      "description": "Free camping in Mitchell River National Park. River swimming, walking trails, and abundant wildlife."
+    },
+    {
+      "id": "licola-riverside",
+      "title": "Licola Riverside Campground",
+      "location": "Licola",
+      "lat": -37.4400,
+      "lng": 146.6300,
+      "category": "Bush Camping",
+      "description": "Free camping on the Macalister River at Licola. Gateway to Alpine National Park and high country 4WD tracks."
+    },
+    {
+      "id": "jamieson-caravan-park",
+      "title": "Jamieson Caravan Park",
+      "location": "Jamieson",
+      "lat": -37.3100,
+      "lng": 146.1500,
+      "category": "Holiday Parks",
+      "description": "River frontage camping in the heart of gold country. Swimming hole, fishing, and historic township."
+    },
+    {
+      "id": "mt-ewen-dargo-sf",
+      "title": "Mount Ewen Campground",
+      "location": "Dargo State Forest",
+      "lat": -37.1800,
+      "lng": 147.1000,
+      "category": "State Forests",
+      "description": "Free bush camping on Dargo High Plains in state forest. Remote and peaceful alpine setting."
+    },
+    {
+      "id": "buckland-valley-sf",
+      "title": "Buckland Valley Camping",
+      "location": "Buckland Valley State Forest",
+      "lat": -36.8200,
+      "lng": 146.8600,
+      "category": "State Forests",
+      "description": "Free riverside camping in the Buckland Valley near Bright. Gold panning and swimming in the river."
+    },
+    {
+      "id": "mt-freezeout",
+      "title": "Mount Freezeout",
+      "location": "Alpine National Park",
+      "lat": -37.0200,
+      "lng": 147.2600,
+      "category": "National Parks",
+      "description": "Small picnic and camping area on Dargo High Plains Road, 65km from Dargo. Spectacular alpine views."
+    },
+    {
+      "id": "yackandandah-creek",
+      "title": "Yackandandah Creek Camp",
+      "location": "Yackandandah Creek",
+      "lat": -36.3100,
+      "lng": 146.8400,
+      "category": "Bush Camping",
+      "description": "Bush camping with campgrounds and toilets along Yackandandah Creek. Gold mining heritage area."
+    },
+    {
+      "id": "woolshed-falls-beechworth",
+      "title": "Woolshed Falls Area",
+      "location": "Beechworth Heritage Area",
+      "lat": -36.3400,
+      "lng": 146.7200,
+      "category": "Hiking",
+      "description": "Day-use and nearby camping area at historic Woolshed Falls. 6km walking track links to Beechworth via the Gorge."
+    },
+    {
+      "id": "tin-hut-track",
+      "title": "Tin Hut Track",
+      "location": "Tonimbuk State Forest",
+      "lat": -37.9400,
+      "lng": 145.7300,
+      "category": "State Forests",
+      "description": "Free bush camping with toilets and water. Walking, fishing, and 4WD trails in West Gippsland."
+    },
+    {
+      "id": "lake-bullen-merri",
+      "title": "Lake Bullen Merri",
+      "location": "Camperdown",
+      "lat": -38.2200,
+      "lng": 143.1600,
+      "category": "Water Activities",
+      "description": "Volcanic crater lake ideal for fishing and kayaking. Chinook salmon and brown trout. Foreshore access."
+    },
+    {
+      "id": "tower-hill-reserve",
+      "title": "Tower Hill Wildlife Reserve",
+      "location": "Tower Hill",
+      "lat": -38.3200,
+      "lng": 142.3600,
+      "category": "National Parks",
+      "description": "Day-use wildlife reserve in extinct volcanic crater. Emus, kangaroos, and koalas. Nearby camping at Koroit."
+    },
+    {
+      "id": "koroit-tower-hill",
+      "title": "Koroit Caravan Park",
+      "location": "Koroit",
+      "lat": -38.2900,
+      "lng": 142.3600,
+      "category": "Holiday Parks",
+      "description": "Family camping near Tower Hill Wildlife Reserve. Close to beaches and whale watching at Port Fairy."
+    },
+    {
+      "id": "cobram-thompsons-beach",
+      "title": "Thompsons Beach",
+      "location": "Cobram Regional Park",
+      "lat": -35.9300,
+      "lng": 145.6100,
+      "category": "Water Activities",
+      "description": "Sandy Murray River beach camping west of Cobram. Free with no facilities, great for swimming."
+    },
+    {
+      "id": "corowa-bangerang-park",
+      "title": "Bangerang Park",
+      "location": "Corowa",
+      "lat": -36.0300,
+      "lng": 146.3900,
+      "category": "Holiday Parks",
+      "description": "Riverfront holiday park on the Murray River at Corowa. Swimming, fishing, and water skiing."
+    },
+    {
+      "id": "bright-cherry-ave",
+      "title": "Cherry Avenue Camping",
+      "location": "Bright",
+      "lat": -36.7300,
+      "lng": 146.9400,
+      "category": "Bush Camping",
+      "description": "Free camping along Cherry Avenue beside the Ovens River in Bright. Walking distance to town."
+    },
+    {
+      "id": "harrietville-pioneer-park",
+      "title": "Pioneer Park Camping",
+      "location": "Harrietville",
+      "lat": -36.8900,
+      "lng": 147.0600,
+      "category": "Bush Camping",
+      "description": "Free camping beside the Ovens River in Harrietville. Gateway to Mt Feathertop and Razor Viking Range."
+    },
+    {
+      "id": "mount-beauty-tawonga",
+      "title": "Mount Beauty Holiday Park",
+      "location": "Mount Beauty",
+      "lat": -36.7400,
+      "lng": 147.1700,
+      "category": "Holiday Parks",
+      "description": "Base camp for Falls Creek and Mt Bogong. Powered sites with mountain views in Kiewa Valley."
+    },
+    {
+      "id": "myrtleford-happy-valley",
+      "title": "Happy Valley Free Camp",
+      "location": "Myrtleford",
+      "lat": -36.7600,
+      "lng": 146.7200,
+      "category": "Bush Camping",
+      "description": "Free camping along the Ovens River near Myrtleford. Shaded riverside sites in the Alpine valleys."
+    },
+    {
+      "id": "dinner-plain-camping",
+      "title": "Dinner Plain Camping",
+      "location": "Dinner Plain",
+      "lat": -37.0300,
+      "lng": 147.2500,
+      "category": "National Parks",
+      "description": "Alpine village camping near Mt Hotham. Access to cross-country trails and high country huts."
+    },
+    {
+      "id": "omeo-bush-camp",
+      "title": "Omeo Bush Camp",
+      "location": "Omeo",
+      "lat": -37.1000,
+      "lng": 147.5900,
+      "category": "Bush Camping",
+      "description": "Free camping near historic Omeo township. Gateway to Bogong High Plains and Great Alpine Road."
+    },
+    {
+      "id": "marlo-free-camp",
+      "title": "Marlo Free Camp",
+      "location": "Marlo",
+      "lat": -37.7900,
+      "lng": 148.5400,
+      "category": "Bush Camping",
+      "description": "Free camping where the Snowy River meets the sea. Fishing, surfing, and estuary walks."
+    },
+    {
+      "id": "cape-conran-banksia-bluff",
+      "title": "Banksia Bluff Campground",
+      "location": "Cape Conran Coastal Park",
+      "lat": -37.8100,
+      "lng": 148.7300,
+      "category": "National Parks",
+      "description": "Coastal camping in banksia woodland. Direct beach access, nature walks, and fishing at Cape Conran."
+    },
+    {
+      "id": "bemm-river-camp",
+      "title": "Bemm River Campground",
+      "location": "Bemm River",
+      "lat": -37.6600,
+      "lng": 148.9700,
+      "category": "Bush Camping",
+      "description": "Free camping near Sydenham Inlet. Fishing, canoeing, and bushwalking in East Gippsland."
+    },
+    {
+      "id": "lind-np-euchre-valley",
+      "title": "Euchre Valley Campground",
+      "location": "Lind National Park",
+      "lat": -37.5800,
+      "lng": 148.9900,
+      "category": "National Parks",
+      "description": "Warm temperate rainforest camping in Lind National Park. Rare ferns and ancient forest near Cann River."
+    },
+    {
+      "id": "coopracambra-beehive-creek",
+      "title": "Beehive Creek Falls",
+      "location": "Coopracambra National Park",
+      "lat": -37.3500,
+      "lng": 149.4200,
+      "category": "National Parks",
+      "description": "Remote bush camping in far East Gippsland wilderness. Waterfall walks and pristine forest."
+    },
+    {
+      "id": "nelson-rivervu",
+      "title": "Nelson Rivervu Holiday Park",
+      "location": "Nelson",
+      "lat": -38.0100,
+      "lng": 141.0100,
+      "category": "Holiday Parks",
+      "description": "Camping on the Glenelg River at Nelson. Base for river canoeing and Princess Margaret Rose Cave."
+    },
+    {
+      "id": "dartmoor-camping",
+      "title": "Dartmoor Camping Ground",
+      "location": "Dartmoor",
+      "lat": -37.9200,
+      "lng": 141.2700,
+      "category": "Bush Camping",
+      "description": "Start point for the 75km Glenelg River Canoe Trail. Free riverside camping with basic facilities."
+    },
+    {
+      "id": "lake-wartook",
+      "title": "Lake Wartook",
+      "location": "Grampians Region",
+      "lat": -37.1600,
+      "lng": 142.3700,
+      "category": "Water Activities",
+      "description": "Lakeside camping near the northern Grampians. Fishing, walking, and scenic mountain views."
+    },
+    {
+      "id": "grampians-zumsteins",
+      "title": "Zumsteins Campground",
+      "location": "Grampians National Park",
+      "lat": -37.2000,
+      "lng": 142.3900,
+      "category": "National Parks",
+      "description": "Camping at MacKenzie Falls precinct. Close to Victoria's largest waterfall and wildflower walks."
+    },
+    {
+      "id": "lake-fyans-holiday",
+      "title": "Lake Fyans Holiday Park",
+      "location": "Lake Fyans",
+      "lat": -37.1900,
+      "lng": 142.5900,
+      "category": "Holiday Parks",
+      "description": "Lakefront camping near Halls Gap in the Grampians. Swimming, fishing, and water sports."
+    },
+    {
+      "id": "macedon-ranges-hanging-rock",
+      "title": "Hanging Rock Camping",
+      "location": "Hanging Rock Reserve",
+      "lat": -37.3300,
+      "lng": 144.5800,
+      "category": "Family Holidays",
+      "description": "Camping at iconic Hanging Rock formation. Night walks, wildlife spotting, and scenic picnicking."
+    },
+    {
+      "id": "trentham-falls-camp",
+      "title": "Trentham Falls Camp",
+      "location": "Trentham State Forest",
+      "lat": -37.3900,
+      "lng": 144.2800,
+      "category": "State Forests",
+      "description": "Bush camping near Trentham Falls, the longest single-drop waterfall in Victoria. Forest walks and wildlife."
+    },
+    {
+      "id": "wilsons-prom-stockyard",
+      "title": "Stockyard Camp",
+      "location": "Wilsons Promontory National Park",
+      "lat": -38.9600,
+      "lng": 146.3700,
+      "category": "Hiking",
+      "description": "Hike-in camping on the Wilsons Prom northern circuit. Remote bush setting on the Prom's eastern side."
+    },
+    {
+      "id": "wilsons-prom-refuge-cove",
+      "title": "Refuge Cove",
+      "location": "Wilsons Promontory National Park",
+      "lat": -39.0700,
+      "lng": 146.4500,
+      "category": "Hiking",
+      "description": "Remote hike-in beach camping on Prom's east coast. Stunning white sand cove surrounded by granite headlands."
+    },
+    {
+      "id": "wilsons-prom-waterloo-bay",
+      "title": "Waterloo Bay",
+      "location": "Wilsons Promontory National Park",
+      "lat": -39.0900,
+      "lng": 146.4300,
+      "category": "Hiking",
+      "description": "Secluded hike-in camping near Refuge Cove. Pristine beach with excellent snorkelling and fishing."
+    },
+    {
+      "id": "bunyip-tonimbuk",
+      "title": "Tonimbuk Camp",
+      "location": "Bunyip State Park",
+      "lat": -37.9500,
+      "lng": 145.7200,
+      "category": "State Forests",
+      "description": "Free camping in the Bunyip River corridor. 4WD access with walking trails and fishing."
+    },
+    {
+      "id": "strathbogie-ranges-camp",
+      "title": "Strathbogie Ranges Camp",
+      "location": "Strathbogie State Forest",
+      "lat": -36.8100,
+      "lng": 145.8200,
+      "category": "State Forests",
+      "description": "Free bush camping in moss-covered forest with waterfalls. Seven Creeks area near Euroa."
+    },
+    {
+      "id": "shepparton-victoria-lake",
+      "title": "Victoria Lake Holiday Park",
+      "location": "Shepparton",
+      "lat": -36.3800,
+      "lng": 145.3900,
+      "category": "Holiday Parks",
+      "description": "Parklands setting on the Goulburn River in Shepparton. Powered sites and cabin accommodation."
+    },
+    {
+      "id": "seymour-goulburn-river",
+      "title": "Seymour Goulburn River Camp",
+      "location": "Seymour",
+      "lat": -37.0300,
+      "lng": 145.1400,
+      "category": "Water Activities",
+      "description": "Riverside camping at Seymour on the Goulburn River. Fishing, swimming, and canoeing."
     }
   ],
   "metadata": {
-    "totalSites": 85,
+    "totalSites": 200,
     "categories": [
       "National Parks",
       "State Forests",
@@ -742,7 +1813,7 @@
       "Water Activities",
       "Bush Camping"
     ],
-    "source": "Parks Victoria, Hipcamp, Visit Victoria",
-    "lastUpdated": "2026-01-11"
+    "source": "Parks Victoria, Hipcamp, Visit Victoria, Camps Australia Wide, East Gippsland Shire",
+    "lastUpdated": "2026-01-24"
   }
 }

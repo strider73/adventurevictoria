@@ -4,10 +4,6 @@ import { useState, useEffect, useMemo } from "react";
 import dynamic from "next/dynamic";
 import { Navbar, Footer, SocialIcons, Button, NotificationBadge } from "@/components/ui";
 
-// Import camping sites data
-import campingData from "@/data/victoria-camping-sites.json";
-import videoData from "@/data/chris-video.json";
-import communityVideoData from "@/data/community-videos.json";
 
 // Dynamic import for Leaflet map (SSR disabled)
 const MapComponent = dynamic(() => import("@/components/map/MapComponent"), {
@@ -37,32 +33,34 @@ interface VideoLocation {
   displayThumbnailId?: string | null;
 }
 
-// Create a map of campingSiteId to video data for quick lookup
-const videosByCampingSiteId = new Map(
-  videoData.videos
-    .filter((v) => v.campingSiteId)
-    .map((v) => [v.campingSiteId, v])
-);
+interface CampingSite {
+  id: string;
+  title: string;
+  location: string;
+  lat: number;
+  lng: number;
+  category: string;
+  description: string;
+}
 
-// Use camping sites from JSON data, linking with actual YouTube videos where available
-const videoLocations: VideoLocation[] = campingData.campingSites.map((site) => {
-  const linkedVideo = videosByCampingSiteId.get(site.id);
-  return {
-    id: site.id,
-    title: site.title,
-    location: site.location,
-    lat: site.lat,
-    lng: site.lng,
-    category: site.category,
-    description: site.description,
-    // Add YouTube video data if we have a video for this site
-    youtubeId: linkedVideo?.videoId || null,
-    videoTitle: linkedVideo?.title || null,
-    duration: linkedVideo?.duration || null,
-    views: linkedVideo?.views || null,
-    hasVideo: !!linkedVideo,
-  };
-});
+interface Video {
+  id: string;
+  videoId: string;
+  title: string;
+  duration: string;
+  views: number;
+  campingSiteId: string | null;
+}
+
+interface CommunityVideoEntry {
+  campingSiteId: string;
+  videos: Array<{
+    videoId: string;
+    title: string;
+    channelName: string;
+    source?: string;
+  }>;
+}
 
 // Category colors
 const categoryColors: Record<string, string> = {
@@ -151,9 +149,9 @@ interface CommunityVideo {
 }
 
 // Convert pre-loaded community videos to the CommunityVideo format
-const getPreloadedCommunityVideos = (): Record<string, CommunityVideo[]> => {
+const getPreloadedCommunityVideos = (communityVideoData: CommunityVideoEntry[]): Record<string, CommunityVideo[]> => {
   const preloaded: Record<string, CommunityVideo[]> = {};
-  communityVideoData.communityVideos.forEach((location) => {
+  communityVideoData.forEach((location) => {
     preloaded[location.campingSiteId] = location.videos
       .filter((v) => v.videoId.length === 11) // Only include valid YouTube IDs (11 chars)
       .map((v) => ({
@@ -168,8 +166,8 @@ const getPreloadedCommunityVideos = (): Record<string, CommunityVideo[]> => {
 };
 
 // Helper to get community videos from localStorage and merge with preloaded
-const getCommunityVideos = (): Record<string, CommunityVideo[]> => {
-  const preloaded = getPreloadedCommunityVideos();
+const getCommunityVideos = (communityVideoData: CommunityVideoEntry[]): Record<string, CommunityVideo[]> => {
+  const preloaded = getPreloadedCommunityVideos(communityVideoData);
   if (typeof window === "undefined") return preloaded;
 
   const stored = localStorage.getItem("communityVideos");
@@ -215,7 +213,9 @@ const getUserRecommendedVideos = (): string[] => {
 };
 
 export default function HomePage() {
-  const [selectedVideo, setSelectedVideo] = useState<typeof videoLocations[0] | null>(null);
+  const [videoLocations, setVideoLocations] = useState<VideoLocation[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [selectedVideo, setSelectedVideo] = useState<VideoLocation | null>(null);
   const [categoryFilter, setCategoryFilter] = useState<string | null>(null);
   const [votes, setVotes] = useState<Record<string, number>>({});
   const [userVoted, setUserVoted] = useState<string[]>([]);
@@ -233,11 +233,58 @@ export default function HomePage() {
     setIsFullscreen(!isFullscreen);
   };
 
-  // Load votes, community videos, and recommendations from localStorage on mount
+  // Fetch data from API routes on mount
   useEffect(() => {
+    async function fetchData() {
+      try {
+        const [campingRes, videoRes, communityRes] = await Promise.all([
+          fetch("/api/victoria/camping-sites"),
+          fetch("/api/victoria/videos"),
+          fetch("/api/victoria/community-videos"),
+        ]);
+
+        const campingData: { campingSites: CampingSite[] } = await campingRes.json();
+        const videoData: { videos: Video[] } = await videoRes.json();
+        const communityData: { communityVideos: CommunityVideoEntry[] } = await communityRes.json();
+
+        // Create a map of campingSiteId to video data for quick lookup
+        const videosByCampingSiteId = new Map(
+          videoData.videos
+            .filter((v) => v.campingSiteId)
+            .map((v) => [v.campingSiteId, v])
+        );
+
+        // Build video locations from camping sites + linked videos
+        const locations: VideoLocation[] = campingData.campingSites.map((site) => {
+          const linkedVideo = videosByCampingSiteId.get(site.id);
+          return {
+            id: site.id,
+            title: site.title,
+            location: site.location,
+            lat: site.lat,
+            lng: site.lng,
+            category: site.category,
+            description: site.description,
+            youtubeId: linkedVideo?.videoId || null,
+            videoTitle: linkedVideo?.title || null,
+            duration: linkedVideo?.duration || null,
+            views: linkedVideo?.views || null,
+            hasVideo: !!linkedVideo,
+          };
+        });
+
+        setVideoLocations(locations);
+        setCommunityVideos(getCommunityVideos(communityData.communityVideos));
+      } catch (error) {
+        console.error("Failed to fetch data:", error);
+      } finally {
+        setIsLoading(false);
+      }
+    }
+
+    fetchData();
     setVotes(getVotes());
     setUserVoted(getUserVoted());
-    setCommunityVideos(getCommunityVideos());
     setVideoRecommendations(getVideoRecommendations());
     setUserRecommendedVideos(getUserRecommendedVideos());
   }, []);
@@ -364,6 +411,17 @@ export default function HomePage() {
     return 0;
   });
 
+  if (isLoading) {
+    return (
+      <div className="min-h-screen bg-[--color-bg-primary] flex items-center justify-center">
+        <div className="text-center">
+          <div className="w-12 h-12 border-4 border-[--color-brand] border-t-transparent rounded-full animate-spin mx-auto mb-4" />
+          <p className="text-[--color-text-secondary]">Loading camping sites...</p>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen bg-[--color-bg-primary]">
       {/* Navbar */}
@@ -401,7 +459,7 @@ export default function HomePage() {
               Family Camping Adventures Across Victoria
             </p>
             <p className="text-[--color-text-tertiary] max-w-2xl mx-auto">
-              Discover 81 camping spots across Victoria. Click any marker to watch our adventure videos and plan your next family trip.
+              Discover {totalCount} camping spots across Victoria. Click any marker to watch our adventure videos and plan your next family trip.
             </p>
           </div>
 
