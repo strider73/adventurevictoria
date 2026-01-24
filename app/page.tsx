@@ -292,12 +292,12 @@ export default function HomePage() {
     setUserRecommendedVideos(getUserRecommendedVideos());
   }, []);
 
-  // Debounce search query by 300ms
+  // Debounce search query by 2000ms
   useEffect(() => {
     if (searchTimerRef.current) clearTimeout(searchTimerRef.current);
     searchTimerRef.current = setTimeout(() => {
       setDebouncedSearch(searchQuery);
-    }, 300);
+    }, 2000);
     return () => {
       if (searchTimerRef.current) clearTimeout(searchTimerRef.current);
     };
@@ -458,8 +458,98 @@ export default function HomePage() {
 
   return (
     <div className="min-h-screen bg-[--color-bg-primary]">
-      {/* Navbar */}
-      <Navbar
+      {/* Fullscreen Map Overlay */}
+      {isFullscreen && (
+        <div className="fixed inset-0 z-[9999]">
+          {/* Map fills entire screen */}
+          <div className="w-full h-full">
+            <MapComponent
+              key="fullscreen"
+              locations={filteredLocations}
+              onMarkerClick={(video) => setSelectedVideo(video)}
+            />
+          </div>
+
+          {/* Floating category filter - top left */}
+          <div className="absolute top-4 left-14 z-10 flex flex-wrap gap-1.5 max-w-[60%]">
+            <button
+              onClick={() => setCategoryFilter(null)}
+              className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-medium transition-all whitespace-nowrap border-2 border-white shadow-[0_2px_8px_rgba(0,0,0,0.3)] ${
+                categoryFilter === null
+                  ? "bg-white text-black"
+                  : "bg-white text-black hover:bg-gray-100"
+              }`}
+            >
+              <span className="w-2.5 h-2.5 rounded-full bg-gradient-to-r from-[--color-green] to-[--color-brand]" />
+              <span>All</span>
+            </button>
+            {Object.entries(categoryColors).map(([category, color]) => {
+              const isActive = categoryFilter === category;
+              return (
+                <button
+                  key={`fs-${category}`}
+                  onClick={() => setCategoryFilter(isActive ? null : category)}
+                  className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-medium transition-all whitespace-nowrap border-2 border-white shadow-[0_2px_8px_rgba(0,0,0,0.3)] ${
+                    isActive
+                      ? "bg-gray-100 text-black"
+                      : "bg-white text-black hover:bg-gray-100"
+                  }`}
+                >
+                  <span
+                    className={`w-2.5 h-2.5 rounded-full transition-transform ${isActive ? "scale-125" : ""}`}
+                    style={{ backgroundColor: color }}
+                  />
+                  <span>{category}</span>
+                </button>
+              );
+            })}
+          </div>
+
+          {/* Floating search input - top right */}
+          <div className="absolute top-4 right-14 z-10 w-56">
+            <svg
+              className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[--color-text-tertiary]"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              strokeWidth={2}
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            </svg>
+            <input
+              type="text"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              placeholder="Search..."
+              className="w-full pl-10 pr-9 py-2 bg-white border-2 border-white rounded-lg text-sm text-black placeholder:text-gray-400 focus:outline-none focus:border-[--color-brand] shadow-[0_2px_8px_rgba(0,0,0,0.3)] transition-colors"
+            />
+            {searchQuery && (
+              <button
+                onClick={() => setSearchQuery("")}
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-[--color-text-tertiary] hover:text-[--color-text-secondary] transition-colors"
+              >
+                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            )}
+          </div>
+
+          {/* Floating close button - top right corner */}
+          <button
+            onClick={toggleFullscreen}
+            className="absolute top-4 right-4 z-10 p-2 bg-[--color-bg-primary] hover:bg-[--color-bg-secondary] rounded-lg border-2 border-white shadow-[0_2px_8px_rgba(0,0,0,0.3)] transition-colors"
+            title="Exit fullscreen"
+          >
+            <svg className="w-5 h-5 text-[--color-text-primary]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+      )}
+
+      {/* Navbar - hidden in fullscreen mode */}
+      {!isFullscreen && <Navbar
         logo={
           <div className="w-10 h-10 rounded-[--radius-lg] bg-gradient-to-br from-[--color-green] to-[--color-brand] flex items-center justify-center text-white">
             <CampingLogo />
@@ -479,7 +569,7 @@ export default function HomePage() {
           </a>
         }
         sticky
-      />
+      />}
 
       {/* Hero Map Section */}
       <section className="py-12 px-4 sm:px-6 lg:px-8">
@@ -564,31 +654,6 @@ export default function HomePage() {
               </button>
             )}
           </div>
-
-          {/* Fullscreen Map Overlay */}
-          {isFullscreen && (
-            <div className="fixed inset-0 z-[9999] bg-[--color-bg-primary]">
-              {/* Close button */}
-              <button
-                onClick={toggleFullscreen}
-                className="absolute top-4 right-4 z-10 p-3 bg-[--color-bg-secondary] hover:bg-[--color-bg-tertiary] rounded-full border border-[--color-border-primary] transition-colors shadow-lg"
-                title="Exit fullscreen"
-              >
-                <svg className="w-6 h-6 text-[--color-text-primary]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-                </svg>
-              </button>
-
-              {/* Fullscreen Map */}
-              <div className="w-full h-full">
-                <MapComponent
-                  key="fullscreen"
-                  locations={filteredLocations}
-                  onMarkerClick={(video) => setSelectedVideo(video)}
-                />
-              </div>
-            </div>
-          )}
 
           {/* Interactive Map Container - Using Leaflet with OpenStreetMap (normal mode) */}
           <div className="relative rounded-2xl overflow-hidden border border-[--color-border-primary]">

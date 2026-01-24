@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useEffect, useMemo } from "react";
 import { MapContainer, TileLayer, Marker, Tooltip } from "react-leaflet";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
@@ -80,6 +81,28 @@ export default function MapComponent({
   center = [-37.4, 145.5], // Victoria center coordinates by default
   zoom = 7
 }: MapComponentProps) {
+  const [visibleIndices, setVisibleIndices] = useState<Set<number>>(new Set());
+
+  // Generate randomized delays for staggered pop-in animation
+  const delays = useMemo(() => {
+    return locations.map(() => Math.random() * 1500); // Random delay 0-1500ms
+  }, [locations.length]);
+
+  // Stagger marker appearance with random delays
+  useEffect(() => {
+    setVisibleIndices(new Set());
+    const timers: NodeJS.Timeout[] = [];
+
+    locations.forEach((_, index) => {
+      const timer = setTimeout(() => {
+        setVisibleIndices((prev) => new Set([...prev, index]));
+      }, delays[index]);
+      timers.push(timer);
+    });
+
+    return () => timers.forEach(clearTimeout);
+  }, [locations, delays]);
+
   return (
     <MapContainer
       center={center}
@@ -95,6 +118,7 @@ export default function MapComponent({
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
       {locations.map((video, index) => {
+        if (!visibleIndices.has(index)) return null;
         return (
           <Marker
             key={`marker-${video.id}-${index}`}
