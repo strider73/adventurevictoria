@@ -1,35 +1,31 @@
 import { MongoClient, Db } from "mongodb";
 
-const uri = process.env.MONGODB_URI;
-
-if (!uri) {
-  throw new Error("MONGODB_URI environment variable is not defined");
-}
-
-let client: MongoClient;
-let clientPromise: Promise<MongoClient>;
-
 declare global {
   // eslint-disable-next-line no-var
   var _mongoClientPromise: Promise<MongoClient> | undefined;
 }
 
-if (process.env.NODE_ENV === "development") {
-  // In development, use a global variable to preserve the client across HMR
-  if (!global._mongoClientPromise) {
-    client = new MongoClient(uri);
-    global._mongoClientPromise = client.connect();
+function getClientPromise(): Promise<MongoClient> {
+  const uri = process.env.MONGODB_URI;
+  if (!uri) {
+    throw new Error("MONGODB_URI environment variable is not defined");
   }
-  clientPromise = global._mongoClientPromise;
-} else {
+
+  if (process.env.NODE_ENV === "development") {
+    // In development, use a global variable to preserve the client across HMR
+    if (!global._mongoClientPromise) {
+      global._mongoClientPromise = new MongoClient(uri).connect();
+    }
+    return global._mongoClientPromise;
+  }
+
   // In production, create a new client
-  client = new MongoClient(uri);
-  clientPromise = client.connect();
+  return new MongoClient(uri).connect();
 }
 
 export async function getDatabase(): Promise<Db> {
-  const client = await clientPromise;
+  const client = await getClientPromise();
   return client.db("adventuretube");
 }
 
-export default clientPromise;
+export default getClientPromise;
