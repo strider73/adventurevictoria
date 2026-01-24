@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect, useMemo, useRef } from "react";
 import dynamic from "next/dynamic";
 import { Navbar, Footer, SocialIcons, Button, NotificationBadge } from "@/components/ui";
 
@@ -217,6 +217,9 @@ export default function HomePage() {
   const [isLoading, setIsLoading] = useState(true);
   const [selectedVideo, setSelectedVideo] = useState<VideoLocation | null>(null);
   const [categoryFilter, setCategoryFilter] = useState<string | null>(null);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [debouncedSearch, setDebouncedSearch] = useState("");
+  const searchTimerRef = useRef<NodeJS.Timeout | null>(null);
   const [votes, setVotes] = useState<Record<string, number>>({});
   const [userVoted, setUserVoted] = useState<string[]>([]);
   const [communityVideos, setCommunityVideos] = useState<Record<string, CommunityVideo[]>>({});
@@ -288,6 +291,17 @@ export default function HomePage() {
     setVideoRecommendations(getVideoRecommendations());
     setUserRecommendedVideos(getUserRecommendedVideos());
   }, []);
+
+  // Debounce search query by 300ms
+  useEffect(() => {
+    if (searchTimerRef.current) clearTimeout(searchTimerRef.current);
+    searchTimerRef.current = setTimeout(() => {
+      setDebouncedSearch(searchQuery);
+    }, 300);
+    return () => {
+      if (searchTimerRef.current) clearTimeout(searchTimerRef.current);
+    };
+  }, [searchQuery]);
 
   // Reset form state when modal closes or location changes
   useEffect(() => {
@@ -394,10 +408,30 @@ export default function HomePage() {
   const allLocations = enrichedLocations;
   const totalCount = allLocations.length;
 
-  // Apply category filter
+  // Apply category filter and search query
   const filteredLocations = enrichedLocations.filter((v) => {
-    if (categoryFilter === null) return true;
-    return v.category === categoryFilter;
+    // Category filter
+    if (categoryFilter !== null && v.category !== categoryFilter) return false;
+
+    // Search filter: match against site title, location, or community video title/channelName
+    if (debouncedSearch.trim()) {
+      const query = debouncedSearch.trim().toLowerCase();
+      // Match site name or location
+      const matchesSite =
+        v.title.toLowerCase().includes(query) ||
+        v.location.toLowerCase().includes(query);
+      if (matchesSite) return true;
+      // Match community video title or channel name
+      const locationCommunityVideos = communityVideos[v.id] || [];
+      const matchesCommunity = locationCommunityVideos.some(
+        (cv) =>
+          (cv.title && cv.title.toLowerCase().includes(query)) ||
+          (cv.channelName && cv.channelName.toLowerCase().includes(query))
+      );
+      if (!matchesCommunity) return false;
+    }
+
+    return true;
   });
 
   // Sort locations: videos first, then by votes for locations without videos
@@ -499,6 +533,36 @@ export default function HomePage() {
                 </button>
               );
             })}
+          </div>
+
+          {/* Search Input */}
+          <div className="mb-6 max-w-md mx-auto relative">
+            <svg
+              className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[--color-text-tertiary]"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              strokeWidth={2}
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            </svg>
+            <input
+              type="text"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              placeholder="Search by video title or channel name..."
+              className="w-full pl-10 pr-9 py-2 bg-[--color-bg-secondary] border border-[--color-border-primary] rounded-lg text-sm text-[--color-text-primary] placeholder:text-[--color-text-tertiary] focus:outline-none focus:border-[--color-brand] transition-colors"
+            />
+            {searchQuery && (
+              <button
+                onClick={() => setSearchQuery("")}
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-[--color-text-tertiary] hover:text-[--color-text-secondary] transition-colors"
+              >
+                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            )}
           </div>
 
           {/* Fullscreen Map Overlay */}
