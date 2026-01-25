@@ -1,0 +1,27 @@
+[
+  {
+    "siteId": "baw-baw-np",
+    "title": "Baw Baw National Park",
+    "count": 4
+  },
+  {
+    "siteId": "mooroopna-common",
+    "title": "Mooroopna Common",
+    "count": 3
+  },
+  {
+    "siteId": "toorongo-valley",
+    "title": "Toorongo Valley Campground",
+    "count": 4
+  },
+  {
+    "siteId": "brisbane-ranges-fridays",
+    "title": "Fridays Campground",
+    "count": 4
+  },
+  {
+    "siteId": "marysville-holiday-park",
+    "title": "Marysville Holiday Park",
+    "count": 4
+  }
+]

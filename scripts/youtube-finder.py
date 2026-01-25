@@ -98,7 +98,8 @@ def search_youtube(youtube, query, max_results=5):
             return None  # Signal quota exhaustion
         raise
 
-    video_ids = [item["id"]["videoId"] for item in response.get("items", [])]
+    # Filter to only video results (exclude channels/playlists that don't have videoId)
+    video_ids = [item["id"]["videoId"] for item in response.get("items", []) if "videoId" in item.get("id", {})]
     if not video_ids:
         return []
 
@@ -121,6 +122,9 @@ def search_youtube(youtube, query, max_results=5):
 
     results = []
     for item in response.get("items", []):
+        # Skip non-video results (channels/playlists)
+        if "videoId" not in item.get("id", {}):
+            continue
         video_id = item["id"]["videoId"]
         views = stats_map.get(video_id, 0)
 
