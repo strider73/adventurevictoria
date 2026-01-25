@@ -27,7 +27,7 @@ function calculateDistance(lat1: number, lon1: number, lat2: number, lon2: numbe
 }
 
 // Fetch route from OpenRouteService
-async function fetchRoute(destLat: number, destLng: number): Promise<{ coordinates: [number, number][]; duration: number; distance: number } | null> {
+async function fetchRoute(destLat: number, destLng: number): Promise<{ coordinates: [number, number][]; duration: number; distance: number; isStraightLine?: boolean } | null> {
   const cacheKey = `${destLat},${destLng}`;
 
   if (routeCache.has(cacheKey)) {
