@@ -13,7 +13,7 @@ pipeline {
             agent any
             steps {
                 withCredentials([file(credentialsId: 'adventurevictoria-env', variable: 'ENV_FILE')]) {
-                    sh 'cp $ENV_FILE .env.local'
+                    sh 'rm -f .env.local && cp $ENV_FILE .env.local'
                     sh 'docker compose build --no-cache'
                 }
             }
