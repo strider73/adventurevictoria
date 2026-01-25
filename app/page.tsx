@@ -408,42 +408,46 @@ export default function HomePage() {
   const allLocations = enrichedLocations;
   const totalCount = allLocations.length;
 
-  // Apply category filter and search query
-  const filteredLocations = enrichedLocations.filter((v) => {
-    // Category filter
-    if (categoryFilter !== null && v.category !== categoryFilter) return false;
+  // Apply category filter and search query - memoized to prevent unnecessary re-renders
+  const filteredLocations = useMemo(() => {
+    return enrichedLocations.filter((v) => {
+      // Category filter
+      if (categoryFilter !== null && v.category !== categoryFilter) return false;
 
-    // Search filter: match against site title, location, or community video title/channelName
-    if (debouncedSearch.trim()) {
-      const query = debouncedSearch.trim().toLowerCase();
-      // Match site name or location
-      const matchesSite =
-        v.title.toLowerCase().includes(query) ||
-        v.location.toLowerCase().includes(query);
-      if (matchesSite) return true;
-      // Match community video title or channel name
-      const locationCommunityVideos = communityVideos[v.id] || [];
-      const matchesCommunity = locationCommunityVideos.some(
-        (cv) =>
-          (cv.title && cv.title.toLowerCase().includes(query)) ||
-          (cv.channelName && cv.channelName.toLowerCase().includes(query))
-      );
-      if (!matchesCommunity) return false;
-    }
+      // Search filter: match against site title, location, or community video title/channelName
+      if (debouncedSearch.trim()) {
+        const query = debouncedSearch.trim().toLowerCase();
+        // Match site name or location
+        const matchesSite =
+          v.title.toLowerCase().includes(query) ||
+          v.location.toLowerCase().includes(query);
+        if (matchesSite) return true;
+        // Match community video title or channel name
+        const locationCommunityVideos = communityVideos[v.id] || [];
+        const matchesCommunity = locationCommunityVideos.some(
+          (cv) =>
+            (cv.title && cv.title.toLowerCase().includes(query)) ||
+            (cv.channelName && cv.channelName.toLowerCase().includes(query))
+        );
+        if (!matchesCommunity) return false;
+      }
 
-    return true;
-  });
+      return true;
+    });
+  }, [enrichedLocations, categoryFilter, debouncedSearch, communityVideos]);
 
-  // Sort locations: videos first, then by votes for locations without videos
-  const sortedLocations = [...filteredLocations].sort((a, b) => {
-    // Real videos first, then placeholders sorted by votes
-    if (a.hasVideo && !b.hasVideo) return -1;
-    if (!a.hasVideo && b.hasVideo) return 1;
-    if (!a.hasVideo && !b.hasVideo) {
-      return (votes[b.id] || 0) - (votes[a.id] || 0);
-    }
-    return 0;
-  });
+  // Sort locations: videos first, then by votes for locations without videos - memoized
+  const sortedLocations = useMemo(() => {
+    return [...filteredLocations].sort((a, b) => {
+      // Real videos first, then placeholders sorted by votes
+      if (a.hasVideo && !b.hasVideo) return -1;
+      if (!a.hasVideo && b.hasVideo) return 1;
+      if (!a.hasVideo && !b.hasVideo) {
+        return (votes[b.id] || 0) - (votes[a.id] || 0);
+      }
+      return 0;
+    });
+  }, [filteredLocations, votes]);
 
   if (isLoading) {
     return (
@@ -538,7 +542,7 @@ export default function HomePage() {
           {/* Floating close button - top right corner */}
           <button
             onClick={toggleFullscreen}
-            className="absolute top-4 right-4 z-10 p-2 bg-[--color-bg-primary] hover:bg-[--color-bg-secondary] rounded-lg border-2 border-white shadow-[0_2px_8px_rgba(0,0,0,0.3)] transition-colors"
+            className="absolute top-4 right-4 z-[1001] p-2 bg-[--color-bg-primary] hover:bg-[--color-bg-secondary] rounded-lg border-2 border-white shadow-[0_2px_8px_rgba(0,0,0,0.3)] transition-colors"
             title="Exit fullscreen"
           >
             <svg className="w-5 h-5 text-[--color-text-primary]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -660,7 +664,7 @@ export default function HomePage() {
             {/* Fullscreen toggle button */}
             <button
               onClick={toggleFullscreen}
-              className="absolute top-4 right-4 z-20 p-2 bg-[--color-bg-secondary] hover:bg-[--color-bg-tertiary] rounded-lg border border-[--color-border-primary] transition-colors"
+              className="absolute top-4 right-4 z-[1001] p-2 bg-[--color-bg-secondary] hover:bg-[--color-bg-tertiary] rounded-lg border border-[--color-border-primary] transition-colors"
               title="Enter fullscreen"
             >
               <svg className="w-5 h-5 text-[--color-text-primary]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
