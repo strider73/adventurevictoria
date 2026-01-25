@@ -5,7 +5,6 @@ pipeline {
         stage('Pull Code') {
             agent any
             steps {
-                // Jenkins pulls code automatically from Git
                 checkout scm
             }
         }
@@ -13,7 +12,10 @@ pipeline {
         stage('Build Image') {
             agent any
             steps {
-                sh 'docker compose build --no-cache'
+                withCredentials([file(credentialsId: 'adventurevictoria-env', variable: 'ENV_FILE')]) {
+                    sh 'cp $ENV_FILE .env.local'
+                    sh 'docker compose build --no-cache'
+                }
             }
         }
 
@@ -24,8 +26,11 @@ pipeline {
                         label 'jenkins-agent2'
                     }
                     steps {
-                        sh 'docker compose down || true'
-                        sh 'docker compose up -d'
+                        withCredentials([file(credentialsId: 'adventurevictoria-env', variable: 'ENV_FILE')]) {
+                            sh 'cp $ENV_FILE .env.local'
+                            sh 'docker compose down || true'
+                            sh 'docker compose up -d'
+                        }
                     }
                 }
                 stage('Deploy to Agent 3') {
@@ -33,8 +38,11 @@ pipeline {
                         label 'jenkins-agent3'
                     }
                     steps {
-                        sh 'docker compose down || true'
-                        sh 'docker compose up -d'
+                        withCredentials([file(credentialsId: 'adventurevictoria-env', variable: 'ENV_FILE')]) {
+                            sh 'cp $ENV_FILE .env.local'
+                            sh 'docker compose down || true'
+                            sh 'docker compose up -d'
+                        }
                     }
                 }
             }
