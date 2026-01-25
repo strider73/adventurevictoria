@@ -27,7 +27,7 @@ pipeline {
                     }
                     steps {
                         withCredentials([file(credentialsId: 'adventurevictoria-env', variable: 'ENV_FILE')]) {
-                            sh 'cp $ENV_FILE .env.local'
+                            sh 'rm -f .env.local && cp $ENV_FILE .env.local'
                             sh 'docker compose down || true'
                             sh 'docker compose up -d'
                         }
@@ -39,7 +39,7 @@ pipeline {
                     }
                     steps {
                         withCredentials([file(credentialsId: 'adventurevictoria-env', variable: 'ENV_FILE')]) {
-                            sh 'cp $ENV_FILE .env.local'
+                            sh 'rm -f .env.local && cp $ENV_FILE .env.local'
                             sh 'docker compose down || true'
                             sh 'docker compose up -d'
                         }
