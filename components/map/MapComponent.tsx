@@ -8,8 +8,8 @@ import "leaflet/dist/leaflet.css";
 // OpenRouteService API key
 const ORS_API_KEY = "eyJvcmciOiI1YjNjZTM1OTc4NTExMTAwMDFjZjYyNDgiLCJpZCI6IjhiZDMzNzQ2NDA4ZTRiZTBhMmViNDc5MmQ4ODM2NGE1IiwiaCI6Im11cm11cjY0In0=";
 
-// Home location: 92 Black Dog Dr, Brookfield VIC 3338
-const HOME_COORDS: [number, number] = [-37.6858, 144.5534];
+// Default starting point: Melbourne CBD (Federation Square)
+const HOME_COORDS: [number, number] = [-37.8180, 144.9691];
 
 // Route cache to avoid repeated API calls
 const routeCache = new Map<string, { coordinates: [number, number][]; duration: number; distance: number; isStraightLine?: boolean }>();
