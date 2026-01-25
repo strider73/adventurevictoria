@@ -1,9 +1,32 @@
 "use client";
 
-import { useState, useEffect, useMemo } from "react";
-import { MapContainer, TileLayer, Marker, Tooltip } from "react-leaflet";
+import { useEffect, useState, useMemo, useRef, useCallback } from "react";
+import { MapContainer, TileLayer, Marker, Tooltip, useMap } from "react-leaflet";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
+
+// Component to fix map size after container renders
+function MapResizeHandler() {
+  const map = useMap();
+
+  useEffect(() => {
+    // Invalidate size after a short delay to ensure container is rendered
+    const timer = setTimeout(() => {
+      map.invalidateSize();
+    }, 100);
+
+    // Also invalidate on window resize
+    const handleResize = () => map.invalidateSize();
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener('resize', handleResize);
+    };
+  }, [map]);
+
+  return null;
+}
 
 // Fix for default marker icons in Leaflet with webpack
 const DefaultIcon = L.icon({
@@ -71,7 +94,7 @@ const createMarkerIcon = (video: VideoLocation) => {
     iconSize: [40, 40],
     iconAnchor: [20, 20],
     popupAnchor: [0, -20],
-    className: "custom-marker-container",
+    className: "",
   });
 };
 
@@ -83,25 +106,35 @@ export default function MapComponent({
 }: MapComponentProps) {
   const [visibleIndices, setVisibleIndices] = useState<Set<number>>(new Set());
 
-  // Generate randomized delays for staggered pop-in animation
-  const delays = useMemo(() => {
-    return locations.map(() => Math.random() * 1500); // Random delay 0-1500ms
+  // Generate random order for staggered animation
+  const randomOrder = useMemo(() => {
+    const indices = locations.map((_, i) => i);
+    // Fisher-Yates shuffle
+    for (let i = indices.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [indices[i], indices[j]] = [indices[j], indices[i]];
+    }
+    return indices;
   }, [locations.length]);
 
-  // Stagger marker appearance with random delays
+  // Stagger marker appearance when locations change (filter applied)
   useEffect(() => {
+    if (locations.length === 0) return;
+
     setVisibleIndices(new Set());
     const timers: NodeJS.Timeout[] = [];
 
-    locations.forEach((_, index) => {
-      const timer = setTimeout(() => {
-        setVisibleIndices((prev) => new Set([...prev, index]));
-      }, delays[index]);
-      timers.push(timer);
+    randomOrder.forEach((originalIndex, orderIndex) => {
+      if (originalIndex < locations.length) {
+        const timer = setTimeout(() => {
+          setVisibleIndices((prev) => new Set([...prev, originalIndex]));
+        }, orderIndex * 30); // 30ms gap between each marker
+        timers.push(timer);
+      }
     });
 
     return () => timers.forEach(clearTimeout);
-  }, [locations, delays]);
+  }, [locations, randomOrder]);
 
   return (
     <MapContainer
@@ -117,6 +150,7 @@ export default function MapComponent({
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
+      <MapResizeHandler />
       {locations.map((video, index) => {
         if (!visibleIndices.has(index)) return null;
         return (
