@@ -477,7 +477,7 @@ export default function HomePage() {
           </div>
 
           {/* Floating category filter - top left */}
-          <div className="absolute top-4 left-14 z-10 flex flex-wrap gap-1.5 max-w-[60%]">
+          <div className="absolute top-4 left-14 z-[1001] flex flex-wrap gap-1.5 max-w-[60%]">
             <button
               onClick={() => setCategoryFilter(null)}
               className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-medium transition-all whitespace-nowrap border-2 border-white shadow-[0_2px_8px_rgba(0,0,0,0.3)] ${
@@ -512,7 +512,7 @@ export default function HomePage() {
           </div>
 
           {/* Floating search input - top right */}
-          <div className="absolute top-4 right-14 z-10 w-56">
+          <div className="absolute top-4 right-14 z-[1001] w-56">
             <svg
               className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[--color-text-tertiary]"
               fill="none"

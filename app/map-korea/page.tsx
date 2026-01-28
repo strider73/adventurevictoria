@@ -530,17 +530,6 @@ export default function MapKoreaPage() {
           {/* Fullscreen Map Overlay */}
           {isFullscreen && (
             <div className="fixed inset-0 z-[9999] bg-[--color-bg-primary]">
-              {/* Close button */}
-              <button
-                onClick={toggleFullscreen}
-                className="absolute top-4 right-4 z-10 p-3 bg-[--color-bg-secondary] hover:bg-[--color-bg-tertiary] rounded-full border border-[--color-border-primary] transition-colors shadow-lg"
-                title="Exit fullscreen"
-              >
-                <svg className="w-6 h-6 text-[--color-text-primary]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-                </svg>
-              </button>
-
               {/* Fullscreen Map */}
               <div className="w-full h-full">
                 <MapComponent
@@ -551,6 +540,54 @@ export default function MapKoreaPage() {
                   zoom={KOREA_ZOOM}
                 />
               </div>
+
+              {/* Floating category filter - top left */}
+              <div className="absolute top-4 left-14 z-[1001] flex flex-wrap gap-1.5 max-w-[60%]">
+                <button
+                  onClick={() => setCategoryFilter("all")}
+                  className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-medium transition-all whitespace-nowrap border-2 border-white shadow-[0_2px_8px_rgba(0,0,0,0.3)] ${
+                    categoryFilter === "all"
+                      ? "bg-white text-black"
+                      : "bg-white text-black hover:bg-gray-100"
+                  }`}
+                >
+                  <span className="w-2.5 h-2.5 rounded-full bg-gradient-to-r from-[--color-green] to-[--color-brand]" />
+                  <span>All</span>
+                </button>
+                {orderedCategories.map((category) => {
+                  const count = categoryCounts[category] || 0;
+                  if (count === 0) return null;
+                  const isActive = categoryFilter === category;
+                  return (
+                    <button
+                      key={`fs-${category}`}
+                      onClick={() => setCategoryFilter(isActive ? "all" : category)}
+                      className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-medium transition-all whitespace-nowrap border-2 border-white shadow-[0_2px_8px_rgba(0,0,0,0.3)] ${
+                        isActive
+                          ? "bg-gray-100 text-black"
+                          : "bg-white text-black hover:bg-gray-100"
+                      }`}
+                    >
+                      <span
+                        className={`w-2.5 h-2.5 rounded-full transition-transform ${isActive ? "scale-125" : ""}`}
+                        style={{ backgroundColor: categoryColors[category] }}
+                      />
+                      <span>{category}</span>
+                    </button>
+                  );
+                })}
+              </div>
+
+              {/* Close button - top right */}
+              <button
+                onClick={toggleFullscreen}
+                className="absolute top-4 right-4 z-[1001] p-3 bg-[--color-bg-secondary] hover:bg-[--color-bg-tertiary] rounded-full border border-[--color-border-primary] transition-colors shadow-lg"
+                title="Exit fullscreen"
+              >
+                <svg className="w-6 h-6 text-[--color-text-primary]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
             </div>
           )}
 
@@ -559,7 +596,7 @@ export default function MapKoreaPage() {
             {/* Fullscreen toggle button */}
             <button
               onClick={toggleFullscreen}
-              className="absolute top-4 right-4 z-20 p-2 bg-[--color-bg-secondary] hover:bg-[--color-bg-tertiary] rounded-lg border border-[--color-border-primary] transition-colors"
+              className="absolute top-4 right-4 z-[1001] p-2 bg-[--color-bg-secondary] hover:bg-[--color-bg-tertiary] rounded-lg border border-[--color-border-primary] transition-colors"
               title="Enter fullscreen"
             >
               <svg className="w-5 h-5 text-[--color-text-primary]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
