@@ -1,0 +1,1061 @@
+{
+  "adventureSites": [
+    {
+      "id": "anmyeondo-taean",
+      "title": "Anmyeondo",
+      "location": "Taean",
+      "lat": 36.5167,
+      "lng": 126.3667,
+      "category": "Beach",
+      "description": "Featured in OutboundScape video: 안면도, 보석과 같은 서해의 힐링섬 - 충남 태안 | 4k | Cinematic Sceni...",
+      "originalVideoId": "YSOReMiYKMM"
+    },
+    {
+      "id": "hwachang-island-taean",
+      "title": "Hwachang Island",
+      "location": "Taean",
+      "lat": 36.71,
+      "lng": 126.27,
+      "category": "Beach",
+      "description": "Featured in OutboundScape video: 태안 화창도 - 해안절벽 절경의 또다른 땅끝. 서해안 여행 가볼만한곳. 태안해변길/ 통개항...",
+      "originalVideoId": "Ca45pCVWZiw"
+    },
+    {
+      "id": "nuae-island-hwaseong",
+      "title": "Nuae Island",
+      "location": "Hwaseong",
+      "lat": 37.1333,
+      "lng": 126.6833,
+      "category": "Beach",
+      "description": "Featured in OutboundScape video: 바닷길로 걸어 들어갈 수 있는 작은 등대섬! - 탄도항 누에섬 / 4k | Cinemati...",
+      "originalVideoId": "NYI48qFVq7Y"
+    },
+    {
+      "id": "padori-cave-taean",
+      "title": "Padori Cave",
+      "location": "Taean",
+      "lat": 36.72,
+      "lng": 126.28,
+      "category": "Beach",
+      "description": "Featured in OutboundScape video: 자연이 선물한 신비한 체험 - 파도리 해식동굴 / 태안여행 /태안가볼만한곳 / 태안해변길 ...",
+      "originalVideoId": "Gnhgj_9Mjy0"
+    },
+    {
+      "id": "samcheok-gangwon",
+      "title": "Samcheok",
+      "location": "Gangwon",
+      "lat": 37.45,
+      "lng": 129.165,
+      "category": "Beach",
+      "description": "Featured in OutboundScape video: 해돚이 - 강원도 삼척 이사부길 해안도로에서 일출 / 드라이브코스 / 4k | Cinema...",
+      "originalVideoId": "dprjIOO0l8Q"
+    },
+    {
+      "id": "taean-chungnam",
+      "title": "Taean",
+      "location": "Chungnam",
+      "lat": 36.7456,
+      "lng": 126.2978,
+      "category": "Beach",
+      "description": "Featured in OutboundScape video: 걸어서 섬으로 들어가자 - 충남 태안 근흥 | clips",
+      "originalVideoId": "yW4Et9geyB4"
+    },
+    {
+      "id": "taebae-beach-taean",
+      "title": "Taebae Beach",
+      "location": "Taean",
+      "lat": 36.73,
+      "lng": 126.29,
+      "category": "Beach",
+      "description": "Featured in OutboundScape video: Taean Taebae Beach Trail - Hidden white sand beach...",
+      "originalVideoId": "GfGALPmBC6E"
+    },
+    {
+      "id": "cheonmasan-namyangju",
+      "title": "Cheonmasan",
+      "location": "Namyangju",
+      "lat": 37.65,
+      "lng": 127.2167,
+      "category": "Camping",
+      "description": "Featured in OutboundScape video: 천마산 팔현 - 자연 그대로 잣나무숲에서의 캠핑을 느끼고 싶다면 | Cinematic Sc...",
+      "originalVideoId": "9BynWve3f5c"
+    },
+    {
+      "id": "deoksugung-seoul",
+      "title": "Deoksugung",
+      "location": "Seoul",
+      "lat": 37.5658,
+      "lng": 126.975,
+      "category": "Cultural",
+      "description": "Featured in OutboundScape video: 덕수궁 돌담길 - 싱그러운 화창한 봄날 오후 돌담길 거리풍경 | Cinematic Scen...",
+      "originalVideoId": "rrZlyMkn3to"
+    },
+    {
+      "id": "gyeongbokgung-seoul",
+      "title": "Gyeongbokgung",
+      "location": "Seoul",
+      "lat": 37.5796,
+      "lng": 126.977,
+      "category": "Cultural",
+      "description": "Featured in OutboundScape video: Snow Falling on Gyeongbokgung Palace in Seoul Kore...",
+      "originalVideoId": "O6NHfE-Po1M"
+    },
+    {
+      "id": "namsangol-hanok-village-seoul",
+      "title": "Namsangol Hanok Village",
+      "location": "Seoul",
+      "lat": 37.5592,
+      "lng": 126.9942,
+      "category": "Cultural",
+      "description": "Featured in OutboundScape video: 남산골 한옥마을 - 서울 중구 / 가볼만한곳, 서울여행 | Cinematic Scenic ...",
+      "originalVideoId": "BFS9RTsd008"
+    },
+    {
+      "id": "suncheon-jeonnam",
+      "title": "Suncheon",
+      "location": "Jeonnam",
+      "lat": 34.9406,
+      "lng": 127.4872,
+      "category": "Garden",
+      "description": "Featured in OutboundScape video: 눈 내리는 순천만국가정원 - 전남 순천 | 4k 감성영상 | Cinematic Scenic...",
+      "originalVideoId": "DCDFdct0sQQ"
+    },
+    {
+      "id": "water-garden-namyangju",
+      "title": "Water Garden",
+      "location": "Namyangju",
+      "lat": 37.5833,
+      "lng": 127.2,
+      "category": "Garden",
+      "description": "Featured in OutboundScape video: Water Garden - Namyangju : A nature-friendly park ...",
+      "originalVideoId": "oe5_hFdrRBU"
+    },
+    {
+      "id": "bugwisan-jinan",
+      "title": "Bugwisan",
+      "location": "Jinan",
+      "lat": 35.775,
+      "lng": 127.41,
+      "category": "Mountain",
+      "description": "Featured in OutboundScape video: Best View of Mt.Maisan - Mt. Bugwi - Even More Stu...",
+      "originalVideoId": "iT9R52hv_ls"
+    },
+    {
+      "id": "bukhansan-seoul",
+      "title": "Bukhansan",
+      "location": "Seoul",
+      "lat": 37.6608,
+      "lng": 126.9932,
+      "category": "Mountain",
+      "description": "Featured in OutboundScape video: Seoul's Most Stunning Hike: Bukhansan Bibong Ridge...",
+      "originalVideoId": "cclWwATX7zo"
+    },
+    {
+      "id": "cheonbansan-jinan",
+      "title": "Cheonbansan",
+      "location": "Jinan",
+      "lat": 35.785,
+      "lng": 127.435,
+      "category": "Mountain",
+      "description": "Featured in OutboundScape video: 천반산 - 잊을 수 없는 마이산 조망과 금강이 만든섬 죽도 / 자막 / 가막리들 / 진안가...",
+      "originalVideoId": "IpJEGb7p2p0"
+    },
+    {
+      "id": "cheorwon-gangwon",
+      "title": "Cheorwon",
+      "location": "Gangwon",
+      "lat": 38.1467,
+      "lng": 127.3133,
+      "category": "Mountain",
+      "description": "Featured in OutboundScape video: Mystic Cave Waterfall Trek: Hantan River Canyon in...",
+      "originalVideoId": "P5hvf9k02js"
+    },
+    {
+      "id": "chiaksan-wonju",
+      "title": "Chiaksan",
+      "location": "Wonju",
+      "lat": 37.3667,
+      "lng": 128.05,
+      "category": "Mountain",
+      "description": "Featured in OutboundScape video: 늦가을 단풍잎 흩날리는 치악산 구룡사길 - 4k",
+      "originalVideoId": "XDQwdnQt_ms"
+    },
+    {
+      "id": "chungju-lake",
+      "title": "Chungju Lake",
+      "location": "South Korea",
+      "lat": 36.95,
+      "lng": 127.95,
+      "category": "Mountain",
+      "description": "Featured in OutboundScape video: 스위스 호수뷰도 부럽지 않은 - 충주호 악어봉, 악어섬 / 충주여행 / 충주가볼만한곳 | ...",
+      "originalVideoId": "u0Pu70NeaSc"
+    },
+    {
+      "id": "daedunsan-chungnam",
+      "title": "Daedunsan",
+      "location": "Chungnam",
+      "lat": 36.1167,
+      "lng": 127.3167,
+      "category": "Mountain",
+      "description": "Featured in OutboundScape video: 청량한 계곡을 지나 칼능선 계단길을 오르는 - 대둔산 수락계곡 코스 | travelog",
+      "originalVideoId": "uDQX5i-5b7A"
+    },
+    {
+      "id": "danyang-chungbuk",
+      "title": "Danyang",
+      "location": "Chungbuk",
+      "lat": 36.9845,
+      "lng": 128.3654,
+      "category": "Mountain",
+      "description": "Featured in OutboundScape video: 최고의 호수뷰 트레킹 - 제비봉 - 충북 단양 | travelog",
+      "originalVideoId": "laIBOkXZRR8"
+    },
+    {
+      "id": "dutasan-donghae",
+      "title": "Dutasan",
+      "location": "Donghae",
+      "lat": 37.4833,
+      "lng": 129.0333,
+      "category": "Mountain",
+      "description": "Featured in OutboundScape video: 무릉도원 협곡의 산수화를 만나다 - 강원도 동해시 두타산 마천루",
+      "originalVideoId": "fbVwjKNEOxU"
+    },
+    {
+      "id": "goseong-gangwon",
+      "title": "Goseong",
+      "location": "Gangwon",
+      "lat": 38.375,
+      "lng": 128.4667,
+      "category": "Mountain",
+      "description": "Featured in OutboundScape video: 대한민국에서 가장 아름다운 울산바위 뷰 - 강원도 고성 금강산 성인대 | Travelog",
+      "originalVideoId": "KJBvJ5YOG00"
+    },
+    {
+      "id": "gudambong-danyang",
+      "title": "Gudambong",
+      "location": "Danyang",
+      "lat": 36.95,
+      "lng": 128.3333,
+      "category": "Mountain",
+      "description": "Featured in OutboundScape video: 청풍호 구담봉 - 단양팔경중 최고, 하늘과 산과 물에서 본 구담봉 / 충북단양 / 단양가볼...",
+      "originalVideoId": "lnAYXZ5tGLs"
+    },
+    {
+      "id": "gumi-gyeongbuk",
+      "title": "Gumi",
+      "location": "Gyeongbuk",
+      "lat": 36.1194,
+      "lng": 128.3444,
+      "category": "Mountain",
+      "description": "Featured in OutboundScape video: 낙동강 굽이와 구미를 한눈에 담을 수 있는 경북 구미의 명산 - 금오산 | travelog",
+      "originalVideoId": "FxdYJI66F1o"
+    },
+    {
+      "id": "gwanaksan-seoul",
+      "title": "Gwanaksan",
+      "location": "Seoul",
+      "lat": 37.4333,
+      "lng": 126.9633,
+      "category": "Mountain",
+      "description": "Featured in OutboundScape video: 관악산 - 또 다른 풍경 / 4k uhd | Cinematic Scenic Travel",
+      "originalVideoId": "iWBFWFtnFTo"
+    },
+    {
+      "id": "homyeongsan-gapyeong",
+      "title": "Homyeongsan",
+      "location": "Gapyeong",
+      "lat": 37.8167,
+      "lng": 127.5167,
+      "category": "Mountain",
+      "description": "Featured in OutboundScape video: 설산 배경의 역대급 운해 - 가평 호명산 | Cinematic Scenic Travel",
+      "originalVideoId": "l9R3NNM_wMM"
+    },
+    {
+      "id": "inwangsan-seoul",
+      "title": "Inwangsan",
+      "location": "Seoul",
+      "lat": 37.5833,
+      "lng": 126.9583,
+      "category": "Mountain",
+      "description": "Featured in OutboundScape video: Mt. Inwangsan - Must visit at Night. Seoul's night...",
+      "originalVideoId": "O-7AJx87YqQ"
+    },
+    {
+      "id": "juheulsan-mungyeong",
+      "title": "Juheulsan",
+      "location": "Mungyeong",
+      "lat": 36.75,
+      "lng": 128.0167,
+      "category": "Mountain",
+      "description": "Featured in OutboundScape video: 주흘산 부봉 - 백두대간도 쉬어가는 문경새재의 공룡능선 / 자막 / 문경가볼만한곳 / 경북...",
+      "originalVideoId": "0MhiZlN_qJc"
+    },
+    {
+      "id": "maisan-jinan",
+      "title": "Maisan",
+      "location": "Jinan",
+      "lat": 35.7667,
+      "lng": 127.4167,
+      "category": "Mountain",
+      "description": "Featured in OutboundScape video: 마이산 용담호와 진안고원 - 전북 진안 | Cinematic Scenic Travel",
+      "originalVideoId": "ZUVxIMLsaMk"
+    },
+    {
+      "id": "manisan-ganghwa",
+      "title": "Manisan",
+      "location": "Ganghwa",
+      "lat": 37.6167,
+      "lng": 126.4333,
+      "category": "Mountain",
+      "description": "Featured in OutboundScape video: 마니산 - 거친 암릉과 최고의 서해전망 마니산 참성단 - 인천 강화도 | Cinematic...",
+      "originalVideoId": "K423bl_euMo"
+    },
+    {
+      "id": "myeongseongsan-pocheon",
+      "title": "Myeongseongsan",
+      "location": "Pocheon",
+      "lat": 38.1,
+      "lng": 127.3167,
+      "category": "Mountain",
+      "description": "Featured in OutboundScape video: 명성산 억새밭 - 은빛 억새 물결로 가득한 바람의 언덕 / 억새꽃축제 / 4k / 경기도포...",
+      "originalVideoId": "PcVdjBRflDY"
+    },
+    {
+      "id": "naksan-park-seoul",
+      "title": "Naksan Park",
+      "location": "Seoul",
+      "lat": 37.5797,
+      "lng": 127.0075,
+      "category": "Mountain",
+      "description": "Featured in OutboundScape video: The Best Views of Bukhansan - Naksan Park Hanyangd...",
+      "originalVideoId": "G8RgAXW5Kh0"
+    },
+    {
+      "id": "oksonbong-jecheon",
+      "title": "Oksonbong",
+      "location": "Jecheon",
+      "lat": 36.9333,
+      "lng": 128.2167,
+      "category": "Mountain",
+      "description": "Featured in OutboundScape video: 청풍호 옥순봉 - 꼭 가봐야하는 신선계의 풍경 (가은산) 충북 제천 / 제천 가볼만한곳 /...",
+      "originalVideoId": "b0hnmkSsl7Y"
+    },
+    {
+      "id": "palbongsan-hongcheon",
+      "title": "Palbongsan",
+      "location": "Hongcheon",
+      "lat": 37.6833,
+      "lng": 127.8833,
+      "category": "Mountain",
+      "description": "Featured in OutboundScape video: 팔봉산 - 눈내린 아침의 팔봉산과 홍천강 | Cinematic Scenic Travel",
+      "originalVideoId": "pr8LrAR5BoY"
+    },
+    {
+      "id": "samaksan-chuncheon",
+      "title": "Samaksan",
+      "location": "Chuncheon",
+      "lat": 37.8833,
+      "lng": 127.7167,
+      "category": "Mountain",
+      "description": "Featured in OutboundScape video: 춘천 삼악산 - 서울근교, 입구에서 5분 만에 만나는 협곡 폭포 / 자막 / 서울근교여행 ...",
+      "originalVideoId": "cFzRk6MUuUI"
+    },
+    {
+      "id": "seoraksan-gangwon",
+      "title": "Seoraksan",
+      "location": "Gangwon",
+      "lat": 38.1194,
+      "lng": 128.4656,
+      "category": "Mountain",
+      "description": "Featured in OutboundScape video: 멋진 풍광에 전설이 궁금 할 수 밖에 없는 설악산 울산바위 - 강원도 고성 | Cinema...",
+      "originalVideoId": "J6VoP8lKyxA"
+    },
+    {
+      "id": "sujupalbong-chungju",
+      "title": "Sujupalbong",
+      "location": "Chungju",
+      "lat": 36.9167,
+      "lng": 127.9333,
+      "category": "Mountain",
+      "description": "Featured in OutboundScape video: Sujupalbong in Chungju - Hidden scenery of Dalcheo...",
+      "originalVideoId": "zD47qGK7nDw"
+    },
+    {
+      "id": "ungilsan-gyeonggi",
+      "title": "Ungilsan",
+      "location": "Gyeonggi",
+      "lat": 37.5553,
+      "lng": 127.3178,
+      "category": "Mountain",
+      "description": "Featured in OutboundScape video: 두 강이 만나는 조망이 멋진 산 - 운길산 / 4k 가볼만한곳 | Cinematic Sce...",
+      "originalVideoId": "sFn3aBLQMa4"
+    },
+    {
+      "id": "wolchulsan-yeongam",
+      "title": "Wolchulsan",
+      "location": "Yeongam",
+      "lat": 34.7667,
+      "lng": 126.7,
+      "category": "Mountain",
+      "description": "Featured in OutboundScape video: 월출산 - 100m 넘는 큰바위얼굴을 품은 거칠지만 아늑한산 / 전라남도 영암 / 자막 /...",
+      "originalVideoId": "t6YoYd7DVbs"
+    },
+    {
+      "id": "wonju-gangwon",
+      "title": "Wonju",
+      "location": "Gangwon",
+      "lat": 37.3422,
+      "lng": 127.9197,
+      "category": "Mountain",
+      "description": "Featured in OutboundScape video: 국내 최고 아찔한 잔도길과 출렁다리 - 강원도 원주 / 4k / 가볼만한곳 | Cinema...",
+      "originalVideoId": "KxqNXtIueck"
+    },
+    {
+      "id": "yeongdong-chungbuk",
+      "title": "Yeongdong",
+      "location": "Chungbuk",
+      "lat": 36.175,
+      "lng": 127.7833,
+      "category": "Mountain",
+      "description": "Featured in OutboundScape video: 그림 같은 비경의 월류봉 둘레길 - 충북 영동 4k / 가볼만한곳 | Cinematic S...",
+      "originalVideoId": "ExI8S55yJe0"
+    },
+    {
+      "id": "busodamak-okcheon",
+      "title": "Busodamak",
+      "location": "Okcheon",
+      "lat": 36.3333,
+      "lng": 127.5667,
+      "category": "Nature",
+      "description": "Featured in OutboundScape video: 호수위에 떠있는 700m 병풍바위 - 부소담악 충북옥천 / 옥천가볼만한곳 / 옥천여행 / ...",
+      "originalVideoId": "fxKt-puIy2g"
+    },
+    {
+      "id": "donggang-yeongwol",
+      "title": "Donggang",
+      "location": "Yeongwol",
+      "lat": 37.2,
+      "lng": 128.45,
+      "category": "Nature",
+      "description": "Featured in OutboundScape video: 10월 한창 절정인 붉은 메밀꽃 물결 - 강원도 영월 동강 / 가을가볼만한곳 | 3 Min...",
+      "originalVideoId": "PmmI09_QqD4"
+    },
+    {
+      "id": "forest-rest-area",
+      "title": "Forest Rest Area",
+      "location": "South Korea",
+      "lat": 37.55,
+      "lng": 127.2,
+      "category": "Nature",
+      "description": "Featured in OutboundScape video: 깊은 숲속의 힐링장소 - 숲속쉼터 | Cinematic Scenic Travel",
+      "originalVideoId": "qFCyvXz2RUg"
+    },
+    {
+      "id": "gochang-jeonbuk",
+      "title": "Gochang",
+      "location": "Jeonbuk",
+      "lat": 35.4356,
+      "lng": 126.7019,
+      "category": "Nature",
+      "description": "Featured in OutboundScape video: 국내 어디서도 볼 수없는 평원위 솟은 신기한 전설의 바위 - 전북 고창 병바위 /4k 가볼...",
+      "originalVideoId": "zS5Zfb2V8vs"
+    },
+    {
+      "id": "goheung-jeonnam",
+      "title": "Goheung",
+      "location": "Jeonnam",
+      "lat": 34.6167,
+      "lng": 127.2833,
+      "category": "Nature",
+      "description": "Featured in OutboundScape video: 고흥 해창만 황금빛 갈대밭 - 전남 고흥 / 4k | Cinematic Scenic Tra...",
+      "originalVideoId": "d9Pk59JO3U0"
+    },
+    {
+      "id": "gwangneung-forest-pocheon",
+      "title": "Gwangneung Forest",
+      "location": "Pocheon",
+      "lat": 37.75,
+      "lng": 127.1667,
+      "category": "Nature",
+      "description": "Featured in OutboundScape video: Gwangneung Korea National Arboretum : Cinematic Au...",
+      "originalVideoId": "x4w-5FOeQqo"
+    },
+    {
+      "id": "hongcheon-river-gangwon",
+      "title": "Hongcheon River",
+      "location": "Gangwon",
+      "lat": 37.69,
+      "lng": 127.89,
+      "category": "Nature",
+      "description": "Featured in OutboundScape video: Hongcheon River - A Snowy Dawn's Breathtaking Land...",
+      "originalVideoId": "Vt85sGfocCc"
+    },
+    {
+      "id": "nami-island-chuncheon",
+      "title": "Nami Island",
+      "location": "Chuncheon",
+      "lat": 37.7917,
+      "lng": 127.525,
+      "category": "Nature",
+      "description": "Featured in OutboundScape video: Let's go to Nami Island Korea in autumn - Chuncheo...",
+      "originalVideoId": "6im6VHHY3pE"
+    },
+    {
+      "id": "onam-lake-namyangju",
+      "title": "Onam Lake",
+      "location": "Namyangju",
+      "lat": 37.655,
+      "lng": 127.22,
+      "category": "Nature",
+      "description": "Featured in OutboundScape video: Onam Lake at the Foot of Mt. Cheonma | Cinematic S...",
+      "originalVideoId": "iWPcx4tYNac"
+    },
+    {
+      "id": "suncheon-bay-jeonnam",
+      "title": "Suncheon Bay",
+      "location": "Jeonnam",
+      "lat": 34.8833,
+      "lng": 127.5167,
+      "category": "Nature",
+      "description": "Featured in OutboundScape video: 철새들의 휴식처 아름다운 생태 습지 - 순천만 - 전남 순천 | 4k | Cinematic...",
+      "originalVideoId": "9UFaG6Gm6Pw"
+    },
+    {
+      "id": "yeongwol-gangwon",
+      "title": "Yeongwol",
+      "location": "Gangwon",
+      "lat": 37.1833,
+      "lng": 128.4617,
+      "category": "Nature",
+      "description": "Featured in OutboundScape video: 신선계의 비경을 만나다 / 자막 / 강원도 영월 / 가볼만한곳 | Cinematic Sce...",
+      "originalVideoId": "_1wf36-iois"
+    },
+    {
+      "id": "yookbaekmajigi-korea",
+      "title": "Yookbaekmajigi",
+      "location": "Korea",
+      "lat": 37.6833,
+      "lng": 128.7167,
+      "category": "Nature",
+      "description": "Featured in OutboundScape video: Yookbaekmajigi - Daily Scenes of Winter Wind on th...",
+      "originalVideoId": "SXFPTu9ou1Y"
+    },
+    {
+      "id": "bukhangang-gangwon",
+      "title": "Bukhangang",
+      "location": "Gangwon",
+      "lat": 37.7,
+      "lng": 127.55,
+      "category": "Scenic Drive",
+      "description": "Featured in OutboundScape video: Top 10 Driving Courses Near Seoul: Bukhangang to C...",
+      "originalVideoId": "ybA_T4nwQE4"
+    },
+    {
+      "id": "buan-jeonbuk",
+      "title": "Buan",
+      "location": "Jeonbuk",
+      "lat": 35.6897,
+      "lng": 126.6014,
+      "category": "Temple",
+      "description": "Featured in OutboundScape video: 변산 내소사 울창한 전나무 숲길과 웅장한 직소폭포와 고즈넉한 오솔길 - 전북 가볼만한 곳 ...",
+      "originalVideoId": "qFsLzN-JLZ0"
+    },
+    {
+      "id": "seonamsa-temple-suncheon",
+      "title": "Seonamsa Temple",
+      "location": "Suncheon",
+      "lat": 34.9858,
+      "lng": 127.3417,
+      "category": "Temple",
+      "description": "Featured in OutboundScape video: 고즈넉한 설경의 선암사 - 전남 순천 | 4k 가볼만한곳 | Cinematic Scenic...",
+      "originalVideoId": "FDVXB_pBfhI"
+    },
+    {
+      "id": "seonunsa-temple-gochang",
+      "title": "Seonunsa Temple",
+      "location": "Gochang",
+      "lat": 35.5022,
+      "lng": 126.5878,
+      "category": "Temple",
+      "description": "Featured in OutboundScape video: 붉은 단풍 가득한 선운사 가는 길 - 전북 고창 / 4k | Cinematic Scenic...",
+      "originalVideoId": "AiRNdp9CZjI"
+    },
+    {
+      "id": "soyang-lake-chuncheon",
+      "title": "Soyang Lake",
+      "location": "Chuncheon",
+      "lat": 37.95,
+      "lng": 127.8167,
+      "category": "Temple",
+      "description": "Featured in OutboundScape video: Soyang Lake, Stunning Autumn Foliage, and Cheongpy...",
+      "originalVideoId": "bQscI2hStYI"
+    },
+    {
+      "id": "jinan-jeonbuk",
+      "title": "Jinan",
+      "location": "Jeonbuk",
+      "lat": 35.7917,
+      "lng": 127.425,
+      "category": "Trail",
+      "description": "Featured in OutboundScape video: 맑은 금강 바로 옆에서 걷는 천년의 옛길 - 감동벼룻길 / 자막 / 진안고원길 / 진안가볼...",
+      "originalVideoId": "4NvSCpc3N-c"
+    },
+    {
+      "id": "han-river-seoul",
+      "title": "Han River",
+      "location": "Seoul",
+      "lat": 37.5283,
+      "lng": 126.9347,
+      "category": "Urban",
+      "description": "Featured in OutboundScape video: Han River - Winter Sunset Han River - Emotional Vi...",
+      "originalVideoId": "enwpR2MWWgc"
+    },
+    {
+      "id": "namsan-seoul",
+      "title": "Namsan",
+      "location": "Seoul",
+      "lat": 37.5512,
+      "lng": 126.9882,
+      "category": "Urban",
+      "description": "Featured in OutboundScape video: 남산 - 서울에서 가장 아름다운 야경을 볼 수 있는 곳 / 서울야경 | 야경맛집 | 남산트...",
+      "originalVideoId": "ujj92Dy5SY8"
+    },
+    {
+      "id": "nodeul-island-seoul",
+      "title": "Nodeul Island",
+      "location": "Seoul",
+      "lat": 37.5172,
+      "lng": 126.9578,
+      "category": "Urban",
+      "description": "Featured in OutboundScape video: Best Sunset Spot in Seoul - Nodeul Island - Yongsa...",
+      "originalVideoId": "GoTUzveDk-g"
+    },
+    {
+      "id": "seoullo-7017-seoul",
+      "title": "Seoullo 7017",
+      "location": "Seoul",
+      "lat": 37.5547,
+      "lng": 126.9706,
+      "category": "Urban",
+      "description": "Featured in OutboundScape video: 서울 도심의 공중정원길 - 서울로 만리동길 | 4k 가볼만한곳 | Cinematic Sce...",
+      "originalVideoId": "v-jJ-pdT338"
+    },
+    {
+      "id": "sky-park-seoul",
+      "title": "Sky Park",
+      "location": "Seoul",
+      "lat": 37.5667,
+      "lng": 126.8844,
+      "category": "Urban",
+      "description": "Featured in OutboundScape video: Sky Park in Seoul / South Korea| Scenic Seoul Walk...",
+      "originalVideoId": "UeXro2xKiwg"
+    },
+    {
+      "id": "yangjaecheon-seoul",
+      "title": "Yangjaecheon",
+      "location": "Seoul",
+      "lat": 37.47,
+      "lng": 127.04,
+      "category": "Urban",
+      "description": "Featured in OutboundScape video: Walking Along Yangjaecheon in Seoul / Subtitles / ...",
+      "originalVideoId": "Gcw_3xXrxbk"
+    },
+    {
+      "id": "donggang-jeongseon",
+      "title": "Donggang",
+      "location": "Jeongseon",
+      "lat": 37.3833,
+      "lng": 128.6667,
+      "category": "Valley",
+      "description": "Featured in OutboundScape video: 동강 - 놀라움의 연속인 국내 최고로 아름다운 협곡 / 강원도정선 / 정선가볼만한곳 / 드...",
+      "originalVideoId": "rmPl1tObTAQ"
+    },
+    {
+      "id": "hwayang-valley-goesan",
+      "title": "Hwayang Valley",
+      "location": "Goesan",
+      "lat": 36.7167,
+      "lng": 127.95,
+      "category": "Valley",
+      "description": "Featured in OutboundScape video: 아름다운 대자연 속의 시간여행 - 화양구곡 - 충북 괴산 / 자막 / 괴산가볼만한곳 /화양...",
+      "originalVideoId": "6wmoLyZb4tY"
+    },
+    {
+      "id": "mureung-valley-donghae",
+      "title": "Mureung Valley",
+      "location": "Donghae",
+      "lat": 37.4722,
+      "lng": 129.0194,
+      "category": "Valley",
+      "description": "Featured in OutboundScape video: 무릉계곡 - 두타산 청옥산 계곡이 만난 기암괴석의 트래킹길 / 강원도 동해 / 자막 /가볼...",
+      "originalVideoId": "G2Leccx1Ah4"
+    },
+    {
+      "id": "ssanggok-valley-goesan",
+      "title": "Ssanggok Valley",
+      "location": "Goesan",
+      "lat": 36.75,
+      "lng": 127.9167,
+      "category": "Valley",
+      "description": "Featured in OutboundScape video: 쌍곡계곡 - 소금강이라 불리는 웅장한 협곡과 맑은 물/ 괴산가볼만한곳 / 자막 / 계곡트래...",
+      "originalVideoId": "KdzfXQF7reE"
+    },
+    {
+      "id": "undal-valley-mungyeong",
+      "title": "Undal Valley",
+      "location": "Mungyeong",
+      "lat": 36.7333,
+      "lng": 128.0833,
+      "category": "Valley",
+      "description": "Featured in OutboundScape video: 한여름 얼음장 같은 이끼계곡 - 운달계곡 경북문경 / 자막 / 문경가볼만한곳 / 운달산 /...",
+      "originalVideoId": "Dwyt0sk5c68"
+    },
+    {
+      "id": "gangchon-waterfall-chuncheon",
+      "title": "Gangchon Waterfall",
+      "location": "Chuncheon",
+      "lat": 37.8333,
+      "lng": 127.6167,
+      "category": "Waterfall",
+      "description": "Featured in OutboundScape video: Charming Travel Destination in Chuncheon: Gangchon...",
+      "originalVideoId": "uFj6MkCFuL8"
+    },
+    {
+      "id": "jirisan-np",
+      "title": "Jirisan National Park",
+      "location": "Gyeongnam/Jeonnam",
+      "lat": 35.3369,
+      "lng": 127.7306,
+      "category": "National Park",
+      "description": "Korea's first national park. 26 camping trails, famous for ridge hiking and sunrise views."
+    },
+    {
+      "id": "seoraksan-np",
+      "title": "Seoraksan National Park",
+      "location": "Gangwon",
+      "lat": 38.1194,
+      "lng": 128.4656,
+      "category": "National Park",
+      "description": "UNESCO Biosphere Reserve. Famous for Ulsanbawi Rock and fall foliage."
+    },
+    {
+      "id": "hallasan-np",
+      "title": "Hallasan National Park",
+      "location": "Jeju",
+      "lat": 33.3617,
+      "lng": 126.5292,
+      "category": "National Park",
+      "description": "Korea's highest mountain (1,950m) on Jeju Island. UNESCO World Heritage site."
+    },
+    {
+      "id": "odaesan-np",
+      "title": "Odaesan National Park",
+      "location": "Gangwon",
+      "lat": 37.7833,
+      "lng": 128.5667,
+      "category": "National Park",
+      "description": "Ancient temple Woljeongsa and pristine fir forests. Great for hiking and meditation."
+    },
+    {
+      "id": "songnisan-np",
+      "title": "Songnisan National Park",
+      "location": "Chungbuk",
+      "lat": 36.5333,
+      "lng": 127.8333,
+      "category": "National Park",
+      "description": "Home to Beopjusa Temple with giant bronze Buddha. Beautiful autumn foliage."
+    },
+    {
+      "id": "gayasan-np",
+      "title": "Gayasan National Park",
+      "location": "Gyeongbuk",
+      "lat": 35.8167,
+      "lng": 128.1167,
+      "category": "National Park",
+      "description": "UNESCO site with Haeinsa Temple housing the Tripitaka Koreana."
+    },
+    {
+      "id": "naejangsan-np",
+      "title": "Naejangsan National Park",
+      "location": "Jeonbuk",
+      "lat": 35.4833,
+      "lng": 126.8833,
+      "category": "National Park",
+      "description": "Famous for spectacular autumn foliage and maple trees."
+    },
+    {
+      "id": "deogyusan-np",
+      "title": "Deogyusan National Park",
+      "location": "Jeonbuk",
+      "lat": 35.8667,
+      "lng": 127.75,
+      "category": "National Park",
+      "description": "Popular ski resort area with excellent hiking trails."
+    },
+    {
+      "id": "taeanhaean-np",
+      "title": "Taeanhaean National Park",
+      "location": "Chungnam",
+      "lat": 36.7833,
+      "lng": 126.1333,
+      "category": "National Park",
+      "description": "Korea's only coastal national park with beautiful beaches."
+    },
+    {
+      "id": "dadohaehaesang-np",
+      "title": "Dadohaehaesang National Park",
+      "location": "Jeonnam",
+      "lat": 34.3333,
+      "lng": 126.0,
+      "category": "National Park",
+      "description": "Maritime park with over 1,700 islands. Great for island hopping."
+    },
+    {
+      "id": "nanji-campground",
+      "title": "Nanji Campground",
+      "location": "Seoul",
+      "lat": 37.5678,
+      "lng": 126.8778,
+      "category": "Camping",
+      "description": "Seoul's largest campground with 165 sites near World Cup Park."
+    },
+    {
+      "id": "seoul-grand-park-camp",
+      "title": "Seoul Grand Park Campground",
+      "location": "Gwacheon",
+      "lat": 37.4275,
+      "lng": 127.0167,
+      "category": "Camping",
+      "description": "Natural campground within Seoul Grand Park complex."
+    },
+    {
+      "id": "daecheong-lake-camp",
+      "title": "Daecheong Lake Lohas Camping",
+      "location": "Cheongju",
+      "lat": 36.4833,
+      "lng": 127.4833,
+      "category": "Camping",
+      "description": "Lakeside camping with water activities at Daecheong Lake."
+    },
+    {
+      "id": "gapyeong-glamping",
+      "title": "Gapyeong Riverside Glamping",
+      "location": "Gapyeong",
+      "lat": 37.8167,
+      "lng": 127.5167,
+      "category": "Glamping",
+      "description": "Riverfront glamping with hot tubs, 5 mins from downtown."
+    },
+    {
+      "id": "palgongsan-glamping",
+      "title": "Palgongsan Gatbawi Glamping",
+      "location": "Daegu",
+      "lat": 35.9833,
+      "lng": 128.6833,
+      "category": "Glamping",
+      "description": "Family-friendly glamping near Palgongsan Mountain."
+    },
+    {
+      "id": "surfyy-beach-camp",
+      "title": "Surfyy Beach Camping",
+      "location": "Yangyang",
+      "lat": 38.0833,
+      "lng": 128.6167,
+      "category": "Camping",
+      "description": "Beachfront camping at popular surf spot on East Coast."
+    },
+    {
+      "id": "seogwipo-forest-camp",
+      "title": "Seogwipo Natural Recreation Forest",
+      "location": "Jeju",
+      "lat": 33.25,
+      "lng": 126.5667,
+      "category": "Camping",
+      "description": "Forest camping in Jeju with treehouse accommodations."
+    },
+    {
+      "id": "yeomchi-reservoir",
+      "title": "Yeomchi Reservoir",
+      "location": "Gyeonggi",
+      "lat": 37.25,
+      "lng": 127.0833,
+      "category": "Fishing",
+      "description": "Popular bass fishing spot with snakehead and catfish."
+    },
+    {
+      "id": "gosam-reservoir",
+      "title": "Gosam Reservoir",
+      "location": "Gyeonggi",
+      "lat": 37.1667,
+      "lng": 127.05,
+      "category": "Fishing",
+      "description": "Leased lake with boat rentals, known for bass fishing."
+    },
+    {
+      "id": "baekkook-reservoir",
+      "title": "Baekkook Reservoir",
+      "location": "Gyeonggi",
+      "lat": 37.3,
+      "lng": 127.15,
+      "category": "Fishing",
+      "description": "Close to Seoul, good water clarity and flooded timber."
+    },
+    {
+      "id": "uiam-lake-fishing",
+      "title": "Uiam Lake",
+      "location": "Chuncheon",
+      "lat": 37.8833,
+      "lng": 127.7333,
+      "category": "Fishing",
+      "description": "Emerging bass fishing destination with bluegill population."
+    },
+    {
+      "id": "danggol-fishing",
+      "title": "Danggol Fishing Area",
+      "location": "Hwaseong",
+      "lat": 37.1833,
+      "lng": 126.7833,
+      "category": "Fishing",
+      "description": "Freshwater spot along Namyangho tributaries. Crucian carp and trout."
+    },
+    {
+      "id": "gukhwa-island",
+      "title": "Gukhwa Island",
+      "location": "Incheon",
+      "lat": 37.4167,
+      "lng": 126.3833,
+      "category": "Fishing",
+      "description": "Year-round sea fishing. Halibut, flounder, rockfish."
+    },
+    {
+      "id": "yongyudo-fishing",
+      "title": "Yongyudo Island",
+      "location": "Incheon",
+      "lat": 37.2333,
+      "lng": 126.4167,
+      "category": "Fishing",
+      "description": "Sea fishing at Eungwang-ri dock. Sea bass and mullet."
+    },
+    {
+      "id": "silmido-fishing",
+      "title": "Silmido & Muuido",
+      "location": "Incheon",
+      "lat": 37.3833,
+      "lng": 126.4333,
+      "category": "Fishing",
+      "description": "Popular day-trip sea fishing from Seoul."
+    },
+    {
+      "id": "namhae-island-fishing",
+      "title": "Namhae Island",
+      "location": "Gyeongnam",
+      "lat": 34.8333,
+      "lng": 127.9167,
+      "category": "Fishing",
+      "description": "Scenic island with flounder, rockfish, yellowtail, sea bream."
+    },
+    {
+      "id": "dobongsan",
+      "title": "Dobongsan",
+      "location": "Seoul",
+      "lat": 37.6975,
+      "lng": 127.0167,
+      "category": "Mountain",
+      "description": "Rocky peaks north of Seoul, connected to Bukhansan. Popular weekend hike."
+    },
+    {
+      "id": "suraksan",
+      "title": "Suraksan",
+      "location": "Seoul",
+      "lat": 37.6833,
+      "lng": 127.0667,
+      "category": "Mountain",
+      "description": "Granite peaks with valley trails. Easy access from Seoul."
+    },
+    {
+      "id": "achasan",
+      "title": "Achasan",
+      "location": "Seoul",
+      "lat": 37.55,
+      "lng": 127.1,
+      "category": "Mountain",
+      "description": "Historic fortress mountain with Han River views. Easy hike."
+    },
+    {
+      "id": "cheonggyesan",
+      "title": "Cheonggyesan",
+      "location": "Seoul",
+      "lat": 37.45,
+      "lng": 127.05,
+      "category": "Mountain",
+      "description": "Popular hiking spot in southern Seoul. Various trail options."
+    },
+    {
+      "id": "mudeungsan",
+      "title": "Mudeungsan National Park",
+      "location": "Gwangju",
+      "lat": 35.1333,
+      "lng": 126.9833,
+      "category": "National Park",
+      "description": "Gwangju's mountain with unique columnar rock formations."
+    },
+    {
+      "id": "wolaksan-np",
+      "title": "Woraksan National Park",
+      "location": "Chungbuk",
+      "lat": 36.8833,
+      "lng": 128.1,
+      "category": "National Park",
+      "description": "Known for rocky peaks and Buddhist temples."
+    },
+    {
+      "id": "jujeongol-valley",
+      "title": "Jujeongol Valley",
+      "location": "Inje",
+      "lat": 38.0667,
+      "lng": 128.3333,
+      "category": "Valley",
+      "description": "Crystal clear water in Seoraksan area. Popular summer spot."
+    },
+    {
+      "id": "baekdam-valley",
+      "title": "Baekdam Valley",
+      "location": "Inje",
+      "lat": 38.15,
+      "lng": 128.3833,
+      "category": "Valley",
+      "description": "Pristine valley near Baekdamsa Temple in Seoraksan."
+    },
+    {
+      "id": "yongmunsa-valley",
+      "title": "Yongmunsa Valley",
+      "location": "Yangpyeong",
+      "lat": 37.55,
+      "lng": 127.5333,
+      "category": "Valley",
+      "description": "Temple valley with 1,100 year old ginkgo tree."
+    }
+  ],
+  "metadata": {
+    "totalSites": 107,
+    "source": "Converted from OutboundScape video locations",
+    "lastUpdated": "2026-01-28",
+    "categories": [
+      "Beach",
+      "Camping",
+      "Cultural",
+      "Fishing",
+      "Garden",
+      "Glamping",
+      "Mountain",
+      "National Park",
+      "Nature",
+      "Scenic Drive",
+      "Temple",
+      "Trail",
+      "Urban",
+      "Valley",
+      "Waterfall"
+    ]
+  }
+}

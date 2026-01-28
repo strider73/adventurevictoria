@@ -195,6 +195,8 @@ export interface VideoLocation {
   hasVideo: boolean;
   // Computed field: first available video ID (original or community) for thumbnail display
   displayThumbnailId?: string | null;
+  // Community video count for this location
+  communityVideoCount?: number;
 }
 
 interface MapComponentProps {
@@ -438,7 +440,7 @@ export default function MapComponent({
                 className="flex items-center gap-3 px-3 py-2 text-sm rounded transition-colors w-full text-left"
               >
                 <span>📹</span>
-                <span>Community Videos</span>
+                <span>Community Videos{activePopup.communityVideoCount ? ` (${activePopup.communityVideoCount})` : ''}</span>
               </button>
 
               {/* Show Route button */}

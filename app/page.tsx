@@ -387,20 +387,22 @@ export default function HomePage() {
     localStorage.setItem("userVotedLocations", JSON.stringify(newUserVoted));
   };
 
-  // Enrich locations with displayThumbnailId (original video or first community video)
+  // Enrich locations with displayThumbnailId (original video or first community video) and community video count
   const enrichedLocations = useMemo(() => {
     return videoLocations.map((location) => {
+      const locationCommunityVideos = communityVideos[location.id] || [];
+      const communityVideoCount = locationCommunityVideos.length;
+
       // If location has original video, use that
       if (location.hasVideo && location.youtubeId) {
-        return { ...location, displayThumbnailId: location.youtubeId };
+        return { ...location, displayThumbnailId: location.youtubeId, communityVideoCount };
       }
       // Otherwise, check for community videos
-      const locationCommunityVideos = communityVideos[location.id] || [];
-      if (locationCommunityVideos.length > 0) {
-        return { ...location, displayThumbnailId: locationCommunityVideos[0].youtubeId };
+      if (communityVideoCount > 0) {
+        return { ...location, displayThumbnailId: locationCommunityVideos[0].youtubeId, communityVideoCount };
       }
       // No videos at all
-      return { ...location, displayThumbnailId: null };
+      return { ...location, displayThumbnailId: null, communityVideoCount: 0 };
     });
   }, [communityVideos]);
 

@@ -8,12 +8,15 @@ Collect YouTube camping videos for ALL 200 Victoria camping sites (5+ videos eac
 - **Day 2 (2026-01-25):** 30 sites processed (quota hit early due to failed runs), merged & seeded
   - Fixed bug: script crashed when YouTube returned channel/playlist results instead of videos
   - Added `videoId` checks in two places in `youtube-finder.py`
-- **Total sites with videos:** 104 / 200
-- **Sites remaining:** 96
-- **Estimated completion:** ~2 more days at 50 sites/day
-- **Script tracks "not enough" sites** (< 5 videos) in `data/sites-need-more-videos.json`
+- **Day 3 (2026-01-27):** 47 sites processed (all remaining), merged & seeded to MongoDB
+  - Sites with 5+ videos: 35
+  - Sites with <5 videos: 10 (added to sites-need-more-videos.json)
+  - Sites with 0 videos: 2 (Larni Yirrip Camping Village, Euchre Valley Campground)
+- **Total sites with videos:** 198 / 200
+- **First pass complete!** ✅
+- **Next step:** Second pass for sites with <5 videos using different search queries
 
-## Phase 1: Video Collection (Daily Script) ✅ In Progress
+## Phase 1: Video Collection (Daily Script) ✅ First Pass Complete
 **Goal:** All 200 sites with 5+ videos each. First pass covers all sites once — sites with <5 videos are marked "not enough" and revisited later with different search queries.
 
 ### Daily routine:
@@ -85,7 +88,7 @@ Before contacting any creator, everything should already be set up and waiting f
 ## What's Already Done
 - Script exists at `scripts/youtube-finder.py`
 - Reads sites from `data/victoria-camping-sites.json` (200 sites)
-- Checks existing videos in `data/community-videos.json` (104 sites covered after Day 2)
+- Checks existing videos in `data/community-videos.json` (198 sites covered after Day 3)
 - Also checks any previous daily output files (`data/community-videos-YYYY-MM-DD.json`)
 - Writes new results to a dated file: `data/community-videos-YYYY-MM-DD.json`
 - API Key: `AIzaSyDEv4QkQb4cX3zk6aOUD1S10uB1szt_CuY`
@@ -147,7 +150,7 @@ This updates the live app immediately.
 - Script skips sites that already have videos (in main file OR any daily file)
 - Running multiple times in same day appends to that day's file
 - Running on different days creates new dated files
-- ~96 sites still need videos (after Day 2), at 50/day = ~2 more days to cover all
+- First pass complete (198/200 sites have videos)
 
 ## API Quota Notes
 - YouTube Data API free tier: 10,000 units/day
