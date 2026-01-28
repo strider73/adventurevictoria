@@ -3,7 +3,23 @@
 import { useState, useMemo, useEffect } from "react";
 import { Navbar, Footer, SocialIcons, Button, Badge, NotificationBadge } from "@/components/ui";
 import dynamic from "next/dynamic";
-import type { KoreaVideo } from "./MapComponent";
+import type { VideoLocation } from "@/components/map/MapComponent";
+
+// API response type for Korea videos (from /api/korea/videos)
+interface KoreaVideoResponse {
+  videoId: string;
+  title: string;
+  duration: string;
+  views: number;
+  uploadedAgo: string;
+  location: string;
+  category: string;
+  lat: number;
+  lng: number;
+  siteId: string;
+  description: string;
+  communityVideoCount: number;
+}
 
 interface KoreaCommunityVideoEntry {
   campingSiteId: string;
@@ -88,8 +104,8 @@ const getUserRecommendedVideos = (): string[] => {
   return stored ? JSON.parse(stored) : [];
 };
 
-// Dynamic import for Leaflet map (SSR disabled)
-const MapComponent = dynamic(() => import("./MapComponent"), {
+// Dynamic import for shared Leaflet map (SSR disabled)
+const MapComponent = dynamic(() => import("@/components/map/MapComponent"), {
   ssr: false,
   loading: () => (
     <div className="w-full aspect-[2/1] bg-[--color-bg-tertiary] rounded-2xl animate-pulse flex items-center justify-center">
@@ -97,6 +113,10 @@ const MapComponent = dynamic(() => import("./MapComponent"), {
     </div>
   ),
 });
+
+// Korea map center and zoom
+const KOREA_CENTER: [number, number] = [36.5, 127.8];
+const KOREA_ZOOM = 7;
 
 const navLinks = [
   { label: "Map - Victoria", href: "/" },
@@ -244,9 +264,9 @@ const categoryIcons: Record<string, React.ReactNode> = {
 };
 
 export default function MapKoreaPage() {
-  const [videos, setVideos] = useState<KoreaVideo[]>([]);
+  const [locations, setLocations] = useState<VideoLocation[]>([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [selectedVideo, setSelectedVideo] = useState<KoreaVideo | null>(null);
+  const [selectedLocation, setSelectedLocation] = useState<VideoLocation | null>(null);
   const [categoryFilter, setCategoryFilter] = useState<CategoryType>("all");
   const [communityVideos, setCommunityVideos] = useState<Record<string, CommunityVideo[]>>({});
   const [videoUrl, setVideoUrl] = useState("");
@@ -271,10 +291,28 @@ export default function MapKoreaPage() {
           fetch("/api/korea/community-videos"),
         ]);
 
-        const videosData: { channel: unknown; videos: KoreaVideo[] } = await videosRes.json();
+        const videosData: { channel: unknown; videos: KoreaVideoResponse[] } = await videosRes.json();
         const communityData: { communityVideos: KoreaCommunityVideoEntry[] } = await communityRes.json();
 
-        setVideos(videosData.videos);
+        // Transform API data to VideoLocation format (same as Victoria)
+        const transformedLocations: VideoLocation[] = videosData.videos.map((v) => ({
+          id: v.siteId,
+          title: v.title,
+          location: v.location,
+          lat: v.lat,
+          lng: v.lng,
+          category: v.category,
+          description: v.description,
+          youtubeId: v.videoId,
+          videoTitle: v.title,
+          duration: v.duration || null,
+          views: v.views,
+          hasVideo: !!v.videoId,
+          displayThumbnailId: v.videoId,
+          communityVideoCount: v.communityVideoCount || 0,
+        }));
+
+        setLocations(transformedLocations);
         setCommunityVideos(getCommunityVideos(communityData.communityVideos));
       } catch (error) {
         console.error("Failed to fetch data:", error);
@@ -294,20 +332,20 @@ export default function MapKoreaPage() {
     setSubmitStatus("idle");
     setShowSubmitForm(false);
     // Set the current playing video: original video first
-    if (selectedVideo?.videoId) {
-      setCurrentPlayingVideoId(selectedVideo.videoId);
-    } else if (selectedVideo) {
+    if (selectedLocation?.youtubeId) {
+      setCurrentPlayingVideoId(selectedLocation.youtubeId);
+    } else if (selectedLocation) {
       // No original video, check for community videos
-      const locationCommunityVideos = communityVideos[selectedVideo.videoId] || [];
+      const locationCommunityVideos = communityVideos[selectedLocation.id] || [];
       setCurrentPlayingVideoId(locationCommunityVideos[0]?.youtubeId || null);
     } else {
       setCurrentPlayingVideoId(null);
     }
-  }, [selectedVideo, communityVideos]);
+  }, [selectedLocation, communityVideos]);
 
   // Handle community video submission
   const handleVideoSubmit = () => {
-    if (!selectedVideo) return;
+    if (!selectedLocation) return;
 
     const youtubeId = extractYouTubeId(videoUrl);
     if (!youtubeId) {
@@ -318,10 +356,10 @@ export default function MapKoreaPage() {
     const newVideo: CommunityVideo = {
       youtubeId,
       submittedAt: new Date().toISOString(),
-      locationId: selectedVideo.videoId,
+      locationId: selectedLocation.id,
     };
 
-    const locationVideos = communityVideos[selectedVideo.videoId] || [];
+    const locationVideos = communityVideos[selectedLocation.id] || [];
 
     // Check if video already exists
     if (locationVideos.some(v => v.youtubeId === youtubeId)) {
@@ -331,7 +369,7 @@ export default function MapKoreaPage() {
 
     const updatedVideos = {
       ...communityVideos,
-      [selectedVideo.videoId]: [...locationVideos, newVideo],
+      [selectedLocation.id]: [...locationVideos, newVideo],
     };
 
     setCommunityVideos(updatedVideos);
@@ -361,29 +399,29 @@ export default function MapKoreaPage() {
   // Calculate category counts
   const categoryCounts = useMemo(() => {
     const counts: Record<string, number> = {};
-    videos.forEach((video) => {
-      counts[video.category] = (counts[video.category] || 0) + 1;
+    locations.forEach((loc) => {
+      counts[loc.category] = (counts[loc.category] || 0) + 1;
     });
     return counts;
-  }, [videos]);
+  }, [locations]);
 
-  // Filter videos based on category
-  const filteredVideos = useMemo(() => {
-    if (categoryFilter === "all") return videos;
-    return videos.filter((video) => video.category === categoryFilter);
-  }, [videos, categoryFilter]);
+  // Filter locations based on category
+  const filteredLocations = useMemo(() => {
+    if (categoryFilter === "all") return locations;
+    return locations.filter((loc) => loc.category === categoryFilter);
+  }, [locations, categoryFilter]);
 
   // Sort by views (most popular first)
-  const sortedVideos = useMemo(() => {
-    return [...filteredVideos].sort((a, b) => b.views - a.views);
-  }, [filteredVideos]);
+  const sortedLocations = useMemo(() => {
+    return [...filteredLocations].sort((a, b) => (b.views || 0) - (a.views || 0));
+  }, [filteredLocations]);
 
-  const handleMarkerClick = (video: KoreaVideo) => {
-    setSelectedVideo(video);
+  const handleMarkerClick = (location: VideoLocation) => {
+    setSelectedLocation(location);
   };
 
   const closeModal = () => {
-    setSelectedVideo(null);
+    setSelectedLocation(null);
   };
 
   // Format view count
@@ -448,7 +486,7 @@ export default function MapKoreaPage() {
               Scenic Travel Adventures Across South Korea
             </p>
             <p className="text-[--color-text-tertiary] max-w-2xl mx-auto">
-              Discover {videos.length} amazing locations across South Korea. Click any marker to watch the video.
+              Discover {locations.length} amazing locations across South Korea. Click any marker to watch the video.
             </p>
           </div>
 
@@ -464,7 +502,7 @@ export default function MapKoreaPage() {
                   onClick={() => setCategoryFilter("all")}
                   className="rounded-full text-xs px-3 py-1.5"
                 >
-                  All ({videos.length})
+                  All ({locations.length})
                 </Button>
                 {/* Category buttons */}
                 {orderedCategories.map((category) => {
@@ -505,7 +543,13 @@ export default function MapKoreaPage() {
 
               {/* Fullscreen Map */}
               <div className="w-full h-full">
-                <MapComponent key="fullscreen" videos={filteredVideos} onMarkerClick={handleMarkerClick} />
+                <MapComponent
+                  key="fullscreen"
+                  locations={filteredLocations}
+                  onMarkerClick={(loc) => setSelectedLocation(loc)}
+                  center={KOREA_CENTER}
+                  zoom={KOREA_ZOOM}
+                />
               </div>
             </div>
           )}
@@ -524,7 +568,13 @@ export default function MapKoreaPage() {
             </button>
 
             <div className="relative w-full aspect-[2/1]">
-              <MapComponent key="normal" videos={filteredVideos} onMarkerClick={handleMarkerClick} />
+              <MapComponent
+                key="normal"
+                locations={filteredLocations}
+                onMarkerClick={(loc) => setSelectedLocation(loc)}
+                center={KOREA_CENTER}
+                zoom={KOREA_ZOOM}
+              />
             </div>
           </div>
 
@@ -549,7 +599,7 @@ export default function MapKoreaPage() {
           <div className="mt-8 text-center">
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-[--color-bg-secondary] rounded-full">
               <span className="text-[--color-text-secondary]">
-                {videos.length} videos from
+                {locations.length} locations from
               </span>
               <a
                 href="https://www.youtube.com/@outboundscape"
@@ -568,15 +618,15 @@ export default function MapKoreaPage() {
       <section className="py-12 px-4 sm:px-6 lg:px-8 bg-[--color-bg-secondary]">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-2xl font-bold text-[--color-text-primary] mb-6">
-            {categoryFilter === "all" ? "All Videos" : `${categoryFilter} Videos`} ({sortedVideos.length})
+            {categoryFilter === "all" ? "All Locations" : `${categoryFilter} Locations`} ({sortedLocations.length})
           </h2>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
-            {sortedVideos.map((video, index) => {
-              const communityVideoCount = communityVideos[video.videoId]?.length || 0;
+            {sortedLocations.map((location, index) => {
+              const communityVideoCount = location.communityVideoCount || 0;
               return (
                 <button
-                  key={`card-${video.videoId}-${index}`}
-                  onClick={() => setSelectedVideo(video)}
+                  key={`card-${location.id}-${index}`}
+                  onClick={() => setSelectedLocation(location)}
                   className="group text-left"
                 >
                   <div className="relative mb-2">
@@ -584,8 +634,8 @@ export default function MapKoreaPage() {
                     <NotificationBadge count={communityVideoCount} />
                     <div className="relative aspect-video rounded-xl overflow-hidden">
                       <img
-                        src={`https://img.youtube.com/vi/${video.videoId}/mqdefault.jpg`}
-                        alt={video.title}
+                        src={`https://img.youtube.com/vi/${location.youtubeId}/mqdefault.jpg`}
+                        alt={location.title}
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform"
                       />
                       <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center">
@@ -599,25 +649,23 @@ export default function MapKoreaPage() {
                       </div>
                       <span
                         className="absolute top-2 right-2 px-2 py-0.5 rounded text-[10px] font-medium text-white"
-                        style={{ backgroundColor: categoryColors[video.category] }}
+                        style={{ backgroundColor: categoryColors[location.category] }}
                       >
-                        {video.category}
+                        {location.category}
                       </span>
-                      <span className="absolute bottom-2 right-2 px-2 py-0.5 rounded text-[10px] font-medium text-white bg-black/70">
-                        {video.duration}
-                      </span>
+                      {location.duration && (
+                        <span className="absolute bottom-2 right-2 px-2 py-0.5 rounded text-[10px] font-medium text-white bg-black/70">
+                          {location.duration}
+                        </span>
+                      )}
                     </div>
                   </div>
                   <h3 className="text-sm font-medium text-[--color-text-primary] line-clamp-2 group-hover:text-[--color-brand] transition-colors">
-                    {video.title}
+                    {location.title}
                   </h3>
                   <div className="flex items-center gap-2 mt-1">
                     <p className="text-xs text-[--color-text-tertiary]">
-                      {formatViews(video.views)} views
-                    </p>
-                    <span className="text-xs text-[--color-text-tertiary]">•</span>
-                    <p className="text-xs text-[--color-text-tertiary]">
-                      {video.uploadedAgo}
+                      {formatViews(location.views || 0)} views
                     </p>
                   </div>
                 </button>
@@ -628,7 +676,7 @@ export default function MapKoreaPage() {
       </section>
 
       {/* Video Modal */}
-      {selectedVideo && (
+      {selectedLocation && (
         <div
           className="fixed inset-0 bg-black/80 z-[9999] flex items-center justify-center p-4"
           onClick={closeModal}
@@ -641,8 +689,8 @@ export default function MapKoreaPage() {
             <div className="aspect-video flex-shrink-0 m-4 mb-0 rounded-xl overflow-hidden">
               <iframe
                 key={currentPlayingVideoId}
-                src={`https://www.youtube.com/embed/${currentPlayingVideoId || selectedVideo.videoId}?autoplay=1`}
-                title={selectedVideo.title}
+                src={`https://www.youtube.com/embed/${currentPlayingVideoId || selectedLocation.youtubeId}?autoplay=1`}
+                title={selectedLocation.title}
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 allowFullScreen
                 className="w-full h-full"
@@ -654,20 +702,20 @@ export default function MapKoreaPage() {
               <div className="flex items-start justify-between gap-4">
                 <div>
                   <h3 className="text-lg font-semibold text-[--color-text-primary]">
-                    {selectedVideo.title}
+                    {selectedLocation.title}
                   </h3>
                   <p className="text-[--color-text-tertiary] text-sm mt-1">
-                    {selectedVideo.location}
+                    {selectedLocation.location}
                   </p>
                   <div className="flex items-center gap-2 mt-2">
                     <span
                       className="px-3 py-1 rounded-full text-xs font-medium text-white"
-                      style={{ backgroundColor: categoryColors[selectedVideo.category] }}
+                      style={{ backgroundColor: categoryColors[selectedLocation.category] }}
                     >
-                      {selectedVideo.category}
+                      {selectedLocation.category}
                     </span>
                     <a
-                      href={`https://www.youtube.com/watch?v=${selectedVideo.videoId}`}
+                      href={`https://www.youtube.com/watch?v=${selectedLocation.youtubeId}`}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-[#FF0000] hover:bg-[#CC0000] text-white transition-colors"
@@ -679,9 +727,8 @@ export default function MapKoreaPage() {
                     </a>
                   </div>
                   <div className="flex items-center gap-4 text-sm text-[--color-text-tertiary] mt-2">
-                    <span>{formatViews(selectedVideo.views)} views</span>
-                    <span>{selectedVideo.uploadedAgo}</span>
-                    <span>{selectedVideo.duration}</span>
+                    <span>{formatViews(selectedLocation.views || 0)} views</span>
+                    {selectedLocation.duration && <span>{selectedLocation.duration}</span>}
                   </div>
                 </div>
                 <button
@@ -702,9 +749,9 @@ export default function MapKoreaPage() {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                     </svg>
                     Community Videos
-                    {communityVideos[selectedVideo.videoId]?.length > 0 && (
+                    {communityVideos[selectedLocation.id]?.length > 0 && (
                       <span className="text-xs text-[--color-text-tertiary]">
-                        ({communityVideos[selectedVideo.videoId].length})
+                        ({communityVideos[selectedLocation.id].length})
                       </span>
                     )}
                   </h4>
@@ -787,16 +834,18 @@ export default function MapKoreaPage() {
                     isOriginal: boolean;
                   }> = [];
 
-                  // Add original video first
-                  allVideos.push({
-                    youtubeId: selectedVideo.videoId,
-                    title: selectedVideo.title,
-                    channelName: "Outboundscape",
-                    isOriginal: true,
-                  });
+                  // Add original video first (if exists)
+                  if (selectedLocation.youtubeId) {
+                    allVideos.push({
+                      youtubeId: selectedLocation.youtubeId,
+                      title: selectedLocation.title,
+                      channelName: "Outboundscape",
+                      isOriginal: true,
+                    });
+                  }
 
                   // Add community videos
-                  const communityList = communityVideos[selectedVideo.videoId] || [];
+                  const communityList = communityVideos[selectedLocation.id] || [];
                   communityList.forEach((video) => {
                     allVideos.push({
                       youtubeId: video.youtubeId,
