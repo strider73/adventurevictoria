@@ -1,63 +1,3672 @@
 {
-  "description": "Community videos from other YouTube channels featuring locations in the Korea travel map",
-  "lastUpdated": "2026-01-11",
-  "instructions": "To add new videos: Find the videoId (11-character code from YouTube URL), add title and channelName. The videoId links to a location via the original video's videoId from korea-travel-video.json",
   "communityVideos": [
     {
-      "campingSiteId": "J6VoP8lKyxA",
-      "locationName": "Seoraksan, Gangwon",
+      "campingSiteId": "anmyeondo-taean",
       "videos": [
         {
-          "videoId": "NJtTUBwvtPg",
-          "title": "We Hiked Seoraksan National Park - Gangwon-do Korea Travel Vlog",
-          "channelName": "Where's Anne?"
+          "videoId": "YSOReMiYKMM",
+          "title": "안면도, 보석과 같은 서해의 힐링섬 - 충남 태안 | 4k | Cinematic Scenic Travel",
+          "channelName": "OutboundScape",
+          "source": "youtube",
+          "views": 432,
+          "isOriginal": true
+        },
+        {
+          "videoId": "o3vAm5Z8fdY",
+          "title": "안면도가볼만한곳 트래킹코스 힐링여행추천지 ㅣ삼봉해수욕장ㅣ갯벌체험ㅣ개불잡기ㅣ바다낚시ㅣ소나무숲길ㅣ오솔길ㅣ천사길ㅣ산책로ㅣ사색의길",
+          "channelName": "AI 트립스",
+          "source": "youtube",
+          "views": 3246
+        },
+        {
+          "videoId": "1VxV2QpVwmI",
+          "title": "꽃지해변 야외취침.Cắm trại tại bãi biển Anmyeondo.Sleeping outdoors. Kkotji Beach Camping.",
+          "channelName": "구석구석 김돌이 Kim Dori in every corner",
+          "source": "youtube",
+          "views": 2231
+        },
+        {
+          "videoId": "0WAQ9ZfdGMk",
+          "title": "[반드시 가봐야할 대한민국 100경 ]–안면도 꽃지해변,100 Must -Visit Tourist Spots of KOREA:Anmyeondo Kkotji Beach ,  -安眠岛",
+          "channelName": "leekyub",
+          "source": "youtube",
+          "views": 744
+        },
+        {
+          "videoId": "T5-V23lEPy0",
+          "title": "태안 안면도 안면 해수욕장 여름 바다 풍경 모레 벌판에서 아이와 물놀이 하기  좋은곳 입니다  🚶‍♂️ walking  tour  korea 4k hdr",
+          "channelName": "KOREA 4K",
+          "source": "youtube",
+          "views": 328
+        },
+        {
+          "videoId": "WDqBdfx7hso",
+          "title": "충청남도 태안 안면도 (anmyeondo Island) 여행 9월 첫 날 꽃지해수욕장(Kkotji Beach) 제8경 할미.할아비바위",
+          "channelName": "FILM noname",
+          "source": "youtube",
+          "views": 268
         }
       ]
     },
     {
-      "campingSiteId": "cclWwATX7zo",
-      "locationName": "Bukhansan, Seoul",
-      "videos": []
+      "campingSiteId": "hwachang-island-taean",
+      "videos": [
+        {
+          "videoId": "Ca45pCVWZiw",
+          "title": "태안 화창도 - 해안절벽 절경의 또다른 땅끝. 서해안 여행 가볼만한곳. 태안해변길/ 통개항/ 파도리 | Cinematic Scenic Travel",
+          "channelName": "OutboundScape",
+          "source": "youtube",
+          "views": 644,
+          "isOriginal": true
+        }
+      ]
     },
     {
-      "campingSiteId": "O6NHfE-Po1M",
-      "locationName": "Gyeongbokgung, Seoul",
-      "videos": []
+      "campingSiteId": "nuae-island-hwaseong",
+      "videos": [
+        {
+          "videoId": "NYI48qFVq7Y",
+          "title": "바닷길로 걸어 들어갈 수 있는 작은 등대섬! - 탄도항 누에섬 / 4k | Cinematic Scenic Travel",
+          "channelName": "OutboundScape",
+          "source": "youtube",
+          "views": 136,
+          "isOriginal": true
+        },
+        {
+          "videoId": "k1qZBGcU8no",
+          "title": "We Went To Every KPop Demon Hunters Location",
+          "channelName": "Sam and JJ",
+          "source": "youtube",
+          "views": 4653989
+        },
+        {
+          "videoId": "N-zrjBpKGiI",
+          "title": "25 Best Things To Do in Seoul, South Korea",
+          "channelName": "Mark Wiens",
+          "source": "youtube",
+          "views": 2721138
+        },
+        {
+          "videoId": "ZreotpsIzN8",
+          "title": "رحلة فجائية إلى كوريا (التخييم - الحلقة الأولى)",
+          "channelName": "KTO MENA TV - هيئة السياحة الكورية",
+          "source": "youtube",
+          "views": 178042
+        },
+        {
+          "videoId": "Wds5SlIJbrE",
+          "title": "🔴 EXPLORE STADIUMS IN SOUTH KOREA 🇰🇷",
+          "channelName": "Bang Fakhri",
+          "source": "youtube",
+          "views": 1261
+        },
+        {
+          "videoId": "prOAMFrj6Ws",
+          "title": "JAPAN FAMILY RESTAURANT, BONDING WITH MUKBANGERS BABY AKANE @japinayakane3.26",
+          "channelName": "JAPINAY AKANE 3.26 ",
+          "source": "youtube",
+          "views": 929
+        }
+      ]
     },
     {
-      "campingSiteId": "KdzfXQF7reE",
-      "locationName": "Ssanggok Valley, Goesan",
-      "videos": []
+      "campingSiteId": "padori-cave-taean",
+      "videos": [
+        {
+          "videoId": "Gnhgj_9Mjy0",
+          "title": "자연이 선물한 신비한 체험 - 파도리 해식동굴 / 태안여행 /태안가볼만한곳 / 태안해변길 | Cinematic Scenic Travel",
+          "channelName": "OutboundScape",
+          "source": "youtube",
+          "views": 334,
+          "isOriginal": true
+        },
+        {
+          "videoId": "WdgfGvYG8VY",
+          "title": "서해 태안 파도리해변 무료차박/파도리해변 해식동굴",
+          "channelName": "일탈캠핑",
+          "source": "youtube",
+          "views": 3382
+        },
+        {
+          "videoId": "Pesq-cBEYqU",
+          "title": "파도리해변/해식동굴/태안가볼만한곳/힐링",
+          "channelName": "섭이랑수니랑 Travel & Climbing story",
+          "source": "youtube",
+          "views": 2643
+        },
+        {
+          "videoId": "W2Dmnft3IC4",
+          "title": "[태안여행] 동선 완벽한 태안 1박2일 가족여행 (숨은 바다, 맛집, 숙소 총정리)",
+          "channelName": "여행을 소개하는 언니",
+          "source": "youtube",
+          "views": 2189
+        },
+        {
+          "videoId": "GHBCYJydztk",
+          "title": "Trip to Seosan, Korea 3 - Isolated Ganwol Temple and Sea Caves at Padori Beach hot on SNS",
+          "channelName": "Nature Beauty",
+          "source": "youtube",
+          "views": 2134
+        },
+        {
+          "videoId": "qPzXLEvUhZA",
+          "title": "파도리 해식동굴",
+          "channelName": "예나아빠",
+          "source": "youtube",
+          "views": 269
+        }
+      ]
     },
     {
-      "campingSiteId": "6im6VHHY3pE",
-      "locationName": "Nami Island, Chuncheon",
-      "videos": []
+      "campingSiteId": "samcheok-gangwon",
+      "videos": [
+        {
+          "videoId": "dprjIOO0l8Q",
+          "title": "해돚이 - 강원도 삼척 이사부길 해안도로에서 일출 / 드라이브코스 / 4k | Cinematic Scenic Travel",
+          "channelName": "OutboundScape",
+          "source": "youtube",
+          "views": 198,
+          "isOriginal": true
+        },
+        {
+          "videoId": "kHGYi1Au16Y",
+          "title": "삼척에 이런 곳이? 갈남항 비밀의 해변 (with 세일레이싱) | 대한민국 삼척",
+          "channelName": "어라운더코너 AROUND THE CONNOR",
+          "source": "youtube",
+          "views": 3396
+        },
+        {
+          "videoId": "AMnw1YsQdow",
+          "title": "삼척해수욕장 SAMCHEOK BEACH 삼척해수욕장 asmr 소나무밭 DJI 매빅 프로2 파도 삼척해변 자연속으로, in nature 4K 고화질 UHD korea (2) 여행",
+          "channelName": "자연속으로TV",
+          "source": "youtube",
+          "views": 1963
+        },
+        {
+          "videoId": "rPWK3Vl4Hlo",
+          "title": "하얀파도가 일렁이는 동해바다 삼척시 근덕면 용화리의 용화해변 영구 조망하는 멋진 카페",
+          "channelName": "꾸메집TV",
+          "source": "youtube",
+          "views": 1087
+        },
+        {
+          "videoId": "1b59TK-uPQo",
+          "title": "삼척해수욕장, 쏠비치 삼척과 삼척시내에서 가까운 삼척해변, Samcheok Beach",
+          "channelName": "Korea Traveler",
+          "source": "youtube",
+          "views": 360
+        },
+        {
+          "videoId": "zCBEEumwKls",
+          "title": "Yonghwa Beach Samcheok, Korea 용화해변",
+          "channelName": "Dikong Channel",
+          "source": "youtube",
+          "views": 300
+        }
+      ]
     },
     {
-      "campingSiteId": "7iymWiyV4V4",
-      "locationName": "Chiaksan, Wonju",
-      "videos": []
+      "campingSiteId": "taean-chungnam",
+      "videos": [
+        {
+          "videoId": "yW4Et9geyB4",
+          "title": "걸어서 섬으로 들어가자 - 충남 태안 근흥 | clips",
+          "channelName": "OutboundScape",
+          "source": "youtube",
+          "views": 268,
+          "isOriginal": true
+        },
+        {
+          "videoId": "sZ11fwuWAe0",
+          "title": "태안 해변 노지 캠핑 스팟. 노지 캠핑을 왜 이제야 했을까..",
+          "channelName": "건지부부",
+          "source": "youtube",
+          "views": 6640
+        },
+        {
+          "videoId": "rXlsj71PymQ",
+          "title": "DynapicKorea 🇰🇷 태안 학암포 해변 여행. Taean Hakampo Beach Travel.",
+          "channelName": "DynapicKorea",
+          "source": "youtube",
+          "views": 628
+        },
+        {
+          "videoId": "gcbn31aguRg",
+          "title": "Sinduri Coastal Sand Dune &amp; Beach in Taean | Pre Wedding Shoot | South Korea Vlog",
+          "channelName": "Angel Yap Channel",
+          "source": "youtube",
+          "views": 368
+        },
+        {
+          "videoId": "5tirM1ycweo",
+          "title": "Anmyeondo Unyeo Beach Unyeo Beach Pine Field | Taean Korea 4K HDR",
+          "channelName": "Korea Street View",
+          "source": "youtube",
+          "views": 260
+        },
+        {
+          "videoId": "SnVxVWqXNkU",
+          "title": "[Korea71] Looking for Beautiful beach in West coast?? Kkotji Beach in Taean!!!",
+          "channelName": "Promistar",
+          "source": "youtube",
+          "views": 230
+        }
+      ]
     },
     {
-      "campingSiteId": "r9y-nH90WlQ",
-      "locationName": "Taean, Chungnam",
-      "videos": []
+      "campingSiteId": "taebae-beach-taean",
+      "videos": [
+        {
+          "videoId": "GfGALPmBC6E",
+          "title": "Taean Taebae Beach Trail - Hidden white sand beach | Cinematic Scenic Travel",
+          "channelName": "OutboundScape",
+          "source": "youtube",
+          "views": 949,
+          "isOriginal": true
+        },
+        {
+          "videoId": "5GaVA3ebKCo",
+          "title": "B.I (비아이) &#39;해변 (illa illa)&#39; Official MV",
+          "channelName": "131online",
+          "source": "youtube",
+          "views": 33231618
+        },
+        {
+          "videoId": "miwFKe1o_uU",
+          "title": "요즘 가장 핫한 신상 호텔인데 아쉽네요 #쏠비치남해",
+          "channelName": "숙소왕",
+          "source": "youtube",
+          "views": 430681
+        },
+        {
+          "videoId": "zRTls1xd3OI",
+          "title": "국유지인 해수욕장을 방문한 관광객들의 최후 #경포해변 #경포대 #강릉시",
+          "channelName": "위험한 부동산",
+          "source": "youtube",
+          "views": 295402
+        },
+        {
+          "videoId": "0mhpT6cdTnU",
+          "title": "외국휴양지 안 부러운 동해의 보석 같은 해수욕장 7곳을 소개합니다 !",
+          "channelName": "스노파파 SNOWPAPA",
+          "source": "youtube",
+          "views": 288896
+        },
+        {
+          "videoId": "iZuOM0BrBC4",
+          "title": "Woman on the beach (해변의 여인)",
+          "channelName": "Shin Seong - Topic",
+          "source": "youtube",
+          "views": 179134
+        }
+      ]
     },
     {
-      "campingSiteId": "laIBOkXZRR8",
-      "locationName": "Danyang, Chungbuk",
-      "videos": []
+      "campingSiteId": "cheonmasan-namyangju",
+      "videos": [
+        {
+          "videoId": "9BynWve3f5c",
+          "title": "천마산 팔현 - 자연 그대로 잣나무숲에서의 캠핑을 느끼고 싶다면 | Cinematic Scenic Travel",
+          "channelName": "OutboundScape",
+          "source": "youtube",
+          "views": 445,
+          "isOriginal": true
+        },
+        {
+          "videoId": "_-KyrP1O4lQ",
+          "title": "(SUB)천마산 군립공원 등산 코스 추천 l 근교산행 l 잠스트 무릎보호대",
+          "channelName": "찌니 JIN",
+          "source": "youtube",
+          "views": 27335
+        },
+        {
+          "videoId": "nVQUcZaI9iw",
+          "title": "한적해서 함께하기 좋은 남양주 백패킹, 일출 보기 좋은곳, 주말 전세캠",
+          "channelName": "오라네 Ok Lion Nature",
+          "source": "youtube",
+          "views": 5067
+        },
+        {
+          "videoId": "q7JuR_2684g",
+          "title": "백패킹 가이드 캠핑 천마산 관음봉 등산 여행 솔로백패킹 박지소개 | 트레킹 | 힐링 | outdoor hiking",
+          "channelName": "그냥떠나자 Justleave",
+          "source": "youtube",
+          "views": 3302
+        },
+        {
+          "videoId": "yXbGrpVmOCU",
+          "title": "서울 근교 금요일 퇴근박인데 전세캠 가능한 곳은?!",
+          "channelName": "캠핑 즐기는 남자 캠퍼조이",
+          "source": "youtube",
+          "views": 3077
+        },
+        {
+          "videoId": "VqTr464NHyo",
+          "title": "천마산 관음봉 종주 백패킹",
+          "channelName": "찍패커 PictureGuy",
+          "source": "youtube",
+          "views": 3025
+        }
+      ]
     },
     {
-      "campingSiteId": "t6YoYd7DVbs",
-      "locationName": "Wolchulsan, Yeongam",
-      "videos": []
+      "campingSiteId": "deoksugung-seoul",
+      "videos": [
+        {
+          "videoId": "rrZlyMkn3to",
+          "title": "덕수궁 돌담길 - 싱그러운 화창한 봄날 오후 돌담길 거리풍경 | Cinematic Scenic Travel",
+          "channelName": "OutboundScape",
+          "source": "youtube",
+          "views": 261,
+          "isOriginal": true
+        },
+        {
+          "videoId": "s6DouofT_u0",
+          "title": "대한민국사용설명서#덕수궁(User’s Manual of Korea#Deoksugung)",
+          "channelName": "대한민국사용설명서",
+          "source": "youtube",
+          "views": 34571
+        },
+        {
+          "videoId": "aLDn6LRUe7w",
+          "title": "덕수궁 왕궁수문장 교대의식(Deoksugung Royal Guard Changing Ceremony) in Seoul, Korea",
+          "channelName": "블루문 여행자 Bluemoon Traveler",
+          "source": "youtube",
+          "views": 1815
+        },
+        {
+          "videoId": "h3N7j4MoFUM",
+          "title": "한국문화자원의이해1 8강 클립 – 석어당과 즉조당",
+          "channelName": "방송대 지식+",
+          "source": "youtube",
+          "views": 960
+        },
+        {
+          "videoId": "HxyWT1N3df0",
+          "title": "Overview of Deoksugung Palace-K-Culture, 코리안오아시스(koreanoasis) 한국역사문화유산 사진/그림 이미지",
+          "channelName": "코리안오아시스(KoreanOasis) 한국역사문화유산",
+          "source": "youtube",
+          "views": 720
+        },
+        {
+          "videoId": "0F9DO6Nkpbg",
+          "title": "Royal buildings 1 of Deoksugung PalaceK-K-Culture, 코리안오아시스(koreanoasis) 한국역사문화유산 사진/그림 이미지",
+          "channelName": "코리안오아시스(KoreanOasis) 한국역사문화유산",
+          "source": "youtube",
+          "views": 476
+        }
+      ]
     },
     {
-      "campingSiteId": "DCDFdct0sQQ",
-      "locationName": "Suncheon, Jeonnam",
-      "videos": []
+      "campingSiteId": "gyeongbokgung-seoul",
+      "videos": [
+        {
+          "videoId": "O6NHfE-Po1M",
+          "title": "Snow Falling on Gyeongbokgung Palace in Seoul Korea | 4K Must-Visit UHD | Cinematic Scenic Travel",
+          "channelName": "OutboundScape",
+          "source": "youtube",
+          "views": 374,
+          "isOriginal": true
+        },
+        {
+          "videoId": "jUkvyBYS7g8",
+          "title": "왕비 한복 등장에 쏟아지는 놀라운 감탄사들..! 경복궁 국립민속박물관 촬영 현장",
+          "channelName": "FOXandBEAR 여우곰채널",
+          "source": "youtube",
+          "views": 803643
+        },
+        {
+          "videoId": "vjdk1Qhex7k",
+          "title": "Ultimate Guide to Gyeongbokgung, Seoul’s #1 Tourist Attraction",
+          "channelName": "K Guardian Angel",
+          "source": "youtube",
+          "views": 1809
+        },
+        {
+          "videoId": "K1ReMxToSMA",
+          "title": "조선의 법궁 - 경복궁 근현대사 Gyeongbokgung Palace seoul korea",
+          "channelName": "Doorung “이야기가 있는 여행” 이야기가 있는 여행 두렁,",
+          "source": "youtube",
+          "views": 1014
+        },
+        {
+          "videoId": "256wE7TA3YY",
+          "title": "Gyeongbokgung Palace (경복궁 영어설명)",
+          "channelName": "Korea Happy Together Travel",
+          "source": "youtube",
+          "views": 734
+        },
+        {
+          "videoId": "nTlMz-Tqbyg",
+          "title": "[액티비티 잉글리시] Gyeongbokgung Palace I K-Culture",
+          "channelName": "EBS ENGLISH",
+          "source": "youtube",
+          "views": 621
+        }
+      ]
+    },
+    {
+      "campingSiteId": "namsangol-hanok-village-seoul",
+      "videos": [
+        {
+          "videoId": "BFS9RTsd008",
+          "title": "남산골 한옥마을 - 서울 중구 / 가볼만한곳, 서울여행 | Cinematic Scenic Travel",
+          "channelName": "OutboundScape",
+          "source": "youtube",
+          "views": 199,
+          "isOriginal": true
+        },
+        {
+          "videoId": "iSoXRGtsLPw",
+          "title": "Talking about Namsangol Hanok Village [남산골한옥마을에 대해 말하다]",
+          "channelName": "남산골한옥마을",
+          "source": "youtube",
+          "views": 2799
+        },
+        {
+          "videoId": "yo3EIAYWo00",
+          "title": "Namsangol Hanok Village - 남산골한옥마을",
+          "channelName": "Andy",
+          "source": "youtube",
+          "views": 678
+        },
+        {
+          "videoId": "9Y7UVpHr3Yk",
+          "title": "[청소년문화해설사] 남산한옥마을 Namsan Hanok Village",
+          "channelName": "국제교류문화진흥원",
+          "source": "youtube",
+          "views": 602
+        },
+        {
+          "videoId": "bPSFPuXa6Eo",
+          "title": "Namsangol Hanok Village in Seoul.",
+          "channelName": "JohnYoung Lee.    양각산",
+          "source": "youtube",
+          "views": 143
+        },
+        {
+          "videoId": "bdImDtKthAA",
+          "title": "Seoul Local Experience Tour-1 [ Namsangol Hanok Village &amp; Seoul K-Medi Center ]-Ebookers Korea Inc.",
+          "channelName": "Ebookers Korea-Wellness Medical Tourism",
+          "source": "youtube",
+          "views": 143
+        }
+      ]
+    },
+    {
+      "campingSiteId": "suncheon-jeonnam",
+      "videos": [
+        {
+          "videoId": "DCDFdct0sQQ",
+          "title": "눈 내리는 순천만국가정원 - 전남 순천 | 4k 감성영상 | Cinematic Scenic Travel",
+          "channelName": "OutboundScape",
+          "source": "youtube",
+          "views": 401,
+          "isOriginal": true
+        },
+        {
+          "videoId": "twYELrPju_M",
+          "title": "630만 명이 방문해서 난리난 정원 근황 / 스브스뉴스",
+          "channelName": "스브스뉴스 SUBUSUNEWS",
+          "source": "youtube",
+          "views": 1811646
+        },
+        {
+          "videoId": "7CSEEwiKnUc",
+          "title": "2023년 55만원이었는데 2024년에 15만원으로 재오픈한 밥주는 국가정원ㅣ가성비 대박 밥주는 글램핑 추천ㅣ나라에서 운영해서 믿을 수 없는 가격으로 즐길 수 있는 이색적인 여행지",
+          "channelName": "찬찬투어",
+          "source": "youtube",
+          "views": 1307256
+        },
+        {
+          "videoId": "4HVM7IgM-ps",
+          "title": "국내 여행지 1위!ㅣ안 가봤다면 무조건 가야 하는 순천 가볼만한 곳 BEST7✨(+꿀팁방출!)",
+          "channelName": "여행톡톡",
+          "source": "youtube",
+          "views": 49509
+        },
+        {
+          "videoId": "dG2i_KR_-bQ",
+          "title": "[국내여행] 꽉찬 당일치기 순천여행 Best7 - 순천만국가정원 순천 맛집 순천만습지 순천가볼만한곳 스카이큐브 가을여행 전남여행",
+          "channelName": "유성비비 USungBB",
+          "source": "youtube",
+          "views": 33809
+        },
+        {
+          "videoId": "_s99tTs7EGg",
+          "title": "순천 여행 순천만국가정원, 스카이큐브 타고 순천만습지 및 용산전망대까지 드론영상",
+          "channelName": "라파의 여행일기",
+          "source": "youtube",
+          "views": 14646
+        }
+      ]
+    },
+    {
+      "campingSiteId": "water-garden-namyangju",
+      "videos": [
+        {
+          "videoId": "oe5_hFdrRBU",
+          "title": "Water Garden - Namyangju : A nature-friendly park by the lakeside, perfect for picnics and strolls.",
+          "channelName": "OutboundScape",
+          "source": "youtube",
+          "views": 156,
+          "isOriginal": true
+        },
+        {
+          "videoId": "820jvOU7Jc0",
+          "title": "물주기 힘들다고요? 사계절 물 안주는 정원에서 피는 필수 여름꽃 추천 15가지와 가드닝 팁! 천국같은 코티지가든",
+          "channelName": "늘봄의 꾸며줘!홈즈",
+          "source": "youtube",
+          "views": 62092
+        },
+        {
+          "videoId": "QELTQ_peVgI",
+          "title": "(진짜 좋아서 추천하는 책)😊찍박골정원이 추천하는 이지 가드닝을 위한 정원식물 100 #garden  #찍박골정원 /정원가꾸기",
+          "channelName": "햇살 가득한 집",
+          "source": "youtube",
+          "views": 8471
+        },
+        {
+          "videoId": "ef2v53sjrE8",
+          "title": "[Garden] 정원 구경하고 내년 준비하는 가드닝 | 오래 보는 꽃 추천",
+          "channelName": "앤가든 Anne’s Garden",
+          "source": "youtube",
+          "views": 7323
+        },
+        {
+          "videoId": "rc1JLIy_dZM",
+          "title": "지베르니, 모네 물의 정원/GIVERNY, Claude Monet&#39;s Water Garden",
+          "channelName": "City Line France",
+          "source": "youtube",
+          "views": 1972
+        },
+        {
+          "videoId": "G8poS8oPKf0",
+          "title": "양평 물의정원 그리고 가을 - 랜선여행,  Yangpyeong Water Garden and Autumn in Korea (with Clova Dubbing) 4K",
+          "channelName": "우주여행TV",
+          "source": "youtube",
+          "views": 753
+        }
+      ]
+    },
+    {
+      "campingSiteId": "bugwisan-jinan",
+      "videos": [
+        {
+          "videoId": "iT9R52hv_ls",
+          "title": "Best View of Mt.Maisan - Mt. Bugwi - Even More Stunning View / Sub | Cinematic Scenic Travel",
+          "channelName": "OutboundScape",
+          "source": "youtube",
+          "views": 3600,
+          "isOriginal": true
+        },
+        {
+          "videoId": "60cEY5QDRGc",
+          "title": "부귀영화를 누려 부귀산인가 자동차로 편히 올라 마이산을 통채로 한눈에 볼수있는곳!",
+          "channelName": "노루모TV (오지산골다큐 자동차여행)",
+          "source": "youtube",
+          "views": 12045
+        },
+        {
+          "videoId": "v4aVqNrXkNA",
+          "title": "마이산 일출 포인트 답사(부귀산 정자)",
+          "channelName": "사진찍는 남자",
+          "source": "youtube",
+          "views": 6781
+        },
+        {
+          "videoId": "OnG_iC41NEo",
+          "title": "마이산 암봉의 최적의 조망처/진안 부귀산 등산/완벽한 코스 소개-주행영상/차박지/백패킹",
+          "channelName": "손안TV",
+          "source": "youtube",
+          "views": 5100
+        },
+        {
+          "videoId": "XWd9Fj8NzXc",
+          "title": "마이산이 좋아서 다른 산으로 갔다 - 부귀산 우중 백패킹 [4K]",
+          "channelName": "300MM 삼백미리",
+          "source": "youtube",
+          "views": 3684
+        },
+        {
+          "videoId": "NBwiHYy1RZo",
+          "title": "부귀산에서 조망하는 마이산 (백패킹)",
+          "channelName": "태송의채널 Koreabigpine",
+          "source": "youtube",
+          "views": 2179
+        }
+      ]
+    },
+    {
+      "campingSiteId": "bukhansan-seoul",
+      "videos": [
+        {
+          "videoId": "cclWwATX7zo",
+          "title": "Seoul's Most Stunning Hike: Bukhansan Bibong Ridge | Travelog",
+          "channelName": "OutboundScape",
+          "source": "youtube",
+          "views": 3100,
+          "isOriginal": true
+        },
+        {
+          "videoId": "EadZQjcgD1g",
+          "title": "등산 필수 거짓말.. 한국 산 가보고 싶다는 캐나다 예비 처남을 서울에서 가장 높은 산에 데려갔더니 반응이?!",
+          "channelName": "jellainkorea 젤라인코리아 ",
+          "source": "youtube",
+          "views": 816704
+        },
+        {
+          "videoId": "zQR1yBUnn1I",
+          "title": "&quot;한국에서 등산하려면 이 영상 똑똑히 봐라&quot; 전세계 경악시킨 북한산 5분 영상",
+          "channelName": "단골이슈",
+          "source": "youtube",
+          "views": 305721
+        },
+        {
+          "videoId": "p7JBqRoC13E",
+          "title": "Hiking the tallest mountain in Seoul, South Korea - Bukhansan | Korea Hiking Vlog | 한국어 자막",
+          "channelName": "Remy Allis",
+          "source": "youtube",
+          "views": 43686
+        },
+        {
+          "videoId": "e0syY92cDho",
+          "title": "북한산(삼각산) 비봉능선 등산코스 (Mt.Bukhan/Bukhansan/Korea National Park)",
+          "channelName": "오즈의마운틴 OZ's mountain",
+          "source": "youtube",
+          "views": 6455
+        },
+        {
+          "videoId": "nrttOb2CxaU",
+          "title": "[북한산 등산] 비봉,남장대지능선 코스/북한산 숨은코스 산행/Bukhansan hiking/hiking in Korea/韓国登山[STV채널]",
+          "channelName": "태기루트 STV채널",
+          "source": "youtube",
+          "views": 3865
+        }
+      ]
+    },
+    {
+      "campingSiteId": "cheonbansan-jinan",
+      "videos": [
+        {
+          "videoId": "IpJEGb7p2p0",
+          "title": "천반산 - 잊을 수 없는 마이산 조망과 금강이 만든섬 죽도 / 자막 / 가막리들 / 진안가볼만한곳 | Cinematic Scenic Travel",
+          "channelName": "OutboundScape",
+          "source": "youtube",
+          "views": 5900,
+          "isOriginal": true
+        },
+        {
+          "videoId": "KQtWiejOstU",
+          "title": "대한민국 TOP7 &#39;산&#39; 전부 오르기",
+          "channelName": "샤크창 Sharkchang",
+          "source": "youtube",
+          "views": 525284
+        },
+        {
+          "videoId": "g3N0NA4B7Sg",
+          "title": "5강 건강한 산행 보행 기술│박미숙의 건강한 산행을 위한 등산 가이드#평생학교",
+          "channelName": "EBS 평생학교",
+          "source": "youtube",
+          "views": 106190
+        },
+        {
+          "videoId": "uJH9sCp90Eo",
+          "title": "이 영상 보면 30년 아낍니다 l 등산 30년하고 깨달은 37가지 교훈들",
+          "channelName": "건강한 사람들",
+          "source": "youtube",
+          "views": 24112
+        },
+        {
+          "videoId": "J3Wx_jW_xTw",
+          "title": "전북 진안 천반산 등산-최단코스 /죽도와 마이산/송판서굴/전망바위/말바위",
+          "channelName": "손안TV",
+          "source": "youtube",
+          "views": 4636
+        },
+        {
+          "videoId": "UwNgzhwsEV4",
+          "title": "근교산&amp;그너머(Vicinity of the mountain hike, 965) 진안 천반산(Jinan cheonbansan)",
+          "channelName": "비디토리",
+          "source": "youtube",
+          "views": 1897
+        }
+      ]
+    },
+    {
+      "campingSiteId": "cheorwon-gangwon",
+      "videos": [
+        {
+          "videoId": "P5hvf9k02js",
+          "title": "Mystic Cave Waterfall Trek: Hantan River Canyon in Chelwon from Jiktang to Goseokjeong | Travel Vlog",
+          "channelName": "OutboundScape",
+          "source": "youtube",
+          "views": 1200,
+          "isOriginal": true
+        },
+        {
+          "videoId": "FTcFtVjgGjs",
+          "title": "[4K] ‘안 가면 후회!’ 버스로 금강산을 간다구요? | 인스타핫플 | 초보등산",
+          "channelName": "산 속에 백만송희",
+          "source": "youtube",
+          "views": 57148
+        },
+        {
+          "videoId": "v4qRxlal3Bk",
+          "title": "아름다운 해남 금강산, 오감만족 산행⛰️ 등산브이로그 | 등린이 | 혼산 | 등산추천 | 톤28 | 수분크림 | 가을산행 | 힐링 | 한국여행 | 하이킹 | 트레킹 | hiking",
+          "channelName": "이숨니",
+          "source": "youtube",
+          "views": 12826
+        },
+        {
+          "videoId": "_F7CZWHiFt0",
+          "title": "철원 명성산을 등산하고 편육과 녹두빈대떡 그리고 비빔막국수까지 먹고 오는 알찬 일정",
+          "channelName": "재주필름",
+          "source": "youtube",
+          "views": 5164
+        },
+        {
+          "videoId": "dCQxc1FajrM",
+          "title": "최고의 등산코스 | 청정자연을 간직한 힐링낙원~ 행복양구! 저질체력도 가능한 등산코스 #양구 #등산 #산 #트래킹 #여행 #데이트 #봉화산 #여기어때",
+          "channelName": "양구",
+          "source": "youtube",
+          "views": 2310
+        },
+        {
+          "videoId": "zvvHhe18Ogo",
+          "title": "[철원 복주산]강원 20대 명산 한북정맥 복주산 / 최단코스 왕복 9.3km 3시간 40분 산행 /",
+          "channelName": "방구석진우",
+          "source": "youtube",
+          "views": 1066
+        }
+      ]
+    },
+    {
+      "campingSiteId": "chiaksan-wonju",
+      "videos": [
+        {
+          "videoId": "XDQwdnQt_ms",
+          "title": "늦가을 단풍잎 흩날리는 치악산 구룡사길 - 4k",
+          "channelName": "OutboundScape",
+          "source": "youtube",
+          "views": 409,
+          "isOriginal": true
+        },
+        {
+          "videoId": "GkopP_xRnDw",
+          "title": "등산 치악산 황골코스, 정상 &#39;비로봉&#39;까지 가장 빠르게│봄 맞이 운동코스│들기름 막국수",
+          "channelName": "싼타TV",
+          "source": "youtube",
+          "views": 58053
+        },
+        {
+          "videoId": "j5rios5kfAY",
+          "title": "[강원도치악산등산]비로봉쉬운등산코스추천(부곡탐방지원센터~비로봉)/치악산단풍산행!(10월22일등산영상)",
+          "channelName": "다묵부부 damookbubu",
+          "source": "youtube",
+          "views": 33123
+        },
+        {
+          "videoId": "0Z6WwWA7cTU",
+          "title": "치악산 비로봉 최단코스(feat. 100대명산)",
+          "channelName": "산소리",
+          "source": "youtube",
+          "views": 21335
+        },
+        {
+          "videoId": "bleoxG7JXPw",
+          "title": "국내 최고의 절벽 트레킹 코스 &#39;간현관광지&#39; | 치악산 등산 후 가볼만한 곳 | 걷기 여행",
+          "channelName": "싼타TV",
+          "source": "youtube",
+          "views": 12925
+        },
+        {
+          "videoId": "38ZcYjTztEw",
+          "title": "치악산 국립공원 스탬프 투어 (황골 등산코스) Chiaksan National Park",
+          "channelName": "오즈의마운틴 OZ's mountain",
+          "source": "youtube",
+          "views": 4045
+        }
+      ]
+    },
+    {
+      "campingSiteId": "chungju-lake",
+      "videos": [
+        {
+          "videoId": "u0Pu70NeaSc",
+          "title": "스위스 호수뷰도 부럽지 않은 - 충주호 악어봉, 악어섬 / 충주여행 / 충주가볼만한곳 | Cinematic Scenic Travel",
+          "channelName": "OutboundScape",
+          "source": "youtube",
+          "views": 1800,
+          "isOriginal": true
+        },
+        {
+          "videoId": "E8DjlZCLXnk",
+          "title": "등산 제비봉, 그림같은 충주호의 매력 | 단양팔경 | 월악산국립공원 | KOREA | HIKING",
+          "channelName": "싼타TV",
+          "source": "youtube",
+          "views": 121175
+        },
+        {
+          "videoId": "ivHCAwWL7Rs",
+          "title": "충주호 악어봉 🐊 / 등산 / 인생뷰, 인생사진 / 살면서 꼭 가봐야 할 등산지 / 월악산 국립공원 / 단양 제천 충주 여행",
+          "channelName": "산소리",
+          "source": "youtube",
+          "views": 9254
+        },
+        {
+          "videoId": "gt5MFLyMbUc",
+          "title": "제비봉 등산 장회나루코스 | 충주호 | 단양팔경 | 얼음골코스는 비추천 코스안내",
+          "channelName": "좋은아침TV-산행 트레킹",
+          "source": "youtube",
+          "views": 3184
+        },
+        {
+          "videoId": "2-JAXCaSlaw",
+          "title": "호되게 당했는데 절경에 기억이 미화되었다 | 월악산 충주호",
+          "channelName": "체체체가 달린다",
+          "source": "youtube",
+          "views": 2852
+        },
+        {
+          "videoId": "KzmUEn7J7uQ",
+          "title": "금수산 백패킹 l 충주호 조망 ㅣ 월악산 조망 ㅣ 소백산 조망",
+          "channelName": "박꾼OUTDOOR",
+          "source": "youtube",
+          "views": 1684
+        }
+      ]
+    },
+    {
+      "campingSiteId": "daedunsan-chungnam",
+      "videos": [
+        {
+          "videoId": "uDQX5i-5b7A",
+          "title": "청량한 계곡을 지나 칼능선 계단길을 오르는 - 대둔산 수락계곡 코스 | travelog",
+          "channelName": "OutboundScape",
+          "source": "youtube",
+          "views": 2900,
+          "isOriginal": true
+        },
+        {
+          "videoId": "rbbhEoEawfw",
+          "title": "eng)[등산vlog] 나홀로 대둔산 등산.. 공포의 삼선계단 오르기",
+          "channelName": "박소룡 Park So Ryong",
+          "source": "youtube",
+          "views": 129219
+        },
+        {
+          "videoId": "K2obDZgamiY",
+          "title": "최악의 등산? 최고의 등산? 벨기에 친구와 대둔산 나들이 - BEST or WORST hike in Korea? Climbing Daedunsan",
+          "channelName": "빵순이 & 밥돌이 - Ms. Bread & Mr. Rice",
+          "source": "youtube",
+          "views": 65303
+        },
+        {
+          "videoId": "gn1ZVqk7gDE",
+          "title": "(우베교 ep.10)등산초보가 힐링인줄 알고 등산마니아 따라가다가 결국.....(feat. 대둔산)",
+          "channelName": "교정본부TV",
+          "source": "youtube",
+          "views": 4888
+        },
+        {
+          "videoId": "-0ufuc-arr0",
+          "title": "짧고 굵게 등산하는 재미를 느낄 수 있는 &#39;대둔산&#39;",
+          "channelName": "맛등산",
+          "source": "youtube",
+          "views": 2864
+        },
+        {
+          "videoId": "2U7fnjVKE-M",
+          "title": "Mt. Daedunsan 878M (Bad Weather Aheads) 대둔산",
+          "channelName": "BumBuds TV",
+          "source": "youtube",
+          "views": 593
+        }
+      ]
+    },
+    {
+      "campingSiteId": "danyang-chungbuk",
+      "videos": [
+        {
+          "videoId": "laIBOkXZRR8",
+          "title": "최고의 호수뷰 트레킹 - 제비봉 - 충북 단양 | travelog",
+          "channelName": "OutboundScape",
+          "source": "youtube",
+          "views": 408,
+          "isOriginal": true
+        },
+        {
+          "videoId": "fYhs9YzLgm4",
+          "title": "단양 제비봉 4km 종주 추천코스│초보자의 낙원│충주호로 빨려들어 갈 듯한 하산길│산행후 단양잔도길+가을 꽃길 ,알찬 하루 코스!│등산ㅣ둘레길ㅣ",
+          "channelName": "오르다 트레킹",
+          "source": "youtube",
+          "views": 30742
+        },
+        {
+          "videoId": "JwVQ6XkFysU",
+          "title": "단양 제비봉 등산 가이드",
+          "channelName": "산타는 JSun",
+          "source": "youtube",
+          "views": 24339
+        },
+        {
+          "videoId": "J4OBDCoHfss",
+          "title": "UFO 닮은 신비한 바위 해골바위 산부인과바위등 최고의 암산 충북 단양의 숨은 명산  드론영상 클린산행",
+          "channelName": "산이랑TV-등산",
+          "source": "youtube",
+          "views": 22333
+        },
+        {
+          "videoId": "I_sP9TgV0Qo",
+          "title": "이것은 등산인가 사찰 방문인가! 2km 등산은 기본, 충북 단양 구인사 | 구인사에 오름 | Guinsa Temple in Danyang",
+          "channelName": "자반고등어",
+          "source": "youtube",
+          "views": 5860
+        },
+        {
+          "videoId": "gt5MFLyMbUc",
+          "title": "제비봉 등산 장회나루코스 | 충주호 | 단양팔경 | 얼음골코스는 비추천 코스안내",
+          "channelName": "좋은아침TV-산행 트레킹",
+          "source": "youtube",
+          "views": 3184
+        }
+      ]
+    },
+    {
+      "campingSiteId": "dutasan-donghae",
+      "videos": [
+        {
+          "videoId": "fbVwjKNEOxU",
+          "title": "무릉도원 협곡의 산수화를 만나다 - 강원도 동해시 두타산 마천루",
+          "channelName": "OutboundScape",
+          "source": "youtube",
+          "views": 973,
+          "isOriginal": true
+        },
+        {
+          "videoId": "1m8zU06OHGM",
+          "title": "강원도 동해시 두타산, 한국의 그랜드캐년 | 등산 | 무릉계곡 | 100대 명산",
+          "channelName": "싼타TV",
+          "source": "youtube",
+          "views": 87067
+        },
+        {
+          "videoId": "g26jXVUo_WI",
+          "title": "두타산 &#39;베틀바위산성길&#39; 마지막 한 수 마천루협곡_호카 아나카파_가을 단풍 추천",
+          "channelName": "싼타TV",
+          "source": "youtube",
+          "views": 62307
+        },
+        {
+          "videoId": "PVidmNmHPCA",
+          "title": "🇰🇷[두타산02] 정상 가는 길에서 등산의 매운맛을 보았습니다",
+          "channelName": "사심아 Travel",
+          "source": "youtube",
+          "views": 14743
+        },
+        {
+          "videoId": "NDQE8WEr32g",
+          "title": "[등산코스, 두타산등산코스] 6시간, 9km이하 여유롭게 즐기는 두타산 4경 | 두타1경 베틀바위 전망대 , 2경 산성12폭포, 3경 협곡 마천루 전망대, 4경 금강 바윗길 잔도",
+          "channelName": "석운산[바위구름산]의 산며드는 영상",
+          "source": "youtube",
+          "views": 6218
+        },
+        {
+          "videoId": "oCOdyk9WCig",
+          "title": "한국의 장가계, 두타산 베틀바위와 인생 단풍 ㅣ 무릉계곡 원점회귀 코스",
+          "channelName": "산들산들 은하",
+          "source": "youtube",
+          "views": 6168
+        }
+      ]
+    },
+    {
+      "campingSiteId": "goseong-gangwon",
+      "videos": [
+        {
+          "videoId": "KJBvJ5YOG00",
+          "title": "대한민국에서 가장 아름다운 울산바위 뷰 - 강원도 고성 금강산 성인대 | Travelog",
+          "channelName": "OutboundScape",
+          "source": "youtube",
+          "views": 413,
+          "isOriginal": true
+        },
+        {
+          "videoId": "dQ7Cn0WkAyM",
+          "title": "일반인은 출입 불가 지역 총을 든 군인이 지키는 남한 최북단 향로봉 전격 공개 [고성, 금강을 잇다(1) 춘천MBC]",
+          "channelName": "Documentary Kingdom",
+          "source": "youtube",
+          "views": 209623
+        },
+        {
+          "videoId": "1vpeWVXCHGE",
+          "title": "금강산 신선대의 천하 절경 / 산, 바다, 호수가 어우러진 금수강산 강원도 고성 여행 / 신선봉, 울산바위, 미시령, 송지호 관망 전망대, 화암사, 능파대 / 국내여행지 추천",
+          "channelName": "킴스트래블 Kim's Travel",
+          "source": "youtube",
+          "views": 76992
+        },
+        {
+          "videoId": "d8FnsW-gNx0",
+          "title": "벽방산 | 경남 고성 3대 명산 | 역사와 볼것 많은 산",
+          "channelName": "산타G",
+          "source": "youtube",
+          "views": 6349
+        },
+        {
+          "videoId": "IWCuxEZBXLM",
+          "title": "등산코스 추천, 경남 고성 구절산(Goseong Gujeolsan) 근교산&amp;그너머(Hiking trails of Korea, 1237)",
+          "channelName": "국제신문 근교산",
+          "source": "youtube",
+          "views": 5975
+        },
+        {
+          "videoId": "c1-pLGDs4zk",
+          "title": "등산코스 추천, 고성 거류산 유담둘레길(Goseong Georyusan Yudamdulle road) 근교산&amp;그너머(Hiking trails of Korea, 1220)",
+          "channelName": "국제신문 근교산",
+          "source": "youtube",
+          "views": 1519
+        }
+      ]
+    },
+    {
+      "campingSiteId": "gudambong-danyang",
+      "videos": [
+        {
+          "videoId": "lnAYXZ5tGLs",
+          "title": "청풍호 구담봉 - 단양팔경중 최고, 하늘과 산과 물에서 본 구담봉 / 충북단양 / 단양가볼만한곳 | Cinematic Scenic Travel | 자막있음",
+          "channelName": "OutboundScape",
+          "source": "youtube",
+          "views": 646,
+          "isOriginal": true
+        },
+        {
+          "videoId": "fYhs9YzLgm4",
+          "title": "단양 제비봉 4km 종주 추천코스│초보자의 낙원│충주호로 빨려들어 갈 듯한 하산길│산행후 단양잔도길+가을 꽃길 ,알찬 하루 코스!│등산ㅣ둘레길ㅣ",
+          "channelName": "오르다 트레킹",
+          "source": "youtube",
+          "views": 30742
+        },
+        {
+          "videoId": "2fqv2N6yZmg",
+          "title": "단양 옥순봉/구담봉 등산/트레킹 가이드",
+          "channelName": "산타는 JSun",
+          "source": "youtube",
+          "views": 10682
+        },
+        {
+          "videoId": "Rl3MMGhwPjU",
+          "title": "최고의 뷰 제비봉 구담봉 옥순봉 아직 이곳을 안가보셨다구요 1일 3봉 산행 단양팔경 월악산국립공원",
+          "channelName": "산이랑TV-등산",
+          "source": "youtube",
+          "views": 2809
+        },
+        {
+          "videoId": "hJ_t90UJrAc",
+          "title": "월악산 옥순봉,구담봉!  단양팔경이 어딘데 대체!",
+          "channelName": "등산할까윰",
+          "source": "youtube",
+          "views": 2249
+        },
+        {
+          "videoId": "VV-DBTiKUoM",
+          "title": "[1부] 월악산 국립공원 옥순봉 구담봉 등산코스 | 뷰가 진짜 미쳤습니다. 정말 한국의 스위스입니다.💙 등산 초보 입문 코스로 딱입니다.!",
+          "channelName": "저스트 두영(하우두영두)",
+          "source": "youtube",
+          "views": 1147
+        }
+      ]
+    },
+    {
+      "campingSiteId": "gumi-gyeongbuk",
+      "videos": [
+        {
+          "videoId": "FxdYJI66F1o",
+          "title": "낙동강 굽이와 구미를 한눈에 담을 수 있는 경북 구미의 명산 - 금오산 | travelog",
+          "channelName": "OutboundScape",
+          "source": "youtube",
+          "views": 1600,
+          "isOriginal": true
+        },
+        {
+          "videoId": "FlOYjMumWAE",
+          "title": "더워서 폭포 보러 갔는데 온 몸이 땀 폭포가 됨.. | 구미 금오산, 케이블카, 도선굴, 대혜폭포 등산",
+          "channelName": "산 속에 백만송희",
+          "source": "youtube",
+          "views": 220755
+        },
+        {
+          "videoId": "XX_b8NlZWsI",
+          "title": "구미 금오산 등산코스 | 도선굴 | 대혜폭포 | 현월봉 | 약사암 코스 총정리!",
+          "channelName": "전국을 여행하는 얼뚱부부 ",
+          "source": "youtube",
+          "views": 63834
+        },
+        {
+          "videoId": "ETs1djwaE0g",
+          "title": "구미 금오산 약사암 | 천길 낭떠러지 위에 자리잡은 암자 | 경상북도",
+          "channelName": "여행브로셔 - 출발 전에 꼭 봐야해!",
+          "source": "youtube",
+          "views": 29516
+        },
+        {
+          "videoId": "qKnNIG4k-PU",
+          "title": "금오산 단풍절정 산행 &#39;올해 단풍은 여기서 끝&#39;",
+          "channelName": "싼타TV",
+          "source": "youtube",
+          "views": 26229
+        },
+        {
+          "videoId": "IqFgrjT9XH8",
+          "title": "구미 베틀산 등산 / 상어굴보러 오세요 /등산코스안내",
+          "channelName": "좋은아침TV-산행 트레킹",
+          "source": "youtube",
+          "views": 11467
+        }
+      ]
+    },
+    {
+      "campingSiteId": "gwanaksan-seoul",
+      "videos": [
+        {
+          "videoId": "iWBFWFtnFTo",
+          "title": "관악산 - 또 다른 풍경 / 4k uhd | Cinematic Scenic Travel",
+          "channelName": "OutboundScape",
+          "source": "youtube",
+          "views": 131,
+          "isOriginal": true
+        },
+        {
+          "videoId": "LMOafOPjJhM",
+          "title": "My First Solo Hike in Korea! Gwanaksan, Seoul | 한국 관악산 등산 브이로그",
+          "channelName": "Remy Allis",
+          "source": "youtube",
+          "views": 21371
+        },
+        {
+          "videoId": "5j7xWCviKD4",
+          "title": "관악산 학바위능선 등산 가이드",
+          "channelName": "산타는 JSun",
+          "source": "youtube",
+          "views": 19486
+        },
+        {
+          "videoId": "K9Zb0nbBHPk",
+          "title": "비행기에서 보던 연주대 구경하러 관악산 등산",
+          "channelName": "재주필름",
+          "source": "youtube",
+          "views": 5235
+        },
+        {
+          "videoId": "_wGz7FqhZME",
+          "title": "Hiking Seoul&#39;s Second Tallest Mountain, Gwanaksan | Hiking Korea",
+          "channelName": "Lost Then Found 로스트 덴 파운드",
+          "source": "youtube",
+          "views": 1769
+        },
+        {
+          "videoId": "FjapgKr8X_A",
+          "title": "[등산vlog] 관악산 등산 등산다이어트 체력관리하기 건강관리하기 같이 건강관리 체력관리 해요 | 등산하는여자 | 서울근교산 | 등산하기 | 등산브이로그",
+          "channelName": "유나니조은날 Yunani",
+          "source": "youtube",
+          "views": 1378
+        }
+      ]
+    },
+    {
+      "campingSiteId": "homyeongsan-gapyeong",
+      "videos": [
+        {
+          "videoId": "l9R3NNM_wMM",
+          "title": "설산 배경의 역대급 운해 - 가평 호명산 | Cinematic Scenic Travel",
+          "channelName": "OutboundScape",
+          "source": "youtube",
+          "views": 159,
+          "isOriginal": true
+        },
+        {
+          "videoId": "AGVBnjAROv8",
+          "title": "가평 호명산 잣나무 숲 겨울  백패킹 / 비박 / 등산 / 캠핑 / MSR 엘릭서 2",
+          "channelName": "여리몽",
+          "source": "youtube",
+          "views": 98597
+        },
+        {
+          "videoId": "mkSzU0Y3jxw",
+          "title": "호명산 어디까지 가봤니? / Korean MTB riding - Homyeongsan",
+          "channelName": "은상MTB",
+          "source": "youtube",
+          "views": 2364
+        },
+        {
+          "videoId": "brCBbXYRHh4",
+          "title": "4K[서울 근교 등산] 양주 홍복산-호명산-한강봉-은봉산 1부/ 한북정맥 감악지맥/ 아름다운 호젓한 숲길과 꽃길 / 코스상세안내/hiking in Korea/韓国登山 [STV채널]",
+          "channelName": "태기루트 STV채널",
+          "source": "youtube",
+          "views": 1270
+        },
+        {
+          "videoId": "Bui53iWLdgM",
+          "title": "4K[서울 근교 등산] 양주 홍복산 호명산 연계산행/ 봄꽃길 등산/ 아름다운 호젓한 진달래길 솔숲길/ 코스상세안내/hiking in Korea/韓国登山 [STV채널]",
+          "channelName": "태기루트 STV채널",
+          "source": "youtube",
+          "views": 953
+        },
+        {
+          "videoId": "AE0u-gNQ53w",
+          "title": "알록달록 이뻤던 어느 봄날. 구경할 게 많았던 청평 호명산 등산 |호명호수| |계곡| |라이딩클럽|",
+          "channelName": "맛등산",
+          "source": "youtube",
+          "views": 727
+        }
+      ]
+    },
+    {
+      "campingSiteId": "inwangsan-seoul",
+      "videos": [
+        {
+          "videoId": "O-7AJx87YqQ",
+          "title": "Mt. Inwangsan - Must visit at Night. Seoul's night view sacred place | sub | Cinematic Scenic Travel",
+          "channelName": "OutboundScape",
+          "source": "youtube",
+          "views": 1700,
+          "isOriginal": true
+        },
+        {
+          "videoId": "YykJBtiiMi4",
+          "title": "80년 전, 서울 인왕산 절벽에 새겨진 5m 크기의 거대한 글자! 누가 왜 새긴 걸까?",
+          "channelName": "스브스와이드",
+          "source": "youtube",
+          "views": 1902791
+        },
+        {
+          "videoId": "LatCKw8m938",
+          "title": "인왕산 등산코스 완벽가이드 - 경복궁역 출발코스(사직단, 황학정, 인왕산성곽길, 범바위, 정상 코스)│맛집│인왕산 난이도",
+          "channelName": "아웃도어큐레이터",
+          "source": "youtube",
+          "views": 70098
+        },
+        {
+          "videoId": "TMAm4eZ4Ces",
+          "title": "[Eng sub] 인왕산 | 서울뷰 | 등산가이드 | 초보코스 | Inwangsan |헬로트레킹[Hello Trekking] - Seoul mountain guide",
+          "channelName": "헬로트레킹",
+          "source": "youtube",
+          "views": 31803
+        },
+        {
+          "videoId": "D8ckocHJAxs",
+          "title": "코스모스가 있는 서울 등산 코스 🌸 대중교통 등산 코스 | 초보도 가능한 등산 코스",
+          "channelName": "가희드 gahiiide",
+          "source": "youtube",
+          "views": 12768
+        },
+        {
+          "videoId": "IrkveW5LpnE",
+          "title": "등산 Inwangsan Vlog [한국 자막]| 🇩🇪 독일 여자애들 인왕산에서 독일 명절 이야기 &amp; 속담 대방출!",
+          "channelName": "Elle Etoile",
+          "source": "youtube",
+          "views": 8794
+        }
+      ]
+    },
+    {
+      "campingSiteId": "juheulsan-mungyeong",
+      "videos": [
+        {
+          "videoId": "0MhiZlN_qJc",
+          "title": "주흘산 부봉 - 백두대간도 쉬어가는 문경새재의 공룡능선 / 자막 / 문경가볼만한곳 / 경북문경 / 한국100대명산 | Cinematic Scenic Travel",
+          "channelName": "OutboundScape",
+          "source": "youtube",
+          "views": 2700,
+          "isOriginal": true
+        },
+        {
+          "videoId": "0Fr87Z3XP7M",
+          "title": "문경새재 도립공원 주흘산 등산│울창한 계곡 숲길 산행│석쇠고추장삼겹살│100대 명산",
+          "channelName": "싼타TV",
+          "source": "youtube",
+          "views": 68423
+        },
+        {
+          "videoId": "GeDT-aRI5hg",
+          "title": "산세가 이토록 멋진 문경 #주흘산🧡 문경새재 | 옛길 | 등산 브이로그 | 등산추천 | 한국여행 | 출렁다리 | 막걸리 | 하이킹 | 트레킹 | hiking | trekking",
+          "channelName": "이숨니",
+          "source": "youtube",
+          "views": 11438
+        },
+        {
+          "videoId": "uZ4chtUGmxE",
+          "title": "주흘산최단코스 주차 네비 월복사 등산코스정보 블랙야크 충북100대명산 산타는50대홍공주 등산브이로그 hiking vlog",
+          "channelName": "산타는 50대 홍공주 ",
+          "source": "youtube",
+          "views": 6279
+        },
+        {
+          "videoId": "9PDwjXJlKoY",
+          "title": "역대급으로 재미없는 주흘산등산│주흘산│주흘산등산코스│문경새재도립공원│100대명산│산행브이로그",
+          "channelName": "BK Life",
+          "source": "youtube",
+          "views": 4762
+        },
+        {
+          "videoId": "7Y5uKLhe8tY",
+          "title": "돌아온 미스터 포테이토 feat.예전의 내가 아냐 | 주흘산, 조령산 최단코스",
+          "channelName": "체체체가 달린다",
+          "source": "youtube",
+          "views": 4414
+        }
+      ]
+    },
+    {
+      "campingSiteId": "maisan-jinan",
+      "videos": [
+        {
+          "videoId": "ZUVxIMLsaMk",
+          "title": "마이산 용담호와 진안고원 - 전북 진안 | Cinematic Scenic Travel",
+          "channelName": "OutboundScape",
+          "source": "youtube",
+          "views": 966,
+          "isOriginal": true
+        },
+        {
+          "videoId": "3udm5bx1w7k",
+          "title": "등산 진안 마이산 / 100대명산 / 마이봉 / 탑사 / 가을 추천 / 전라도 여행",
+          "channelName": "싼타TV",
+          "source": "youtube",
+          "views": 43174
+        },
+        {
+          "videoId": "t7MomVXHzuA",
+          "title": "마이산 등산 탑사 암마이봉 숫마이봉 은수사 코스안내",
+          "channelName": "좋은아침TV-산행 트레킹",
+          "source": "youtube",
+          "views": 14824
+        },
+        {
+          "videoId": "6KU4gDl54gE",
+          "title": "100년 동안 한번도 무너지지 않는 돌탑? 시청자 추천으로 여기까지 왔다! 신비한 진안 마이산 탑사 여행 브이로그 trip to Jinan-gun, South Korea VLOG",
+          "channelName": "그냥 마리엘Just Mariel",
+          "source": "youtube",
+          "views": 9803
+        },
+        {
+          "videoId": "De3Llw5C1Ao",
+          "title": "오랜만입니다 마이산 입니다 ^^",
+          "channelName": "산타윤 mountain_yun",
+          "source": "youtube",
+          "views": 6938
+        },
+        {
+          "videoId": "iapX3TbvWhc",
+          "title": "남자의 정기가 가득하다고?! 안문수기 &#39;마이산&#39;으로 등산갑니다!",
+          "channelName": "미스뭐어때 안문숙",
+          "source": "youtube",
+          "views": 6873
+        }
+      ]
+    },
+    {
+      "campingSiteId": "manisan-ganghwa",
+      "videos": [
+        {
+          "videoId": "K423bl_euMo",
+          "title": "마니산 - 거친 암릉과 최고의 서해전망 마니산 참성단 - 인천 강화도 | Cinematic Scenic Travel",
+          "channelName": "OutboundScape",
+          "source": "youtube",
+          "views": 141,
+          "isOriginal": true
+        },
+        {
+          "videoId": "0WKfqLoUwNk",
+          "title": "좋은 기운 마니 받아가세요! 대한민국 가장 신령스려운 마니산 :)",
+          "channelName": "이시영의 땀티 LeesiyoungTV",
+          "source": "youtube",
+          "views": 84064
+        },
+        {
+          "videoId": "ymt-G2AGM4s",
+          "title": "넘치지도, 모자라지도 않은 적당한 고독함 【등산 마니산 정수사코스】",
+          "channelName": "싼타TV",
+          "source": "youtube",
+          "views": 15759
+        },
+        {
+          "videoId": "oj8esw5dksI",
+          "title": "마니산 정수사 코스, 등산 브이로그 ⛰️",
+          "channelName": "산소리",
+          "source": "youtube",
+          "views": 6645
+        },
+        {
+          "videoId": "PBzwMvnXjII",
+          "title": "마니산 함허동천 코스 / 짜릿한 암릉구간 / 멋진 절경 / 수도권 등산 추천 ⛰️💚",
+          "channelName": "산소리",
+          "source": "youtube",
+          "views": 4638
+        },
+        {
+          "videoId": "w9AdtH2F_4Y",
+          "title": "강화 마니산 l 바다 뷰 등산코스ㅣ3시간 초보코스ㅣ석모도 보문사 l 소원 빌고 왔어요~",
+          "channelName": "Miniya_Ryuu",
+          "source": "youtube",
+          "views": 276
+        }
+      ]
+    },
+    {
+      "campingSiteId": "myeongseongsan-pocheon",
+      "videos": [
+        {
+          "videoId": "PcVdjBRflDY",
+          "title": "명성산 억새밭 - 은빛 억새 물결로 가득한 바람의 언덕 / 억새꽃축제 / 4k / 경기도포천 | Cinematic Scenic Travel",
+          "channelName": "OutboundScape",
+          "source": "youtube",
+          "views": 1000,
+          "isOriginal": true
+        },
+        {
+          "videoId": "M0FAQzUIJjo",
+          "title": "10월에 꼭 가봐야하는 억새 군락지",
+          "channelName": "산타는 JSun",
+          "source": "youtube",
+          "views": 28748
+        },
+        {
+          "videoId": "M-UBQ5kiOmU",
+          "title": "여름 억새는 영상으로 보는걸로 【등산 ▲명성산】 책바위코스",
+          "channelName": "싼타TV",
+          "source": "youtube",
+          "views": 19214
+        },
+        {
+          "videoId": "dGtGH3xadV8",
+          "title": "[Hiking] 경기 포천 명성산 등산 | 가을 산행지 추천🍁단풍과 억새, 암릉과 계곡, 산정호수까지 볼거리 가득했던 산행 이야기🌾| 산림청 100대명산 | 울음산",
+          "channelName": "미선하이킹",
+          "source": "youtube",
+          "views": 9870
+        },
+        {
+          "videoId": "fTpYRMxcbgc",
+          "title": "[등산] 가을 억새풀 축제 명성산 트레킹 | 백패킹 박지100대명산 힐링 산행 데이트 여행 유튜버 VLOG #5",
+          "channelName": "뽀짱TV",
+          "source": "youtube",
+          "views": 5849
+        },
+        {
+          "videoId": "_F7CZWHiFt0",
+          "title": "철원 명성산을 등산하고 편육과 녹두빈대떡 그리고 비빔막국수까지 먹고 오는 알찬 일정",
+          "channelName": "재주필름",
+          "source": "youtube",
+          "views": 5164
+        }
+      ]
+    },
+    {
+      "campingSiteId": "naksan-park-seoul",
+      "videos": [
+        {
+          "videoId": "G8RgAXW5Kh0",
+          "title": "The Best Views of Bukhansan - Naksan Park Hanyangdoseong Trail, Ihwa-dong | Cinematic Scenic Travel",
+          "channelName": "OutboundScape",
+          "source": "youtube",
+          "views": 1400,
+          "isOriginal": true
+        },
+        {
+          "videoId": "cpADwmG5o-c",
+          "title": "♨야경 맛집♨ 한국의 라라랜드 낙산공원 등산 TIME ★ (ft. 계단 지옥) [갓파더] | KBS 220607 방송",
+          "channelName": "KBS Entertain",
+          "source": "youtube",
+          "views": 7937
+        },
+        {
+          "videoId": "AFzuG0SOACA",
+          "title": "도심을 한눈에 내려다 볼 수 있는 산책 코스ㅣ숨겨진 비밀 스팟 까지ㅣ대중교통 당일치기 여행ㅣ지하철 여행ㅣ트레킹 코스ㅣ한양도성길 낙산코스ㅣ낙산공원 둘레길",
+          "channelName": "여리트립",
+          "source": "youtube",
+          "views": 1471
+        },
+        {
+          "videoId": "b20TcdFF9yU",
+          "title": "낙산공원│ 서울낙산공원│ 서울야경명소│밤산책│ 서울데이트코스│ 대학로│EP.007 낙산공원 밤산책 │힐링등산│등산의맛│등산유튜브",
+          "channelName": "등산의맛 delicious Life",
+          "source": "youtube",
+          "views": 1218
+        },
+        {
+          "videoId": "65viZ6Vw8k0",
+          "title": "서울 한양도성길 낙산구간 - 스템프 투어 둘레길 걷기 Seoul City Wall Naksan Trail | Trekking Hiking in South Korea",
+          "channelName": "유니쓰트레킹",
+          "source": "youtube",
+          "views": 789
+        },
+        {
+          "videoId": "56ymx3WHU4E",
+          "title": "낙산공원여행하면서 느낀점 / 여행후기 / 뷰가 좋은 곳에 살아야 하는 이유",
+          "channelName": "집스커버리",
+          "source": "youtube",
+          "views": 381
+        }
+      ]
+    },
+    {
+      "campingSiteId": "oksonbong-jecheon",
+      "videos": [
+        {
+          "videoId": "b0hnmkSsl7Y",
+          "title": "청풍호 옥순봉 - 꼭 가봐야하는 신선계의 풍경 (가은산) 충북 제천 / 제천 가볼만한곳 / 충주호 | Cinematic Scenic Travel | 자막있음",
+          "channelName": "OutboundScape",
+          "source": "youtube",
+          "views": 2900,
+          "isOriginal": true
+        },
+        {
+          "videoId": "JG5H-szuOGI",
+          "title": "누구나 반하고 오는 제천 여행지 10곳 소개해 드릴게요! 여행가기 전에 꼭 보고 알찬 여행 즐기시기 바랍니다.",
+          "channelName": "[빵이네]캠핑&여행TV",
+          "source": "youtube",
+          "views": 51837
+        },
+        {
+          "videoId": "JIWur-px7ZY",
+          "title": "청풍호를 품은 제천 가은산_월악산국립공원_가을 단풍 추천 명소_Solo Hiking in Republic of Korea",
+          "channelName": "싼타TV",
+          "source": "youtube",
+          "views": 31976
+        },
+        {
+          "videoId": "shHaIKaRLB8",
+          "title": "꼭 가봐야하는 금수산 상학코스 등산 가이드",
+          "channelName": "산타는 JSun",
+          "source": "youtube",
+          "views": 29284
+        },
+        {
+          "videoId": "wK-MIvFq3gM",
+          "title": "제천 금수산, 금수산 등산, 망덕봉, 상천주차장, 월악산 국립공원, 청풍호",
+          "channelName": "산악투어TV양걸석[등산 트레킹 여행]",
+          "source": "youtube",
+          "views": 16009
+        },
+        {
+          "videoId": "mptnjsCs6kc",
+          "title": "9월에 추천 하고 싶은 산! 제천 동산에서 말잇못 광경을 보다!",
+          "channelName": "오르다 트레킹",
+          "source": "youtube",
+          "views": 12788
+        }
+      ]
+    },
+    {
+      "campingSiteId": "palbongsan-hongcheon",
+      "videos": [
+        {
+          "videoId": "pr8LrAR5BoY",
+          "title": "팔봉산 - 눈내린 아침의 팔봉산과 홍천강 | Cinematic Scenic Travel",
+          "channelName": "OutboundScape",
+          "source": "youtube",
+          "views": 500,
+          "isOriginal": true
+        },
+        {
+          "videoId": "6e9CDl0lY3A",
+          "title": "대한민국에서 가장 위험한 등산코스 | 홍천팔봉산",
+          "channelName": "산 속에 백만송희",
+          "source": "youtube",
+          "views": 1035089
+        },
+        {
+          "videoId": "6aTMb6y1rKA",
+          "title": "3년만에 다시 찾은 악악산 &#39;홍천 팔봉산&#39; 【등산 315】",
+          "channelName": "싼타TV",
+          "source": "youtube",
+          "views": 53734
+        },
+        {
+          "videoId": "KR8mg0q98sM",
+          "title": "서산 팔봉산 / 초보코스 / 암봉에서 보는 서해바다 / 8개의 봉우리 / 등산 코스 안내",
+          "channelName": "좋은아침TV-산행 트레킹",
+          "source": "youtube",
+          "views": 9768
+        },
+        {
+          "videoId": "E9q6LQsXcS4",
+          "title": "등산 놀이공원, 홍천 팔봉산 ⛰️💚",
+          "channelName": "산소리",
+          "source": "youtube",
+          "views": 7038
+        },
+        {
+          "videoId": "hxkL30-7bXA",
+          "title": "낮다고 얕보면 큰 코 다치는 홍천 팔봉산! (Palbongsan (Mt. Palbong) - Hongcheon, Korea - Hiking, Trekking) 100대 명산",
+          "channelName": "맛등산",
+          "source": "youtube",
+          "views": 5859
+        }
+      ]
+    },
+    {
+      "campingSiteId": "samaksan-chuncheon",
+      "videos": [
+        {
+          "videoId": "cFzRk6MUuUI",
+          "title": "춘천 삼악산 - 서울근교, 입구에서 5분 만에 만나는 협곡 폭포 / 자막 / 서울근교여행 / 춘천가볼만한곳 /등산 | Cinematic Scenic Travel",
+          "channelName": "OutboundScape",
+          "source": "youtube",
+          "views": 489,
+          "isOriginal": true
+        },
+        {
+          "videoId": "CqsYiJqU2ek",
+          "title": "[악산특집] 강원 춘천 삼악산_발바닥에 땀나는 암릉구간_의암호_등선폭포_등산코스_케이블카",
+          "channelName": "싼타TV",
+          "source": "youtube",
+          "views": 67247
+        },
+        {
+          "videoId": "DuwX1ozJ9Zc",
+          "title": "등산 삼악산, 신이나는 암릉구간 악!! / 100대 명산 / 겨울 산행 발 보온방법",
+          "channelName": "싼타TV",
+          "source": "youtube",
+          "views": 49669
+        },
+        {
+          "videoId": "fgjyN-DView",
+          "title": "춘천 삼악산 등산 가이드",
+          "channelName": "산타는 JSun",
+          "source": "youtube",
+          "views": 14973
+        },
+        {
+          "videoId": "O-7PZtHFGC4",
+          "title": "뷰 미쳤다..✨ 올여름 피서지🏔 왕초보 삼악산 등산코스🙌🏻",
+          "channelName": "켈리인더월드",
+          "source": "youtube",
+          "views": 3515
+        },
+        {
+          "videoId": "-GVTz87Yq7U",
+          "title": "요즘 가장 핫한 등산코스! 인생샷 무조건 나오는 삼악산 최단코스 등산꿀팁! (등산초보·당일치기 강추)",
+          "channelName": "동네형",
+          "source": "youtube",
+          "views": 1583
+        }
+      ]
+    },
+    {
+      "campingSiteId": "seoraksan-gangwon",
+      "videos": [
+        {
+          "videoId": "J6VoP8lKyxA",
+          "title": "멋진 풍광에 전설이 궁금 할 수 밖에 없는 설악산 울산바위 - 강원도 고성 | Cinematic Scenic Travel",
+          "channelName": "OutboundScape",
+          "source": "youtube",
+          "views": 456,
+          "isOriginal": true
+        },
+        {
+          "videoId": "lCxu7yRkklw",
+          "title": "Eco-friendly travel in Seoraksan National Parkㅣ설악산 국립공원으로 떠나는 친환경 여행",
+          "channelName": "Imagine Your Korea",
+          "source": "youtube",
+          "views": 719497
+        },
+        {
+          "videoId": "ahgtmCxX7s0",
+          "title": "설악산 등산 코스 완벽정리",
+          "channelName": "산타는 JSun",
+          "source": "youtube",
+          "views": 513881
+        },
+        {
+          "videoId": "tRICIzHRNjk",
+          "title": "😱올해 단풍 미쳤어요… 왕초보도 가능한 당일치기 설악산!🍁",
+          "channelName": "산 속에 백만송희",
+          "source": "youtube",
+          "views": 130657
+        },
+        {
+          "videoId": "KmP3x3CaryQ",
+          "title": "설악산 등산코스 TOP 10⛰️ 진짜 인기 많은 코스만 모았습니다! 이 영상 하나로 끝!",
+          "channelName": "건강클라쓰",
+          "source": "youtube",
+          "views": 44814
+        },
+        {
+          "videoId": "eY9QEhL2ZtI",
+          "title": "The HARDEST Hike in South Korea | Overnight Alone at Seoraksan with Sunrise at the Top",
+          "channelName": "Sunny Jasmin",
+          "source": "youtube",
+          "views": 31986
+        }
+      ]
+    },
+    {
+      "campingSiteId": "sujupalbong-chungju",
+      "videos": [
+        {
+          "videoId": "zD47qGK7nDw",
+          "title": "Sujupalbong in Chungju - Hidden scenery of Dalcheon / Saejaegil | Cinematic Scenic Travel",
+          "channelName": "OutboundScape",
+          "source": "youtube",
+          "views": 2400,
+          "isOriginal": true
+        },
+        {
+          "videoId": "Xbdgz2GEEIQ",
+          "title": "가을 추천 여행지 5곳 (충청도 편) / 단풍 여행 / 외국보다 훨씬 더 멋진 대한민국 여행지 | 10월 11월 여행지 | Travel Korea",
+          "channelName": "여행브로셔 - 출발 전에 꼭 봐야해!",
+          "source": "youtube",
+          "views": 196638
+        },
+        {
+          "videoId": "YDbVlakOfII",
+          "title": "물 위로 떠오른 여덟개의 봉우리, 수주팔봉 | 한국의 숨은 비경 / 전국 최고의 조망을 자랑하는 캠핑장 | Beautiful Korea Travel",
+          "channelName": "여행브로셔 - 출발 전에 꼭 봐야해!",
+          "source": "youtube",
+          "views": 32541
+        },
+        {
+          "videoId": "A6e5ysiCRt8",
+          "title": "노지 캠핑의 성지 | 충주 수주팔봉 캠펭장 무료개방 현재상황 | 깨끗한 화장실 개수대 설치",
+          "channelName": "더센캠프 [TCB tv] The CEN Camp Travel",
+          "source": "youtube",
+          "views": 23960
+        },
+        {
+          "videoId": "DsDlI7SCE6I",
+          "title": "눈 앞에 펼쳐진 그림같은 경관...✨어!여기봐라 수주팔봉!｜김석훈의 어!여기봐라",
+          "channelName": "헬로라이프",
+          "source": "youtube",
+          "views": 4879
+        },
+        {
+          "videoId": "nbdhes1o7vI",
+          "title": "충주호종댕이길트레킹,사랑이 이루어지는 충주호종댕이길,등산 국내여행 브이로그 여행지 소개 해수욕장 국내여행지 여행지 설명 소개",
+          "channelName": "아재와둘레길",
+          "source": "youtube",
+          "views": 4683
+        }
+      ]
+    },
+    {
+      "campingSiteId": "ungilsan-gyeonggi",
+      "videos": [
+        {
+          "videoId": "sFn3aBLQMa4",
+          "title": "두 강이 만나는 조망이 멋진 산 - 운길산 / 4k 가볼만한곳 | Cinematic Scenic Travel",
+          "channelName": "OutboundScape",
+          "source": "youtube",
+          "views": 315,
+          "isOriginal": true
+        },
+        {
+          "videoId": "tr2Q9lJvO9w",
+          "title": "정상까지 30분이면 충분한 운길산, 수종사 등산/백패킹",
+          "channelName": "산타는 JSun",
+          "source": "youtube",
+          "views": 18784
+        },
+        {
+          "videoId": "bEGKcax5itA",
+          "title": "무료로 다도를 즐길수 있는 한강뷰 등산코스가 있다?? 하지만 하산길, 길을 잃고 마는데.. 운길산 수종사 등산코스",
+          "channelName": "산들산들 은하",
+          "source": "youtube",
+          "views": 4315
+        },
+        {
+          "videoId": "qjDeRO-QhIA",
+          "title": "낮은 산인데 생각보다 힘들었던 산행길, 운길산 등산코스 Ungilsan Mountain Hiking Course 운길산등산, 수종사사찰, 경치 아름다운 곳",
+          "channelName": "원필름(방송국)",
+          "source": "youtube",
+          "views": 3091
+        },
+        {
+          "videoId": "Z6sCkrWL4Go",
+          "title": "운길산역→운길산→수종사→ 운길산역",
+          "channelName": "트레킹 가이더",
+          "source": "youtube",
+          "views": 661
+        },
+        {
+          "videoId": "ss2uJK5wF6Y",
+          "title": "운길산 등산",
+          "channelName": "승짱투어",
+          "source": "youtube",
+          "views": 259
+        }
+      ]
+    },
+    {
+      "campingSiteId": "wolchulsan-yeongam",
+      "videos": [
+        {
+          "videoId": "t6YoYd7DVbs",
+          "title": "월출산 - 100m 넘는 큰바위얼굴을 품은 거칠지만 아늑한산 / 전라남도 영암 / 자막 / 전라남도가볼만한곳 | Cinematic Scenic Travel",
+          "channelName": "OutboundScape",
+          "source": "youtube",
+          "views": 1600,
+          "isOriginal": true
+        },
+        {
+          "videoId": "q4gzc8muG94",
+          "title": "등산 월출산, 말이 필요없는 대한민국 3대 암산 | 100대 명산 | 국립공원 | 구름다리 | Hiking in South Korea",
+          "channelName": "싼타TV",
+          "source": "youtube",
+          "views": 207617
+        },
+        {
+          "videoId": "Pv9ikEWfprk",
+          "title": "영암 월출산의 정기 받으며 하룻밤 [ 하늘아래첫부처길 / 천황봉 ]",
+          "channelName": "오지브로",
+          "source": "youtube",
+          "views": 79383
+        },
+        {
+          "videoId": "G-QHm3QbTuo",
+          "title": "영암 월출산 / 등산 코스 안내 / 월출산에 대해 알아보자 #월출산 #국립공원 #100대명산 #초보등산",
+          "channelName": "함께 떠나는 일출산악회",
+          "source": "youtube",
+          "views": 10445
+        },
+        {
+          "videoId": "kTb-qQvb3NQ",
+          "title": "호남의 금강산 &#39;소금강&#39;이라고도 불리는 월출산! 한번 올라가면 잊지 못한다는 장엄한 풍경에 정약용도 여러번 올랐다는 바로 그산!",
+          "channelName": "EBSDocumentary (EBS 다큐)",
+          "source": "youtube",
+          "views": 7384
+        },
+        {
+          "videoId": "MlrZ3f9PXb4",
+          "title": "월출산 月出山 등산코스 (천황사-산성대 코스) 구름다리 Wolchulsan",
+          "channelName": "오즈의마운틴 OZ's mountain",
+          "source": "youtube",
+          "views": 5830
+        }
+      ]
+    },
+    {
+      "campingSiteId": "wonju-gangwon",
+      "videos": [
+        {
+          "videoId": "KxqNXtIueck",
+          "title": "국내 최고 아찔한 잔도길과 출렁다리 - 강원도 원주 / 4k / 가볼만한곳 | Cinematic Scenic Travel",
+          "channelName": "OutboundScape",
+          "source": "youtube",
+          "views": 1500,
+          "isOriginal": true
+        },
+        {
+          "videoId": "GkopP_xRnDw",
+          "title": "등산 치악산 황골코스, 정상 &#39;비로봉&#39;까지 가장 빠르게│봄 맞이 운동코스│들기름 막국수",
+          "channelName": "싼타TV",
+          "source": "youtube",
+          "views": 58053
+        },
+        {
+          "videoId": "j5rios5kfAY",
+          "title": "[강원도치악산등산]비로봉쉬운등산코스추천(부곡탐방지원센터~비로봉)/치악산단풍산행!(10월22일등산영상)",
+          "channelName": "다묵부부 damookbubu",
+          "source": "youtube",
+          "views": 33123
+        },
+        {
+          "videoId": "PdR3iZWJjfk",
+          "title": "등산 감악산, 창촌마을 능선코스 &#39;훈련은 전투다&#39; | 100대 명산 | 강원도 | 원주 | Hiking In South Korea",
+          "channelName": "싼타TV",
+          "source": "youtube",
+          "views": 32438
+        },
+        {
+          "videoId": "5tdiZDWWes0",
+          "title": "오대산 아니고 &#39;치악산 상원사&#39; 사찰 단풍 명소 【등산 318】",
+          "channelName": "싼타TV",
+          "source": "youtube",
+          "views": 28616
+        },
+        {
+          "videoId": "V57KxcZkAH4",
+          "title": "괴산 명산 연어봉 등산코스│야생미 넘치는 탐방로│여름 등산 추천│연어바위",
+          "channelName": "싼타TV",
+          "source": "youtube",
+          "views": 22488
+        }
+      ]
+    },
+    {
+      "campingSiteId": "yeongdong-chungbuk",
+      "videos": [
+        {
+          "videoId": "ExI8S55yJe0",
+          "title": "그림 같은 비경의 월류봉 둘레길 - 충북 영동 4k / 가볼만한곳 | Cinematic Scenic Travel",
+          "channelName": "OutboundScape",
+          "source": "youtube",
+          "views": 1000,
+          "isOriginal": true
+        },
+        {
+          "videoId": "qi9UnxA7zEo",
+          "title": "짜릿한 로프 천국! 지루할 틈이 없는 꿀잼산, 영동 천태산  | 100대명산 | 암릉맛집 | 75m로프",
+          "channelName": "이시영의 땀티 LeesiyoungTV",
+          "source": "youtube",
+          "views": 83716
+        },
+        {
+          "videoId": "axGdWlGBONs",
+          "title": "[출렁다리 등산 코스 추천] 올 4월에 오픈한 월영산 출렁다리ㅣ부엉산 산행ㅣ난들 마을ㅣ어죽ㅣ도리뱅뱅ㅣ 금산 맛집ㅣ충남 여행",
+          "channelName": "싼타TV",
+          "source": "youtube",
+          "views": 38854
+        },
+        {
+          "videoId": "7ck9Oew5FlI",
+          "title": "영동 백화산 등산│날카로운 칼바위 암릉길│반야교시작-주행봉-칼바위암릉길-한성봉-반야교 코스 6시간 등산",
+          "channelName": "오르다 트레킹",
+          "source": "youtube",
+          "views": 33800
+        },
+        {
+          "videoId": "IrEdlyeX_3Y",
+          "title": "영동 백화산(한성봉) 방심은 금물.짜릿하고 환상적인 능선길과 최상의 조망",
+          "channelName": "산꾼tv",
+          "source": "youtube",
+          "views": 4899
+        },
+        {
+          "videoId": "1Mwqqx8i8rg",
+          "title": "바다 상어가 사는 산, 충북의 설악 천태산 등산코스 리뷰 🇺🇸 🇨🇳 🇯🇵  #등산 #트레킹 #국내여행",
+          "channelName": "오르나씨 ORUNAC",
+          "source": "youtube",
+          "views": 3805
+        }
+      ]
+    },
+    {
+      "campingSiteId": "busodamak-okcheon",
+      "videos": [
+        {
+          "videoId": "fxKt-puIy2g",
+          "title": "호수위에 떠있는 700m 병풍바위 - 부소담악 충북옥천 / 옥천가볼만한곳 / 옥천여행 / 대청호 | Cinematic Scenic Travel",
+          "channelName": "OutboundScape",
+          "source": "youtube",
+          "views": 286,
+          "isOriginal": true
+        },
+        {
+          "videoId": "gJCnBgtvL80",
+          "title": "외국보다 훨씬 더 멋진 대한민국 여행지 5곳 | 사진보다 실제로 가보면 더 좋은 곳",
+          "channelName": "여행브로셔 - 출발 전에 꼭 봐야해!",
+          "source": "youtube",
+          "views": 9526077
+        },
+        {
+          "videoId": "jSZvayRSfq8",
+          "title": "🍂 호수 위에 떠 있는 산, 부소담악 | 📸 물 위로 솟아오른 700m 길이의 병풍바위 | 충청북도 옥천",
+          "channelName": "여행브로셔 - 출발 전에 꼭 봐야해!",
+          "source": "youtube",
+          "views": 118324
+        },
+        {
+          "videoId": "h_9I7ZJM4ek",
+          "title": "[ 옥천 여행 베스트 4 코스 ] 충청북도 옥천여행 추천장소 미리보기, 옥천여행정보, 여행꿀팁 안내, 옥천 가볼만한곳",
+          "channelName": "유추여행",
+          "source": "youtube",
+          "views": 45819
+        },
+        {
+          "videoId": "HO1RWsJNJFY",
+          "title": "어떻게 이런 풍경이 만들어졌을까? 숨막힐 듯 물위에 떠 있는 바위 병풍",
+          "channelName": "곰슨의바깥세상",
+          "source": "youtube",
+          "views": 2617
+        },
+        {
+          "videoId": "jxmDG_TMnCs",
+          "title": "💖옥천 부소담악 &amp; 추소정 | 🌸물 위의 소금강, 4계절 절경  (드론 영상)  Okcheon Busodamak &amp; Chusojung | 4 Seasons Scenery",
+          "channelName": "드론타고 여행",
+          "source": "youtube",
+          "views": 2050
+        }
+      ]
+    },
+    {
+      "campingSiteId": "donggang-yeongwol",
+      "videos": [
+        {
+          "videoId": "PmmI09_QqD4",
+          "title": "10월 한창 절정인 붉은 메밀꽃 물결 - 강원도 영월 동강 / 가을가볼만한곳 | 3 Minutes Staying",
+          "channelName": "OutboundScape",
+          "source": "youtube",
+          "views": 395,
+          "isOriginal": true
+        },
+        {
+          "videoId": "YOyyf_IE9Hk",
+          "title": "자연이 숨겨둔 숙암석 찾는 정선 동강 탐석여행. A journey to find the Sukam Stone hidden by nature in Donggang, Korea.",
+          "channelName": "수석의 창(窓)TV",
+          "source": "youtube",
+          "views": 3265
+        },
+        {
+          "videoId": "2Up1syhOz-g",
+          "title": "정선 연포 동강 탐석",
+          "channelName": "기산 TV",
+          "source": "youtube",
+          "views": 1253
+        },
+        {
+          "videoId": "5b1QhdHO_Hs",
+          "title": "Donggang River, the waterway of meandering through the Baekdudaegan Mountain Range | KOREA",
+          "channelName": "국가유산채널(K-Heritage Channel)",
+          "source": "youtube",
+          "views": 1038
+        },
+        {
+          "videoId": "J-D6FaWEZ5I",
+          "title": "백운산 동강할미꽃 (Baegunsan, Donggang Halmi Flower)",
+          "channelName": "Man and Nature 인간과 자연",
+          "source": "youtube",
+          "views": 788
+        },
+        {
+          "videoId": "37U0XVmHBqc",
+          "title": "강원도 정선 귤암리 동강  Donggang, Gyulam-ri, Jeongseon, Gangwon-do",
+          "channelName": "정선동강tv",
+          "source": "youtube",
+          "views": 602
+        }
+      ]
+    },
+    {
+      "campingSiteId": "forest-rest-area",
+      "videos": [
+        {
+          "videoId": "qFCyvXz2RUg",
+          "title": "깊은 숲속의 힐링장소 - 숲속쉼터 | Cinematic Scenic Travel",
+          "channelName": "OutboundScape",
+          "source": "youtube",
+          "views": 294,
+          "isOriginal": true
+        },
+        {
+          "videoId": "wir7jmefyec",
+          "title": "Simulating the Desert for 100 Days",
+          "channelName": "Dr. Plants",
+          "source": "youtube",
+          "views": 66530420
+        },
+        {
+          "videoId": "cPp67aUSN_s",
+          "title": "유라와 자연친구송 모아보기 10곡 벌레잡이식물송 인기동요 학습동요 키즈송 모음",
+          "channelName": "유라야놀자(Let's play YURA)",
+          "source": "youtube",
+          "views": 18943020
+        },
+        {
+          "videoId": "051hpRDBKVs",
+          "title": "팔자가 활짝 핀 그 여자의 낙원🌸 수십만평의 꽃밭을 일군 산골 하이디의 6평 짜리 집🏡 / EBS 가드닝컬렉션",
+          "channelName": "EBS 컬렉션 - 라이프스타일",
+          "source": "youtube",
+          "views": 2173070
+        },
+        {
+          "videoId": "CyqjdQJXWog",
+          "title": "주민은 딱 13명인데 고기는 매일이 풍어! 고기 잡느라 바쁜 섬마을 사람들｜섬바다 먹방｜한국기행｜#골라듄다큐",
+          "channelName": "EBSDocumentary (EBS 다큐)",
+          "source": "youtube",
+          "views": 1474340
+        },
+        {
+          "videoId": "G93ATKPUSjo",
+          "title": "1400만 원으로 직접 지은 산속 6평 집에서 수십만 평 정원을 가꾸며 사는 여자｜한국기행｜#골라듄다큐",
+          "channelName": "EBSDocumentary (EBS 다큐)",
+          "source": "youtube",
+          "views": 1078269
+        }
+      ]
+    },
+    {
+      "campingSiteId": "gochang-jeonbuk",
+      "videos": [
+        {
+          "videoId": "zS5Zfb2V8vs",
+          "title": "국내 어디서도 볼 수없는 평원위 솟은 신기한 전설의 바위 - 전북 고창 병바위 /4k 가볼만한곳 | Cinematic Scenic Travel",
+          "channelName": "OutboundScape",
+          "source": "youtube",
+          "views": 303,
+          "isOriginal": true
+        },
+        {
+          "videoId": "BSamPv6I7Bo",
+          "title": "“리모델링 안해서 오히려 좋아” 600평 마당 숲 품은 고풍스러운 100년 고택 자랑하러 나왔습니다│있는 그대로 아름다운 100살 시골집│한국기행│#골라듄다큐",
+          "channelName": "EBSDocumentary (EBS 다큐)",
+          "source": "youtube",
+          "views": 307228
+        },
+        {
+          "videoId": "ZxnqOM8qxGc",
+          "title": "100년 동안 아무도 안고쳤다. 희귀하고 고풍스러운 시골집에 우아한 여자가 산다┃잘 나가던 사업 뒤로하고┃아름다운 600평 마당 정원을 품은 100년 고택┃한국기행┃#골라듄다큐",
+          "channelName": "EBSDocumentary (EBS 다큐)",
+          "source": "youtube",
+          "views": 265528
+        },
+        {
+          "videoId": "TJj9rL9Tn64",
+          "title": "[UHD 다큐 풍경] 자연과 역사가 빚어낸 신비…고창 / 연합뉴스TV (YonhapnewsTV)",
+          "channelName": "연합뉴스TV",
+          "source": "youtube",
+          "views": 8723
+        },
+        {
+          "videoId": "PTUgUe-9x08",
+          "title": "한국기행 - Korea travel_나무에 취하다 2부- 초록은 행복이어라_#001",
+          "channelName": "EBSDocumentary (EBS 다큐)",
+          "source": "youtube",
+          "views": 4592
+        },
+        {
+          "videoId": "Eawhi_FWNLU",
+          "title": "세계 자연유산 등재되나? &#39;한국의 갯벌&#39;-고창편[어영차 바다야] #신안,서천,고창,순천,보성",
+          "channelName": "목포MBC",
+          "source": "youtube",
+          "views": 4131
+        }
+      ]
+    },
+    {
+      "campingSiteId": "goheung-jeonnam",
+      "videos": [
+        {
+          "videoId": "d9Pk59JO3U0",
+          "title": "고흥 해창만 황금빛 갈대밭 - 전남 고흥 / 4k | Cinematic Scenic Travel",
+          "channelName": "OutboundScape",
+          "source": "youtube",
+          "views": 123,
+          "isOriginal": true
+        },
+        {
+          "videoId": "pgyeKrwiGDo",
+          "title": "모두가 떠난 무인도 &#39;나 혼자 통째로 가꾼다&#39; 말라버린 우물을 뚫고 전기도 끌어온 이장님의 &#39;수락도&#39; 살리기 프로젝트",
+          "channelName": "EBS 컬렉션 - 라이프스타일",
+          "source": "youtube",
+          "views": 811186
+        },
+        {
+          "videoId": "-Q99Ml2gQbI",
+          "title": "[Full] 한국기행 - 섬 속의 섬을 가다 완도 - 2부 전복의 섬 덕우도",
+          "channelName": "EBSDocumentary (EBS 다큐)",
+          "source": "youtube",
+          "views": 603243
+        },
+        {
+          "videoId": "ZJkR_JtkAIc",
+          "title": "둘이 먹을 건데 참 많이도 잡힌다! 밥때 되니까 집 바로 앞에서 낙지, 숭어, 장어 골고루 잡아다 요리해 먹는 섬마을 부부│바다가 앞마당인 신기한 섬마을 집│한국기행│#골라듄다큐",
+          "channelName": "EBSDocumentary (EBS 다큐)",
+          "source": "youtube",
+          "views": 516688
+        },
+        {
+          "videoId": "3j2AEm3Yp58",
+          "title": "11가구 살던 고향 섬이 무인도가 됐다｜3년 만에 고향 섬에 돌아와 사는 남자｜삼시세끼 차리다 보면 하루가 다 간다는 나홀로 섬살이｜한국기행｜#골라듄다큐",
+          "channelName": "EBSDocumentary (EBS 다큐)",
+          "source": "youtube",
+          "views": 273287
+        },
+        {
+          "videoId": "Q8hKLDyuEz0",
+          "title": "[Full] 한국기행 - 섬 속의 섬을 가다 완도 - 5부 천연 무공해의 섬 소모도",
+          "channelName": "EBSDocumentary (EBS 다큐)",
+          "source": "youtube",
+          "views": 177165
+        }
+      ]
+    },
+    {
+      "campingSiteId": "gwangneung-forest-pocheon",
+      "videos": [
+        {
+          "videoId": "x4w-5FOeQqo",
+          "title": "Gwangneung Korea National Arboretum : Cinematic Autumn Foliage in South Korea",
+          "channelName": "OutboundScape",
+          "source": "youtube",
+          "views": 159,
+          "isOriginal": true
+        },
+        {
+          "videoId": "JeqDeHIGYcc",
+          "title": "(경기도여행) 자연에 순응한 한국의 전통 양식으로 설계된 천연림 수목원 국립수목원(광릉수목원)",
+          "channelName": "여행ON-여행 에티터의 여행정보",
+          "source": "youtube",
+          "views": 2297
+        },
+        {
+          "videoId": "ibU3FyjBwi4",
+          "title": "[자연과의 만남 뭉클][숨터＃20] 500년 숨결 광릉숲 | KBS 방송",
+          "channelName": "KBS HUMAN : 뭉클티비",
+          "source": "youtube",
+          "views": 1432
+        },
+        {
+          "videoId": "LUHq7fBwgUc",
+          "title": "[연구해서 뭐하니? 1회 ]  광릉숲에서 뭐하니?   첫 번째 이야기",
+          "channelName": "국립수목원",
+          "source": "youtube",
+          "views": 1360
+        },
+        {
+          "videoId": "O9KocAOGNkY",
+          "title": "[KNA Story 5] Korea National Arboretum Fir Forest",
+          "channelName": "국립수목원",
+          "source": "youtube",
+          "views": 1325
+        },
+        {
+          "videoId": "ygDXPPOtjq0",
+          "title": "광릉숲길, 국립수목원 해오라비난초 Gwangneung Forest Road, National Arboretum White egret flower",
+          "channelName": "Man and Nature 인간과 자연",
+          "source": "youtube",
+          "views": 441
+        }
+      ]
+    },
+    {
+      "campingSiteId": "hongcheon-river-gangwon",
+      "videos": [
+        {
+          "videoId": "Vt85sGfocCc",
+          "title": "Hongcheon River - A Snowy Dawn's Breathtaking Landscape | Cinematic Scenic Travel",
+          "channelName": "OutboundScape",
+          "source": "youtube",
+          "views": 1300,
+          "isOriginal": true
+        },
+        {
+          "videoId": "7SRLusGFlZ4",
+          "title": "홍천 수타사계곡 무료 계곡 물놀이 1석4조 서늘한 계곡 트레킹 관광 생태 숲 탐방까지, 수세식 화장실 대형 주차장 매끈한 바위계곡 물놀이 깍아지른 기암절벽 천년고찰",
+          "channelName": "라라의 집시 라이프 ",
+          "source": "youtube",
+          "views": 31496
+        },
+        {
+          "videoId": "hrOjIwwSugU",
+          "title": "홍천강, 남노일유원지, 노일유원지, 힘차게 굽이치는 태극의 강, 캠핑 차박 캠핑카 여행, 텐트 카라반 버스캠핑카 OK, 야영 취사 화장실 굿, 떠오르는 힐링명소 강낚시 천국,",
+          "channelName": "라라의 집시 라이프 ",
+          "source": "youtube",
+          "views": 10255
+        },
+        {
+          "videoId": "PUEw9V5S_48",
+          "title": "자연의 소리를 찾아 떠나는 여정- 홍천강 카약킹, 싱그러운 아침 새소리, 마음의 안정을 위한 듣기좋은 소리",
+          "channelName": "Healing Now ",
+          "source": "youtube",
+          "views": 3290
+        },
+        {
+          "videoId": "O0WwVSECEGw",
+          "title": "[유산여독서] 홍천 팔봉산 : 시간이 만든 수석 분재 / 규암으로 된 산",
+          "channelName": "비바5060",
+          "source": "youtube",
+          "views": 960
+        },
+        {
+          "videoId": "GXIvAH-q5VQ",
+          "title": "허영호의 명산 도전기 : 홍천강이 감싼 여덟 봉우리, 팔봉산 [2TV 생생정보] | KBS 220825 방송",
+          "channelName": "KBS 스카우트 얼리어잡터",
+          "source": "youtube",
+          "views": 809
+        }
+      ]
+    },
+    {
+      "campingSiteId": "nami-island-chuncheon",
+      "videos": [
+        {
+          "videoId": "6im6VHHY3pE",
+          "title": "Let's go to Nami Island Korea in autumn - Chuncheon, Gangwon-do Korea : Cinematic Scenic Travel",
+          "channelName": "OutboundScape",
+          "source": "youtube",
+          "views": 200,
+          "isOriginal": true
+        },
+        {
+          "videoId": "9djZz-uJBK4",
+          "title": "Sketch Your Korea: Nami Island, the Island of Romance [Travel-a-wish] EP1",
+          "channelName": "Imagine Your Korea",
+          "source": "youtube",
+          "views": 6011883
+        },
+        {
+          "videoId": "plana-F__YY",
+          "title": "Korea Explored -- Ep. 14 Nami Island",
+          "channelName": "Korea Explored",
+          "source": "youtube",
+          "views": 32505
+        },
+        {
+          "videoId": "zM2LxZ6at9I",
+          "title": "Nami Island in Chuncheon, South Korea 4K | BinBon",
+          "channelName": "BinBon",
+          "source": "youtube",
+          "views": 2860
+        },
+        {
+          "videoId": "fCu0n8JVoyY",
+          "title": "Autumn Vibes at Nami Island (남이섬) — Peaceful Korea Tour",
+          "channelName": "SAVANNAH CHANNEL",
+          "source": "youtube",
+          "views": 2748
+        },
+        {
+          "videoId": "M1qmInx5h_Q",
+          "title": "Last part tour in Nami Island #남이섬 so beautiful in nature",
+          "channelName": "Korean Changmi",
+          "source": "youtube",
+          "views": 1710
+        }
+      ]
+    },
+    {
+      "campingSiteId": "onam-lake-namyangju",
+      "videos": [
+        {
+          "videoId": "iWPcx4tYNac",
+          "title": "Onam Lake at the Foot of Mt. Cheonma | Cinematic Scenic Travel",
+          "channelName": "OutboundScape",
+          "source": "youtube",
+          "views": 90,
+          "isOriginal": true
+        }
+      ]
+    },
+    {
+      "campingSiteId": "suncheon-bay-jeonnam",
+      "videos": [
+        {
+          "videoId": "9UFaG6Gm6Pw",
+          "title": "철새들의 휴식처 아름다운 생태 습지 - 순천만 - 전남 순천 | 4k | Cinematic Scenic Travel",
+          "channelName": "OutboundScape",
+          "source": "youtube",
+          "views": 373,
+          "isOriginal": true
+        }
+      ]
+    },
+    {
+      "campingSiteId": "yeongwol-gangwon",
+      "videos": [
+        {
+          "videoId": "_1wf36-iois",
+          "title": "신선계의 비경을 만나다 / 자막 / 강원도 영월 / 가볼만한곳 | Cinematic Scenic Travel",
+          "channelName": "OutboundScape",
+          "source": "youtube",
+          "views": 919,
+          "isOriginal": true
+        }
+      ]
+    },
+    {
+      "campingSiteId": "yookbaekmajigi-korea",
+      "videos": [
+        {
+          "videoId": "SXFPTu9ou1Y",
+          "title": "Yookbaekmajigi - Daily Scenes of Winter Wind on the Mountain Korea | Cinematic Scenic Travel",
+          "channelName": "OutboundScape",
+          "source": "youtube",
+          "views": 533,
+          "isOriginal": true
+        }
+      ]
+    },
+    {
+      "campingSiteId": "bukhangang-gangwon",
+      "videos": [
+        {
+          "videoId": "ybA_T4nwQE4",
+          "title": "Top 10 Driving Courses Near Seoul: Bukhangang to Chuncheon, Gangwon-do | Cinematic Scenic Travel UHD",
+          "channelName": "OutboundScape",
+          "source": "youtube",
+          "views": 176,
+          "isOriginal": true
+        }
+      ]
+    },
+    {
+      "campingSiteId": "buan-jeonbuk",
+      "videos": [
+        {
+          "videoId": "qFsLzN-JLZ0",
+          "title": "변산 내소사 울창한 전나무 숲길과 웅장한 직소폭포와 고즈넉한 오솔길 - 전북 가볼만한 곳 | travelog",
+          "channelName": "OutboundScape",
+          "source": "youtube",
+          "views": 941,
+          "isOriginal": true
+        }
+      ]
+    },
+    {
+      "campingSiteId": "seonamsa-temple-suncheon",
+      "videos": [
+        {
+          "videoId": "FDVXB_pBfhI",
+          "title": "고즈넉한 설경의 선암사 - 전남 순천 | 4k 가볼만한곳 | Cinematic Scenic Travel",
+          "channelName": "OutboundScape",
+          "source": "youtube",
+          "views": 723,
+          "isOriginal": true
+        }
+      ]
+    },
+    {
+      "campingSiteId": "seonunsa-temple-gochang",
+      "videos": [
+        {
+          "videoId": "AiRNdp9CZjI",
+          "title": "붉은 단풍 가득한 선운사 가는 길 - 전북 고창 / 4k | Cinematic Scenic Travel",
+          "channelName": "OutboundScape",
+          "source": "youtube",
+          "views": 1400,
+          "isOriginal": true
+        }
+      ]
+    },
+    {
+      "campingSiteId": "soyang-lake-chuncheon",
+      "videos": [
+        {
+          "videoId": "bQscI2hStYI",
+          "title": "Soyang Lake, Stunning Autumn Foliage, and Cheongpyeongsa - Chuncheon : Cinematic Scenic Travel",
+          "channelName": "OutboundScape",
+          "source": "youtube",
+          "views": 324,
+          "isOriginal": true
+        }
+      ]
+    },
+    {
+      "campingSiteId": "jinan-jeonbuk",
+      "videos": [
+        {
+          "videoId": "4NvSCpc3N-c",
+          "title": "맑은 금강 바로 옆에서 걷는 천년의 옛길 - 감동벼룻길 / 자막 / 진안고원길 / 진안가볼만한곳 | Cinematic Scenic Travel",
+          "channelName": "OutboundScape",
+          "source": "youtube",
+          "views": 2800,
+          "isOriginal": true
+        }
+      ]
+    },
+    {
+      "campingSiteId": "han-river-seoul",
+      "videos": [
+        {
+          "videoId": "enwpR2MWWgc",
+          "title": "Han River - Winter Sunset Han River - Emotional Video | Cinematic Scenic Travel",
+          "channelName": "OutboundScape",
+          "source": "youtube",
+          "views": 234,
+          "isOriginal": true
+        }
+      ]
+    },
+    {
+      "campingSiteId": "namsan-seoul",
+      "videos": [
+        {
+          "videoId": "ujj92Dy5SY8",
+          "title": "남산 - 서울에서 가장 아름다운 야경을 볼 수 있는 곳 / 서울야경 | 야경맛집 | 남산트래킹 | Cinematic Scenic Travel",
+          "channelName": "OutboundScape",
+          "source": "youtube",
+          "views": 277,
+          "isOriginal": true
+        }
+      ]
+    },
+    {
+      "campingSiteId": "nodeul-island-seoul",
+      "videos": [
+        {
+          "videoId": "GoTUzveDk-g",
+          "title": "Best Sunset Spot in Seoul - Nodeul Island - Yongsan, Seoul | 4K | Cinematic Scenic Travel",
+          "channelName": "OutboundScape",
+          "source": "youtube",
+          "views": 261,
+          "isOriginal": true
+        }
+      ]
+    },
+    {
+      "campingSiteId": "seoullo-7017-seoul",
+      "videos": [
+        {
+          "videoId": "v-jJ-pdT338",
+          "title": "서울 도심의 공중정원길 - 서울로 만리동길 | 4k 가볼만한곳 | Cinematic Scenic Travel",
+          "channelName": "OutboundScape",
+          "source": "youtube",
+          "views": 641,
+          "isOriginal": true
+        }
+      ]
+    },
+    {
+      "campingSiteId": "sky-park-seoul",
+      "videos": [
+        {
+          "videoId": "UeXro2xKiwg",
+          "title": "Sky Park in Seoul / South Korea| Scenic Seoul Walks | Cinematic Scenic Travel",
+          "channelName": "OutboundScape",
+          "source": "youtube",
+          "views": 125,
+          "isOriginal": true
+        }
+      ]
+    },
+    {
+      "campingSiteId": "yangjaecheon-seoul",
+      "videos": [
+        {
+          "videoId": "Gcw_3xXrxbk",
+          "title": "Walking Along Yangjaecheon in Seoul / Subtitles / Seoul Walk | Cinematic Scenic Travel",
+          "channelName": "OutboundScape",
+          "source": "youtube",
+          "views": 1600,
+          "isOriginal": true
+        }
+      ]
+    },
+    {
+      "campingSiteId": "donggang-jeongseon",
+      "videos": [
+        {
+          "videoId": "rmPl1tObTAQ",
+          "title": "동강 - 놀라움의 연속인 국내 최고로 아름다운 협곡 / 강원도정선 / 정선가볼만한곳 / 드라이브코스 | Cinematic Scenic Travel",
+          "channelName": "OutboundScape",
+          "source": "youtube",
+          "views": 867,
+          "isOriginal": true
+        }
+      ]
+    },
+    {
+      "campingSiteId": "hwayang-valley-goesan",
+      "videos": [
+        {
+          "videoId": "6wmoLyZb4tY",
+          "title": "아름다운 대자연 속의 시간여행 - 화양구곡 - 충북 괴산 / 자막 / 괴산가볼만한곳 /화양계곡 | Cinematic Scenic Travel",
+          "channelName": "OutboundScape",
+          "source": "youtube",
+          "views": 5100,
+          "isOriginal": true
+        }
+      ]
+    },
+    {
+      "campingSiteId": "mureung-valley-donghae",
+      "videos": [
+        {
+          "videoId": "G2Leccx1Ah4",
+          "title": "무릉계곡 - 두타산 청옥산 계곡이 만난 기암괴석의 트래킹길 / 강원도 동해 / 자막 /가볼만한곳 | Cinematic Scenic Travel",
+          "channelName": "OutboundScape",
+          "source": "youtube",
+          "views": 633,
+          "isOriginal": true
+        }
+      ]
+    },
+    {
+      "campingSiteId": "ssanggok-valley-goesan",
+      "videos": [
+        {
+          "videoId": "KdzfXQF7reE",
+          "title": "쌍곡계곡 - 소금강이라 불리는 웅장한 협곡과 맑은 물/ 괴산가볼만한곳 / 자막 / 계곡트래킹 / | Cinematic Scenic Travel",
+          "channelName": "OutboundScape",
+          "source": "youtube",
+          "views": 11000,
+          "isOriginal": true
+        }
+      ]
+    },
+    {
+      "campingSiteId": "undal-valley-mungyeong",
+      "videos": [
+        {
+          "videoId": "Dwyt0sk5c68",
+          "title": "한여름 얼음장 같은 이끼계곡 - 운달계곡 경북문경 / 자막 / 문경가볼만한곳 / 운달산 / 김룡사 / 전나무숲길 | Cinematic Scenic Travel",
+          "channelName": "OutboundScape",
+          "source": "youtube",
+          "views": 16000,
+          "isOriginal": true
+        }
+      ]
+    },
+    {
+      "campingSiteId": "gangchon-waterfall-chuncheon",
+      "videos": [
+        {
+          "videoId": "uFj6MkCFuL8",
+          "title": "Charming Travel Destination in Chuncheon: Gangchon Gugok Waterfall",
+          "channelName": "OutboundScape",
+          "source": "youtube",
+          "views": 462,
+          "isOriginal": true
+        }
+      ]
+    },
+    {
+      "campingSiteId": "jirisan-np",
+      "videos": [
+        {
+          "videoId": "X6BhegJBU74",
+          "title": "[YTN 특별기획] 국립공원 50년, 지리산을 가다 / YTN",
+          "channelName": " YTN",
+          "source": "youtube",
+          "views": 60560
+        },
+        {
+          "videoId": "QnetdyMCw9Y",
+          "title": "지리산국립공원 걷기 편한 곳 / 구룡폭포 육모정 춘향묘 / 힐링 포인트 / 걷기 좋은 둘레길 / 코스 안내",
+          "channelName": "좋은아침TV-산행 트레킹",
+          "source": "youtube",
+          "views": 4675
+        },
+        {
+          "videoId": "OKBCF9D2C48",
+          "title": "[지리산국립공원] 노고단 탐방로예약제",
+          "channelName": "국립공원TV",
+          "source": "youtube",
+          "views": 4652
+        },
+        {
+          "videoId": "UWypJ7H6qpQ",
+          "title": "국립공원 입장료의 진실 | 왜 애꿎은 등산객만 피해를 보는가?",
+          "channelName": "산타는 JSun",
+          "source": "youtube",
+          "views": 4473
+        },
+        {
+          "videoId": "AsSU3-HGG74",
+          "title": "지리산 &#39;주지훈&#39;의 모델, 국립공원 레인저! 기억에 남는 제일 진상 등산객은?",
+          "channelName": "바른건강",
+          "source": "youtube",
+          "views": 4165
+        }
+      ]
+    },
+    {
+      "campingSiteId": "seoraksan-np",
+      "videos": [
+        {
+          "videoId": "lCxu7yRkklw",
+          "title": "Eco-friendly travel in Seoraksan National Parkㅣ설악산 국립공원으로 떠나는 친환경 여행",
+          "channelName": "Imagine Your Korea",
+          "source": "youtube",
+          "views": 719497
+        },
+        {
+          "videoId": "jhWNDZw4gBc",
+          "title": "The SIDE of SOUTH KOREA no one shows you - Seoraksan National Park 🇰🇷",
+          "channelName": "Joel and Emilia",
+          "source": "youtube",
+          "views": 78161
+        },
+        {
+          "videoId": "6bKiSdbtE1Y",
+          "title": "Hiking to Ulsanbawi: My first time in Seoraksan National Park | South Korea ",
+          "channelName": "walkerlust",
+          "source": "youtube",
+          "views": 19413
+        },
+        {
+          "videoId": "2GZLRmp9cSM",
+          "title": "국립공원 설악산으로 백패킹을 가다?? | 공룡능선은 실패 | 경량백패킹",
+          "channelName": "하이커스 경량백패킹",
+          "source": "youtube",
+          "views": 9364
+        },
+        {
+          "videoId": "o3GhRBVL70A",
+          "title": "Dinosaur Ridge, Seoraksan National Park, South Korea 설악산국립공원",
+          "channelName": "RoamWithJohn",
+          "source": "youtube",
+          "views": 2751
+        }
+      ]
+    },
+    {
+      "campingSiteId": "hallasan-np",
+      "videos": [
+        {
+          "videoId": "MZRtZFGd4vg",
+          "title": "Hallasan National park, South Korea,  yeongsil trail 4K.  🇰🇷",
+          "channelName": "Nomad Lankan",
+          "source": "youtube",
+          "views": 20096
+        },
+        {
+          "videoId": "u7BdgNkQWBs",
+          "title": "Hallasan National park (한라산국립공원) through Eorimok and Yeongsil trails",
+          "channelName": "ערן אלטשולר",
+          "source": "youtube",
+          "views": 3160
+        },
+        {
+          "videoId": "R4bQXrWDYA8",
+          "title": "jeju island - hallasan vlog | hiking to the tallest point of south korea",
+          "channelName": "Emily Hua",
+          "source": "youtube",
+          "views": 3019
+        },
+        {
+          "videoId": "ed_nMcX12PM",
+          "title": "가을의 초입 한라산 어리목 영실 : 하늘이 열렸다! [Hallasan National Park]",
+          "channelName": "서른즈음에아웃도어",
+          "source": "youtube",
+          "views": 2512
+        },
+        {
+          "videoId": "tsJ-mJzvyyE",
+          "title": "Climbing Hallasan 🇰🇷",
+          "channelName": "Luke Hyde",
+          "source": "youtube",
+          "views": 2378
+        }
+      ]
+    },
+    {
+      "campingSiteId": "odaesan-np",
+      "videos": [
+        {
+          "videoId": "rtJzZPJsAko",
+          "title": "때묻지 않은 국립공원 산속에서 조명을 켰더니... 엄청난일이 벌어졌다! 햇반준비하세요!",
+          "channelName": "TV생물도감",
+          "source": "youtube",
+          "views": 101277
+        },
+        {
+          "videoId": "Au1OQBe0u3A",
+          "title": "[4k] 국립공원 新기행 ｜ 전나무 숲에서 피톤치드 가득! 오대산국립공원 [상편]",
+          "channelName": "국립공원TV",
+          "source": "youtube",
+          "views": 1723
+        },
+        {
+          "videoId": "SHZXmyR2gRs",
+          "title": "[SD][오대산국립공원] 아름다운 천년의 숲 - 월정사 전나무 숲",
+          "channelName": "국립공원TV",
+          "source": "youtube",
+          "views": 1353
+        },
+        {
+          "videoId": "6e6P_klqbxU",
+          "title": "[4K] 오대산국립공원 ｜코로나블루, 오대산 풍경으로 마음 방역!!",
+          "channelName": "국립공원TV",
+          "source": "youtube",
+          "views": 936
+        },
+        {
+          "videoId": "ZNIebduDQGI",
+          "title": "[4k] 국립공원 新기행 ｜ 고즈넉한 소금강에서 트래킹! 오대산국립공원 [하편]",
+          "channelName": "국립공원TV",
+          "source": "youtube",
+          "views": 519
+        }
+      ]
+    },
+    {
+      "campingSiteId": "songnisan-np",
+      "videos": [
+        {
+          "videoId": "-yJEyrdLsLY",
+          "title": "속리산 국립공원 세조길 걸으며 문장대~천왕봉 환종주 등산코스 Songnisan National Park",
+          "channelName": "오즈의마운틴 OZ's mountain",
+          "source": "youtube",
+          "views": 2694
+        },
+        {
+          "videoId": "ruEFeHU1kBc",
+          "title": "[속리산국립공원] 세조길로 떠나는 자연이야기",
+          "channelName": "국립공원TV",
+          "source": "youtube",
+          "views": 1065
+        },
+        {
+          "videoId": "S1agJuqYm2k",
+          "title": "[속리산국립공원] 도명산 탐방로예약제",
+          "channelName": "국립공원TV",
+          "source": "youtube",
+          "views": 995
+        },
+        {
+          "videoId": "lTjZKcpCQ58",
+          "title": "[4K] VR(360도 영상)로 즐기는 속리산국립공원 가상탐방 / 속리산 법주사와 세조길 / Songnisan National Park  /",
+          "channelName": "국립공원TV",
+          "source": "youtube",
+          "views": 672
+        },
+        {
+          "videoId": "FO-D9gVoZBg",
+          "title": "[4K] VR(360도 영상)로 즐기는 속리산국립공원 가상탐방 / 속리산 문장대 / Songnisan National Park  /",
+          "channelName": "국립공원TV",
+          "source": "youtube",
+          "views": 607
+        }
+      ]
+    },
+    {
+      "campingSiteId": "gayasan-np",
+      "videos": [
+        {
+          "videoId": "ZXkgqLyOY7Y",
+          "title": "새롭게 개방한 가야산국립공원 법전리코스 &#39;칠불능선&#39;【등산】",
+          "channelName": "싼타TV",
+          "source": "youtube",
+          "views": 48187
+        },
+        {
+          "videoId": "UWypJ7H6qpQ",
+          "title": "국립공원 입장료의 진실 | 왜 애꿎은 등산객만 피해를 보는가?",
+          "channelName": "산타는 JSun",
+          "source": "youtube",
+          "views": 4473
+        },
+        {
+          "videoId": "HVMvSP2yE6k",
+          "title": "가야산 국립공원 | 만물상 코스로 올라 용기골로 하산 | 5,6월 지금 가장 예쁜 산 | 어린이 등산",
+          "channelName": "준영이네 가족산행",
+          "source": "youtube",
+          "views": 2512
+        },
+        {
+          "videoId": "3xCPwue_0WM",
+          "title": "[4K] VR(360도 영상)로 즐기는 가야산국립공원 가상탐방 / 가야산 소리길 1편 / Gayasan National Park  /",
+          "channelName": "국립공원TV",
+          "source": "youtube",
+          "views": 2357
+        },
+        {
+          "videoId": "LSUXS9OckxI",
+          "title": "(가야산)만물상 코스는 아무리 힘들어도 올라가야죠!!/가야산국립공원/바위 하나하나가 모여 만개의 형상을 만드는 암릉지대/Gayasan National Park",
+          "channelName": "산길 TV",
+          "source": "youtube",
+          "views": 804
+        }
+      ]
+    },
+    {
+      "campingSiteId": "naejangsan-np",
+      "videos": [
+        {
+          "videoId": "lCxu7yRkklw",
+          "title": "Eco-friendly travel in Seoraksan National Parkㅣ설악산 국립공원으로 떠나는 친환경 여행",
+          "channelName": "Imagine Your Korea",
+          "source": "youtube",
+          "views": 719497
+        },
+        {
+          "videoId": "rvLIRGpAZWo",
+          "title": "걸어서 겨울왕국 속으로 &#39;내장산 국립공원&#39;  / 전라도 폭설 / 겨울 등산 추천 / 싼타TV",
+          "channelName": "싼타TV",
+          "source": "youtube",
+          "views": 28551
+        },
+        {
+          "videoId": "5WtOoN-S01k",
+          "title": "Naejangsan National Park (내장산국립공원) || Fall In South Korea 2022",
+          "channelName": "Arsyifa Aurora",
+          "source": "youtube",
+          "views": 5939
+        },
+        {
+          "videoId": "4q7g3RwNWn8",
+          "title": "내장산 단풍 단풍의 명소 국립공원 내장산 단풍 현황 ",
+          "channelName": "곽황래 TV",
+          "source": "youtube",
+          "views": 3581
+        },
+        {
+          "videoId": "Qly9ezg2cWc",
+          "title": "Naejangsan National Park 내장산 국립공원| WANDERING TIGER |KOREA",
+          "channelName": "WANDERING TIGER (헤매는 호랑이)",
+          "source": "youtube",
+          "views": 3019
+        }
+      ]
+    },
+    {
+      "campingSiteId": "deogyusan-np",
+      "videos": [
+        {
+          "videoId": "3EJe9o3e0Jg",
+          "title": "DEOGYUSAN NATIONAL PARK 덕유산 국립공원, MUJU",
+          "channelName": "SheSlayzMountains",
+          "source": "youtube",
+          "views": 3158
+        },
+        {
+          "videoId": "YuNwp33Fe9E",
+          "title": "Deogyusan National Park, South Korea  | 덕유산국립공원",
+          "channelName": "XXX WALKER",
+          "source": "youtube",
+          "views": 1395
+        },
+        {
+          "videoId": "MUMXcOp47wY",
+          "title": "덕유산 국립공원 (Deogyusan National Park)",
+          "channelName": "Aruna Sandaruwan",
+          "source": "youtube",
+          "views": 613
+        },
+        {
+          "videoId": "jstDpbQbEKQ",
+          "title": "[4K] VR(360도 영상)로 즐기는 덕유산국립공원 가상탐방 / 덕유산 어사길 / Deogyusan National Park /",
+          "channelName": "국립공원TV",
+          "source": "youtube",
+          "views": 502
+        },
+        {
+          "videoId": "IJCK7GmdcS4",
+          "title": "덕유산 I DEOGYUSAN NATIONAL PARK I FOURTH HIGHEST PEAK IN KOREA HYANGJEOKBONG 향적봉 1614 METERS",
+          "channelName": "TRAVEL BIE",
+          "source": "youtube",
+          "views": 498
+        }
+      ]
+    },
+    {
+      "campingSiteId": "taeanhaean-np",
+      "videos": [
+        {
+          "videoId": "UXRbYQTtq50",
+          "title": "[4k] 국립공원 新기행 ｜한국의 이국적인 사막지대! 태안해안국립공원 [상편]",
+          "channelName": "국립공원TV",
+          "source": "youtube",
+          "views": 2463
+        },
+        {
+          "videoId": "ycN7pcwzPsw",
+          "title": "[4k] 국립공원 新기행 ｜태안해안국립공원 [하편]",
+          "channelName": "국립공원TV",
+          "source": "youtube",
+          "views": 1227
+        },
+        {
+          "videoId": "TJ3z5tz7_s4",
+          "title": "합법적인 국립공원 야영 취사 정보 공유ㅣ무료 노지 차박 캠핑 낚시 코리아 아웃도어 여행 ㅣ태안 해안 국립 공원 밧개 해수욕장 korea tour",
+          "channelName": "코리아 아웃도어ㅣ Korea Outdoorㅣ",
+          "source": "youtube",
+          "views": 1165
+        },
+        {
+          "videoId": "1aLzata7XGM",
+          "title": "등산 싫어하는 사람도 좋아할 국립공원[국내여행 EP.32]",
+          "channelName": "스위티로미 sweetieRomy",
+          "source": "youtube",
+          "views": 1073
+        },
+        {
+          "videoId": "c6KI8jKOfCI",
+          "title": "스탬프투어ㅣ국립공원여권ㅣ태안해안국립공원ㅣ몽산포 ㅣ안흥항",
+          "channelName": "전기누전천재TV",
+          "source": "youtube",
+          "views": 851
+        }
+      ]
+    },
+    {
+      "campingSiteId": "dadohaehaesang-np",
+      "videos": [
+        {
+          "videoId": "Df4Xgfoxwf8",
+          "title": "[다도해해상국립공원] 탄소중립이란",
+          "channelName": "국립공원TV",
+          "source": "youtube",
+          "views": 8984
+        },
+        {
+          "videoId": "QaxuKGynQ9w",
+          "title": "[UHD][다도해해상국립공원] 배타GO! 국립공원여행｜다도해해상국립공원 해상 탐방프로그램",
+          "channelName": "국립공원TV",
+          "source": "youtube",
+          "views": 8216
+        },
+        {
+          "videoId": "yj3q_q9O0xc",
+          "title": "[2021 국립공원 여권 여행 영상 공모전]다도해를 한눈에 품은 팔영산 #국립공원여권여행 #국립공원스탬프투어 #국립공원공단",
+          "channelName": "미미의등산일기",
+          "source": "youtube",
+          "views": 3788
+        },
+        {
+          "videoId": "7B0dJbsspHU",
+          "title": "(해상탐방프로그램) 배타GO 국립공원 여행",
+          "channelName": "다도해해상국립공원서부사무소",
+          "source": "youtube",
+          "views": 3319
+        },
+        {
+          "videoId": "SmT6yqaaeyE",
+          "title": "바다 위 신비한 섬 다도해 해상국립공원 팔영산 산행기",
+          "channelName": "산카소",
+          "source": "youtube",
+          "views": 2987
+        }
+      ]
+    },
+    {
+      "campingSiteId": "nanji-campground",
+      "videos": [
+        {
+          "videoId": "MYz6rcJfGaI",
+          "title": "일상 / 난지캠핑장 | 바베큐 | 한강라면 | 먹방 (ENG SUB)",
+          "channelName": "톡! TALK! 후지이 미나",
+          "source": "youtube",
+          "views": 234252
+        },
+        {
+          "videoId": "ESuqx48QBTg",
+          "title": "고기 구워먹고싶어서 간 서울 난지캠핑장🏕 • 캠핑옷 배자 • 살치살 • 삼겹살 • 새우구이 • 3만원타프",
+          "channelName": "소풍족",
+          "source": "youtube",
+          "views": 70729
+        },
+        {
+          "videoId": "kgDBcJizukI",
+          "title": "시설도 깔끔! 새롭게 단장하고 재오픈한 한강 난지캠핑장 리뷰",
+          "channelName": "케이수환",
+          "source": "youtube",
+          "views": 26175
+        },
+        {
+          "videoId": "uhmUNFcP2ks",
+          "title": "가방 하나로 캠핑할 수 있을까? (서울 난지캠핑장)",
+          "channelName": "동딴지",
+          "source": "youtube",
+          "views": 23989
+        },
+        {
+          "videoId": "DyEMdTzyYUU",
+          "title": "서울시에서 작정하고 만든🔥캠핑 성지🔥 난지캠핑장으로 모엿 💚 [알려줌서울 Ep.04]",
+          "channelName": "서울시 · Seoul",
+          "source": "youtube",
+          "views": 16051
+        }
+      ]
+    },
+    {
+      "campingSiteId": "seoul-grand-park-camp",
+      "videos": [
+        {
+          "videoId": "YQMIHS0iQL4",
+          "title": "서울대공원 캠핑장에 가면?! ㅣWhat is there at the Seoul Grand Park camping site?!",
+          "channelName": "서울대공원TV",
+          "source": "youtube",
+          "views": 15337
+        },
+        {
+          "videoId": "JKEhaQFwqVI",
+          "title": "[과천여행] 장비없이 캠핑가능 서울대공원 캠핑장 명당공개 ⛺ / 예약하는방법 / 좋은자리추천 / 물놀이 바베큐 캠핑하기 / 도심속캠핑  / 캠핑명소 / 캠핑명당 / 캠핑핫플",
+          "channelName": "유리소리TV",
+          "source": "youtube",
+          "views": 14418
+        },
+        {
+          "videoId": "qGa935D19ZE",
+          "title": "MZ 갬성 캠핑 체험! 과천 서울대공원 캠핑장 방문기! 🏕 | 대우건설",
+          "channelName": "큰집사람들",
+          "source": "youtube",
+          "views": 10990
+        },
+        {
+          "videoId": "Bm1KwuPu3z4",
+          "title": "몸만 오면 준비 끝! 서울대공원 캠핑장을 즐기는 방법🤞",
+          "channelName": "서울대공원TV",
+          "source": "youtube",
+          "views": 9461
+        },
+        {
+          "videoId": "KJZHrvG-hLU",
+          "title": "서울대공원 캠핑장 꿀팁 대방출! ㅣ장비없이 캠핑가능 ㅣ 예약하는 방법 ㅣ도심속 캠핑 ㅣ 캠핑명소 ㅣ당일피크닉 ㅣ 대중교통 당일치기 여행 #98",
+          "channelName": "부릉마블 Broong Marvel",
+          "source": "youtube",
+          "views": 9174
+        }
+      ]
+    },
+    {
+      "campingSiteId": "daecheong-lake-camp",
+      "videos": [
+        {
+          "videoId": "37acWY7O6Vw",
+          "title": "【가을 여행지 추천】 숨은 대전 편 : 가족이 함께하는 조용한 캠핑장ㅣ어싱효과 제대로 느끼는 계족산 황토길 산행",
+          "channelName": "라니라니 tube",
+          "source": "youtube",
+          "views": 1882
+        },
+        {
+          "videoId": "1uJk_8DWhXQ",
+          "title": "대청호 오백리길 4구간 호반낭만길, 슬픈연가 영화촬영지, 사진출사여행",
+          "channelName": "산들투어TV어랑김주호",
+          "source": "youtube",
+          "views": 539
+        },
+        {
+          "videoId": "68BedoMTrW0",
+          "title": "The fall of the Daecheongho Lake 대청호의 가을",
+          "channelName": "드론채널",
+          "source": "youtube",
+          "views": 121
+        },
+        {
+          "videoId": "C-6aKUUqkoo",
+          "title": "계족산성 해돋이 20190101",
+          "channelName": "이경훈",
+          "source": "youtube",
+          "views": 91
+        }
+      ]
+    },
+    {
+      "campingSiteId": "gapyeong-glamping",
+      "videos": [
+        {
+          "videoId": "eF9cKPN_0pA",
+          "title": "Self-taught English (29)너의 아지트가 되어줄게 가을캠핑 단풍 네이처 하이크 코튼텐트 조립식화목난로 유럽풍 가을을 만나다 어느 멋진날에... 후회 없는 캠핑장",
+          "channelName": "감성캠핑 자연의 소리 (Emotional Camping)",
+          "source": "youtube",
+          "views": 3495
+        },
+        {
+          "videoId": "SQKt4Uds2zo",
+          "title": "동두천 왕방산 계곡 탑동동 캠핑풍경마을 2차분양 참고하세요",
+          "channelName": "토지수호천사",
+          "source": "youtube",
+          "views": 2240
+        },
+        {
+          "videoId": "TrdvVdTUlOQ",
+          "title": "[VLOG🇰🇷🇮🇩] TRAVEL TO GAPYEONG🇰🇷 CARAVAN CAMPING, BARBEQUE, 中秋节,가평카라반, 바베큐, 추석ㅣOHROSY",
+          "channelName": "OHROSY 수연",
+          "source": "youtube",
+          "views": 1459
+        },
+        {
+          "videoId": "OiZQ9K4Qp9I",
+          "title": "한탄강 오토캠핑장  물놀이 장까지 샅샅이 소개",
+          "channelName": "7680_칠육팔공",
+          "source": "youtube",
+          "views": 1347
+        },
+        {
+          "videoId": "n_CRrTgmXFA",
+          "title": "캠핑브이로그/강촌 포도캠핑장/원터치텐트로 2박3일캠핑/ 지붕,데크,수영장,계곡,비데,세탁기,냉장고 다있는 캠장.",
+          "channelName": "쏘스윗리오",
+          "source": "youtube",
+          "views": 744
+        }
+      ]
+    },
+    {
+      "campingSiteId": "surfyy-beach-camp",
+      "videos": [
+        {
+          "videoId": "tAjdq6Nse9s",
+          "title": "요즘 제일 핫한 양양에서 힐링 캠핑 Vlog 🏕🏖 + 캠핑팁/서피비치 정보/양양에서 가야할 맛집",
+          "channelName": "룩스 커플Luke and Stacy",
+          "source": "youtube",
+          "views": 17956
+        },
+        {
+          "videoId": "YHRRGlcxWeo",
+          "title": "2022년 첫 해돋이 캠핑 / 양양 서핑/Winter camping In YangYang Beach",
+          "channelName": "AnnHan Vlog",
+          "source": "youtube",
+          "views": 5110
+        },
+        {
+          "videoId": "TJBKA-5-8KI",
+          "title": "해수욕? 서핑? 다 되는 양양 여행~ | 설악해수욕장 | 양양맛집 | 양양차박지 | 서퍼비치 | 대포항 |  캠핑카여행 | 142",
+          "channelName": "쿠수니네 - 맛집 찾아 삼만리",
+          "source": "youtube",
+          "views": 4411
+        },
+        {
+          "videoId": "NNU0Y68-MrU",
+          "title": "캠핑카 타고 양양으로 커플여행!(캠핑/캠핑카/캠핑장/캠핑여행/양양서피비치/커플여행)",
+          "channelName": "유현하다",
+          "source": "youtube",
+          "views": 2354
+        },
+        {
+          "videoId": "9k9PReCIpBk",
+          "title": "양양 서피비치 다녀왔습니다. (feat.카니발차박)",
+          "channelName": "ANTWORKS 앤웍",
+          "source": "youtube",
+          "views": 2004
+        }
+      ]
+    },
+    {
+      "campingSiteId": "seogwipo-forest-camp",
+      "videos": [
+        {
+          "videoId": "vDTF3su4X3Q",
+          "title": "제주 서귀포 자연휴양림 캠핑장 / 숲속 우중캠핑 / 제주도민이 추천하는 숲속 캠핑 / 전기차를 활용한 전기 사용 캠핑 / 캠핑요리 백종원의 요리비책 레시피 / 순대볶음&amp;막걸리",
+          "channelName": "듬삭E-Camping",
+          "source": "youtube",
+          "views": 4109
+        },
+        {
+          "videoId": "eDseBgWNpwU",
+          "title": "4K [제주도 캠핑] 서귀포 자연휴양림 야영장 캠핑/ 편백나무숲 우중캠핑/ 사이트 상세소개/제주여행/돈내코야영장 관음사야영장/camping in Korea/韓国キャンプ[STV채널]",
+          "channelName": "태기루트 STV채널",
+          "source": "youtube",
+          "views": 3453
+        },
+        {
+          "videoId": "qwa014QefJ8",
+          "title": "서귀포자연휴양림 캠핑, 한라산의 편백숲에서 고요함을 누려보세요!",
+          "channelName": "안수지의 여행의 발견",
+          "source": "youtube",
+          "views": 2094
+        },
+        {
+          "videoId": "kVBUV00KSs4",
+          "title": "Jeju vlog | 서귀포자연휴양림 캠핑| 나홀로캠핑 | 제주도 백패킹 | 야영장 데크명당 공개",
+          "channelName": "주희망이 Jooheemang",
+          "source": "youtube",
+          "views": 1946
+        },
+        {
+          "videoId": "bY4U9PnHifU",
+          "title": "[ENG] 서귀포 자연휴양림 백패킹 같은 미니멀캠핑, 산림욕 캠핑, Jeju Seogwipo backpacking",
+          "channelName": "뽀캠프 BBo Camp TV.",
+          "source": "youtube",
+          "views": 1233
+        }
+      ]
+    },
+    {
+      "campingSiteId": "yeomchi-reservoir",
+      "videos": [
+        {
+          "videoId": "MSiP9rF5AWY",
+          "title": "염치저수지 붕어낚시",
+          "channelName": "천안동팔이의 노지붕어낚시",
+          "source": "youtube",
+          "views": 16207
+        },
+        {
+          "videoId": "dxPUQ9IilLs",
+          "title": "배스 배스낚시 저수지에서 만난 빵좋은 빵빵배스! 넌커? 짱커! bass fishing.",
+          "channelName": "아선티비",
+          "source": "youtube",
+          "views": 13423
+        },
+        {
+          "videoId": "aQraDg-Es0k",
+          "title": "충남권 대표 배스필드 염치지! 다양한 포인트를 소개합니다.",
+          "channelName": "논스토일",
+          "source": "youtube",
+          "views": 7830
+        },
+        {
+          "videoId": "WoDeicu_xLY",
+          "title": "손맛 없는 눈맛 - 배스낚시 버징",
+          "channelName": "고기어디",
+          "source": "youtube",
+          "views": 5616
+        },
+        {
+          "videoId": "cCQmqHEz1ns",
+          "title": "24 스티즈 킹바이퍼 69MH 로드 (24 STEEZ KINVIPER ROD)  #헤비커버낚시 (염치 저수지)",
+          "channelName": "코난도일tv",
+          "source": "youtube",
+          "views": 4352
+        }
+      ]
+    },
+    {
+      "campingSiteId": "gosam-reservoir",
+      "videos": [
+        {
+          "videoId": "BrQn-v9PEUs",
+          "title": "고삼저수지 배스낚시 - 필살기 공개 [4K]",
+          "channelName": "유재희 YuJaeHee - Bass Fishing",
+          "source": "youtube",
+          "views": 4701
+        },
+        {
+          "videoId": "cGegpdcEQeo",
+          "title": "고삼 저수지 현상황 리포터 &quot;서승찬&quot; 인스트럭터",
+          "channelName": "Aros fishing Style, 아로스",
+          "source": "youtube",
+          "views": 4483
+        },
+        {
+          "videoId": "DuMQuRr12Ak",
+          "title": "낚시꾼들의 성지, 고삼저수지 vlog🎣",
+          "channelName": "내용있네",
+          "source": "youtube",
+          "views": 3398
+        },
+        {
+          "videoId": "cubfbSFvGww",
+          "title": "그냥 낚시가 하고 싶었습니다, 고삼저수지 vlog🐠",
+          "channelName": "내용있네",
+          "source": "youtube",
+          "views": 2418
+        },
+        {
+          "videoId": "1GD18RwCS68",
+          "title": "배스 잡아야되는데 새가잡히네 🦅(고삼저수지)",
+          "channelName": "After works Fishing 일 끝나고 낚시",
+          "source": "youtube",
+          "views": 2366
+        }
+      ]
+    },
+    {
+      "campingSiteId": "uiam-lake-fishing",
+      "videos": [
+        {
+          "videoId": "5HV-gQ0uqcU",
+          "title": "4짜붕어 명당 자리싸움 치열 불법좌대 주인이 큰소리치는 곳 #민물낚시#의암호#월척#마그마수상좌대#페리칸떡밥#도비#퇴근낚시",
+          "channelName": "양승관기자의어부사시사",
+          "source": "youtube",
+          "views": 12834
+        },
+        {
+          "videoId": "_eiaHQrdPDg",
+          "title": "위험한 의암호 붕어낚시/몰랐었죠, 이렇게 멋진 캠낚 포인트에서 저에게 이런 일이 생길 줄은..",
+          "channelName": "붕어잡는곰",
+          "source": "youtube",
+          "views": 8459
+        },
+        {
+          "videoId": "CmYQj5v-wgI",
+          "title": "[춘천시 의암호] 경악!!! 이런 붕어 기생충 보셨나요? #붕어낚시#의암호#월척#4짜붕어#알박기#불법좌대#일본떡밥추방#일본낚시용품불매운동#춘천시#한국수력원자력#드론촬영",
+          "channelName": "양승관기자의어부사시사",
+          "source": "youtube",
+          "views": 4604
+        },
+        {
+          "videoId": "2R2p6xi6lks",
+          "title": "춘천 의암호가 달라졌어요  ㅠㅠ 포인트는 많아졌는데  걱정이 앞섭니다                                                   붕어낚시#캠핑여행",
+          "channelName": "포도월척 붕어낚시Tv",
+          "source": "youtube",
+          "views": 3013
+        },
+        {
+          "videoId": "8aqUwWjap-4",
+          "title": "[의암호]4짜 허릿급붕어로 무더위 싹~~~ #민물낚시#월척#붕어#휴가낚시#여행#캠핑",
+          "channelName": "양승관기자의어부사시사",
+          "source": "youtube",
+          "views": 2728
+        }
+      ]
+    },
+    {
+      "campingSiteId": "danggol-fishing",
+      "videos": [
+        {
+          "videoId": "2D3UphFkH5M",
+          "title": "흔들이 어분보쌈 어분삼합, 장마라 그런가?-경기 화성 당골낚시터(2024.07.09) #즐낚tv #당골낚시터",
+          "channelName": "즐낚TV",
+          "source": "youtube",
+          "views": 14055
+        },
+        {
+          "videoId": "EOyH8N0Bf5U",
+          "title": "요즘, 글루텐이 너무 잘 먹힙니다!-경기 화성 당골낚시터(2023.08.17)",
+          "channelName": "즐낚TV",
+          "source": "youtube",
+          "views": 10339
+        },
+        {
+          "videoId": "P3sx35CKjHg",
+          "title": "용존 산소량 높은 낚시터!!(잡이터)",
+          "channelName": "GODFishingTV",
+          "source": "youtube",
+          "views": 3860
+        },
+        {
+          "videoId": "lwFjqM1D6sI",
+          "title": "Fisherman// Natural Fishing//Cast Net//Fishing in Goalpara, ASSAM// VIll.. 💧Keothpara Narayanpara.",
+          "channelName": "Pitirash Sangma",
+          "source": "youtube",
+          "views": 185
+        }
+      ]
+    },
+    {
+      "campingSiteId": "gukhwa-island",
+      "videos": [
+        {
+          "videoId": "pKMctz5banw",
+          "title": "국화도 당일여행",
+          "channelName": "경블로그",
+          "source": "youtube",
+          "views": 6778
+        },
+        {
+          "videoId": "t9-HRuF1N2k",
+          "title": "When I see another Foreigner",
+          "channelName": "charlycheer",
+          "source": "youtube",
+          "views": 5046
+        },
+        {
+          "videoId": "VwuYxcjLDqo",
+          "title": "[드론영상-국화도] 국내여행 화성시 보물섬 국화도 / 꽃처럼 아름다운섬 꼭 가봐야할 섬 &quot;국화도&quot; 바다가 열리는 국화도/모세의 기적",
+          "channelName": "Embrace nature(자연을 품다)",
+          "source": "youtube",
+          "views": 529
+        }
+      ]
+    },
+    {
+      "campingSiteId": "yongyudo-fishing",
+      "videos": [
+        {
+          "videoId": "SLF4h4OuzmY",
+          "title": "SUB)2022년 영종도 차박지 총정리 no.1/ 2022 Yeongjongdo Carcamping place Summary No.1",
+          "channelName": "리상(LeeSang)",
+          "source": "youtube",
+          "views": 11484
+        },
+        {
+          "videoId": "9CJhH8zETzI",
+          "title": "영종도 마시안해변 노지캠핑 / 용유도해변 / 용유해변 / 용유동 행정복지센터 / 용유동 주민센터 / 하나로마트 / 용유파출소",
+          "channelName": "멀렁이채널",
+          "source": "youtube",
+          "views": 4778
+        },
+        {
+          "videoId": "sGvLN4xmVJ8",
+          "title": "잡았다!! 지랭이 도둑넘!! 절대 합의는 없다!!",
+          "channelName": "쯔리박",
+          "source": "youtube",
+          "views": 2769
+        },
+        {
+          "videoId": "kZpT_0YuXkQ",
+          "title": "인천 마시란해변, 용유해변 그리고 조름섬",
+          "channelName": "올댓리빙 - All That Living ",
+          "source": "youtube",
+          "views": 471
+        },
+        {
+          "videoId": "sUiJ0dnfxLg",
+          "title": "[4K 드론영상] 붉은 노을과 함께하는 해변 캠핑, 인천 왕산해수욕장 풍경-한국의 관광지,베스트여행지",
+          "channelName": "Embrace nature(자연을 품다)",
+          "source": "youtube",
+          "views": 338
+        }
+      ]
+    },
+    {
+      "campingSiteId": "silmido-fishing",
+      "videos": [
+        {
+          "videoId": "9qHU8G_ADdY",
+          "title": "무의도 삼치, 바닥고기 루어낚시 (6월 초)",
+          "channelName": "국산낚시",
+          "source": "youtube",
+          "views": 60475
+        },
+        {
+          "videoId": "JRNQUwS4PY4",
+          "title": "워킹 다운샷 채비 방법 무의도 광어 잡는 방법",
+          "channelName": "리얼낚시꾼 창스맨",
+          "source": "youtube",
+          "views": 20347
+        },
+        {
+          "videoId": "aoMW_4_gBZg",
+          "title": "무의도에서 실미도까지 어떤 해산물이 나오는지 왕눈뜨고 샅샅이 뒤지고 왔습니다",
+          "channelName": "바다생활(sealife)",
+          "source": "youtube",
+          "views": 10188
+        },
+        {
+          "videoId": "Eh57rH3h2bk",
+          "title": "실미도 쭈꾸미 광어 농어 포인트",
+          "channelName": "싼도",
+          "source": "youtube",
+          "views": 9067
+        },
+        {
+          "videoId": "liDEL8-mPhc",
+          "title": "낚킹)올해 첫 보팅! 무의도,실미도 도전~",
+          "channelName": "낚킹TV",
+          "source": "youtube",
+          "views": 8706
+        }
+      ]
+    },
+    {
+      "campingSiteId": "namhae-island-fishing",
+      "videos": [
+        {
+          "videoId": "d9hIS4wywW0",
+          "title": "던지기만 하면 맛있는 횟감이 주렁주렁 잡히는 천혜의 섬낚시!(조도낚시여행 1/2)",
+          "channelName": "입질의추억TV jiminTV",
+          "source": "youtube",
+          "views": 1238259
+        },
+        {
+          "videoId": "PkiUtBdkfps",
+          "title": "창문만열면 바로 바다낚시 가능한 섬!!! 여행 핑계대고 낚시즐기다 왔습니다 ㅎㅎ",
+          "channelName": "TV생물도감",
+          "source": "youtube",
+          "views": 158833
+        },
+        {
+          "videoId": "0JxTPXLxrFw",
+          "title": "섬속의 섬! 가성비 끝판왕 남해 조도로 낚시여행을 가보자",
+          "channelName": "낚시가자!설튜브",
+          "source": "youtube",
+          "views": 80478
+        },
+        {
+          "videoId": "cEHEAEfOWhQ",
+          "title": "[다리tv] 낚시 천국 개도를 아시나요?! 무엇이든 낚을 수 있는 완벽한 힐링섬!!!",
+          "channelName": "다리네TV",
+          "source": "youtube",
+          "views": 60872
+        },
+        {
+          "videoId": "muiuLTrr_Jc",
+          "title": "[국내 섬여행🌊] 통영 두미도 🚢 🚗 완벽가이드, 낚시, 캠핑, 차박, 물놀이,숙박, 배낚시 여행정보",
+          "channelName": "잇츠 섬 타임",
+          "source": "youtube",
+          "views": 16516
+        }
+      ]
+    },
+    {
+      "campingSiteId": "dobongsan",
+      "videos": [
+        {
+          "videoId": "CHtx8OMDqh4",
+          "title": "등산 고수들도 무서워하는 스릴만점 등산코스, 직접 가봤습니다!",
+          "channelName": "아웃도어큐레이터",
+          "source": "youtube",
+          "views": 54909
+        },
+        {
+          "videoId": "3r68wtnJ0K4",
+          "title": "도봉산 송추계곡코스 가보셨어요? | 등산 | 여행 | 오봉 | 두부 맛집",
+          "channelName": "싼타TV",
+          "source": "youtube",
+          "views": 35898
+        },
+        {
+          "videoId": "xAK44W1XsIo",
+          "title": "도봉산에도 이런 코스가?!  추천 등산 코스!!(Dobongsan in Bukhansan National Park)",
+          "channelName": "맛등산",
+          "source": "youtube",
+          "views": 29305
+        },
+        {
+          "videoId": "nlZOOzobGwE",
+          "title": "[등산vlog] 도봉산 단풍 완전 정복/ 망월사부터 거북골까지 단풍 코스 추천",
+          "channelName": "산쟁이브넝",
+          "source": "youtube",
+          "views": 5667
+        },
+        {
+          "videoId": "LXpTetxtFSA",
+          "title": "도봉산 Y계곡과 오봉 코스 등산 Vlog : 아찔한 등산모임 🧗‍♀️🧗‍♂️ Dobongsan Y Valley Hiking in Seoul",
+          "channelName": "내우주",
+          "source": "youtube",
+          "views": 5063
+        }
+      ]
+    },
+    {
+      "campingSiteId": "suraksan",
+      "videos": [
+        {
+          "videoId": "IrlmwH53P3w",
+          "title": "🏝’서울’에 이런 산이..!? | 여름 등산☀️ 열사병 방지 꿀팁! | 서울근교계곡",
+          "channelName": "산 속에 백만송희",
+          "source": "youtube",
+          "views": 346215
+        },
+        {
+          "videoId": "MgDtC6apEgk",
+          "title": "수락산 🌳Suraksan [azalea ridge -Exciting drainpipe(train) rock in SEOUL",
+          "channelName": "SungY",
+          "source": "youtube",
+          "views": 9631
+        },
+        {
+          "videoId": "WfafTR26Stk",
+          "title": "[등산 VLOG] 겁쟁이 첫 도전 ⭐️ 수락산 기차바위 코스⭐️  수락산 등산코스 | 장암역~주봉 난이도 | 수락산 맛집 송산 오리구이 | 함께라면 어디든 갈수있다(?)",
+          "channelName": "윤또산 등산일기 yoonddosan Hiking VLOG",
+          "source": "youtube",
+          "views": 1173
+        },
+        {
+          "videoId": "f4PllQ3XG-k",
+          "title": "등산 수락산 기차바위 꼭 한번 가보세요/Climbing the Suraksan Train Rock/수락산 등산코스.",
+          "channelName": "등산파크TV  Mountain Park Golf ",
+          "source": "youtube",
+          "views": 802
+        },
+        {
+          "videoId": "35KW-kAMaLI",
+          "title": "수락산 주봉 등산 브이로그! 장암역~수락산역 코스｜Suraksan Mountain Hiking V-log",
+          "channelName": "민머리맨·minmury man",
+          "source": "youtube",
+          "views": 591
+        }
+      ]
     }
-  ]
+  ],
+  "metadata": {
+    "totalLocations": 98,
+    "lastUpdated": "2026-01-28",
+    "source": "OutboundScape + YouTube Search"
+  }
 }

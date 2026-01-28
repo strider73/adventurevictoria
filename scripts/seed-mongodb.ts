@@ -23,8 +23,8 @@ async function seed() {
     const chrisVideos = JSON.parse(
       readFileSync(resolve(dataDir, "chris-video.json"), "utf-8")
     );
-    const koreaTravelVideo = JSON.parse(
-      readFileSync(resolve(dataDir, "korea-travel-video.json"), "utf-8")
+    const koreaAdventureSites = JSON.parse(
+      readFileSync(resolve(dataDir, "korea-adventure-sites.json"), "utf-8")
     );
     const communityVideos = JSON.parse(
       readFileSync(resolve(dataDir, "community-videos.json"), "utf-8")
@@ -40,13 +40,12 @@ async function seed() {
     for (const name of [
       "victoria_camping_sites",
       "chris_video",
-      "korea_videos",
-      "korea_channels",
+      "korea_adventure_sites",
       "victoria_community_videos",
       "korea_community_videos",
-      // Also drop old names if they exist
-      "victoria_camping_sites",
-      "victoria_videos",
+      // Also drop old tables if they exist
+      "korea_videos",
+      "korea_channels",
     ]) {
       if (collectionNames.includes(name)) {
         await db.dropCollection(name);
@@ -68,21 +67,15 @@ async function seed() {
       `Inserted ${chrisVideos.videos.length} docs into chris_video`
     );
 
-    // 3. korea_videos
+    // 3. korea_adventure_sites (107 adventure locations)
     await db
-      .collection("korea_videos")
-      .insertMany(koreaTravelVideo.videos);
+      .collection("korea_adventure_sites")
+      .insertMany(koreaAdventureSites.adventureSites);
     console.log(
-      `Inserted ${koreaTravelVideo.videos.length} docs into korea_videos`
+      `Inserted ${koreaAdventureSites.adventureSites.length} docs into korea_adventure_sites`
     );
 
-    // 4. korea_channels
-    await db
-      .collection("korea_channels")
-      .insertOne(koreaTravelVideo.channel);
-    console.log(`Inserted 1 doc into korea_channels`);
-
-    // 5. victoria_community_videos (ALL videos for the map - single source)
+    // 4. victoria_community_videos (ALL videos for the map - single source)
     await db
       .collection("victoria_community_videos")
       .insertMany(communityVideos.communityVideos);
@@ -90,7 +83,7 @@ async function seed() {
       `Inserted ${communityVideos.communityVideos.length} docs into victoria_community_videos`
     );
 
-    // 6. korea_community_videos
+    // 5. korea_community_videos
     await db
       .collection("korea_community_videos")
       .insertMany(koreaCommunityVideos.communityVideos);
@@ -116,9 +109,9 @@ async function seed() {
       .createIndex({ campingSiteId: 1 });
 
     await db
-      .collection("korea_videos")
-      .createIndex({ videoId: 1 }, { unique: true });
-    await db.collection("korea_videos").createIndex({ category: 1 });
+      .collection("korea_adventure_sites")
+      .createIndex({ id: 1 }, { unique: true });
+    await db.collection("korea_adventure_sites").createIndex({ category: 1 });
 
     await db
       .collection("victoria_community_videos")
