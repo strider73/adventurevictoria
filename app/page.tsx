@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, useEffect, useMemo, useRef } from "react";
+import { useState, useEffect, useMemo, useRef, Suspense } from "react";
+import { useSearchParams } from "next/navigation";
 import dynamic from "next/dynamic";
 import { Navbar, Footer, SocialIcons, Button, NotificationBadge } from "@/components/ui";
 
@@ -212,7 +213,8 @@ const getUserRecommendedVideos = (): string[] => {
   return stored ? JSON.parse(stored) : [];
 };
 
-export default function HomePage() {
+function HomePageContent() {
+  const searchParams = useSearchParams();
   const [videoLocations, setVideoLocations] = useState<VideoLocation[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [selectedVideo, setSelectedVideo] = useState<VideoLocation | null>(null);
@@ -230,6 +232,9 @@ export default function HomePage() {
   const [userRecommendedVideos, setUserRecommendedVideos] = useState<string[]>([]);
   const [currentPlayingVideoId, setCurrentPlayingVideoId] = useState<string | null>(null);
   const [isFullscreen, setIsFullscreen] = useState(false);
+  const [shareCopied, setShareCopied] = useState(false);
+  const [mapPopupLocation, setMapPopupLocation] = useState<VideoLocation | null>(null);
+  const [popupTrigger, setPopupTrigger] = useState(0); // Counter to force popup reopen
 
   // Toggle fullscreen mode
   const toggleFullscreen = () => {
@@ -278,6 +283,15 @@ export default function HomePage() {
 
         setVideoLocations(locations);
         setCommunityVideos(getCommunityVideos(communityData.communityVideos));
+
+        // Check for site query parameter to auto-open popup
+        const siteId = searchParams.get("site");
+        if (siteId) {
+          const targetLocation = locations.find(loc => loc.id === siteId);
+          if (targetLocation) {
+            setSelectedVideo(targetLocation);
+          }
+        }
       } catch (error) {
         console.error("Failed to fetch data:", error);
       } finally {
@@ -290,6 +304,7 @@ export default function HomePage() {
     setUserVoted(getUserVoted());
     setVideoRecommendations(getVideoRecommendations());
     setUserRecommendedVideos(getUserRecommendedVideos());
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // Debounce search query by 2000ms
@@ -308,6 +323,7 @@ export default function HomePage() {
     setVideoUrl("");
     setSubmitStatus("idle");
     setShowSubmitForm(false);
+    setShareCopied(false);
     // Set the current playing video: original video first, otherwise first community video
     if (selectedVideo?.youtubeId) {
       setCurrentPlayingVideoId(selectedVideo.youtubeId);
@@ -317,6 +333,19 @@ export default function HomePage() {
       setCurrentPlayingVideoId(locationCommunityVideos[0]?.youtubeId || null);
     } else {
       setCurrentPlayingVideoId(null);
+    }
+
+    // Update URL with site parameter for sharing
+    if (selectedVideo) {
+      const url = new URL(window.location.href);
+      url.searchParams.set("site", selectedVideo.id);
+      window.history.replaceState({}, "", url.toString());
+      // Clear map popup when modal opens
+      setMapPopupLocation(null);
+    } else {
+      const url = new URL(window.location.href);
+      url.searchParams.delete("site");
+      window.history.replaceState({}, "", url.toString());
     }
   }, [selectedVideo, communityVideos]);
 
@@ -354,6 +383,19 @@ export default function HomePage() {
     setVideoUrl("");
     setSubmitStatus("success");
     setShowSubmitForm(false);
+  };
+
+  // Close modal and reopen map popup
+  const closeModalAndShowPopup = () => {
+    const lastVideo = selectedVideo;
+    setSelectedVideo(null);
+    // Reopen map popup after modal closes
+    if (lastVideo) {
+      setTimeout(() => {
+        setMapPopupLocation(lastVideo);
+        setPopupTrigger(prev => prev + 1); // Force trigger even if same location
+      }, 150);
+    }
   };
 
   // Handle recommend for a community video
@@ -473,6 +515,8 @@ export default function HomePage() {
               key="fullscreen"
               locations={filteredLocations}
               onMarkerClick={(video) => setSelectedVideo(video)}
+              externalActivePopup={mapPopupLocation}
+              externalPopupTrigger={popupTrigger}
             />
           </div>
 
@@ -679,6 +723,8 @@ export default function HomePage() {
                 key="normal"
                 locations={filteredLocations}
                 onMarkerClick={(video) => setSelectedVideo(video)}
+                externalActivePopup={mapPopupLocation}
+                externalPopupTrigger={popupTrigger}
               />
             </div>
           </div>
@@ -690,7 +736,7 @@ export default function HomePage() {
       {selectedVideo && (
         <div
           className="fixed inset-0 bg-black/80 z-[9999] flex items-center justify-center p-4"
-          onClick={() => setSelectedVideo(null)}
+          onClick={closeModalAndShowPopup}
         >
           <div
             className="bg-[--color-bg-secondary] rounded-2xl overflow-hidden max-w-3xl w-full max-h-[90vh] flex flex-col"
@@ -752,10 +798,24 @@ export default function HomePage() {
                         Play on YouTube
                       </a>
                     )}
+                    <button
+                      onClick={() => {
+                        const shareUrl = `${window.location.origin}?site=${selectedVideo.id}`;
+                        navigator.clipboard.writeText(shareUrl);
+                        setShareCopied(true);
+                        setTimeout(() => setShareCopied(false), 2000);
+                      }}
+                      className="flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-[--color-brand] hover:bg-[--color-brand-hover] text-white transition-colors"
+                    >
+                      <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
+                      </svg>
+                      {shareCopied ? "Link Copied!" : "Share Page"}
+                    </button>
                   </div>
                 </div>
                 <button
-                  onClick={() => setSelectedVideo(null)}
+                  onClick={closeModalAndShowPopup}
                   className="p-2 rounded-lg bg-[--color-bg-tertiary] hover:bg-[--color-border-primary] transition-colors"
                 >
                   <svg className="w-5 h-5 text-[--color-text-secondary]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -1127,5 +1187,18 @@ export default function HomePage() {
         ]}
       />
     </div>
+  );
+}
+
+// Wrap with Suspense for useSearchParams
+export default function HomePage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen bg-[--color-bg-primary] flex items-center justify-center">
+        <span className="text-[--color-text-tertiary]">Loading...</span>
+      </div>
+    }>
+      <HomePageContent />
+    </Suspense>
   );
 }

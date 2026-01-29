@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, useMemo, useEffect } from "react";
+import { useState, useMemo, useEffect, Suspense, useRef } from "react";
+import { useSearchParams } from "next/navigation";
 import { Navbar, Footer, SocialIcons, Button, Badge, NotificationBadge } from "@/components/ui";
 import dynamic from "next/dynamic";
 import type { VideoLocation } from "@/components/map/MapComponent";
@@ -184,10 +185,18 @@ const categoryColors: Record<string, string> = {
   International: "#e74c3c",
   Camping: "#2ecc71",
   Drive: "#f39c12",
+  // New categories
+  Festival: "#ff6b9d",    // Pink - festive
+  "Food Tour": "#ff8c42", // Orange - appetizing
+  Mountain: "#4cb782",    // Green - nature
+  "National Park": "#2d6a4f", // Dark green
+  Fishing: "#219ebc",     // Blue - water
+  Glamping: "#8ecae6",    // Light blue
+  "Scenic Drive": "#fca311", // Yellow-orange
 };
 
 // All category types for filtering
-type CategoryType = "all" | "Hiking" | "Nature" | "Beach" | "Valley" | "Urban" | "Temple" | "Waterfall" | "Cultural" | "Garden" | "International" | "Palace" | "Trail" | "Camping" | "Drive";
+type CategoryType = "all" | "Mountain" | "Festival" | "Food Tour" | "National Park" | "Nature" | "Fishing" | "Beach" | "Valley" | "Camping" | "Urban" | "Temple" | "Waterfall" | "Cultural" | "Garden" | "Glamping" | "Trail" | "Scenic Drive";
 
 // Category icons for filter buttons
 const categoryIcons: Record<string, React.ReactNode> = {
@@ -261,13 +270,53 @@ const categoryIcons: Record<string, React.ReactNode> = {
       <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 18.75a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 01-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 00-3.213-9.193 2.056 2.056 0 00-1.58-.86H14.25M16.5 18.75h-2.25m0-11.177v-.958c0-.568-.422-1.048-.987-1.106a48.554 48.554 0 00-10.026 0 1.106 1.106 0 00-.987 1.106v7.635m12-6.677v6.677m0 4.5v-4.5m0 0h-12" />
     </svg>
   ),
+  // New category icons
+  Festival: (
+    <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+      <path strokeLinecap="round" strokeLinejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456zM16.894 20.567L16.5 21.75l-.394-1.183a2.25 2.25 0 00-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 001.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 001.423 1.423l1.183.394-1.183.394a2.25 2.25 0 00-1.423 1.423z" />
+    </svg>
+  ),
+  "Food Tour": (
+    <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+      <path strokeLinecap="round" strokeLinejoin="round" d="M12 8.25v-1.5m0 1.5c-1.355 0-2.697.056-4.024.166C6.845 8.51 6 9.473 6 10.608v2.513m6-4.87c1.355 0 2.697.055 4.024.165C17.155 8.51 18 9.473 18 10.608v2.513m-3-4.87v-1.5m-6 1.5v-1.5m12 9.75l-1.5.75a3.354 3.354 0 01-3 0 3.354 3.354 0 00-3 0 3.354 3.354 0 01-3 0 3.354 3.354 0 00-3 0 3.354 3.354 0 01-3 0L3 16.5m15-3.38a48.474 48.474 0 00-6-.37c-2.032 0-4.034.125-6 .37m12 0c.39.049.777.102 1.163.16 1.07.16 1.837 1.094 1.837 2.175v5.17c0 .62-.504 1.124-1.125 1.124H4.125A1.125 1.125 0 013 20.625v-5.17c0-1.08.768-2.014 1.837-2.174A47.78 47.78 0 016 13.12M12.265 3.11a.375.375 0 11-.53 0L12 2.845l.265.265zm-3 0a.375.375 0 11-.53 0L9 2.845l.265.265zm6 0a.375.375 0 11-.53 0L15 2.845l.265.265z" />
+    </svg>
+  ),
+  Mountain: (
+    <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+      <path strokeLinecap="round" strokeLinejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+    </svg>
+  ),
+  "National Park": (
+    <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+      <path strokeLinecap="round" strokeLinejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418" />
+    </svg>
+  ),
+  Fishing: (
+    <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+      <path strokeLinecap="round" strokeLinejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" />
+    </svg>
+  ),
+  Glamping: (
+    <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+      <path strokeLinecap="round" strokeLinejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" />
+    </svg>
+  ),
+  "Scenic Drive": (
+    <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+      <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 18.75a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 01-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 00-3.213-9.193 2.056 2.056 0 00-1.58-.86H14.25M16.5 18.75h-2.25m0-11.177v-.958c0-.568-.422-1.048-.987-1.106a48.554 48.554 0 00-10.026 0 1.106 1.106 0 00-.987 1.106v7.635m12-6.677v6.677m0 4.5v-4.5m0 0h-12" />
+    </svg>
+  ),
 };
 
-export default function MapKoreaPage() {
+function MapKoreaPageContent() {
+  const searchParams = useSearchParams();
+  const searchTimerRef = useRef<NodeJS.Timeout | null>(null);
   const [locations, setLocations] = useState<VideoLocation[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [selectedLocation, setSelectedLocation] = useState<VideoLocation | null>(null);
   const [categoryFilter, setCategoryFilter] = useState<CategoryType>("all");
+  const [searchQuery, setSearchQuery] = useState("");
+  const [debouncedSearch, setDebouncedSearch] = useState("");
   const [communityVideos, setCommunityVideos] = useState<Record<string, CommunityVideo[]>>({});
   const [videoUrl, setVideoUrl] = useState("");
   const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
@@ -276,6 +325,9 @@ export default function MapKoreaPage() {
   const [userRecommendedVideos, setUserRecommendedVideos] = useState<string[]>([]);
   const [currentPlayingVideoId, setCurrentPlayingVideoId] = useState<string | null>(null);
   const [isFullscreen, setIsFullscreen] = useState(false);
+  const [shareCopied, setShareCopied] = useState(false);
+  const [mapPopupLocation, setMapPopupLocation] = useState<VideoLocation | null>(null);
+  const [popupTrigger, setPopupTrigger] = useState(0); // Counter to force popup reopen
 
   // Toggle fullscreen mode
   const toggleFullscreen = () => {
@@ -314,6 +366,15 @@ export default function MapKoreaPage() {
 
         setLocations(transformedLocations);
         setCommunityVideos(getCommunityVideos(communityData.communityVideos));
+
+        // Check for site query parameter to auto-open popup
+        const siteId = searchParams.get("site");
+        if (siteId) {
+          const targetLocation = transformedLocations.find(loc => loc.id === siteId);
+          if (targetLocation) {
+            setSelectedLocation(targetLocation);
+          }
+        }
       } catch (error) {
         console.error("Failed to fetch data:", error);
       } finally {
@@ -324,13 +385,26 @@ export default function MapKoreaPage() {
     fetchData();
     setVideoRecommendations(getVideoRecommendations());
     setUserRecommendedVideos(getUserRecommendedVideos());
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  // Debounce search query by 500ms
+  useEffect(() => {
+    if (searchTimerRef.current) clearTimeout(searchTimerRef.current);
+    searchTimerRef.current = setTimeout(() => {
+      setDebouncedSearch(searchQuery);
+    }, 500);
+    return () => {
+      if (searchTimerRef.current) clearTimeout(searchTimerRef.current);
+    };
+  }, [searchQuery]);
 
   // Reset form state when modal closes or location changes
   useEffect(() => {
     setVideoUrl("");
     setSubmitStatus("idle");
     setShowSubmitForm(false);
+    setShareCopied(false);
     // Set the current playing video: original video first
     if (selectedLocation?.youtubeId) {
       setCurrentPlayingVideoId(selectedLocation.youtubeId);
@@ -340,6 +414,19 @@ export default function MapKoreaPage() {
       setCurrentPlayingVideoId(locationCommunityVideos[0]?.youtubeId || null);
     } else {
       setCurrentPlayingVideoId(null);
+    }
+
+    // Update URL with site parameter for sharing
+    if (selectedLocation) {
+      const url = new URL(window.location.href);
+      url.searchParams.set("site", selectedLocation.id);
+      window.history.replaceState({}, "", url.toString());
+      // Clear map popup when modal opens
+      setMapPopupLocation(null);
+    } else {
+      const url = new URL(window.location.href);
+      url.searchParams.delete("site");
+      window.history.replaceState({}, "", url.toString());
     }
   }, [selectedLocation, communityVideos]);
 
@@ -405,11 +492,27 @@ export default function MapKoreaPage() {
     return counts;
   }, [locations]);
 
-  // Filter locations based on category
+  // Filter locations based on category and search
   const filteredLocations = useMemo(() => {
-    if (categoryFilter === "all") return locations;
-    return locations.filter((loc) => loc.category === categoryFilter);
-  }, [locations, categoryFilter]);
+    let filtered = locations;
+
+    // Apply category filter
+    if (categoryFilter !== "all") {
+      filtered = filtered.filter((loc) => loc.category === categoryFilter);
+    }
+
+    // Apply search filter
+    if (debouncedSearch.trim()) {
+      const searchLower = debouncedSearch.toLowerCase();
+      filtered = filtered.filter((loc) =>
+        loc.title.toLowerCase().includes(searchLower) ||
+        loc.location.toLowerCase().includes(searchLower) ||
+        loc.category.toLowerCase().includes(searchLower)
+      );
+    }
+
+    return filtered;
+  }, [locations, categoryFilter, debouncedSearch]);
 
   // Sort by views (most popular first)
   const sortedLocations = useMemo(() => {
@@ -421,7 +524,15 @@ export default function MapKoreaPage() {
   };
 
   const closeModal = () => {
+    const lastLocation = selectedLocation;
     setSelectedLocation(null);
+    // Reopen map popup after modal closes
+    if (lastLocation) {
+      setTimeout(() => {
+        setMapPopupLocation(lastLocation);
+        setPopupTrigger(prev => prev + 1); // Force trigger even if same location
+      }, 150);
+    }
   };
 
   // Format view count
@@ -432,10 +543,11 @@ export default function MapKoreaPage() {
     return views.toString();
   };
 
-  // Categories ordered by count (highest first), then alphabetically
+  // Categories ordered: Festival & Food Tour first (most important for Korea), then by count
   const orderedCategories: CategoryType[] = [
-    "Hiking", "Nature", "Beach", "Urban", "Valley", "Temple",
-    "Waterfall", "Cultural", "Garden", "International", "Palace", "Trail", "Camping", "Drive"
+    "Festival", "Food Tour", "Mountain", "National Park", "Nature", "Fishing",
+    "Beach", "Valley", "Camping", "Urban", "Temple", "Glamping", "Cultural",
+    "Garden", "Trail", "Waterfall", "Scenic Drive"
   ];
 
   if (isLoading) {
@@ -490,8 +602,38 @@ export default function MapKoreaPage() {
             </p>
           </div>
 
-          {/* Category Filter Section */}
+          {/* Search and Category Filter Section */}
           <div className="mb-6 space-y-4 max-w-4xl mx-auto">
+            {/* Search Input */}
+            <div className="relative">
+              <input
+                type="text"
+                placeholder="Search locations, categories..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="w-full px-4 py-3 pl-12 bg-[--color-bg-secondary] border border-[--color-border-primary] rounded-xl text-[--color-text-primary] placeholder:text-[--color-text-tertiary] focus:outline-none focus:border-[--color-brand] transition-colors"
+              />
+              <svg
+                className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-[--color-text-tertiary]"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+              </svg>
+              {searchQuery && (
+                <button
+                  onClick={() => setSearchQuery("")}
+                  className="absolute right-4 top-1/2 -translate-y-1/2 text-[--color-text-tertiary] hover:text-[--color-text-primary]"
+                >
+                  <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
+              )}
+            </div>
+
+            {/* Category Filter */}
             <div className="bg-[--color-bg-secondary] rounded-xl p-4">
               <span className="text-xs text-[--color-text-tertiary] block mb-3">Category</span>
               <div className="flex flex-wrap justify-center gap-2">
@@ -538,6 +680,8 @@ export default function MapKoreaPage() {
                   onMarkerClick={(loc) => setSelectedLocation(loc)}
                   center={KOREA_CENTER}
                   zoom={KOREA_ZOOM}
+                  externalActivePopup={mapPopupLocation}
+                  externalPopupTrigger={popupTrigger}
                 />
               </div>
 
@@ -578,6 +722,37 @@ export default function MapKoreaPage() {
                 })}
               </div>
 
+              {/* Fullscreen search input - top center */}
+              <div className="absolute top-4 left-1/2 -translate-x-1/2 z-[1001] w-80 max-w-[40%]">
+                <div className="relative">
+                  <input
+                    type="text"
+                    placeholder="Search locations..."
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    className="w-full px-4 py-2.5 pl-10 bg-white border-2 border-white rounded-lg text-black placeholder:text-gray-500 focus:outline-none shadow-[0_2px_8px_rgba(0,0,0,0.3)]"
+                  />
+                  <svg
+                    className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                  </svg>
+                  {searchQuery && (
+                    <button
+                      onClick={() => setSearchQuery("")}
+                      className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700"
+                    >
+                      <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                      </svg>
+                    </button>
+                  )}
+                </div>
+              </div>
+
               {/* Close button - top right */}
               <button
                 onClick={toggleFullscreen}
@@ -611,6 +786,8 @@ export default function MapKoreaPage() {
                 onMarkerClick={(loc) => setSelectedLocation(loc)}
                 center={KOREA_CENTER}
                 zoom={KOREA_ZOOM}
+                externalActivePopup={mapPopupLocation}
+                externalPopupTrigger={popupTrigger}
               />
             </div>
           </div>
@@ -762,6 +939,20 @@ export default function MapKoreaPage() {
                       </svg>
                       Watch on YouTube
                     </a>
+                    <button
+                      onClick={() => {
+                        const shareUrl = `${window.location.origin}/map-korea?site=${selectedLocation.id}`;
+                        navigator.clipboard.writeText(shareUrl);
+                        setShareCopied(true);
+                        setTimeout(() => setShareCopied(false), 2000);
+                      }}
+                      className="flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-[--color-brand] hover:bg-[--color-brand-hover] text-white transition-colors"
+                    >
+                      <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
+                      </svg>
+                      {shareCopied ? "Link Copied!" : "Share Page"}
+                    </button>
                   </div>
                   <div className="flex items-center gap-4 text-sm text-[--color-text-tertiary] mt-2">
                     <span>{formatViews(selectedLocation.views || 0)} views</span>
@@ -1017,5 +1208,18 @@ export default function MapKoreaPage() {
         ]}
       />
     </div>
+  );
+}
+
+// Wrap with Suspense for useSearchParams
+export default function MapKoreaPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen bg-[--color-bg-primary] flex items-center justify-center">
+        <span className="text-[--color-text-tertiary]">Loading...</span>
+      </div>
+    }>
+      <MapKoreaPageContent />
+    </Suspense>
   );
 }

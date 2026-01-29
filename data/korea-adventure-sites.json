@@ -1034,17 +1034,757 @@
       "lng": 127.5333,
       "category": "Valley",
       "description": "Temple valley with 1,100 year old ginkgo tree."
+    },
+    {
+      "id": "jinhae-gunhangje",
+      "title": "진해 군항제",
+      "location": "Changwon",
+      "lat": 35.1333,
+      "lng": 128.6833,
+      "category": "Festival",
+      "description": "한국 최대 벚꽃 축제. 매년 4월 진해에서 개최. 군악대 퍼레이드와 야경이 특히 유명."
+    },
+    {
+      "id": "gurye-sansuyu",
+      "title": "구례 산수유꽃축제",
+      "location": "Gurye",
+      "lat": 35.2167,
+      "lng": 127.4667,
+      "category": "Festival",
+      "description": "이른 봄 노란 산수유꽃 축제. 지리산 자락 구례에서 개최."
+    },
+    {
+      "id": "everland-rose",
+      "title": "에버랜드 장미축제",
+      "location": "Yongin",
+      "lat": 37.2939,
+      "lng": 127.2022,
+      "category": "Festival",
+      "description": "5월~6월 초 진행. 수많은 장미 품종들의 아름다움을 감상."
+    },
+    {
+      "id": "boryeong-mud",
+      "title": "보령 머드축제",
+      "location": "Boryeong",
+      "lat": 36.3333,
+      "lng": 126.6167,
+      "category": "Festival",
+      "description": "한국 대표 여름 축제. 외국인이 가장 많이 참여하는 축제. 1998년 시작."
+    },
+    {
+      "id": "sinchon-watergun",
+      "title": "신촌 물총축제",
+      "location": "Seoul",
+      "lat": 37.5579,
+      "lng": 126.9367,
+      "category": "Festival",
+      "description": "여름 더위를 이기는 시원한 축제. 대규모 퍼레이드와 콘서트."
+    },
+    {
+      "id": "andong-mask",
+      "title": "안동 국제탈춤페스티벌",
+      "location": "Andong",
+      "lat": 36.5684,
+      "lng": 128.7294,
+      "category": "Festival",
+      "description": "세계 각국의 탈을 주제로 한 춤 축제. 매년 9월 경북 안동에서 개최."
+    },
+    {
+      "id": "seoul-fireworks",
+      "title": "서울세계불꽃축제",
+      "location": "Seoul",
+      "lat": 37.5247,
+      "lng": 126.9328,
+      "category": "Festival",
+      "description": "10월 여의도 한강공원에서 개최. 도심 속 화려한 불꽃놀이."
+    },
+    {
+      "id": "jinju-lantern",
+      "title": "진주 남강유등제",
+      "location": "Jinju",
+      "lat": 35.1833,
+      "lng": 128.0833,
+      "category": "Festival",
+      "description": "남강에 띄우는 아름다운 유등 축제. 한국 전통문화 체험."
+    },
+    {
+      "id": "hwacheon-sancheoneo",
+      "title": "화천 산천어축제",
+      "location": "Hwacheon",
+      "lat": 38.1069,
+      "lng": 127.7086,
+      "category": "Festival",
+      "description": "한국 대표 겨울 축제. 매년 1월 얼음낚시와 겨울 놀이."
+    },
+    {
+      "id": "seoul-lantern",
+      "title": "서울빛초롱축제",
+      "location": "Seoul",
+      "lat": 37.5696,
+      "lng": 126.9784,
+      "category": "Festival",
+      "description": "청계천 겨울 축제. 한지로 만든 등과 LED 조각품 전시. 매년 200만 명 방문."
+    },
+    {
+      "id": "haeundae-light",
+      "title": "해운대 빛축제",
+      "location": "Busan",
+      "lat": 35.1587,
+      "lng": 129.1604,
+      "category": "Festival",
+      "description": "부산 겨울 대표 축제. 빛을 이용한 조형물과 미디어아트."
+    },
+    {
+      "id": "yeongyang-winter",
+      "title": "영양 꽁꽁겨울축제",
+      "location": "Yeongyang",
+      "lat": 36.6667,
+      "lng": 129.1167,
+      "category": "Festival",
+      "description": "천연빙상장, 눈썰매장, 빙어낚시터 등 겨울 체험."
+    },
+    {
+      "id": "icheon-ceramics",
+      "title": "이천 도자기축제",
+      "location": "Icheon",
+      "lat": 37.2722,
+      "lng": 127.4347,
+      "category": "Festival",
+      "description": "27년 전통의 도자기 축제. 한국 도자기 문화 체험."
+    },
+    {
+      "id": "jeonju-hanji",
+      "title": "전주 한지문화축제",
+      "location": "Jeonju",
+      "lat": 35.8167,
+      "lng": 127.15,
+      "category": "Festival",
+      "description": "전통 한지 문화 체험 축제. 전주 한옥마을에서 개최."
+    },
+    {
+      "id": "gwangju-biennale",
+      "title": "광주비엔날레",
+      "location": "Gwangju",
+      "lat": 35.1833,
+      "lng": 126.8833,
+      "category": "Festival",
+      "description": "세계적인 현대 미술 전시회. 백남준의 미디어 아트로 유명."
+    },
+    {
+      "id": "jarasum-jazz",
+      "title": "자라섬 국제재즈페스티벌",
+      "location": "Gapyeong",
+      "lat": 37.8167,
+      "lng": 127.3333,
+      "category": "Festival",
+      "description": "가평 자라섬에서 열리는 국제 재즈 페스티벌."
+    },
+    {
+      "id": "jecheon-music-film",
+      "title": "제천국제음악영화제",
+      "location": "Jecheon",
+      "lat": 37.1325,
+      "lng": 128.1911,
+      "category": "Festival",
+      "description": "음악과 영화가 만나는 축제. 청풍호반에서 개최."
+    },
+    {
+      "id": "chuncheon-mime",
+      "title": "춘천 마임축제",
+      "location": "Chuncheon",
+      "lat": 37.8747,
+      "lng": 127.7342,
+      "category": "Festival",
+      "description": "마임과 거리예술 축제. 세계 마임 아티스트 공연."
+    },
+    {
+      "id": "gwangjang-market",
+      "title": "광장시장",
+      "location": "Seoul",
+      "lat": 37.57,
+      "lng": 126.9997,
+      "category": "Food Tour",
+      "description": "한국 최초 상설시장 (1905년). 마약김밥, 육회, 빈대떡 맛집. 넷플릭스 Street Food로 유명."
+    },
+    {
+      "id": "namdaemun-market",
+      "title": "남대문시장",
+      "location": "Seoul",
+      "lat": 37.5592,
+      "lng": 126.9775,
+      "category": "Food Tour",
+      "description": "서울 대표 전통시장. 칼국수 골목, 먹자 골목 등 길거리 음식 천국."
+    },
+    {
+      "id": "noryangjin-fish",
+      "title": "노량진 수산시장",
+      "location": "Seoul",
+      "lat": 37.5133,
+      "lng": 126.9403,
+      "category": "Food Tour",
+      "description": "서울 최대 수산시장. 신선한 회와 해산물."
+    },
+    {
+      "id": "mangwon-market",
+      "title": "망원시장",
+      "location": "Seoul",
+      "lat": 37.5561,
+      "lng": 126.9014,
+      "category": "Food Tour",
+      "description": "힙한 망리단길 인근 전통시장. 로컬 맛집과 트렌디한 분위기."
+    },
+    {
+      "id": "tongin-market",
+      "title": "통인시장",
+      "location": "Seoul",
+      "lat": 37.5792,
+      "lng": 126.9694,
+      "category": "Food Tour",
+      "description": "엽전 도시락으로 유명. 경복궁 인근 전통시장."
+    },
+    {
+      "id": "hongdae-street",
+      "title": "홍대 먹자거리",
+      "location": "Seoul",
+      "lat": 37.5563,
+      "lng": 126.9236,
+      "category": "Food Tour",
+      "description": "젊음의 메카 홍대. 떡볶이, 닭강정, 호떡 등 다양한 길거리 음식."
+    },
+    {
+      "id": "myeongdong-street",
+      "title": "명동 먹자거리",
+      "location": "Seoul",
+      "lat": 37.5636,
+      "lng": 126.985,
+      "category": "Food Tour",
+      "description": "관광객 필수 코스. 길거리 음식과 K-뷰티 쇼핑."
+    },
+    {
+      "id": "jongno-food",
+      "title": "종로 먹자골목",
+      "location": "Seoul",
+      "lat": 37.5704,
+      "lng": 126.9922,
+      "category": "Food Tour",
+      "description": "종로 피맛골, 익선동 한옥거리 맛집. 전통과 현대가 공존."
+    },
+    {
+      "id": "jagalchi-market",
+      "title": "자갈치시장",
+      "location": "Busan",
+      "lat": 35.0969,
+      "lng": 129.0306,
+      "category": "Food Tour",
+      "description": "한국 최대 수산시장. 신선한 회와 해산물. \"오이소 보이소 사이소\""
+    },
+    {
+      "id": "gukje-market",
+      "title": "국제시장",
+      "location": "Busan",
+      "lat": 35.1003,
+      "lng": 129.0286,
+      "category": "Food Tour",
+      "description": "부산 최대 전통시장. 씨앗호떡, 어묵, 비빔당면 맛집."
+    },
+    {
+      "id": "biff-food",
+      "title": "BIFF 광장 먹자골목",
+      "location": "Busan",
+      "lat": 35.0986,
+      "lng": 129.0289,
+      "category": "Food Tour",
+      "description": "부산국제영화제 거리. 씨앗호떡과 길거리 음식 천국."
+    },
+    {
+      "id": "jeonju-hanok",
+      "title": "전주 한옥마을",
+      "location": "Jeonju",
+      "lat": 35.8151,
+      "lng": 127.1531,
+      "category": "Food Tour",
+      "description": "전주비빔밥, 콩나물국밥, 막걸리 골목. 한국 대표 먹거리 여행지."
+    },
+    {
+      "id": "jeonju-makgeolli",
+      "title": "전주 막걸리 골목",
+      "location": "Jeonju",
+      "lat": 35.8241,
+      "lng": 127.1386,
+      "category": "Food Tour",
+      "description": "막걸리 한 주전자에 20여 개 안주. 삼천동, 서신동, 경원동."
+    },
+    {
+      "id": "sokcho-tourist-fish",
+      "title": "속초 관광수산시장",
+      "location": "Sokcho",
+      "lat": 38.2072,
+      "lng": 128.5911,
+      "category": "Food Tour",
+      "description": "동해 신선한 해산물. 오징어순대, 아바이순대 맛집."
+    },
+    {
+      "id": "gangneung-jungang",
+      "title": "강릉 중앙시장",
+      "location": "Gangneung",
+      "lat": 37.7519,
+      "lng": 128.8961,
+      "category": "Food Tour",
+      "description": "닭강정 원조. 강릉 커피거리 인근 전통시장."
+    },
+    {
+      "id": "daegu-seomun",
+      "title": "대구 서문시장",
+      "location": "Daegu",
+      "lat": 35.8694,
+      "lng": 128.5806,
+      "category": "Food Tour",
+      "description": "대구 대표 전통시장. 야시장과 납작만두로 유명."
+    },
+    {
+      "id": "suwon-tongdak",
+      "title": "수원 통닭거리",
+      "location": "Suwon",
+      "lat": 37.2794,
+      "lng": 127.015,
+      "category": "Food Tour",
+      "description": "수원 왕갈비통닭 원조. 수원화성 인근 맛집거리."
+    },
+    {
+      "id": "jeju-dongmun",
+      "title": "제주 동문시장",
+      "location": "Jeju",
+      "lat": 33.5119,
+      "lng": 126.5261,
+      "category": "Food Tour",
+      "description": "제주 대표 전통시장. 흑돼지, 갈치, 해산물 맛집."
+    },
+    {
+      "id": "busan-fireworks-festival",
+      "title": "부산 불꽃축제",
+      "location": "Busan",
+      "lat": 35.1531,
+      "lng": 129.1186,
+      "category": "Festival",
+      "description": "광안리 해변에서 열리는 대규모 불꽃축제. 100만 인파가 모이는 동양 최대 불꽃 퍼포먼스."
+    },
+    {
+      "id": "hampyeong-butterfly-festival",
+      "title": "함평 나비축제",
+      "location": "Hampyeong",
+      "lat": 35.0656,
+      "lng": 126.5189,
+      "category": "Festival",
+      "description": "매년 5월 함평엑스포공원에서 열리는 나비축제. 다양한 나비 관찰과 체험 프로그램."
+    },
+    {
+      "id": "muju-firefly-festival",
+      "title": "무주 반딧불축제",
+      "location": "Muju",
+      "lat": 35.9075,
+      "lng": 127.6608,
+      "category": "Festival",
+      "description": "청정 자연환경에서 반딧불이를 관찰하는 생태축제. 신비로운 반딧불이 탐사 체험."
+    },
+    {
+      "id": "gangneung-danoje",
+      "title": "강릉 단오제",
+      "location": "Gangneung",
+      "lat": 37.7519,
+      "lng": 128.8761,
+      "category": "Festival",
+      "description": "유네스코 무형문화유산. 천년의 전통을 가진 강릉의 대표 민속축제."
+    },
+    {
+      "id": "yeosu-fireworks",
+      "title": "여수 밤바다 불꽃축제",
+      "location": "Yeosu",
+      "lat": 34.7604,
+      "lng": 127.6622,
+      "category": "Festival",
+      "description": "여수 밤바다를 배경으로 펼쳐지는 아름다운 불꽃축제."
+    },
+    {
+      "id": "daegu-chimac-festival",
+      "title": "대구 치맥페스티벌",
+      "location": "Daegu",
+      "lat": 35.8714,
+      "lng": 128.6014,
+      "category": "Festival",
+      "description": "치킨과 맥주를 즐기는 대구의 대표 여름축제. 100만 이상 조회수 인기 축제."
+    },
+    {
+      "id": "jeonju-bibimbap-festival",
+      "title": "전주 비빔밥축제",
+      "location": "Jeonju",
+      "lat": 35.8219,
+      "lng": 127.1489,
+      "category": "Festival",
+      "description": "전주의 대표 음식 비빔밥을 즐기는 축제. 500인분 비빔밥 비비기 체험."
+    },
+    {
+      "id": "icheon-rice-festival",
+      "title": "이천 쌀문화축제",
+      "location": "Icheon",
+      "lat": 37.2792,
+      "lng": 127.4425,
+      "category": "Festival",
+      "description": "이천 쌀의 우수성을 알리는 축제. 쌀 문화 체험과 다양한 프로그램."
+    },
+    {
+      "id": "pyeongchang-trout-festival",
+      "title": "평창 송어축제",
+      "location": "Pyeongchang",
+      "lat": 37.3706,
+      "lng": 128.3906,
+      "category": "Festival",
+      "description": "겨울철 송어 얼음낚시 체험. 강원도 대표 겨울축제."
+    },
+    {
+      "id": "cheongpyeong-ice-festival",
+      "title": "청평 얼음꽃축제",
+      "location": "Gapyeong",
+      "lat": 37.7333,
+      "lng": 127.4333,
+      "category": "Festival",
+      "description": "송어 얼음낚시와 겨울 체험을 즐기는 축제."
+    },
+    {
+      "id": "damyang-bamboo-festival",
+      "title": "담양 대나무축제",
+      "location": "Damyang",
+      "lat": 35.3214,
+      "lng": 126.9883,
+      "category": "Festival",
+      "description": "죽녹원에서 열리는 대나무 축제. 힐링과 문화 체험."
+    },
+    {
+      "id": "hadong-tea-festival",
+      "title": "하동 야생차문화축제",
+      "location": "Hadong",
+      "lat": 35.0669,
+      "lng": 127.7514,
+      "category": "Festival",
+      "description": "하동 야생차의 역사와 문화를 즐기는 축제."
+    },
+    {
+      "id": "gimje-horizon-festival",
+      "title": "김제 지평선축제",
+      "location": "Gimje",
+      "lat": 35.8033,
+      "lng": 126.8806,
+      "category": "Festival",
+      "description": "우리나라에서 유일하게 지평선이 보이는 김제에서 열리는 축제. 벽골제 드론쇼."
+    },
+    {
+      "id": "yeongam-wangin-festival",
+      "title": "영암 왕인문화축제",
+      "location": "Yeongam",
+      "lat": 34.7997,
+      "lng": 126.6969,
+      "category": "Festival",
+      "description": "왕인 박사를 기리는 문화축제."
+    },
+    {
+      "id": "gochang-barley-festival",
+      "title": "고창 청보리밭축제",
+      "location": "Gochang",
+      "lat": 35.4356,
+      "lng": 126.7019,
+      "category": "Festival",
+      "description": "청보리밭이 장관을 이루는 봄 축제. 폭싹 속았수다 촬영지."
+    },
+    {
+      "id": "tongyeong-hansandaecheop-festival",
+      "title": "통영 한산대첩축제",
+      "location": "Tongyeong",
+      "lat": 34.8544,
+      "lng": 128.4331,
+      "category": "Festival",
+      "description": "이순신 장군의 한산대첩을 기념하는 축제."
+    },
+    {
+      "id": "jeju-canola-festival",
+      "title": "제주 유채꽃축제",
+      "location": "Jeju",
+      "lat": 33.4996,
+      "lng": 126.5312,
+      "category": "Festival",
+      "description": "제주도의 노란 유채꽃밭을 즐기는 봄 축제."
+    },
+    {
+      "id": "incheon-pentaport-festival",
+      "title": "인천 펜타포트 록페스티벌",
+      "location": "Incheon",
+      "lat": 37.4563,
+      "lng": 126.7052,
+      "category": "Festival",
+      "description": "대한민국 대표 록 페스티벌. 잔나비, 송소희 등 다양한 아티스트 공연."
+    },
+    {
+      "id": "jirisan-dulle-festival",
+      "title": "지리산 둘레길 축제",
+      "location": "Jirisan",
+      "lat": 35.3372,
+      "lng": 127.7306,
+      "category": "Festival",
+      "description": "지리산 둘레길을 걷는 걷기 축제."
+    },
+    {
+      "id": "suncheon-garden-expo",
+      "title": "순천 정원박람회",
+      "location": "Suncheon",
+      "lat": 34.9506,
+      "lng": 127.4872,
+      "category": "Festival",
+      "description": "순천만 국가정원에서 열리는 국제정원박람회."
+    },
+    {
+      "id": "taebaek-snow-festival",
+      "title": "태백 눈축제",
+      "location": "Taebaek",
+      "lat": 37.1642,
+      "lng": 128.9856,
+      "category": "Festival",
+      "description": "태백산 눈꽃축제. 강원도 겨울왕국 체험."
+    },
+    {
+      "id": "yangpyeong-strawberry-festival",
+      "title": "양평 딸기축제",
+      "location": "Yangpyeong",
+      "lat": 37.4917,
+      "lng": 127.4875,
+      "category": "Festival",
+      "description": "딸기 수확 체험과 다양한 딸기 먹거리 축제."
+    },
+    {
+      "id": "pocheon-smelt-festival",
+      "title": "포천 산정호수 빙어축제",
+      "location": "Pocheon",
+      "lat": 38.0539,
+      "lng": 127.2961,
+      "category": "Festival",
+      "description": "산정호수에서 즐기는 빙어 얼음낚시 축제."
+    },
+    {
+      "id": "hongcheon-ginseng-festival",
+      "title": "홍천 인삼축제",
+      "location": "Hongcheon",
+      "lat": 37.6969,
+      "lng": 127.8886,
+      "category": "Festival",
+      "description": "홍천 인삼과 한우를 즐기는 축제."
+    },
+    {
+      "id": "chungju-apple-festival",
+      "title": "충주 사과축제",
+      "location": "Chungju",
+      "lat": 36.9911,
+      "lng": 127.9259,
+      "category": "Festival",
+      "description": "충주 사과를 즐기는 가을 축제."
+    },
+    {
+      "id": "yeongdeok-crab-festival",
+      "title": "영덕 대게축제",
+      "location": "Yeongdeok",
+      "lat": 36.4153,
+      "lng": 129.3653,
+      "category": "Festival",
+      "description": "영덕대게를 맛볼 수 있는 축제. 강구항 대게 시장."
+    },
+    {
+      "id": "ulleungdo-squid-festival",
+      "title": "울릉도 오징어축제",
+      "location": "Ulleungdo",
+      "lat": 37.4847,
+      "lng": 130.9058,
+      "category": "Festival",
+      "description": "울릉도의 신선한 오징어를 즐기는 축제."
+    },
+    {
+      "id": "jecheon-herbal-expo",
+      "title": "제천 한방바이오박람회",
+      "location": "Jecheon",
+      "lat": 37.1325,
+      "lng": 128.1908,
+      "category": "Festival",
+      "description": "한방과 바이오 산업을 소개하는 박람회."
+    },
+    {
+      "id": "gyeongju-hwangnidan-gil",
+      "title": "경주 황리단길",
+      "location": "Gyeongju",
+      "lat": 35.8372,
+      "lng": 129.2128,
+      "category": "Food Tour",
+      "description": "경주의 MZ 핫플. 십원빵, 닭강정, 컵물회 등 길거리음식 천국."
+    },
+    {
+      "id": "incheon-chinatown",
+      "title": "인천 차이나타운",
+      "location": "Incheon",
+      "lat": 37.4747,
+      "lng": 126.6172,
+      "category": "Food Tour",
+      "description": "한국 짜장면의 발상지. 유니짜장, 짬뽕, 탕수육 맛집 거리."
+    },
+    {
+      "id": "chuncheon-dakgalbi-golmok",
+      "title": "춘천 닭갈비 골목",
+      "location": "Chuncheon",
+      "lat": 37.8813,
+      "lng": 127.7298,
+      "category": "Food Tour",
+      "description": "닭갈비의 성지. 50년 역사의 춘천 명물 먹자골목."
+    },
+    {
+      "id": "gangneung-coffee-street",
+      "title": "강릉 커피거리",
+      "location": "Gangneung",
+      "lat": 37.7735,
+      "lng": 128.9469,
+      "category": "Food Tour",
+      "description": "안목해변 커피거리. 테라로사, 보헤미안 등 전국 최고 해변카페거리."
+    },
+    {
+      "id": "daejeon-sungsimdang",
+      "title": "대전 성심당",
+      "location": "Daejeon",
+      "lat": 36.3275,
+      "lng": 127.4271,
+      "category": "Food Tour",
+      "description": "대전의 명물 빵집. 망고시루 오픈런, 튀김소보로 등 빵지순례 성지."
+    },
+    {
+      "id": "pohang-jukdo-market",
+      "title": "포항 죽도시장",
+      "location": "Pohang",
+      "lat": 36.0322,
+      "lng": 129.365,
+      "category": "Food Tour",
+      "description": "포항 토박이들의 찐맛집. 회, 물회, 해산물 시장."
+    },
+    {
+      "id": "mokpo-meokja-golmok",
+      "title": "목포 먹자골목",
+      "location": "Mokpo",
+      "lat": 34.7878,
+      "lng": 126.385,
+      "category": "Food Tour",
+      "description": "선희식육식당 생고기 삼겹살 등 목포 현지인 맛집 거리."
+    },
+    {
+      "id": "busan-seomyeon-meokja",
+      "title": "부산 서면 먹자골목",
+      "location": "Busan",
+      "lat": 35.1578,
+      "lng": 129.06,
+      "category": "Food Tour",
+      "description": "부산 서면의 국밥집 골목. 현지인 추천 맛집 코스."
+    },
+    {
+      "id": "daegu-dongseongro",
+      "title": "대구 동성로",
+      "location": "Daegu",
+      "lat": 35.869,
+      "lng": 128.5956,
+      "category": "Food Tour",
+      "description": "대구 현지인 찐맛집 거리. 줄서서 먹는 맛집 25선."
+    },
+    {
+      "id": "tongyeong-chungmu-gimbap",
+      "title": "통영 충무김밥",
+      "location": "Tongyeong",
+      "lat": 34.8544,
+      "lng": 128.4331,
+      "category": "Food Tour",
+      "description": "79년 전통의 충무김밥 원조 맛집. 30년 전통 김밥 전문점."
+    },
+    {
+      "id": "gunsan-bread-tour",
+      "title": "군산 빵집투어",
+      "location": "Gunsan",
+      "lat": 35.9676,
+      "lng": 126.7369,
+      "category": "Food Tour",
+      "description": "이성당, 리베이커리, 영국빵집 등 군산 빵지순례 코스."
+    },
+    {
+      "id": "ulsan-eonyang-bulgogi",
+      "title": "울산 언양불고기",
+      "location": "Ulsan",
+      "lat": 35.5617,
+      "lng": 129.1181,
+      "category": "Food Tour",
+      "description": "불고기의 대명사 언양. 옛날식 vs 현대식 언양불고기."
+    },
+    {
+      "id": "gwangju-tteokgalbi",
+      "title": "광주 송정 떡갈비",
+      "location": "Gwangju",
+      "lat": 35.1392,
+      "lng": 126.7919,
+      "category": "Food Tour",
+      "description": "광주 송정역 떡갈비 거리. 뼈해장국 무한리필 떡갈비집."
+    },
+    {
+      "id": "andong-jjimdak",
+      "title": "안동 찜닭",
+      "location": "Andong",
+      "lat": 36.5684,
+      "lng": 128.7294,
+      "category": "Food Tour",
+      "description": "안동찜닭 원조 맛집 거리. 온가족 인기 메뉴."
+    },
+    {
+      "id": "yeosu-gatkimchi-samhap",
+      "title": "여수 갓김치 삼합",
+      "location": "Yeosu",
+      "lat": 34.7604,
+      "lng": 127.6622,
+      "category": "Food Tour",
+      "description": "여수 갓김치와 삼겹살, 키조개 관자의 삼합. 입안에서 살살 녹는 맛."
+    },
+    {
+      "id": "busan-dwaeji-gukbap",
+      "title": "부산 돼지국밥",
+      "location": "Busan",
+      "lat": 35.1175,
+      "lng": 129.0422,
+      "category": "Food Tour",
+      "description": "부산 토박이 시민들이 뽑은 돼지국밥 1위 맛집."
+    },
+    {
+      "id": "geoje-daegu-tang",
+      "title": "거제 대구탕",
+      "location": "Geoje",
+      "lat": 34.8806,
+      "lng": 128.6211,
+      "category": "Food Tour",
+      "description": "외포항 대구탕. 겨울 대표 최고의 맛."
+    },
+    {
+      "id": "namhae-myeolchi-hoe",
+      "title": "남해 멸치회",
+      "location": "Namhae",
+      "lat": 34.8375,
+      "lng": 127.8925,
+      "category": "Food Tour",
+      "description": "53년 남해 토박이 보증 맛집. 싱싱한 멸치쌈밥과 멸치회."
     }
   ],
   "metadata": {
-    "totalSites": 107,
+    "totalSites": 189,
     "source": "Converted from OutboundScape video locations",
     "lastUpdated": "2026-01-28",
     "categories": [
       "Beach",
       "Camping",
       "Cultural",
+      "Festival",
       "Fishing",
+      "Food Tour",
       "Garden",
       "Glamping",
       "Mountain",

@@ -205,6 +205,8 @@ interface MapComponentProps {
   onShowCommunityVideos?: (video: VideoLocation) => void;
   center?: [number, number];
   zoom?: number;
+  externalActivePopup?: VideoLocation | null; // Control popup from parent
+  externalPopupTrigger?: number; // Increment to force popup reopen
 }
 
 // Cache for marker icons to prevent re-creation on every render
@@ -249,7 +251,9 @@ export default function MapComponent({
   onMarkerClick,
   onShowCommunityVideos,
   center = [-37.4, 145.5], // Victoria center coordinates by default
-  zoom = 7
+  zoom = 7,
+  externalActivePopup,
+  externalPopupTrigger
 }: MapComponentProps) {
   const [visibleIndices, setVisibleIndices] = useState<Set<number>>(new Set());
   const [routeData, setRouteData] = useState<{
@@ -261,6 +265,13 @@ export default function MapComponent({
   const [isLoadingRoute, setIsLoadingRoute] = useState(false);
   const [activePopup, setActivePopup] = useState<VideoLocation | null>(null);
   const mapRef = useRef<L.Map | null>(null);
+
+  // Sync external popup control with internal state
+  useEffect(() => {
+    if (externalActivePopup !== undefined) {
+      setActivePopup(externalActivePopup);
+    }
+  }, [externalActivePopup, externalPopupTrigger]);
 
   // Create a stable key from location IDs to detect actual filter changes
   const locationsKey = useMemo(() => {
@@ -435,7 +446,8 @@ export default function MapComponent({
                   } else {
                     onMarkerClick(activePopup);
                   }
-                  // Don't close popup - keep it visible behind the modal
+                  // Close popup when opening the modal to avoid z-index issues
+                  handleClosePopup();
                 }}
                 className="flex items-center gap-3 px-3 py-2 text-sm rounded transition-colors w-full text-left"
               >

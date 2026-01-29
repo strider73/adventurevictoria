@@ -1,0 +1,744 @@
+{
+  "metadata": {
+    "date": "2026-01-29",
+    "description": "Food Tour videos saved for later processing - need location decision",
+    "totalPlaces": 11,
+    "totalVideos": 55,
+    "notes": {
+      "province_wide": [
+        "강원도 감자옹심이",
+        "전라도 한정식",
+        "경상도 밀면",
+        "충청도 올갱이국"
+      ],
+      "city_wide": [
+        "서울 냉면 맛집",
+        "제주 흑돼지 맛집",
+        "청주 맛집투어"
+      ],
+      "duplicate_area": [
+        "전주 콩나물국밥",
+        "춘천 막국수",
+        "속초 젓갈거리",
+        "중앙시장 대구 맛집"
+      ]
+    }
+  },
+  "foodTours": [
+    {
+      "searchQuery": "중앙시장 대구 맛집",
+      "suggestedLocation": "중앙시장",
+      "category": "Food Tour",
+      "videos": [
+        {
+          "videoId": "BpqC6lGTous",
+          "title": "대구 현지인들도 줄서서 먹는 찐맛집 25선! 광고x 협찬x 직접 줄서서 먹고 왔습니다",
+          "channelName": "규슐랭가이드",
+          "description": "1. 상호명 : 금이옥 주소 : 대구 중구 국채보상로 143길 2 영업시간 : 오전11시~낮12시30분 일요일 휴무 2. 상호명 : 군위식당 주소 ...",
+          "publishedAt": "2024-07-08T02:00:05Z",
+          "views": 862560,
+          "likes": 8399,
+          "thumbnail": "https://i.ytimg.com/vi/BpqC6lGTous/mqdefault.jpg",
+          "url": "https://www.youtube.com/watch?v=BpqC6lGTous"
+        },
+        {
+          "videoId": "tZ13TiMXDlg",
+          "title": "썸네일만 봐도 숨 막혀요.. 서문시장=그냥 전설",
+          "channelName": "떡볶퀸 Tteokbokqueen",
+          "description": "서문시장 맛보고 정신 잃음 00:00 재료 쑤셔넣는 미친 김밥집.. 어디야? 01:31 대구역 도착 02:17 계란김밥 원조 03:57 오코노미야끼 ...",
+          "publishedAt": "2025-02-06T08:57:52Z",
+          "views": 691492,
+          "likes": 6935,
+          "thumbnail": "https://i.ytimg.com/vi/tZ13TiMXDlg/mqdefault.jpg",
+          "url": "https://www.youtube.com/watch?v=tZ13TiMXDlg"
+        },
+        {
+          "videoId": "TbDMwN7EafM",
+          "title": "망한 전통시장 이미지… 여긴 믿고 가도 됩니다",
+          "channelName": "떡볶퀸 Tteokbokqueen",
+          "description": "대구는 떡볶이의 천국이야..   타임라인 00:00 대구 시장에 떡볶퀸이 나타났다! 00:23 해장까지 가능한 분식집   02:39 와인   뿌린 ...",
+          "publishedAt": "2025-11-18T09:00:52Z",
+          "views": 367219,
+          "likes": 5340,
+          "thumbnail": "https://i.ytimg.com/vi/TbDMwN7EafM/mqdefault.jpg",
+          "url": "https://www.youtube.com/watch?v=TbDMwN7EafM"
+        },
+        {
+          "videoId": "eFescOnEgqs",
+          "title": "구미 새마을 중앙시장 시장먹방 족발골목 무침족발 순대국밥 국수골목 비빔국수 잔치국수 떡볶이 납작만두 호떡 꽈배기 찹쌀도넛 korean mukbang eating show",
+          "channelName": "상해기SangHyuk",
+          "description": "구미 새마을 중앙시장 시장먹방 족발골목 무침족발 순대국밥 국수골목 비빔국수 잔치국수 떡볶이 납작만두 호떡 꽈배기 찹쌀도넛 ...",
+          "publishedAt": "2025-02-11T12:15:06Z",
+          "views": 363589,
+          "likes": 7277,
+          "thumbnail": "https://i.ytimg.com/vi/eFescOnEgqs/mqdefault.jpg",
+          "url": "https://www.youtube.com/watch?v=eFescOnEgqs"
+        },
+        {
+          "videoId": "HYDmV-hTAao",
+          "title": "대구 서문시장 시장먹방 매운콩나물어묵 나뭇잎손만두 냄비우동 찹쌀순대 치즈돈까스 치즈떡볶이 꽈배기 호두과자 도너츠 korean mukbang",
+          "channelName": "상해기SangHyuk",
+          "description": "대구 서문시장 시장먹방 매운콩나물어묵 나뭇잎손만두 냄비우동 찹쌀순대 치즈돈까스 치즈떡볶이 꽈배기 호두과자 도너츠 korean ...",
+          "publishedAt": "2025-05-08T12:15:06Z",
+          "views": 351259,
+          "likes": 6716,
+          "thumbnail": "https://i.ytimg.com/vi/HYDmV-hTAao/mqdefault.jpg",
+          "url": "https://www.youtube.com/watch?v=HYDmV-hTAao"
+        }
+      ],
+      "videoCount": 5,
+      "topViews": 862560,
+      "add": false
+    },
+    {
+      "searchQuery": "속초 젓갈거리",
+      "suggestedLocation": "속초",
+      "category": "Food Tour",
+      "videos": [
+        {
+          "videoId": "wFHuxj2xfeE",
+          "title": "속초 여행 전 필수 시청, 이것만 보고 가도 절대 실패 안합니다 2박 3일동안 속초 맛집 16곳 티어 별로 정리해봤더니...충격적인 결과가..??? (1)",
+          "channelName": "재슐랭가이드",
+          "description": "이메일 문의 food.writer.jw@treasurehunter.co.kr ✱ 인스타그램 / https://www.instagram.com/food_writer_jw 속초 여행 SNS 유명 ...",
+          "publishedAt": "2025-07-18T03:22:01Z",
+          "views": 456596,
+          "likes": 3525,
+          "thumbnail": "https://i.ytimg.com/vi/wFHuxj2xfeE/mqdefault.jpg",
+          "url": "https://www.youtube.com/watch?v=wFHuxj2xfeE"
+        },
+        {
+          "videoId": "wB0qq0mVAhY",
+          "title": "[시청필수] 현지인들의 성지 👍속초 찐맛집 총정리 16곳",
+          "channelName": "특별한강원",
+          "description": "욕먹을 각오하고 올리는 속초 현지인들 찐맛집 16곳을 공개합니다!   00:00 인트로 00:15 조롱박 속초시 수복로 107-2 교동 636-92 ...",
+          "publishedAt": "2025-06-23T08:12:12Z",
+          "views": 173185,
+          "likes": 1051,
+          "thumbnail": "https://i.ytimg.com/vi/wB0qq0mVAhY/mqdefault.jpg",
+          "url": "https://www.youtube.com/watch?v=wB0qq0mVAhY"
+        },
+        {
+          "videoId": "jmHeIE0EGuE",
+          "title": "속초 시장부터 현지인 맛집 4곳까지 총정리!",
+          "channelName": "맛칼럼쭌선생",
+          "description": "이곳에 대해 여러분의 생각은 어떠신가요? 댓글로 남겨주시길 바랍니다! ※모든 영상은 본인의 주관적인 생각으로 제작됩니다※ ...",
+          "publishedAt": "2025-08-25T01:30:37Z",
+          "views": 19880,
+          "likes": 143,
+          "thumbnail": "https://i.ytimg.com/vi/jmHeIE0EGuE/mqdefault.jpg",
+          "url": "https://www.youtube.com/watch?v=jmHeIE0EGuE"
+        },
+        {
+          "videoId": "CbqTClWtZHA",
+          "title": "속초 놀러 가는 사람 주목! 엄마가 직접 만드는 수제 양념 명태회젓갈 어리굴젓 창난젓｜젓갈 먹으면 친정엄마 생각 나던 이유가 있었다｜속초 시장ㅣ극한직업｜#골라듄다큐",
+          "channelName": "EBSDocumentary (EBS 다큐)",
+          "description": "이 영상은 2023년 4월 1일에 방송된 ＜극한직업 - 기다림의 미학, 발효식품의 세계＞의 일부입니다. 대표적인 발효식품이자 남녀노소 ...",
+          "publishedAt": "2025-04-26T05:00:25Z",
+          "views": 6030,
+          "likes": 41,
+          "thumbnail": "https://i.ytimg.com/vi/CbqTClWtZHA/mqdefault.jpg",
+          "url": "https://www.youtube.com/watch?v=CbqTClWtZHA"
+        },
+        {
+          "videoId": "x8900Tczp3E",
+          "title": "[생방송 강원 365] 속초 젓갈의 매력에 빠지다.(속초)",
+          "channelName": "MBC강원영동",
+          "description": "14-08-26) 속초 젓갈의 매력에 빠지다. 강원도 방방곡곡을 MBC와 여행하자! 생방송 강원 365 ▶︎https://bit.ly/2KL94ov MBC강원 ...",
+          "publishedAt": "2014-08-26T10:32:21Z",
+          "views": 3933,
+          "likes": 1,
+          "thumbnail": "https://i.ytimg.com/vi/x8900Tczp3E/mqdefault.jpg",
+          "url": "https://www.youtube.com/watch?v=x8900Tczp3E"
+        }
+      ],
+      "videoCount": 5,
+      "topViews": 456596,
+      "add": false
+    },
+    {
+      "searchQuery": "청주 맛집투어",
+      "suggestedLocation": "청주",
+      "category": "Food Tour",
+      "videos": [
+        {
+          "videoId": "w8nQYWx-Bdw",
+          "title": "돈 낭비하며 찾은 찐 맛집, 청주 맛집 이걸로 끝🔥",
+          "channelName": "떡볶퀸 Tteokbokqueen",
+          "description": "추가 맛집 추천 받습니다~  🍽️ -음식에 대한 평가는 개인적인 기준이니 참고만 해주시고, 자신의 입맛에 맞는 다양한 정보를 탐색한 ...",
+          "publishedAt": "2024-10-25T10:53:06Z",
+          "views": 372195,
+          "likes": 3508,
+          "thumbnail": "https://i.ytimg.com/vi/w8nQYWx-Bdw/mqdefault.jpg",
+          "url": "https://www.youtube.com/watch?v=w8nQYWx-Bdw"
+        },
+        {
+          "videoId": "MGLLV9WpZek",
+          "title": "3대째 내려온 50년 전통 맛집😲?! 충북 청주 떡볶이 먹방 #어디로튈지몰라 EP.9",
+          "channelName": "ENA 이엔에이",
+          "description": "맛집 릴레이 추천! 짜여진 리스트도, 사전 기획된 코스도 없다❌️ 노(No) 섭외 즉흥 맛집 투어 '어디로 튈지 몰라' ‍♂ #어디로튈지 ...",
+          "publishedAt": "2025-11-16T12:20:00Z",
+          "views": 102178,
+          "likes": 730,
+          "thumbnail": "https://i.ytimg.com/vi/MGLLV9WpZek/mqdefault.jpg",
+          "url": "https://www.youtube.com/watch?v=MGLLV9WpZek"
+        },
+        {
+          "videoId": "vAnumhsPtv4",
+          "title": "청주 맛집카페 천국이잖아..? ˖⁺｡˚⋆˙♥️ 토박이들이 추천하는 찐 맛집만 다녀온 청주 여행 브이로그",
+          "channelName": "령령 Ryeongryeong",
+          "description": "https://www.instagram.com/ryeongryeong___ ❉ ryeongryeong@twopeach.kr 령둥이들! 어느덧 2026년 새해가 밝았어요 ʕ·͡ˑ·ཻʔ .",
+          "publishedAt": "2026-01-03T12:05:01Z",
+          "views": 34534,
+          "likes": 582,
+          "thumbnail": "https://i.ytimg.com/vi/vAnumhsPtv4/mqdefault.jpg",
+          "url": "https://www.youtube.com/watch?v=vAnumhsPtv4"
+        },
+        {
+          "videoId": "bKD2m7PXsjk",
+          "title": "계획 0%로 떠난 청주 본가 여행 브이로그 (맛집 리스트 있음) | 허니제이 | HONEY J |",
+          "channelName": "허니제이 HONEY J",
+          "description": "Business mail : snpstudio_kr@naver.com 악의적인 댓글이나 불편한 표현은 무통보 삭제될 수 있습니다. #허니제이 #청주 #맛집 ...",
+          "publishedAt": "2025-11-14T09:00:58Z",
+          "views": 31083,
+          "likes": 296,
+          "thumbnail": "https://i.ytimg.com/vi/bKD2m7PXsjk/mqdefault.jpg",
+          "url": "https://www.youtube.com/watch?v=bKD2m7PXsjk"
+        },
+        {
+          "videoId": "gIxUnCpr1SE",
+          "title": "청주 맛집 ? 빵친놈이 끼려주는 군침 싹도는 청주 여행 브이로그 [남들갈비,컴포트, 베이커리446,북일곰탕,소부떡… ]",
+          "channelName": "고독미 GO DOKMI ",
+          "description": "안녕하세요 고독미 입니도.. 요번에는제가 청주 맛집을 끼려봤습니다?.. 사실..여행이라기보단.. 자주가는청주를 더 이쁘게 담고싶은 ...",
+          "publishedAt": "2025-04-16T08:55:00Z",
+          "views": 18382,
+          "likes": 217,
+          "thumbnail": "https://i.ytimg.com/vi/gIxUnCpr1SE/mqdefault.jpg",
+          "url": "https://www.youtube.com/watch?v=gIxUnCpr1SE"
+        }
+      ],
+      "videoCount": 5,
+      "topViews": 372195,
+      "add": false
+    },
+    {
+      "searchQuery": "제주 흑돼지 맛집",
+      "suggestedLocation": "제주",
+      "category": "Food Tour",
+      "videos": [
+        {
+          "videoId": "g-5fugAPOd4",
+          "title": "제주도 흑돼지 1티어급 추천맛집 &quot;여긴 진짜 모르는 사람 없었으면 좋겠다&quot;",
+          "channelName": "정육왕 MeatCreator",
+          "description": "본 영상은 이어돈의 광고가 포함된 영상이며 전문가의 관점에서 솔직한 리뷰가 들어갔습니다. ✔️ \"제주도 이어돈 두번째이야기 ...",
+          "publishedAt": "2022-09-29T10:00:34Z",
+          "views": 233687,
+          "likes": 1895,
+          "thumbnail": "https://i.ytimg.com/vi/g-5fugAPOd4/mqdefault.jpg",
+          "url": "https://www.youtube.com/watch?v=g-5fugAPOd4"
+        },
+        {
+          "videoId": "9RyU-YFH3EM",
+          "title": "제주도민이 알려드리는 제주 흑돼지 맛집 BEST 6 (2탄)",
+          "channelName": "제주에디 Jeju Eddy",
+          "description": "'고기장'은 식당 사장님으로부터 초대받은 자리에서 촬영하였습니다. 협찬을 요청받은 적이 없지만 제가 원해서 촬영을 하였고 결과적 ...",
+          "publishedAt": "2021-12-22T09:00:06Z",
+          "views": 177488,
+          "likes": 1509,
+          "thumbnail": "https://i.ytimg.com/vi/9RyU-YFH3EM/mqdefault.jpg",
+          "url": "https://www.youtube.com/watch?v=9RyU-YFH3EM"
+        },
+        {
+          "videoId": "gGPBtB-mGkA",
+          "title": "웨이팅 2시간은 기본! 제주 흑돼지 맛집의 트렌드를 바꿔버린 식당에 다녀왔습니다",
+          "channelName": "제주에디 Jeju Eddy",
+          "description": "숙성도 노형점 - 위치 : 제주시 원노형로 41 (http://naver.me/Gul0N4al) - 영업시간 : 11시 30분 - 23시 (본관은 21시까지) - 주차공간 ...",
+          "publishedAt": "2021-11-14T09:00:33Z",
+          "views": 145756,
+          "likes": 896,
+          "thumbnail": "https://i.ytimg.com/vi/gGPBtB-mGkA/mqdefault.jpg",
+          "url": "https://www.youtube.com/watch?v=gGPBtB-mGkA"
+        },
+        {
+          "videoId": "jADuxsrwPZk",
+          "title": "제주도 흑돼지 유명 맛집 대표 7곳 ! 제주도에서 흑돼지는 못참겠지?",
+          "channelName": "스노파파 SNOWPAPA",
+          "description": "몽쥬르 ~여행하고 애보고 요리하는 몽테입니다. 오늘은 제주도를 대표하는 흑돼지 맛집 7곳을 준비했습니다. 영상보시고 맛있는 제주 ...",
+          "publishedAt": "2021-09-17T08:04:10Z",
+          "views": 102749,
+          "likes": 482,
+          "thumbnail": "https://i.ytimg.com/vi/jADuxsrwPZk/mqdefault.jpg",
+          "url": "https://www.youtube.com/watch?v=jADuxsrwPZk"
+        },
+        {
+          "videoId": "HXaXa2XKOFw",
+          "title": "당일치기 제주도 가서 흑돼지 6끼 먹고 올 수 있을까?",
+          "channelName": "호와수",
+          "description": "아직도 안 챙기셨어요? 148만원 가만히 두면 손해!   내 지원금 알아보기 https://ajd.kr/DMjbt 카드현금 캐시백 최대 20만원 셀프 ...",
+          "publishedAt": "2025-12-30T08:00:19Z",
+          "views": 95588,
+          "likes": 1195,
+          "thumbnail": "https://i.ytimg.com/vi/HXaXa2XKOFw/mqdefault.jpg",
+          "url": "https://www.youtube.com/watch?v=HXaXa2XKOFw"
+        }
+      ],
+      "videoCount": 5,
+      "topViews": 233687,
+      "add": false
+    },
+    {
+      "searchQuery": "강원도 감자옹심이",
+      "suggestedLocation": "강원도",
+      "category": "Food Tour",
+      "videos": [
+        {
+          "videoId": "TALCucXOgiQ",
+          "title": "감자옹심이 너무너무 맛있어요",
+          "channelName": "김대석 셰프TV",
+          "description": "채널에 가입하여 혜택을 누려보세요 https://www.youtube.com/channel/UC1g9JaEVLOFGhH8hpaK--Jg/join 김대석 셰프의 34년 ...",
+          "publishedAt": "2025-07-15T23:00:24Z",
+          "views": 914876,
+          "likes": 20307,
+          "thumbnail": "https://i.ytimg.com/vi/TALCucXOgiQ/mqdefault.jpg",
+          "url": "https://www.youtube.com/watch?v=TALCucXOgiQ"
+        },
+        {
+          "videoId": "V-y2UDJKK8E",
+          "title": "[최요비] 햇감자로 만들면 더 맛있어요🥔 고소하고 진한 국물! 쫀득쫀득한 &#39;들깨감자옹심이&#39; 만드는 법 | 박영란",
+          "channelName": "EBS 최고의 요리비결",
+          "description": "[ 들깨감자옹심이 ] 1. 강판에 감자(6개/800g) 갈고 물기 짜낸 뒤 앙금 분리하기 2. 간 감자에 앙금, 소금(약간) 넣고 섞어 옹심이 반죽 ...",
+          "publishedAt": "2022-08-21T10:03:58Z",
+          "views": 850623,
+          "likes": 9369,
+          "thumbnail": "https://i.ytimg.com/vi/V-y2UDJKK8E/mqdefault.jpg",
+          "url": "https://www.youtube.com/watch?v=V-y2UDJKK8E"
+        },
+        {
+          "videoId": "75E-Ix0nJhU",
+          "title": "감자옹심이 힘들게 손으로 갈지마세요. 힘 안들게 집에서 맛있게 감자옹심이 만드는 방법",
+          "channelName": "뚝딱Tooktak",
+          "description": "감자옹심이 #들깨감자옹심이 #옹심이 -재료 무 70g, 물 1.5리터, 대파 80g, 표고버섯 꼬다리 한줌,디포리 5마리 멸치 10마리, 건새우 1 ...",
+          "publishedAt": "2023-07-19T00:00:02Z",
+          "views": 216670,
+          "likes": 1770,
+          "thumbnail": "https://i.ytimg.com/vi/75E-Ix0nJhU/mqdefault.jpg",
+          "url": "https://www.youtube.com/watch?v=75E-Ix0nJhU"
+        },
+        {
+          "videoId": "AjWqrihSU0w",
+          "title": "EP178-감자옹심이)쫄깃쫄깃 쫀득쫀득 구수한 수제비!",
+          "channelName": "이종임 스타일 채널",
+          "description": "감자 #수제비 #감자옹심이 안녕하세요 오늘은 쫄깃한 감자옹심이를 만들어 봤습니다 감자옹심이는 씹히는 맛이 일품인데요 된장도 ...",
+          "publishedAt": "2022-07-26T06:00:03Z",
+          "views": 94244,
+          "likes": 1866,
+          "thumbnail": "https://i.ytimg.com/vi/AjWqrihSU0w/mqdefault.jpg",
+          "url": "https://www.youtube.com/watch?v=AjWqrihSU0w"
+        },
+        {
+          "videoId": "89BA4G3DM8o",
+          "title": "[전현무계획3ㅣ채널S] 강원도 감자  100%! 속초 시장의 수제 옹심이 맛집 | 7화",
+          "channelName": "채널S",
+          "description": "채널S #전현무계획3 #전현무 #곽준빈 #장희진 #김형묵 계획이 없는 것이 계획이다! 이번에도 無계획 노포 맛집 여행은 계속된다!",
+          "publishedAt": "2025-11-28T14:10:00Z",
+          "views": 22720,
+          "likes": 159,
+          "thumbnail": "https://i.ytimg.com/vi/89BA4G3DM8o/mqdefault.jpg",
+          "url": "https://www.youtube.com/watch?v=89BA4G3DM8o"
+        }
+      ],
+      "videoCount": 5,
+      "topViews": 914876,
+      "add": false
+    },
+    {
+      "searchQuery": "전라도 한정식",
+      "suggestedLocation": "전라도",
+      "category": "Food Tour",
+      "videos": [
+        {
+          "videoId": "1XenYGNQpSw",
+          "title": "사돈과의 상견례를 위해 광주 방문한 케빈 가족❗ 맛의 고장 전라도에서 펼쳐지는 한정식 피날레✨ #여권들고등짝스매싱 EP.12 | tvN STORY 241127 방송",
+          "channelName": "tvN STORY 티비엔 스토리",
+          "description": "티빙에서 스트리밍 : https://tving.onelink.me/xHqC/30a78d6f #여권들고등짝스매싱 #김성주 #장영란 #딘딘 여권들고 등짝 스매싱 ...",
+          "publishedAt": "2024-11-28T09:00:04Z",
+          "views": 1572639,
+          "likes": 11776,
+          "thumbnail": "https://i.ytimg.com/vi/1XenYGNQpSw/mqdefault.jpg",
+          "url": "https://www.youtube.com/watch?v=1XenYGNQpSw"
+        },
+        {
+          "videoId": "tzEgZixR6J4",
+          "title": "반찬 가짓수만 30개 이상! 상다리 부러지는 전라도 한정식 한상을 맛본 백악관 셰프의 반응은!?",
+          "channelName": "얌코리아 YumKorea",
+          "description": "채널 멤버쉽에 가입하고 전용 혜택을 누려보세요! https://www.youtube.com/channel/UCdB_o5jXGuCVL_Zj7CRAhVg/join ...",
+          "publishedAt": "2026-01-11T02:15:08Z",
+          "views": 139791,
+          "likes": 2886,
+          "thumbnail": "https://i.ytimg.com/vi/tzEgZixR6J4/mqdefault.jpg",
+          "url": "https://www.youtube.com/watch?v=tzEgZixR6J4"
+        },
+        {
+          "videoId": "iuRyxsQDatk",
+          "title": "전라도의 모든 음식을 한번에😲?! 전남 강진 한정식 먹방 #어디로튈지몰라 EP.5",
+          "channelName": "ENA 이엔에이",
+          "description": "맛집 릴레이 추천! 짜여진 리스트도, 사전 기획된 코스도 없다❌️ 노(No) 섭외 즉흥 맛집 투어 '어디로 튈지 몰라' ‍♂ #어디로튈지 ...",
+          "publishedAt": "2025-10-19T12:20:01Z",
+          "views": 96656,
+          "likes": 1066,
+          "thumbnail": "https://i.ytimg.com/vi/iuRyxsQDatk/mqdefault.jpg",
+          "url": "https://www.youtube.com/watch?v=iuRyxsQDatk"
+        },
+        {
+          "videoId": "LHnag4xBiTw",
+          "title": "김석훈 배 터트린 순천의 30첩 반상 한정식 | 김석훈의 어! 여기봐라",
+          "channelName": "헬로라이프",
+          "description": "\"배우 김석훈, 숨겨진 대한민국의 매력을 찾아 떠난다!\" 로드 트립 다큐멘터리 김석훈의 어!여기봐라   매주 목요일 저녁 8시 본방 ...",
+          "publishedAt": "2025-05-08T12:00:29Z",
+          "views": 83791,
+          "likes": 763,
+          "thumbnail": "https://i.ytimg.com/vi/LHnag4xBiTw/mqdefault.jpg",
+          "url": "https://www.youtube.com/watch?v=LHnag4xBiTw"
+        },
+        {
+          "videoId": "M9317AsPlBw",
+          "title": "순천 대원식당 🍚 전라도 30첩 한정식 가정식 🥘 수라상 대원상 젓갈 나물 홍어 가오리 쭈꾸미 대갱이",
+          "channelName": "난감이 NanGamEe",
+          "description": "순천 대원식당 전라도 30첩 한정식 가정식 수라상 대원상 전라도 젓갈 나물 홍어 가오리 쭈꾸미 대갱이.",
+          "publishedAt": "2024-08-30T09:00:29Z",
+          "views": 73345,
+          "likes": 335,
+          "thumbnail": "https://i.ytimg.com/vi/M9317AsPlBw/mqdefault.jpg",
+          "url": "https://www.youtube.com/watch?v=M9317AsPlBw"
+        }
+      ],
+      "videoCount": 5,
+      "topViews": 1572639,
+      "add": false
+    },
+    {
+      "searchQuery": "경상도 밀면",
+      "suggestedLocation": "경상도",
+      "category": "Food Tour",
+      "videos": [
+        {
+          "videoId": "Qed5ve1wD70",
+          "title": "부산하면 밀면 아이가~🍜 이원일 셰프 두 번째 고향(?) &#39;서면&#39; 단골 맛집 공개🎉 [ENG]",
+          "channelName": "홍석천이원일",
+          "description": "홍석천 #이원일 #부산 #밀면 ***광고 절대 아님*** ***새치기 절대 없음*** ***모든 음식값 지불*** 지난 여행에서 먹지 못했었던!! 밀면 !",
+          "publishedAt": "2025-08-15T08:30:12Z",
+          "views": 526611,
+          "likes": 5751,
+          "thumbnail": "https://i.ytimg.com/vi/Qed5ve1wD70/mqdefault.jpg",
+          "url": "https://www.youtube.com/watch?v=Qed5ve1wD70"
+        },
+        {
+          "videoId": "awgcWTqJ1Gc",
+          "title": "대한민국의 경제 수도 &#39;울산&#39; 반바퀴 | 김영남의 동네 반바퀴",
+          "channelName": "피식대학Psick Univ",
+          "description": "피식대학 장학생으로 입학하여 혜택을 누려보세요! https://www.youtube.com/channel/UCGX5sP4ehBkihHwt5bs5wvg/join.",
+          "publishedAt": "2025-09-10T10:00:06Z",
+          "views": 422508,
+          "likes": 8924,
+          "thumbnail": "https://i.ytimg.com/vi/awgcWTqJ1Gc/mqdefault.jpg",
+          "url": "https://www.youtube.com/watch?v=awgcWTqJ1Gc"
+        },
+        {
+          "videoId": "flytu5T44sQ",
+          "title": "경상도는 밀면...밀면이랑 직화불고기 갈비만두 주먹밥 먹방!! ASMR MUKBANG Wheat Noodles bulgogi galbi dumpling eating show",
+          "channelName": "바다곰 조해웅",
+          "description": "밀면 #먹방 #경상도 인스타그램:seabear100 이메일:haewoong10@naver.com.",
+          "publishedAt": "2024-08-29T09:35:19Z",
+          "views": 52404,
+          "likes": 1470,
+          "thumbnail": "https://i.ytimg.com/vi/flytu5T44sQ/mqdefault.jpg",
+          "url": "https://www.youtube.com/watch?v=flytu5T44sQ"
+        },
+        {
+          "videoId": "0RTCsZrkq6I",
+          "title": "충청도에서 밀면? | 경상도 긴장하게 만드는 집🤨 [천안 밀면 맛집]",
+          "channelName": "놀고먹고자고",
+          "description": "시작된 여름이 벌써 가혹하다.. 올 여름을 시원하게 나게 해 줄 시원한 음식을 찾아 나선 수영과 은지 천안 쌍용동에 위치한 이곳에서 ...",
+          "publishedAt": "2025-07-02T09:30:00Z",
+          "views": 12653,
+          "likes": 76,
+          "thumbnail": "https://i.ytimg.com/vi/0RTCsZrkq6I/mqdefault.jpg",
+          "url": "https://www.youtube.com/watch?v=0RTCsZrkq6I"
+        },
+        {
+          "videoId": "S0WcUaZyqsc",
+          "title": "[🥐‍️#우왕] 서울, 경기🏙️에서 맛보는 부산🌊의 맛, 숨어 있는 밀면 고수🍜를 소개합니다! #생활의달인 #우와한비디오 #우와비",
+          "channelName": "우와한 비디오",
+          "description": "생활의 달인 994회 2025.08.04. 방영 [동대문 밀면 달인 & 시흥 밀면 달인] 칼칼한 듯 시원한 국물. 쫄깃하면서도 부드러운 한 젓가락!",
+          "publishedAt": "2025-08-07T03:00:34Z",
+          "views": 4427,
+          "likes": 43,
+          "thumbnail": "https://i.ytimg.com/vi/S0WcUaZyqsc/mqdefault.jpg",
+          "url": "https://www.youtube.com/watch?v=S0WcUaZyqsc"
+        }
+      ],
+      "videoCount": 5,
+      "topViews": 526611,
+      "add": false
+    },
+    {
+      "searchQuery": "충청도 올갱이국",
+      "suggestedLocation": "충청도",
+      "category": "Food Tour",
+      "videos": [
+        {
+          "videoId": "u5QKqpk9pA8",
+          "title": "극한작업! 이많은걸 한땀한땀 손으로? 놀라운 자연산 다슬기국 대량생산 / Korean food factory",
+          "channelName": "푸드킹덤 Food Kingdom",
+          "description": "경상남도 하동군에 위치한 다슬기전문업체 (정옥)입니다. 맑은 물에서 자생하는 자연산 다슬기를 매일 직접 해감하고 세척하여 손으로 ...",
+          "publishedAt": "2023-11-06T10:00:40Z",
+          "views": 1589145,
+          "likes": 6524,
+          "thumbnail": "https://i.ytimg.com/vi/u5QKqpk9pA8/mqdefault.jpg",
+          "url": "https://www.youtube.com/watch?v=u5QKqpk9pA8"
+        },
+        {
+          "videoId": "lh9NlVzSLbE",
+          "title": "경상도식 맛있는 고디탕 (다슬기국) [상어이모]",
+          "channelName": "상어이모",
+          "description": "제고향 의성에서 먹던 고디탕을 한번 끓여봤습니다~ 이고디탕의 특징은 고디의 향이 살아있는맛이며 시원한느낌이 드는 맛이죠 특히 ...",
+          "publishedAt": "2018-06-24T13:22:38Z",
+          "views": 358874,
+          "likes": 4605,
+          "thumbnail": "https://i.ytimg.com/vi/lh9NlVzSLbE/mqdefault.jpg",
+          "url": "https://www.youtube.com/watch?v=lh9NlVzSLbE"
+        },
+        {
+          "videoId": "2GVOqaHbsx8",
+          "title": "다슬기국 끓이는법! 강에서 직접잡은 다슬기 해감부터 만드는과정",
+          "channelName": "아빠는 식당 사장님",
+          "description": "다슬기국끓이는법 #다슬기국 #다슬기 #다슬기해감 어서오세요. 아빠는 식당 사장님 빠사장입니다. 더운 날씨에 잘지내고 계시죠?",
+          "publishedAt": "2021-07-14T08:09:12Z",
+          "views": 94296,
+          "likes": 1608,
+          "thumbnail": "https://i.ytimg.com/vi/2GVOqaHbsx8/mqdefault.jpg",
+          "url": "https://www.youtube.com/watch?v=2GVOqaHbsx8"
+        },
+        {
+          "videoId": "QlXvrxLz-yM",
+          "title": "간에 좋은 다슬기국은 해장으로 최고입니다, 맑은 다슬기국 끓이는방법",
+          "channelName": "헬로우미자씨",
+          "description": "간에 조흔 다슬기를 시원하게 끓여내면 해장국으로 그만입니다 속도 챙기고 맛도 챙기는 맛있는 다슬기국을 준비했습니다 시장에서 ...",
+          "publishedAt": "2024-06-10T07:00:13Z",
+          "views": 83676,
+          "likes": 1161,
+          "thumbnail": "https://i.ytimg.com/vi/QlXvrxLz-yM/mqdefault.jpg",
+          "url": "https://www.youtube.com/watch?v=QlXvrxLz-yM"
+        },
+        {
+          "videoId": "8bLHWAVwgHM",
+          "title": "자연음식 산들바람의 올갱이 해장국",
+          "channelName": "자연음식산들바람",
+          "description": "다슬기는 지역마다 부르는 이름이 다양한데 충청도는 올갱이, 경상도는 고디, 전라도는 대사리 라고 하는데 이것으로 된장국을 많이 ...",
+          "publishedAt": "2023-06-06T17:28:01Z",
+          "views": 83506,
+          "likes": 1657,
+          "thumbnail": "https://i.ytimg.com/vi/8bLHWAVwgHM/mqdefault.jpg",
+          "url": "https://www.youtube.com/watch?v=8bLHWAVwgHM"
+        }
+      ],
+      "videoCount": 5,
+      "topViews": 1589145,
+      "add": false
+    },
+    {
+      "searchQuery": "서울 냉면 맛집",
+      "suggestedLocation": "서울",
+      "category": "Food Tour",
+      "videos": [
+        {
+          "videoId": "uF3Zk94KNfc",
+          "title": "(ENG) 냉면 아저씨의 여름 한정 연례행사 &#39;비빔냉면&#39;🌶 투어 다녀왔습니다ㅣ할명수 ep.191",
+          "channelName": "할명수",
+          "description": "명-하! 매년 이렇게 돌아다니는데 냉면 협회(?)에선 나 모델로 안 써 주나? 00:00 비냉투어 정보   01:03 함흥면옥 위치 : 서울 강남구 ...",
+          "publishedAt": "2024-07-12T08:30:15Z",
+          "views": 1089619,
+          "likes": 13550,
+          "thumbnail": "https://i.ytimg.com/vi/uF3Zk94KNfc/mqdefault.jpg",
+          "url": "https://www.youtube.com/watch?v=uF3Zk94KNfc"
+        },
+        {
+          "videoId": "FuV8TnvwaEU",
+          "title": "서울 평양냉면 맛집 총정리 BEST 3 이거 한편으로 끝!",
+          "channelName": "지뉼랭가이드",
+          "description": "서울 3대 냉면 맛집 하루 만에 다 가봤습니다. 서울 미래유산에 선정 된 50년이 넘는 업력의 국보급 냉면집 세 곳을 소개해 드립니다.",
+          "publishedAt": "2020-09-19T01:00:01Z",
+          "views": 842057,
+          "likes": 6222,
+          "thumbnail": "https://i.ytimg.com/vi/FuV8TnvwaEU/mqdefault.jpg",
+          "url": "https://www.youtube.com/watch?v=FuV8TnvwaEU"
+        },
+        {
+          "videoId": "1O-2wDHB4o8",
+          "title": "서울 최고의 평양냉면 맛집 10곳, 한편으로 끝내기",
+          "channelName": "하이갱스 higaengs",
+          "description": "서울 최고의 평양냉면을 찾아다녔습니다 평양냉면 맛집 베스트 10곳입니다 00:00 영상소개 00:33 서울3대 평양냉면 05:49 서울 명성 ...",
+          "publishedAt": "2021-05-03T01:47:19Z",
+          "views": 677831,
+          "likes": 6551,
+          "thumbnail": "https://i.ytimg.com/vi/1O-2wDHB4o8/mqdefault.jpg",
+          "url": "https://www.youtube.com/watch?v=1O-2wDHB4o8"
+        },
+        {
+          "videoId": "2bsE3l3E3n4",
+          "title": "서울 냉면 베스트 7! 한방에 몰아보기 [맛있겠다 Yummy]",
+          "channelName": "맛있겠다 Yummy",
+          "description": "맛있겠다서울 #맛있겠다냉면 #서울냉면맛집 ▷타임라인 00:00 동묘 낙산냉면 01:52 독산동 진영면옥 05:45 방화동 고성막국수 ...",
+          "publishedAt": "2023-07-19T13:32:41Z",
+          "views": 216957,
+          "likes": 1843,
+          "thumbnail": "https://i.ytimg.com/vi/2bsE3l3E3n4/mqdefault.jpg",
+          "url": "https://www.youtube.com/watch?v=2bsE3l3E3n4"
+        },
+        {
+          "videoId": "OVkrkNoaoJc",
+          "title": "단언컨대 지금까지 먹은 냉면 중에서 1등입니다. 하지만...",
+          "channelName": "술맛여행놈",
+          "description": "반갑습니다. 영상 봐주셔서 대단히 대단히 감사드립니다. -------------------------------------------------------------- 이메일 ...",
+          "publishedAt": "2022-05-09T08:45:01Z",
+          "views": 187237,
+          "likes": 2479,
+          "thumbnail": "https://i.ytimg.com/vi/OVkrkNoaoJc/mqdefault.jpg",
+          "url": "https://www.youtube.com/watch?v=OVkrkNoaoJc"
+        }
+      ],
+      "videoCount": 5,
+      "topViews": 1089619,
+      "add": false
+    },
+    {
+      "searchQuery": "전주 콩나물국밥",
+      "suggestedLocation": "전주",
+      "category": "Food Tour",
+      "videos": [
+        {
+          "videoId": "Eu1z6ZnrLqw",
+          "title": "뼈속까지 시원한 국물과 끝까지 아삭한 콩나물의 비법! Bean Sprout and Rice Soup",
+          "channelName": "이 남자의 cook",
+          "description": "알토란에서 소개된 유명 콩나물국밥집 레시피입니다. 시원한 콩나물국밥을 집에서 만드는 방법 그것도 대밥집처럼 맛있게~ 콩나물을 ...",
+          "publishedAt": "2020-03-01T22:20:32Z",
+          "views": 1082790,
+          "likes": 14244,
+          "thumbnail": "https://i.ytimg.com/vi/Eu1z6ZnrLqw/mqdefault.jpg",
+          "url": "https://www.youtube.com/watch?v=Eu1z6ZnrLqw"
+        },
+        {
+          "videoId": "lvWld10UmHM",
+          "title": "&quot;콩나물 국밥&quot; 가장 맛있게 끓이는 비법 &#39;이걸&#39; 넣었습니다",
+          "channelName": "김대석 셰프TV",
+          "description": "채널에 가입하여 혜택을 누려보세요 https://www.youtube.com/channel/UC1g9JaEVLOFGhH8hpaK--Jg/join 김대석 셰프의 33년 ...",
+          "publishedAt": "2024-10-23T23:00:30Z",
+          "views": 785397,
+          "likes": 18101,
+          "thumbnail": "https://i.ytimg.com/vi/lvWld10UmHM/mqdefault.jpg",
+          "url": "https://www.youtube.com/watch?v=lvWld10UmHM"
+        },
+        {
+          "videoId": "Sh8kjldrKf8",
+          "title": "콩나물 해장국이 먼저냐 수란이 먼저냐? 아무튼 술 숙취엔 이거 두 개 먹고 시작입니다",
+          "channelName": "백종원 PAIK JONG WON",
+          "description": "백종원 #콩나물해장국 #콩나물국밥 이젠 나이 먹어서 콩나물 먹고 키가 자라기는 힘드니까 우리는 주량이나 쑥쑥 키워유 저번 콩나물 ...",
+          "publishedAt": "2022-05-15T07:00:08Z",
+          "views": 766196,
+          "likes": 7116,
+          "thumbnail": "https://i.ytimg.com/vi/Sh8kjldrKf8/mqdefault.jpg",
+          "url": "https://www.youtube.com/watch?v=Sh8kjldrKf8"
+        },
+        {
+          "videoId": "VmELTfftY6U",
+          "title": "속을 확! 풀어주는! 전주식 콩나물 국밥!",
+          "channelName": "핫식당",
+          "description": "먹방 #쿡방 #콩나물국밥 속을 확! 풀어주는! 전주식 콩나물 국밥!",
+          "publishedAt": "2021-10-15T12:15:01Z",
+          "views": 455380,
+          "likes": 5400,
+          "thumbnail": "https://i.ytimg.com/vi/VmELTfftY6U/mqdefault.jpg",
+          "url": "https://www.youtube.com/watch?v=VmELTfftY6U"
+        },
+        {
+          "videoId": "37_OAkYs9BU",
+          "title": "전주 콩나물 국밥 콩나물 해장국 자세한 레시피",
+          "channelName": "아하부장_JOHNCOOK",
+          "description": "아하부장의 목천해물화짬뽕 가맹문의 홈페이지 : https://xn--392b08emxll3lb6a.com/ 아하팀장 01084894640 아하부장의 야심작 ...",
+          "publishedAt": "2020-02-12T10:30:01Z",
+          "views": 444027,
+          "likes": 6432,
+          "thumbnail": "https://i.ytimg.com/vi/37_OAkYs9BU/mqdefault.jpg",
+          "url": "https://www.youtube.com/watch?v=37_OAkYs9BU"
+        }
+      ],
+      "videoCount": 5,
+      "topViews": 1082790,
+      "add": false
+    },
+    {
+      "searchQuery": "춘천 막국수",
+      "suggestedLocation": "춘천",
+      "category": "Food Tour",
+      "videos": [
+        {
+          "videoId": "1SxiNnPoa1o",
+          "title": "강원도2)아무것도 없는 외딴길에 60년 전통 막국수집?🤔 3대 막국수라고 불리는 유포리 수육 감자전 먹방",
+          "channelName": "tzuyang쯔양",
+          "description": "각국어 번역 자막 제작 : 컨텐츠 제작의 마무리는 컨텐츠플라이! 글로벌 진출을 위한 최고의 파트너, CONTENTSFLY에서 제작 ...",
+          "publishedAt": "2025-02-12T12:00:03Z",
+          "views": 1684162,
+          "likes": 42497,
+          "thumbnail": "https://i.ytimg.com/vi/1SxiNnPoa1o/mqdefault.jpg",
+          "url": "https://www.youtube.com/watch?v=1SxiNnPoa1o"
+        },
+        {
+          "videoId": "-Pj7UtcP8wk",
+          "title": "막국수 맛집 어디까지 가봤니? 소문난 강원도 막국수 맛집  내돈 내산 솔직 후기 / 막국수 투어",
+          "channelName": "주간부부 - 캠핑카 & 여행",
+          "description": "정말 오랜만에 인사드립니다 ^^ 정부 시책에 발 맞춰 몇 달간 집에만 있다가 오래전부터 해보고 싶었던 막국수 맛집 투어를 다녀와서 ...",
+          "publishedAt": "2021-02-25T08:00:00Z",
+          "views": 197061,
+          "likes": 1907,
+          "thumbnail": "https://i.ytimg.com/vi/-Pj7UtcP8wk/mqdefault.jpg",
+          "url": "https://www.youtube.com/watch?v=-Pj7UtcP8wk"
+        },
+        {
+          "videoId": "ZtV1JxIKXPs",
+          "title": "[전현무계획2 | 채널S] 모두의 입맛을 반하게 한 춘천 막국수 맛집 | 18화",
+          "channelName": "채널S",
+          "description": "채널S #전현무계획2 #전현무 계획이 없는 것이 계획이다! 이번에도 無계획 노포 맛집 여행은 계속된다! 채널번호: SK B tv 1번 / KT ...",
+          "publishedAt": "2025-02-21T14:30:27Z",
+          "views": 58320,
+          "likes": 477,
+          "thumbnail": "https://i.ytimg.com/vi/ZtV1JxIKXPs/mqdefault.jpg",
+          "url": "https://www.youtube.com/watch?v=ZtV1JxIKXPs"
+        },
+        {
+          "videoId": "-mkmKeWW4ww",
+          "title": "100년전 의병들로 인해 탄생한 춘천막국수",
+          "channelName": "요리왕비룡 Korean Food Cooking",
+          "description": "음식역사 #춘천막국수 #을지사변 #책요남 룡님들 안녕하세룡 ~~~ 책 읽고 요리해주는 남자 요리왕비룡 입니다.! 최근에 업로드 ...",
+          "publishedAt": "2020-01-18T03:00:01Z",
+          "views": 12052,
+          "likes": 258,
+          "thumbnail": "https://i.ytimg.com/vi/-mkmKeWW4ww/mqdefault.jpg",
+          "url": "https://www.youtube.com/watch?v=-mkmKeWW4ww"
+        },
+        {
+          "videoId": "cuX6KaxV-jE",
+          "title": "55년 3대째 진짜 춘천막국수! [맛있겠다 Yummy]",
+          "channelName": "맛있겠다 Yummy",
+          "description": "맛있겠다막국수 #춘천맛국수맛집 #춘천샘밭막국수 #샘밭막국수 *강원 춘천시 신북읍 신샘밭로 644 1층 (강원 춘천시 신북읍 천전리 ...",
+          "publishedAt": "2025-10-09T03:56:44Z",
+          "views": 12045,
+          "likes": 435,
+          "thumbnail": "https://i.ytimg.com/vi/cuX6KaxV-jE/mqdefault.jpg",
+          "url": "https://www.youtube.com/watch?v=cuX6KaxV-jE"
+        }
+      ],
+      "videoCount": 5,
+      "topViews": 1684162,
+      "add": false
+    }
+  ]
+}
