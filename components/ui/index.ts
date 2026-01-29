@@ -44,3 +44,6 @@ export type { VideoCardProps } from "./VideoCard";
 
 export { ProfileHero } from "./ProfileHero";
 export type { ProfileHeroProps } from "./ProfileHero";
+
+export { FeedbackButtons, getVisitorId } from "./FeedbackButtons";
+export type { FeedbackButtonsProps, FeedbackType, VideoStats } from "./FeedbackButtons";

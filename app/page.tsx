@@ -3,7 +3,8 @@
 import { useState, useEffect, useMemo, useRef, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import dynamic from "next/dynamic";
-import { Navbar, Footer, SocialIcons, Button, NotificationBadge } from "@/components/ui";
+import { Navbar, Footer, SocialIcons, Button, NotificationBadge, FeedbackButtons } from "@/components/ui";
+import type { FeedbackType, VideoStats } from "@/components/ui";
 
 
 // Dynamic import for Leaflet map (SSR disabled)
@@ -201,18 +202,29 @@ const extractYouTubeId = (url: string): string | null => {
   return null;
 };
 
-// Helper to get video recommendations from localStorage
-const getVideoRecommendations = (): Record<string, number> => {
-  if (typeof window === "undefined") return {};
-  const stored = localStorage.getItem("videoRecommendations");
-  return stored ? JSON.parse(stored) : {};
+// Helper to get user's votes for a video from localStorage
+const getUserVideoVotes = (videoId: string): FeedbackType[] => {
+  if (typeof window === "undefined") return [];
+  const stored = localStorage.getItem(`videoVotes_${videoId}`);
+  return stored ? JSON.parse(stored) : [];
 };
 
-// Helper to get user's recommended videos
-const getUserRecommendedVideos = (): string[] => {
-  if (typeof window === "undefined") return [];
-  const stored = localStorage.getItem("userRecommendedVideos");
-  return stored ? JSON.parse(stored) : [];
+// Helper to save user's vote for a video to localStorage
+const saveUserVideoVote = (videoId: string, voteType: FeedbackType) => {
+  if (typeof window === "undefined") return;
+  const votes = getUserVideoVotes(videoId);
+  if (!votes.includes(voteType)) {
+    votes.push(voteType);
+    localStorage.setItem(`videoVotes_${videoId}`, JSON.stringify(votes));
+  }
+};
+
+// Helper to remove user's vote for a video from localStorage
+const removeUserVideoVote = (videoId: string, voteType: FeedbackType) => {
+  if (typeof window === "undefined") return;
+  const votes = getUserVideoVotes(videoId);
+  const newVotes = votes.filter((v) => v !== voteType);
+  localStorage.setItem(`videoVotes_${videoId}`, JSON.stringify(newVotes));
 };
 
 function HomePageContent() {
@@ -230,8 +242,9 @@ function HomePageContent() {
   const [videoUrl, setVideoUrl] = useState("");
   const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
   const [showSubmitForm, setShowSubmitForm] = useState(false);
-  const [videoRecommendations, setVideoRecommendations] = useState<Record<string, number>>({});
-  const [userRecommendedVideos, setUserRecommendedVideos] = useState<string[]>([]);
+  // Video feedback system
+  const [videoStats, setVideoStats] = useState<VideoStats>({ helpfulCount: 0, wrongInfoCount: 0, lowQualityCount: 0 });
+  const [userVotes, setUserVotes] = useState<FeedbackType[]>([]);
   const [currentPlayingVideoId, setCurrentPlayingVideoId] = useState<string | null>(null);
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [shareCopied, setShareCopied] = useState(false);
@@ -304,8 +317,6 @@ function HomePageContent() {
     fetchData();
     setVotes(getVotes());
     setUserVoted(getUserVoted());
-    setVideoRecommendations(getVideoRecommendations());
-    setUserRecommendedVideos(getUserRecommendedVideos());
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -350,6 +361,35 @@ function HomePageContent() {
       window.history.replaceState({}, "", url.toString());
     }
   }, [selectedVideo, communityVideos]);
+
+  // Fetch video stats and user votes when currentPlayingVideoId changes
+  useEffect(() => {
+    if (!currentPlayingVideoId) {
+      setVideoStats({ helpfulCount: 0, wrongInfoCount: 0, lowQualityCount: 0 });
+      setUserVotes([]);
+      return;
+    }
+
+    // Load user votes from localStorage
+    setUserVotes(getUserVideoVotes(currentPlayingVideoId));
+
+    // Fetch stats from API
+    async function fetchStats() {
+      try {
+        const response = await fetch(`/api/video/stats?videoId=${currentPlayingVideoId}`);
+        const data = await response.json();
+        setVideoStats({
+          helpfulCount: data.helpfulCount || 0,
+          wrongInfoCount: data.wrongInfoCount || 0,
+          lowQualityCount: data.lowQualityCount || 0,
+        });
+      } catch (error) {
+        console.error("Failed to fetch video stats:", error);
+      }
+    }
+
+    fetchStats();
+  }, [currentPlayingVideoId]);
 
   // Handle community video submission
   const handleVideoSubmit = () => {
@@ -400,21 +440,17 @@ function HomePageContent() {
     }
   };
 
-  // Handle recommend for a community video
-  const handleRecommend = (youtubeId: string) => {
-    if (userRecommendedVideos.includes(youtubeId)) return; // Already recommended
-
-    const newRecommendations = {
-      ...videoRecommendations,
-      [youtubeId]: (videoRecommendations[youtubeId] || 0) + 1
-    };
-    const newUserRecommended = [...userRecommendedVideos, youtubeId];
-
-    setVideoRecommendations(newRecommendations);
-    setUserRecommendedVideos(newUserRecommended);
-
-    localStorage.setItem("videoRecommendations", JSON.stringify(newRecommendations));
-    localStorage.setItem("userRecommendedVideos", JSON.stringify(newUserRecommended));
+  // Handle feedback vote for the current video
+  const handleFeedbackVote = (voteType: FeedbackType, newStats: VideoStats, isCancel: boolean) => {
+    if (!currentPlayingVideoId) return;
+    setVideoStats(newStats);
+    if (isCancel) {
+      setUserVotes((prev) => prev.filter((v) => v !== voteType));
+      removeUserVideoVote(currentPlayingVideoId, voteType);
+    } else {
+      setUserVotes((prev) => [...prev, voteType]);
+      saveUserVideoVote(currentPlayingVideoId, voteType);
+    }
   };
 
   // Handle vote/request for a location
@@ -771,6 +807,18 @@ function HomePageContent() {
                 />
               </div>
             )}
+            {/* Feedback Buttons - Under Video Player */}
+            {currentPlayingVideoId && (
+              <div className="px-4 pt-3">
+                <FeedbackButtons
+                  videoId={currentPlayingVideoId}
+                  siteId={selectedVideo.id}
+                  stats={videoStats}
+                  userVotes={userVotes}
+                  onVote={handleFeedbackVote}
+                />
+              </div>
+            )}
             <div className="p-4 overflow-y-auto flex-1">
               <div className="flex items-start justify-between gap-4">
                 <div>
@@ -984,8 +1032,6 @@ function HomePageContent() {
                       <div className="space-y-2">
                         {allVideos.map((video, index) => {
                           const isPlaying = currentPlayingVideoId === video.youtubeId;
-                          const recommendCount = videoRecommendations[video.youtubeId] || 0;
-                          const hasRecommended = userRecommendedVideos.includes(video.youtubeId);
 
                           return (
                             <button
@@ -1049,32 +1095,6 @@ function HomePageContent() {
                                   )}
                                 </div>
                               </div>
-
-                              {/* Recommend Button - only for community videos */}
-                              {!video.isOriginal && (
-                                <div
-                                  onClick={(e) => {
-                                    e.stopPropagation();
-                                    handleRecommend(video.youtubeId);
-                                  }}
-                                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium transition-all ${
-                                    hasRecommended
-                                      ? "bg-[--color-green]/20 text-[--color-green] cursor-default"
-                                      : "bg-[--color-bg-secondary] hover:bg-[--color-brand] text-[--color-text-secondary] hover:text-white cursor-pointer"
-                                  }`}
-                                >
-                                  {hasRecommended ? (
-                                    <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
-                                      <path d="M14 9V5a3 3 0 00-3-3l-4 9v11h11.28a2 2 0 002-1.7l1.38-9a2 2 0 00-2-2.3H14zM7 22H4a2 2 0 01-2-2v-7a2 2 0 012-2h3" />
-                                    </svg>
-                                  ) : (
-                                    <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 9V5a3 3 0 00-3-3l-4 9v11h11.28a2 2 0 002-1.7l1.38-9a2 2 0 00-2-2.3H14zM7 22H4a2 2 0 01-2-2v-7a2 2 0 012-2h3" />
-                                    </svg>
-                                  )}
-                                  {recommendCount > 0 ? recommendCount : "Recommend"}
-                                </div>
-                              )}
                             </button>
                           );
                         })}
