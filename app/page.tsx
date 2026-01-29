@@ -73,6 +73,8 @@ const categoryColors: Record<string, string> = {
   "Family Holidays": "#eb5757",
   "Water Activities": "#7170ff",
   "Bush Camping": "#8a8f98",
+  "Farm Stay": "#8B4513", // Saddle brown - rustic farm color
+  "Winery": "#722F37", // Wine red
 };
 
 const navLinks = [

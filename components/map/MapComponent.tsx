@@ -178,6 +178,26 @@ const categoryColors: Record<string, string> = {
   "Family Holidays": "#eb5757",
   "Water Activities": "#7170ff",
   "Bush Camping": "#8a8f98",
+  "Farm Stay": "#8B4513",
+  "Winery": "#722F37",
+  // Korea categories
+  Festival: "#ff6b9d",
+  "Food Tour": "#ff8c42",
+  Mountain: "#4cb782",
+  "National Park": "#2d6a4f",
+  Nature: "#7170ff",
+  Fishing: "#219ebc",
+  Beach: "#4ea7fc",
+  Valley: "#5e6ad2",
+  Camping: "#2ecc71",
+  Urban: "#8a8f98",
+  Temple: "#f2c94c",
+  Glamping: "#8ecae6",
+  Cultural: "#fc7840",
+  Garden: "#27ae60",
+  Trail: "#9b59b6",
+  Waterfall: "#3498db",
+  "Scenic Drive": "#fca311",
 };
 
 export interface VideoLocation {
