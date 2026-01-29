@@ -276,6 +276,7 @@ export default function MapComponent({
   externalPopupTrigger
 }: MapComponentProps) {
   const [visibleIndices, setVisibleIndices] = useState<Set<number>>(new Set());
+  const [isMarkersLoaded, setIsMarkersLoaded] = useState(false);
   const [routeData, setRouteData] = useState<{
     coordinates: [number, number][];
     duration: number;
@@ -285,18 +286,19 @@ export default function MapComponent({
   const [isLoadingRoute, setIsLoadingRoute] = useState(false);
   const [activePopup, setActivePopup] = useState<VideoLocation | null>(null);
   const mapRef = useRef<L.Map | null>(null);
-
-  // Sync external popup control with internal state
-  useEffect(() => {
-    if (externalActivePopup !== undefined) {
-      setActivePopup(externalActivePopup);
-    }
-  }, [externalActivePopup, externalPopupTrigger]);
+  const previousLocationsKeyRef = useRef<string>("");
 
   // Create a stable key from location IDs to detect actual filter changes
   const locationsKey = useMemo(() => {
     return locations.map(l => l.id).sort().join(',');
   }, [locations]);
+
+  // Sync external popup control with internal state - only when markers are loaded
+  useEffect(() => {
+    if (externalActivePopup !== undefined && isMarkersLoaded) {
+      setActivePopup(externalActivePopup);
+    }
+  }, [externalActivePopup, externalPopupTrigger, isMarkersLoaded]);
 
   // Generate random order for staggered animation
   const randomOrder = useMemo(() => {
@@ -307,12 +309,27 @@ export default function MapComponent({
       [indices[i], indices[j]] = [indices[j], indices[i]];
     }
     return indices;
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [locationsKey]);
 
-  // Stagger marker appearance when locations actually change (filter applied)
+  // Stagger marker appearance only when locations actually change (filter applied)
   useEffect(() => {
-    if (locations.length === 0) return;
+    if (locations.length === 0) {
+      setIsMarkersLoaded(true);
+      return;
+    }
 
+    // Skip animation if locations haven't actually changed
+    if (previousLocationsKeyRef.current === locationsKey) {
+      // Locations are the same, just ensure all are visible
+      setVisibleIndices(new Set(locations.map((_, i) => i)));
+      setIsMarkersLoaded(true);
+      return;
+    }
+
+    // Locations changed - run staggered animation
+    previousLocationsKeyRef.current = locationsKey;
+    setIsMarkersLoaded(false);
     setVisibleIndices(new Set());
     const timers: NodeJS.Timeout[] = [];
 
@@ -320,13 +337,23 @@ export default function MapComponent({
       if (originalIndex < locations.length) {
         const timer = setTimeout(() => {
           setVisibleIndices((prev) => new Set([...prev, originalIndex]));
+          // Mark as loaded when last marker appears
+          if (orderIndex === locations.length - 1) {
+            setIsMarkersLoaded(true);
+          }
         }, orderIndex * 30); // 30ms gap between each marker
         timers.push(timer);
       }
     });
 
+    // Safety fallback - mark as loaded after animation should be done
+    const safetyTimer = setTimeout(() => {
+      setIsMarkersLoaded(true);
+    }, locations.length * 30 + 100);
+    timers.push(safetyTimer);
+
     return () => timers.forEach(clearTimeout);
-  }, [locationsKey, randomOrder]);
+  }, [locationsKey, randomOrder, locations.length]);
 
   // Handle show route button click
   const handleShowRoute = useCallback(async (video: VideoLocation) => {
@@ -353,10 +380,11 @@ export default function MapComponent({
     setIsLoadingRoute(false);
   }, []);
 
-  // Handle marker click - show popup with 3 options
+  // Handle marker click - show popup with 3 options (only when markers are loaded)
   const handleMarkerClick = useCallback((video: VideoLocation) => {
+    if (!isMarkersLoaded) return;
     setActivePopup(video);
-  }, []);
+  }, [isMarkersLoaded]);
 
   // Close popup
   const handleClosePopup = useCallback(() => {
