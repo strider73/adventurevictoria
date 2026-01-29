@@ -8729,11 +8729,76 @@
           "source": "youtube"
         }
       ]
+    },
+    {
+      "campingSiteId": "apostle-whey-cheese",
+      "videos": [
+        {
+          "videoId": "d4JAGhF4-mg",
+          "title": "Dairy Farm Life Journal - Apostle Whey Cheese",
+          "channelName": "Apostle Whey Cheese",
+          "source": "youtube"
+        },
+        {
+          "videoId": "lHQJxmjfPKw",
+          "title": "Dairy Farm Life Journal Episode 2",
+          "channelName": "Apostle Whey Cheese",
+          "source": "youtube"
+        },
+        {
+          "videoId": "kARAreovt-s",
+          "title": "Dairy Farm Life Journal Episode 3",
+          "channelName": "Apostle Whey Cheese",
+          "source": "youtube"
+        },
+        {
+          "videoId": "YbXzvsAmoyo",
+          "title": "Dairy Farm Life Journal Episode 4",
+          "channelName": "Apostle Whey Cheese",
+          "source": "youtube"
+        },
+        {
+          "videoId": "lrBxeZzjCOs",
+          "title": "Dairy Farm Life Journal Episode 5",
+          "channelName": "Apostle Whey Cheese",
+          "source": "youtube"
+        },
+        {
+          "videoId": "NptcjtvONNg",
+          "title": "Dairy Farm Life Journal Episode 6",
+          "channelName": "Apostle Whey Cheese",
+          "source": "youtube"
+        },
+        {
+          "videoId": "SikbpqBqvOE",
+          "title": "Dairy Farm Life Journal Episode 7",
+          "channelName": "Apostle Whey Cheese",
+          "source": "youtube"
+        },
+        {
+          "videoId": "7zbAiR-HAa4",
+          "title": "Dairy Farm Life Journal Episode 8",
+          "channelName": "Apostle Whey Cheese",
+          "source": "youtube"
+        },
+        {
+          "videoId": "RgZPueFNzlA",
+          "title": "Dairy Farm Life Journal Episode 9",
+          "channelName": "Apostle Whey Cheese",
+          "source": "youtube"
+        },
+        {
+          "videoId": "Jjmx4K9EKoA",
+          "title": "Dairy Farm Life Journal Episode 10",
+          "channelName": "Apostle Whey Cheese",
+          "source": "youtube"
+        }
+      ]
     }
   ],
   "metadata": {
     "description": "Community-submitted and discovered YouTube videos for camping locations in Victoria",
-    "totalLocations": 198,
+    "totalLocations": 199,
     "source": "YouTube search results",
     "lastUpdated": "2026-01-24",
     "note": "Video IDs with descriptive names (e.g., 'sealers-cove-hike') are placeholder IDs. Real YouTube video IDs are 11 characters."

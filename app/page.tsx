@@ -76,6 +76,7 @@ const categoryColors: Record<string, string> = {
   "Bush Camping": "#8a8f98",
   "Farm Stay": "#8B4513", // Saddle brown - rustic farm color
   "Winery": "#722F37", // Wine red
+  "Cheese Farm": "#F4A460", // Sandy brown - cheese/dairy color
 };
 
 const navLinks = [

@@ -2510,10 +2510,19 @@
       "lng": 146.4167,
       "category": "Winery",
       "description": "Wine experience in King Valley."
+    },
+    {
+      "id": "apostle-whey-cheese",
+      "title": "Apostle Whey Cheese",
+      "location": "Cooriemungle, Great Ocean Road",
+      "lat": -38.54,
+      "lng": 143.08,
+      "category": "Cheese Farm",
+      "description": "Award-winning single origin dairy farm offering cheese tastings, farm tours, gelato and milkshakes. Watch cow milking at 4pm daily."
     }
   ],
   "metadata": {
-    "totalSites": 200,
+    "totalSites": 201,
     "categories": [
       "National Parks",
       "State Forests",
@@ -2522,7 +2531,8 @@
       "Holiday Parks",
       "Family Holidays",
       "Water Activities",
-      "Bush Camping"
+      "Bush Camping",
+      "Cheese Farm"
     ],
     "source": "Parks Victoria, Hipcamp, Visit Victoria, Camps Australia Wide, East Gippsland Shire",
     "lastUpdated": "2026-01-24"

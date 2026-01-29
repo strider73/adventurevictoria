@@ -180,6 +180,7 @@ const categoryColors: Record<string, string> = {
   "Bush Camping": "#8a8f98",
   "Farm Stay": "#8B4513",
   "Winery": "#722F37",
+  "Cheese Farm": "#F4A460",
   // Korea categories
   Festival: "#ff6b9d",
   "Food Tour": "#ff8c42",
@@ -327,6 +328,10 @@ export default function MapComponent({
       return;
     }
 
+    // Locations changed (filter applied) - close any open popup
+    setActivePopup(null);
+    setRouteData(null);
+
     // Locations changed - run staggered animation
     previousLocationsKeyRef.current = locationsKey;
     setIsMarkersLoaded(false);
@@ -466,6 +471,7 @@ export default function MapComponent({
       {/* Action popup - appears on click */}
       {activePopup && (
         <Popup
+          key={`popup-${activePopup.id}`}
           position={[activePopup.lat, activePopup.lng]}
           closeButton={false}
           closeOnClick={false}
