@@ -58,3 +58,8 @@ next-env.d.ts
 
 # Kombai wireframe resources (originals copied to public/wireframes)
 .kombai/
+
+# Data files (seeded to MongoDB, not part of app)
+/data/
+/planmode/
+/scripts/*.py
