@@ -7,6 +7,33 @@ import type { FeedbackType, VideoStats } from "@/components/ui";
 import dynamic from "next/dynamic";
 import type { VideoLocation } from "@/components/map/MapComponent";
 
+// YouTube IFrame API types
+declare global {
+  interface Window {
+    YT: {
+      Player: new (
+        elementId: string,
+        options: {
+          videoId: string;
+          playerVars?: { autoplay?: number; start?: number };
+          events?: {
+            onReady?: (event: { target: YTPlayer }) => void;
+            onStateChange?: (event: { data: number }) => void;
+          };
+        }
+      ) => YTPlayer;
+    };
+    onYouTubeIframeAPIReady?: () => void;
+  }
+}
+
+interface YTPlayer {
+  getCurrentTime(): number;
+  destroy(): void;
+  playVideo(): void;
+  pauseVideo(): void;
+}
+
 // API response type for Korea videos (from /api/korea/videos)
 interface KoreaVideoResponse {
   videoId: string;
@@ -341,11 +368,38 @@ function MapKoreaPageContent() {
   const [shareCopied, setShareCopied] = useState(false);
   const [mapPopupLocation, setMapPopupLocation] = useState<VideoLocation | null>(null);
   const [popupTrigger, setPopupTrigger] = useState(0); // Counter to force popup reopen
+  // YouTube Player API state
+  const [playerRef, setPlayerRef] = useState<YTPlayer | null>(null);
+  const [initialVideoId, setInitialVideoId] = useState<string | null>(null);
+  const [initialStartTime, setInitialStartTime] = useState<number>(0);
+  const [ytApiReady, setYtApiReady] = useState(false);
+  const playerContainerRef = useRef<HTMLDivElement>(null);
 
   // Toggle fullscreen mode
   const toggleFullscreen = () => {
     setIsFullscreen(!isFullscreen);
   };
+
+  // Load YouTube IFrame API
+  useEffect(() => {
+    if (window.YT && window.YT.Player) {
+      setYtApiReady(true);
+      return;
+    }
+
+    // Define the callback before loading the script
+    window.onYouTubeIframeAPIReady = () => {
+      setYtApiReady(true);
+    };
+
+    // Load YouTube IFrame API script
+    const existingScript = document.querySelector('script[src="https://www.youtube.com/iframe_api"]');
+    if (!existingScript) {
+      const tag = document.createElement("script");
+      tag.src = "https://www.youtube.com/iframe_api";
+      document.head.appendChild(tag);
+    }
+  }, []);
 
   // Fetch data from API routes on mount
   useEffect(() => {
@@ -382,10 +436,22 @@ function MapKoreaPageContent() {
 
         // Check for site query parameter to auto-open popup
         const siteId = searchParams.get("site");
+        const videoId = searchParams.get("video");
+        const startTime = parseInt(searchParams.get("t") || "0", 10);
+
         if (siteId) {
           const targetLocation = transformedLocations.find(loc => loc.id === siteId);
           if (targetLocation) {
             setSelectedLocation(targetLocation);
+            // If video ID is provided in URL, set it as the initial and current video
+            if (videoId) {
+              setInitialVideoId(videoId);
+              setCurrentPlayingVideoId(videoId);
+            }
+            // If start time is provided, set it
+            if (startTime > 0) {
+              setInitialStartTime(startTime);
+            }
           }
         }
       } catch (error) {
@@ -416,30 +482,125 @@ function MapKoreaPageContent() {
     setSubmitStatus("idle");
     setShowSubmitForm(false);
     setShareCopied(false);
-    // Set the current playing video: original video first
-    if (selectedLocation?.youtubeId) {
-      setCurrentPlayingVideoId(selectedLocation.youtubeId);
-    } else if (selectedLocation) {
-      // No original video, check for community videos
-      const locationCommunityVideos = communityVideos[selectedLocation.id] || [];
-      setCurrentPlayingVideoId(locationCommunityVideos[0]?.youtubeId || null);
+
+    // Destroy existing player when location changes
+    if (playerRef) {
+      try {
+        playerRef.destroy();
+      } catch {
+        // Player may already be destroyed
+      }
+      setPlayerRef(null);
+    }
+
+    // Set the current playing video: use initial video if from URL, otherwise original video first
+    if (selectedLocation) {
+      if (initialVideoId) {
+        // Video ID was provided in URL - use it
+        setCurrentPlayingVideoId(initialVideoId);
+      } else if (selectedLocation.youtubeId) {
+        setCurrentPlayingVideoId(selectedLocation.youtubeId);
+      } else {
+        // No original video, check for community videos
+        const locationCommunityVideos = communityVideos[selectedLocation.id] || [];
+        setCurrentPlayingVideoId(locationCommunityVideos[0]?.youtubeId || null);
+      }
     } else {
       setCurrentPlayingVideoId(null);
+      // Reset initial values when modal closes
+      setInitialVideoId(null);
+      setInitialStartTime(0);
     }
 
     // Update URL with site parameter for sharing
     if (selectedLocation) {
       const url = new URL(window.location.href);
       url.searchParams.set("site", selectedLocation.id);
+      // Remove video and time params from URL when modal opens fresh (they'll be added on share)
+      url.searchParams.delete("video");
+      url.searchParams.delete("t");
       window.history.replaceState({}, "", url.toString());
       // Clear map popup when modal opens
       setMapPopupLocation(null);
     } else {
       const url = new URL(window.location.href);
       url.searchParams.delete("site");
+      url.searchParams.delete("video");
+      url.searchParams.delete("t");
       window.history.replaceState({}, "", url.toString());
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedLocation, communityVideos]);
+
+  // Initialize YouTube player when modal opens and video changes
+  useEffect(() => {
+    // Only initialize if we have a selected location, video ID, and the API is ready
+    if (!selectedLocation || !currentPlayingVideoId || !ytApiReady) {
+      return;
+    }
+
+    // Wait for the container to be in the DOM
+    const initPlayer = () => {
+      const container = document.getElementById("youtube-player-container");
+      if (!container) {
+        // Container not ready yet, try again
+        setTimeout(initPlayer, 100);
+        return;
+      }
+
+      // Destroy existing player if any
+      if (playerRef) {
+        try {
+          playerRef.destroy();
+        } catch {
+          // Player may already be destroyed
+        }
+      }
+
+      // Clear the container and create a new div for the player
+      container.innerHTML = '<div id="youtube-player"></div>';
+
+      // Determine start time: use initial start time only for the initial video from URL
+      const startTime = (currentPlayingVideoId === initialVideoId && initialStartTime > 0)
+        ? initialStartTime
+        : 0;
+
+      try {
+        const player = new window.YT.Player("youtube-player", {
+          videoId: currentPlayingVideoId,
+          playerVars: {
+            autoplay: 1,
+            start: startTime,
+          },
+          events: {
+            onReady: (event) => {
+              setPlayerRef(event.target);
+              // Clear initial start time after first use
+              if (startTime > 0) {
+                setInitialStartTime(0);
+              }
+            },
+          },
+        });
+      } catch (error) {
+        console.error("Failed to initialize YouTube player:", error);
+      }
+    };
+
+    initPlayer();
+
+    // Cleanup on unmount
+    return () => {
+      if (playerRef) {
+        try {
+          playerRef.destroy();
+        } catch {
+          // Player may already be destroyed
+        }
+      }
+    };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [selectedLocation, currentPlayingVideoId, ytApiReady]);
 
   // Fetch video stats and user votes when currentPlayingVideoId changes
   useEffect(() => {
@@ -936,32 +1097,19 @@ function MapKoreaPageContent() {
             onClick={(e) => e.stopPropagation()}
           >
             {/* Video Player */}
-            <div className="aspect-video flex-shrink-0 m-4 mb-0 rounded-xl overflow-hidden">
-              <iframe
-                key={currentPlayingVideoId}
-                src={`https://www.youtube.com/embed/${currentPlayingVideoId || selectedLocation.youtubeId}?autoplay=1`}
-                title={selectedLocation.title}
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowFullScreen
+            <div className="aspect-video flex-shrink-0 m-4 mb-0 rounded-xl overflow-hidden bg-black">
+              <div
+                id="youtube-player-container"
+                ref={playerContainerRef}
                 className="w-full h-full"
-              />
+              >
+                <div id="youtube-player" className="w-full h-full" />
+              </div>
             </div>
 
-            {/* Feedback Buttons - Under Video Player */}
-            {currentPlayingVideoId && (
-              <div className="px-4 pt-3">
-                <FeedbackButtons
-                  videoId={currentPlayingVideoId}
-                  siteId={selectedLocation.id}
-                  stats={videoStats}
-                  userVotes={userVotes}
-                  onVote={handleFeedbackVote}
-                />
-              </div>
-            )}
-
-            {/* Video Info */}
-            <div className="p-4 overflow-y-auto flex-1">
+            {/* Video Info - Fixed Section (doesn't scroll) */}
+            <div className="px-4 pt-3 flex-shrink-0">
+              {/* Title and Close Button */}
               <div className="flex items-start justify-between gap-4">
                 <div>
                   <h3 className="text-lg font-semibold text-[--color-text-primary]">
@@ -970,47 +1118,14 @@ function MapKoreaPageContent() {
                   <p className="text-[--color-text-tertiary] text-sm mt-1">
                     {selectedLocation.location}
                   </p>
-                  <div className="flex items-center gap-2 mt-2">
-                    <span
-                      className="px-3 py-1 rounded-full text-xs font-medium text-white"
-                      style={{ backgroundColor: categoryColors[selectedLocation.category] }}
-                    >
-                      {selectedLocation.category}
-                    </span>
-                    <a
-                      href={`https://www.youtube.com/watch?v=${selectedLocation.youtubeId}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-[#FF0000] hover:bg-[#CC0000] text-white transition-colors"
-                    >
-                      <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
-                      </svg>
-                      Watch on YouTube
-                    </a>
-                    <button
-                      onClick={() => {
-                        const shareUrl = `${window.location.origin}/map-korea?site=${selectedLocation.id}`;
-                        navigator.clipboard.writeText(shareUrl);
-                        setShareCopied(true);
-                        setTimeout(() => setShareCopied(false), 2000);
-                      }}
-                      className="flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-[--color-brand] hover:bg-[--color-brand-hover] text-white transition-colors"
-                    >
-                      <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
-                      </svg>
-                      {shareCopied ? "Link Copied!" : "Share Page"}
-                    </button>
-                  </div>
-                  <div className="flex items-center gap-4 text-sm text-[--color-text-tertiary] mt-2">
+                  <div className="flex items-center gap-4 text-sm text-[--color-text-tertiary] mt-1">
                     <span>{formatViews(selectedLocation.views || 0)} views</span>
                     {selectedLocation.duration && <span>{selectedLocation.duration}</span>}
                   </div>
                 </div>
                 <button
                   onClick={closeModal}
-                  className="p-2 rounded-lg bg-[--color-bg-tertiary] hover:bg-[--color-border-primary] transition-colors"
+                  className="p-2 rounded-lg bg-[--color-bg-tertiary] hover:bg-[--color-border-primary] transition-colors flex-shrink-0"
                 >
                   <svg className="w-5 h-5 text-[--color-text-secondary]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -1018,6 +1133,59 @@ function MapKoreaPageContent() {
                 </button>
               </div>
 
+              {/* All Action Buttons in One Row */}
+              <div className="flex items-center gap-2 mt-3 flex-wrap">
+                <span
+                  className="px-3 py-1 rounded-full text-xs font-medium text-white"
+                  style={{ backgroundColor: categoryColors[selectedLocation.category] }}
+                >
+                  {selectedLocation.category}
+                </span>
+                <a
+                  href={`https://www.youtube.com/watch?v=${selectedLocation.youtubeId}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-[#FF0000] hover:bg-[#CC0000] text-white transition-colors"
+                >
+                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+                  </svg>
+                  YouTube
+                </a>
+                <button
+                  onClick={() => {
+                    // Get current playback time from YouTube player
+                    const currentTime = playerRef?.getCurrentTime?.() || 0;
+                    // Build share URL with video ID and timestamp
+                    const videoParam = currentPlayingVideoId ? `&video=${currentPlayingVideoId}` : "";
+                    const timeParam = currentTime > 0 ? `&t=${Math.floor(currentTime)}` : "";
+                    const shareUrl = `${window.location.origin}/map-korea?site=${selectedLocation.id}${videoParam}${timeParam}`;
+                    navigator.clipboard.writeText(shareUrl);
+                    setShareCopied(true);
+                    setTimeout(() => setShareCopied(false), 2000);
+                  }}
+                  className="flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-[--color-brand] hover:bg-[--color-brand-hover] text-white transition-colors"
+                >
+                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
+                  </svg>
+                  {shareCopied ? "Copied!" : "Share"}
+                </button>
+                {/* Feedback Buttons inline */}
+                {currentPlayingVideoId && (
+                  <FeedbackButtons
+                    videoId={currentPlayingVideoId}
+                    siteId={selectedLocation.id}
+                    stats={videoStats}
+                    userVotes={userVotes}
+                    onVote={handleFeedbackVote}
+                  />
+                )}
+              </div>
+            </div>
+
+            {/* Scrollable Community Videos Section */}
+            <div className="px-4 pb-4 overflow-y-auto flex-1">
               {/* Community Videos Section */}
               <div className="mt-6 pt-6 border-t border-[--color-border-primary]">
                 <div className="flex items-center justify-between mb-4">
