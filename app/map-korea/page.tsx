@@ -1115,7 +1115,7 @@ function MapKoreaPageContent() {
             {/* Left Side - Video Player and Info */}
             <div className="flex flex-col lg:flex-1 lg:min-w-0">
               {/* Video Player */}
-              <div className="aspect-video flex-shrink-0 w-full overflow-hidden bg-black">
+              <div className="aspect-video flex-shrink-0 w-full overflow-hidden bg-black rounded-t-2xl lg:rounded-tr-none">
                 <div
                   id="youtube-player-container"
                   ref={playerContainerRef}
@@ -1389,7 +1389,7 @@ function MapKoreaPageContent() {
             </div>
 
             {/* Right Side - Desktop Only: Video List Sidebar */}
-            <div className="hidden lg:flex lg:flex-col lg:w-80 lg:border-l lg:border-[--color-border-primary] lg:bg-[--color-bg-primary]">
+            <div className="hidden lg:flex lg:flex-col lg:w-80 lg:bg-[--color-bg-primary]">
               {/* Sidebar Header */}
               <div className="flex items-center justify-between px-4 py-3 border-b border-[--color-border-primary]">
                 <div>
