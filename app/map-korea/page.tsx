@@ -15,6 +15,8 @@ declare global {
         elementId: string,
         options: {
           videoId: string;
+          width?: string | number;
+          height?: string | number;
           playerVars?: { autoplay?: number; start?: number };
           events?: {
             onReady?: (event: { target: YTPlayer }) => void;
