@@ -1052,7 +1052,7 @@ function HomePageContent() {
             </div>
 
             {/* Scrollable Content Section */}
-            <div className="px-4 pb-4 overflow-y-auto flex-1">
+            <div className="px-4 pb-4 overflow-y-auto flex-1 min-h-[200px]">
               {!selectedVideo.hasVideo && (
                 <div className="mt-4">
                   <button
@@ -1210,6 +1210,12 @@ function HomePageContent() {
 
                     return (
                       <div className="space-y-2">
+                        {/* Scroll indicator for many videos */}
+                        {allVideos.length > 3 && (
+                          <p className="text-xs text-[--color-text-tertiary] text-center py-1">
+                            ↓ {allVideos.length} videos available - scroll to see all
+                          </p>
+                        )}
                         {allVideos.map((video, index) => {
                           const isPlaying = currentPlayingVideoId === video.youtubeId;
 
