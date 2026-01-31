@@ -1107,40 +1107,306 @@ function MapKoreaPageContent() {
           className="fixed inset-0 bg-black/80 z-[9999] flex items-center justify-center p-4"
           onClick={closeModal}
         >
+          {/* Modal Container - Responsive: column on mobile, row on desktop */}
           <div
-            className="bg-[--color-bg-secondary] rounded-2xl overflow-hidden max-w-4xl w-full max-h-[90vh] flex flex-col"
+            className="bg-[--color-bg-secondary] rounded-2xl overflow-hidden w-full max-h-[90vh] flex flex-col max-w-4xl lg:max-w-6xl lg:flex-row lg:h-[85vh]"
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Video Player */}
-            <div className="aspect-video flex-shrink-0 w-full overflow-hidden bg-black">
-              <div
-                id="youtube-player-container"
-                ref={playerContainerRef}
-                className="w-full h-full"
-              >
-                <div id="youtube-player" className="w-full h-full" />
+            {/* Left Side - Video Player and Info */}
+            <div className="flex flex-col lg:flex-1 lg:min-w-0">
+              {/* Video Player */}
+              <div className="aspect-video flex-shrink-0 w-full overflow-hidden bg-black">
+                <div
+                  id="youtube-player-container"
+                  ref={playerContainerRef}
+                  className="w-full h-full"
+                >
+                  <div id="youtube-player" className="w-full h-full" />
+                </div>
+              </div>
+
+              {/* Video Info - Fixed Section (doesn't scroll) */}
+              <div className="px-4 pt-3 pb-4 flex-shrink-0">
+                {/* Title and Close Button */}
+                <div className="flex items-start justify-between gap-4">
+                  <div>
+                    <h3 className="text-lg font-semibold text-[--color-text-primary]">
+                      {selectedLocation.title}
+                    </h3>
+                    <p className="text-[--color-text-tertiary] text-sm mt-1">
+                      {selectedLocation.location}
+                    </p>
+                    <div className="flex items-center gap-4 text-sm text-[--color-text-tertiary] mt-1">
+                      <span>{formatViews(selectedLocation.views || 0)} views</span>
+                      {selectedLocation.duration && <span>{selectedLocation.duration}</span>}
+                    </div>
+                  </div>
+                  {/* Close button - visible on mobile, hidden on desktop (desktop has sidebar close) */}
+                  <button
+                    onClick={closeModal}
+                    className="p-2 rounded-lg bg-[--color-bg-tertiary] hover:bg-[--color-border-primary] transition-colors flex-shrink-0 lg:hidden"
+                  >
+                    <svg className="w-5 h-5 text-[--color-text-secondary]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                  </button>
+                </div>
+
+                {/* All Action Buttons in One Row */}
+                <div className="flex items-center gap-2 mt-3 flex-wrap">
+                  <span
+                    className="px-3 py-1 rounded-full text-xs font-medium text-white"
+                    style={{ backgroundColor: categoryColors[selectedLocation.category] }}
+                  >
+                    {selectedLocation.category}
+                  </span>
+                  <a
+                    href={`https://www.youtube.com/watch?v=${selectedLocation.youtubeId}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-[#FF0000] hover:bg-[#CC0000] text-white transition-colors"
+                  >
+                    <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+                    </svg>
+                    YouTube
+                  </a>
+                  <button
+                    onClick={() => {
+                      // Get current playback time from YouTube player
+                      const currentTime = playerRef?.getCurrentTime?.() || 0;
+                      // Build share URL with video ID and timestamp
+                      const videoParam = currentPlayingVideoId ? `&video=${currentPlayingVideoId}` : "";
+                      const timeParam = currentTime > 0 ? `&t=${Math.floor(currentTime)}` : "";
+                      const shareUrl = `${window.location.origin}/map-korea?site=${selectedLocation.id}${videoParam}${timeParam}`;
+                      navigator.clipboard.writeText(shareUrl);
+                      setShareCopied(true);
+                      setTimeout(() => setShareCopied(false), 2000);
+                    }}
+                    className="flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-[--color-brand] hover:bg-[--color-brand-hover] text-white transition-colors"
+                  >
+                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
+                    </svg>
+                    {shareCopied ? "Copied!" : "Share"}
+                  </button>
+                  {/* Feedback Buttons inline */}
+                  {currentPlayingVideoId && (
+                    <FeedbackButtons
+                      videoId={currentPlayingVideoId}
+                      siteId={selectedLocation.id}
+                      stats={videoStats}
+                      userVotes={userVotes}
+                      onVote={handleFeedbackVote}
+                    />
+                  )}
+                </div>
+              </div>
+
+              {/* Mobile Only: Scrollable Community Videos Section */}
+              <div className="px-4 pb-4 overflow-y-auto flex-1 min-h-[200px] lg:hidden">
+                {/* Community Videos Section */}
+                <div className="pt-4 border-t border-[--color-border-primary]">
+                  <div className="flex items-center justify-between mb-4">
+                    <h4 className="text-sm font-semibold text-[--color-text-primary] flex items-center gap-2">
+                      <svg className="w-4 h-4 text-[--color-brand]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                      </svg>
+                      Community Videos
+                      {communityVideos[selectedLocation.id]?.length > 0 && (
+                        <span className="text-xs text-[--color-text-tertiary]">
+                          ({communityVideos[selectedLocation.id].length})
+                        </span>
+                      )}
+                    </h4>
+                    {!showSubmitForm && (
+                      <button
+                        onClick={() => setShowSubmitForm(true)}
+                        className="px-3 py-1.5 text-white text-xs font-medium rounded-lg transition-colors flex items-center gap-1.5"
+                        style={{ backgroundColor: 'var(--color-brand)' }}
+                      >
+                        <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
+                        </svg>
+                        Share Your Video
+                      </button>
+                    )}
+                  </div>
+
+                  {/* Submit Form */}
+                  {showSubmitForm && (
+                    <div className="mb-4 p-4 bg-[--color-bg-tertiary] rounded-lg">
+                      <p className="text-xs text-[--color-text-secondary] mb-3">
+                        Share your adventure video at this location with the community!
+                      </p>
+                      <div className="flex gap-2">
+                        <input
+                          type="text"
+                          value={videoUrl}
+                          onChange={(e) => {
+                            setVideoUrl(e.target.value);
+                            setSubmitStatus("idle");
+                          }}
+                          placeholder="Paste YouTube URL..."
+                          className="flex-1 px-3 py-2 bg-[--color-bg-secondary] border border-[--color-border-primary] rounded-lg text-sm text-[--color-text-primary] placeholder:text-[--color-text-tertiary] focus:outline-none focus:border-[--color-brand]"
+                        />
+                        <button
+                          onClick={handleVideoSubmit}
+                          disabled={!videoUrl.trim()}
+                          className="px-4 py-2 bg-[--color-brand] hover:bg-[--color-brand-hover] disabled:bg-[--color-bg-secondary] disabled:text-[--color-text-tertiary] text-white text-sm font-medium rounded-lg transition-colors"
+                        >
+                          Submit
+                        </button>
+                        <button
+                          onClick={() => {
+                            setShowSubmitForm(false);
+                            setVideoUrl("");
+                            setSubmitStatus("idle");
+                          }}
+                          className="px-3 py-2 bg-[--color-bg-secondary] hover:bg-[--color-border-primary] text-[--color-text-secondary] text-sm rounded-lg transition-colors"
+                        >
+                          Cancel
+                        </button>
+                      </div>
+                      {submitStatus === "error" && (
+                        <p className="text-xs text-[--color-red] mt-2">
+                          Invalid YouTube URL or video already submitted. Please check and try again.
+                        </p>
+                      )}
+                    </div>
+                  )}
+
+                  {/* Success Message */}
+                  {submitStatus === "success" && (
+                    <div className="mb-4 p-3 bg-[--color-green]/10 border border-[--color-green]/20 rounded-lg flex items-center gap-2">
+                      <svg className="w-4 h-4 text-[--color-green]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                      </svg>
+                      <p className="text-xs text-[--color-green]">
+                        Thank you! Your video has been added to the community collection.
+                      </p>
+                    </div>
+                  )}
+
+                  {/* Video Playlist - Mobile */}
+                  {(() => {
+                    const allVideos: Array<{
+                      youtubeId: string;
+                      title: string;
+                      channelName: string;
+                      isOriginal: boolean;
+                    }> = [];
+
+                    if (selectedLocation.youtubeId) {
+                      allVideos.push({
+                        youtubeId: selectedLocation.youtubeId,
+                        title: selectedLocation.title,
+                        channelName: "Outboundscape",
+                        isOriginal: true,
+                      });
+                    }
+
+                    const communityList = communityVideos[selectedLocation.id] || [];
+                    communityList.forEach((video) => {
+                      allVideos.push({
+                        youtubeId: video.youtubeId,
+                        title: video.title || "Community Video",
+                        channelName: video.channelName || "Member",
+                        isOriginal: false,
+                      });
+                    });
+
+                    return (
+                      <div className="space-y-2">
+                        {allVideos.length > 3 && (
+                          <p className="text-xs text-[--color-text-tertiary] text-center py-1">
+                            ↓ {allVideos.length} videos available - scroll to see all
+                          </p>
+                        )}
+                        {allVideos.map((video, index) => {
+                          const isPlaying = currentPlayingVideoId === video.youtubeId;
+                          return (
+                            <button
+                              key={`playlist-mobile-${video.youtubeId}-${index}`}
+                              onClick={() => setCurrentPlayingVideoId(video.youtubeId)}
+                              className={`w-full flex items-center gap-3 p-2 rounded-lg text-left transition-all ${
+                                isPlaying
+                                  ? "bg-[--color-brand]/20 ring-2 ring-[--color-brand]"
+                                  : "bg-[--color-bg-tertiary] hover:bg-[--color-bg-tertiary]/80"
+                              }`}
+                            >
+                              <div className="relative w-24 h-14 flex-shrink-0 rounded-md overflow-hidden">
+                                <img
+                                  src={`https://img.youtube.com/vi/${video.youtubeId}/mqdefault.jpg`}
+                                  alt={video.title}
+                                  className="w-full h-full object-cover"
+                                />
+                                {isPlaying ? (
+                                  <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
+                                    <div className="flex items-center gap-0.5">
+                                      <span className="w-1 h-3 bg-white rounded-full animate-pulse" />
+                                      <span className="w-1 h-4 bg-white rounded-full animate-pulse" style={{ animationDelay: "0.2s" }} />
+                                      <span className="w-1 h-3 bg-white rounded-full animate-pulse" style={{ animationDelay: "0.4s" }} />
+                                    </div>
+                                  </div>
+                                ) : (
+                                  <div className="absolute inset-0 bg-black/0 hover:bg-black/30 transition-colors flex items-center justify-center group">
+                                    <svg className="w-6 h-6 text-white opacity-0 group-hover:opacity-100 transition-opacity" fill="currentColor" viewBox="0 0 24 24">
+                                      <path d="M8 5v14l11-7z" />
+                                    </svg>
+                                  </div>
+                                )}
+                                {video.isOriginal && (
+                                  <div className="absolute top-1 left-1 px-1.5 py-0.5 bg-[#FF0000] rounded text-[8px] font-bold text-white">
+                                    ORIGINAL
+                                  </div>
+                                )}
+                              </div>
+                              <div className="flex-1 min-w-0">
+                                <p className={`text-xs line-clamp-2 ${isPlaying ? "text-[--color-brand] font-medium" : "text-[--color-text-primary]"}`}>
+                                  {video.title}
+                                </p>
+                                <div className="flex items-center gap-2 mt-1">
+                                  <span className="text-[10px] text-[--color-text-tertiary] flex items-center gap-1">
+                                    <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                                    </svg>
+                                    {video.channelName}
+                                  </span>
+                                  {isPlaying && (
+                                    <span className="text-[10px] text-[--color-brand] font-medium">Now Playing</span>
+                                  )}
+                                </div>
+                              </div>
+                            </button>
+                          );
+                        })}
+                      </div>
+                    );
+                  })()}
+                </div>
               </div>
             </div>
 
-            {/* Video Info - Fixed Section (doesn't scroll) */}
-            <div className="px-4 pt-3 flex-shrink-0">
-              {/* Title and Close Button */}
-              <div className="flex items-start justify-between gap-4">
+            {/* Right Side - Desktop Only: Video List Sidebar */}
+            <div className="hidden lg:flex lg:flex-col lg:w-80 lg:border-l lg:border-[--color-border-primary] lg:bg-[--color-bg-primary]">
+              {/* Sidebar Header */}
+              <div className="flex items-center justify-between px-4 py-3 border-b border-[--color-border-primary]">
                 <div>
-                  <h3 className="text-lg font-semibold text-[--color-text-primary]">
-                    {selectedLocation.title}
-                  </h3>
-                  <p className="text-[--color-text-tertiary] text-sm mt-1">
-                    {selectedLocation.location}
+                  <h4 className="text-sm font-semibold text-[--color-text-primary]">
+                    More videos at this location
+                  </h4>
+                  <p className="text-xs text-[--color-text-tertiary]">
+                    {(() => {
+                      let count = selectedLocation.youtubeId ? 1 : 0;
+                      count += communityVideos[selectedLocation.id]?.length || 0;
+                      return `${count} videos available`;
+                    })()}
                   </p>
-                  <div className="flex items-center gap-4 text-sm text-[--color-text-tertiary] mt-1">
-                    <span>{formatViews(selectedLocation.views || 0)} views</span>
-                    {selectedLocation.duration && <span>{selectedLocation.duration}</span>}
-                  </div>
                 </div>
                 <button
                   onClick={closeModal}
-                  className="p-2 rounded-lg bg-[--color-bg-tertiary] hover:bg-[--color-border-primary] transition-colors flex-shrink-0"
+                  className="p-2 rounded-lg bg-[--color-bg-tertiary] hover:bg-[--color-border-primary] transition-colors"
                 >
                   <svg className="w-5 h-5 text-[--color-text-secondary]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -1148,108 +1414,126 @@ function MapKoreaPageContent() {
                 </button>
               </div>
 
-              {/* All Action Buttons in One Row */}
-              <div className="flex items-center gap-2 mt-3 flex-wrap">
-                <span
-                  className="px-3 py-1 rounded-full text-xs font-medium text-white"
-                  style={{ backgroundColor: categoryColors[selectedLocation.category] }}
-                >
-                  {selectedLocation.category}
-                </span>
-                <a
-                  href={`https://www.youtube.com/watch?v=${selectedLocation.youtubeId}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-[#FF0000] hover:bg-[#CC0000] text-white transition-colors"
-                >
-                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
-                  </svg>
-                  YouTube
-                </a>
-                <button
-                  onClick={() => {
-                    // Get current playback time from YouTube player
-                    const currentTime = playerRef?.getCurrentTime?.() || 0;
-                    // Build share URL with video ID and timestamp
-                    const videoParam = currentPlayingVideoId ? `&video=${currentPlayingVideoId}` : "";
-                    const timeParam = currentTime > 0 ? `&t=${Math.floor(currentTime)}` : "";
-                    const shareUrl = `${window.location.origin}/map-korea?site=${selectedLocation.id}${videoParam}${timeParam}`;
-                    navigator.clipboard.writeText(shareUrl);
-                    setShareCopied(true);
-                    setTimeout(() => setShareCopied(false), 2000);
-                  }}
-                  className="flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-[--color-brand] hover:bg-[--color-brand-hover] text-white transition-colors"
-                >
-                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
-                  </svg>
-                  {shareCopied ? "Copied!" : "Share"}
-                </button>
-                {/* Feedback Buttons inline */}
-                {currentPlayingVideoId && (
-                  <FeedbackButtons
-                    videoId={currentPlayingVideoId}
-                    siteId={selectedLocation.id}
-                    stats={videoStats}
-                    userVotes={userVotes}
-                    onVote={handleFeedbackVote}
-                  />
-                )}
+              {/* Scrollable Video List */}
+              <div className="flex-1 overflow-y-auto p-3 space-y-2">
+                {(() => {
+                  const allVideos: Array<{
+                    youtubeId: string;
+                    title: string;
+                    channelName: string;
+                    isOriginal: boolean;
+                  }> = [];
+
+                  if (selectedLocation.youtubeId) {
+                    allVideos.push({
+                      youtubeId: selectedLocation.youtubeId,
+                      title: selectedLocation.title,
+                      channelName: "Outboundscape",
+                      isOriginal: true,
+                    });
+                  }
+
+                  const communityList = communityVideos[selectedLocation.id] || [];
+                  communityList.forEach((video) => {
+                    allVideos.push({
+                      youtubeId: video.youtubeId,
+                      title: video.title || "Community Video",
+                      channelName: video.channelName || "Member",
+                      isOriginal: false,
+                    });
+                  });
+
+                  return allVideos.map((video, index) => {
+                    const isPlaying = currentPlayingVideoId === video.youtubeId;
+                    return (
+                      <button
+                        key={`playlist-desktop-${video.youtubeId}-${index}`}
+                        onClick={() => setCurrentPlayingVideoId(video.youtubeId)}
+                        className={`w-full flex gap-3 p-2 rounded-lg text-left transition-all ${
+                          isPlaying
+                            ? "bg-[--color-brand]/20 ring-2 ring-[--color-brand]"
+                            : "bg-[--color-bg-secondary] hover:bg-[--color-bg-tertiary]"
+                        }`}
+                      >
+                        {/* Thumbnail */}
+                        <div className="relative w-28 h-16 flex-shrink-0 rounded-md overflow-hidden">
+                          <img
+                            src={`https://img.youtube.com/vi/${video.youtubeId}/mqdefault.jpg`}
+                            alt={video.title}
+                            className="w-full h-full object-cover"
+                          />
+                          {isPlaying ? (
+                            <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
+                              <div className="flex items-center gap-0.5">
+                                <span className="w-1 h-3 bg-white rounded-full animate-pulse" />
+                                <span className="w-1 h-4 bg-white rounded-full animate-pulse" style={{ animationDelay: "0.2s" }} />
+                                <span className="w-1 h-3 bg-white rounded-full animate-pulse" style={{ animationDelay: "0.4s" }} />
+                              </div>
+                            </div>
+                          ) : (
+                            <div className="absolute inset-0 bg-black/0 hover:bg-black/30 transition-colors flex items-center justify-center group">
+                              <svg className="w-8 h-8 text-white opacity-0 group-hover:opacity-100 transition-opacity" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M8 5v14l11-7z" />
+                              </svg>
+                            </div>
+                          )}
+                          {video.isOriginal && (
+                            <div className="absolute top-1 left-1 px-1.5 py-0.5 bg-[#FF0000] rounded text-[8px] font-bold text-white">
+                              ORIGINAL
+                            </div>
+                          )}
+                        </div>
+
+                        {/* Video Info */}
+                        <div className="flex-1 min-w-0 py-0.5">
+                          <p className={`text-sm line-clamp-2 leading-tight ${isPlaying ? "text-[--color-brand] font-medium" : "text-[--color-text-primary]"}`}>
+                            {video.title}
+                          </p>
+                          <p className="text-xs text-[--color-text-tertiary] mt-1">
+                            {video.channelName}
+                          </p>
+                          {isPlaying && (
+                            <p className="text-xs text-[--color-brand] font-medium mt-0.5">
+                              Now Playing
+                            </p>
+                          )}
+                        </div>
+                      </button>
+                    );
+                  });
+                })()}
               </div>
-            </div>
 
-            {/* Scrollable Community Videos Section */}
-            <div className="px-4 pb-4 overflow-y-auto flex-1 min-h-[200px]">
-              {/* Community Videos Section */}
-              <div className="mt-6 pt-6 border-t border-[--color-border-primary]">
-                <div className="flex items-center justify-between mb-4">
-                  <h4 className="text-sm font-semibold text-[--color-text-primary] flex items-center gap-2">
-                    <svg className="w-4 h-4 text-[--color-brand]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+              {/* Submit Video Button - Desktop */}
+              <div className="p-3 border-t border-[--color-border-primary]">
+                {!showSubmitForm ? (
+                  <button
+                    onClick={() => setShowSubmitForm(true)}
+                    className="w-full px-4 py-2.5 text-white text-sm font-medium rounded-lg transition-colors flex items-center justify-center gap-2"
+                    style={{ backgroundColor: 'var(--color-brand)' }}
+                  >
+                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
                     </svg>
-                    Community Videos
-                    {communityVideos[selectedLocation.id]?.length > 0 && (
-                      <span className="text-xs text-[--color-text-tertiary]">
-                        ({communityVideos[selectedLocation.id].length})
-                      </span>
-                    )}
-                  </h4>
-                  {!showSubmitForm && (
-                    <button
-                      onClick={() => setShowSubmitForm(true)}
-                      className="px-3 py-1.5 text-white text-xs font-medium rounded-lg transition-colors flex items-center gap-1.5"
-                      style={{ backgroundColor: 'var(--color-brand)' }}
-                    >
-                      <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
-                      </svg>
-                      Share Your Video
-                    </button>
-                  )}
-                </div>
-
-                {/* Submit Form */}
-                {showSubmitForm && (
-                  <div className="mb-4 p-4 bg-[--color-bg-tertiary] rounded-lg">
-                    <p className="text-xs text-[--color-text-secondary] mb-3">
-                      Share your adventure video at this location with the community!
-                    </p>
+                    Share Your Video
+                  </button>
+                ) : (
+                  <div className="space-y-2">
+                    <input
+                      type="text"
+                      value={videoUrl}
+                      onChange={(e) => {
+                        setVideoUrl(e.target.value);
+                        setSubmitStatus("idle");
+                      }}
+                      placeholder="Paste YouTube URL..."
+                      className="w-full px-3 py-2 bg-[--color-bg-secondary] border border-[--color-border-primary] rounded-lg text-sm text-[--color-text-primary] placeholder:text-[--color-text-tertiary] focus:outline-none focus:border-[--color-brand]"
+                    />
                     <div className="flex gap-2">
-                      <input
-                        type="text"
-                        value={videoUrl}
-                        onChange={(e) => {
-                          setVideoUrl(e.target.value);
-                          setSubmitStatus("idle");
-                        }}
-                        placeholder="Paste YouTube URL..."
-                        className="flex-1 px-3 py-2 bg-[--color-bg-secondary] border border-[--color-border-primary] rounded-lg text-sm text-[--color-text-primary] placeholder:text-[--color-text-tertiary] focus:outline-none focus:border-[--color-brand]"
-                      />
                       <button
                         onClick={handleVideoSubmit}
                         disabled={!videoUrl.trim()}
-                        className="px-4 py-2 bg-[--color-brand] hover:bg-[--color-brand-hover] disabled:bg-[--color-bg-secondary] disabled:text-[--color-text-tertiary] text-white text-sm font-medium rounded-lg transition-colors"
+                        className="flex-1 px-4 py-2 bg-[--color-brand] hover:bg-[--color-brand-hover] disabled:bg-[--color-bg-secondary] disabled:text-[--color-text-tertiary] text-white text-sm font-medium rounded-lg transition-colors"
                       >
                         Submit
                       </button>
@@ -1265,135 +1549,17 @@ function MapKoreaPageContent() {
                       </button>
                     </div>
                     {submitStatus === "error" && (
-                      <p className="text-xs text-[--color-red] mt-2">
-                        Invalid YouTube URL or video already submitted. Please check and try again.
+                      <p className="text-xs text-[--color-red]">
+                        Invalid YouTube URL or video already submitted.
+                      </p>
+                    )}
+                    {submitStatus === "success" && (
+                      <p className="text-xs text-[--color-green]">
+                        Video added successfully!
                       </p>
                     )}
                   </div>
                 )}
-
-                {/* Success Message */}
-                {submitStatus === "success" && (
-                  <div className="mb-4 p-3 bg-[--color-green]/10 border border-[--color-green]/20 rounded-lg flex items-center gap-2">
-                    <svg className="w-4 h-4 text-[--color-green]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                    </svg>
-                    <p className="text-xs text-[--color-green]">
-                      Thank you! Your video has been added to the community collection.
-                    </p>
-                  </div>
-                )}
-
-                {/* Video Playlist - Original video first, then community videos */}
-                {(() => {
-                  // Build combined video list: original video first, then community videos
-                  const allVideos: Array<{
-                    youtubeId: string;
-                    title: string;
-                    channelName: string;
-                    isOriginal: boolean;
-                  }> = [];
-
-                  // Add original video first (if exists)
-                  if (selectedLocation.youtubeId) {
-                    allVideos.push({
-                      youtubeId: selectedLocation.youtubeId,
-                      title: selectedLocation.title,
-                      channelName: "Outboundscape",
-                      isOriginal: true,
-                    });
-                  }
-
-                  // Add community videos
-                  const communityList = communityVideos[selectedLocation.id] || [];
-                  communityList.forEach((video) => {
-                    allVideos.push({
-                      youtubeId: video.youtubeId,
-                      title: video.title || "Community Video",
-                      channelName: video.channelName || "Member",
-                      isOriginal: false,
-                    });
-                  });
-
-                  return (
-                    <div className="space-y-2">
-                      {/* Scroll indicator for many videos */}
-                      {allVideos.length > 3 && (
-                        <p className="text-xs text-[--color-text-tertiary] text-center py-1">
-                          ↓ {allVideos.length} videos available - scroll to see all
-                        </p>
-                      )}
-                      {allVideos.map((video, index) => {
-                        const isPlaying = currentPlayingVideoId === video.youtubeId;
-
-                        return (
-                          <button
-                            key={`playlist-${video.youtubeId}-${index}`}
-                            onClick={() => setCurrentPlayingVideoId(video.youtubeId)}
-                            className={`w-full flex items-center gap-3 p-2 rounded-lg text-left transition-all ${
-                              isPlaying
-                                ? "bg-[--color-brand]/20 ring-2 ring-[--color-brand]"
-                                : "bg-[--color-bg-tertiary] hover:bg-[--color-bg-tertiary]/80"
-                            }`}
-                          >
-                            {/* Video Thumbnail */}
-                            <div className="relative w-24 h-14 flex-shrink-0 rounded-md overflow-hidden">
-                              <img
-                                src={`https://img.youtube.com/vi/${video.youtubeId}/mqdefault.jpg`}
-                                alt={video.title}
-                                className="w-full h-full object-cover"
-                              />
-                              {isPlaying ? (
-                                <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
-                                  <div className="flex items-center gap-0.5">
-                                    <span className="w-1 h-3 bg-white rounded-full animate-pulse" />
-                                    <span className="w-1 h-4 bg-white rounded-full animate-pulse" style={{ animationDelay: "0.2s" }} />
-                                    <span className="w-1 h-3 bg-white rounded-full animate-pulse" style={{ animationDelay: "0.4s" }} />
-                                  </div>
-                                </div>
-                              ) : (
-                                <div className="absolute inset-0 bg-black/0 hover:bg-black/30 transition-colors flex items-center justify-center group">
-                                  <svg
-                                    className="w-6 h-6 text-white opacity-0 group-hover:opacity-100 transition-opacity"
-                                    fill="currentColor"
-                                    viewBox="0 0 24 24"
-                                  >
-                                    <path d="M8 5v14l11-7z" />
-                                  </svg>
-                                </div>
-                              )}
-                              {video.isOriginal && (
-                                <div className="absolute top-1 left-1 px-1.5 py-0.5 bg-[#FF0000] rounded text-[8px] font-bold text-white">
-                                  ORIGINAL
-                                </div>
-                              )}
-                            </div>
-
-                            {/* Video Info */}
-                            <div className="flex-1 min-w-0">
-                              <p className={`text-xs line-clamp-2 ${isPlaying ? "text-[--color-brand] font-medium" : "text-[--color-text-primary]"}`}>
-                                {video.title}
-                              </p>
-                              <div className="flex items-center gap-2 mt-1">
-                                <span className="text-[10px] text-[--color-text-tertiary] flex items-center gap-1">
-                                  <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                                  </svg>
-                                  {video.channelName}
-                                </span>
-                                {isPlaying && (
-                                  <span className="text-[10px] text-[--color-brand] font-medium">
-                                    Now Playing
-                                  </span>
-                                )}
-                              </div>
-                            </div>
-                          </button>
-                        );
-                      })}
-                    </div>
-                  );
-                })()}
               </div>
             </div>
           </div>
