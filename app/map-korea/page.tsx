@@ -892,53 +892,47 @@ function MapKoreaPageContent() {
                 />
               </div>
 
-              {/* Floating category filter - top left */}
-              <div className="absolute top-4 left-14 z-[1001] flex flex-wrap gap-1.5 max-w-[60%]">
-                <button
-                  onClick={() => setCategoryFilter("all")}
-                  className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-medium transition-all whitespace-nowrap border-2 border-white shadow-[0_2px_8px_rgba(0,0,0,0.3)] ${
-                    categoryFilter === "all"
-                      ? "bg-white text-black"
-                      : "bg-white text-black hover:bg-gray-100"
-                  }`}
-                >
-                  <span className="w-2.5 h-2.5 rounded-full bg-gradient-to-r from-[--color-green] to-[--color-brand]" />
-                  <span>All</span>
-                </button>
-                {orderedCategories.map((category) => {
-                  const count = categoryCounts[category] || 0;
-                  if (count === 0) return null;
-                  const isActive = categoryFilter === category;
-                  return (
-                    <button
-                      key={`fs-${category}`}
-                      onClick={() => setCategoryFilter(isActive ? "all" : category)}
-                      className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-medium transition-all whitespace-nowrap border-2 border-white shadow-[0_2px_8px_rgba(0,0,0,0.3)] ${
-                        isActive
-                          ? "bg-gray-100 text-black"
-                          : "bg-white text-black hover:bg-gray-100"
-                      }`}
-                    >
-                      <span
-                        className={`w-2.5 h-2.5 rounded-full transition-transform ${isActive ? "scale-125" : ""}`}
-                        style={{ backgroundColor: categoryColors[category] }}
-                      />
-                      <span>{category}</span>
-                    </button>
-                  );
-                })}
-              </div>
+              {/* Floating controls bar - filters left, search right */}
+              <div className="absolute top-4 left-14 right-20 z-[1001] flex items-start justify-between gap-4">
+                {/* Category filters */}
+                <div className="flex flex-wrap gap-1.5 flex-1">
+                  <button
+                    onClick={() => setCategoryFilter("all")}
+                    className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-medium transition-all whitespace-nowrap border-2 border-white shadow-[0_2px_8px_rgba(0,0,0,0.3)] ${
+                      categoryFilter === "all"
+                        ? "bg-white text-black"
+                        : "bg-white text-black hover:bg-gray-100"
+                    }`}
+                  >
+                    <span className="w-2.5 h-2.5 rounded-full bg-gradient-to-r from-[--color-green] to-[--color-brand]" />
+                    <span>All</span>
+                  </button>
+                  {orderedCategories.map((category) => {
+                    const count = categoryCounts[category] || 0;
+                    if (count === 0) return null;
+                    const isActive = categoryFilter === category;
+                    return (
+                      <button
+                        key={`fs-${category}`}
+                        onClick={() => setCategoryFilter(isActive ? "all" : category)}
+                        className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-medium transition-all whitespace-nowrap border-2 border-white shadow-[0_2px_8px_rgba(0,0,0,0.3)] ${
+                          isActive
+                            ? "bg-gray-100 text-black"
+                            : "bg-white text-black hover:bg-gray-100"
+                        }`}
+                      >
+                        <span
+                          className={`w-2.5 h-2.5 rounded-full transition-transform ${isActive ? "scale-125" : ""}`}
+                          style={{ backgroundColor: categoryColors[category] }}
+                        />
+                        <span>{category}</span>
+                      </button>
+                    );
+                  })}
+                </div>
 
-              {/* Fullscreen search input - top center */}
-              <div className="absolute top-4 left-1/2 -translate-x-1/2 z-[1001] w-80 max-w-[40%]">
-                <div className="relative">
-                  <input
-                    type="text"
-                    placeholder="Search locations..."
-                    value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)}
-                    className="w-full px-4 py-2.5 pl-10 bg-white border-2 border-white rounded-lg text-black placeholder:text-gray-500 focus:outline-none shadow-[0_2px_8px_rgba(0,0,0,0.3)]"
-                  />
+                {/* Search input */}
+                <div className="relative w-48 flex-shrink-0">
                   <svg
                     className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500"
                     fill="none"
@@ -947,6 +941,13 @@ function MapKoreaPageContent() {
                   >
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                   </svg>
+                  <input
+                    type="text"
+                    placeholder="Search..."
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    className="w-full px-4 py-2 pl-10 bg-white border-2 border-white rounded-lg text-sm text-black placeholder:text-gray-500 focus:outline-none shadow-[0_2px_8px_rgba(0,0,0,0.3)]"
+                  />
                   {searchQuery && (
                     <button
                       onClick={() => setSearchQuery("")}
@@ -963,10 +964,10 @@ function MapKoreaPageContent() {
               {/* Close button - top right */}
               <button
                 onClick={toggleFullscreen}
-                className="absolute top-4 right-4 z-[1001] p-3 bg-[--color-bg-secondary] hover:bg-[--color-bg-tertiary] rounded-full border border-[--color-border-primary] transition-colors shadow-lg"
+                className="absolute top-4 right-4 z-[1002] p-2 bg-white hover:bg-gray-100 rounded-lg border-2 border-white shadow-[0_2px_8px_rgba(0,0,0,0.3)] transition-colors"
                 title="Exit fullscreen"
               >
-                <svg className="w-6 h-6 text-[--color-text-primary]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <svg className="w-5 h-5 text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
                 </svg>
               </button>
@@ -1107,7 +1108,7 @@ function MapKoreaPageContent() {
             onClick={(e) => e.stopPropagation()}
           >
             {/* Video Player */}
-            <div className="aspect-video flex-shrink-0 m-4 mb-0 rounded-xl overflow-hidden bg-black">
+            <div className="aspect-video flex-shrink-0 w-full overflow-hidden bg-black">
               <div
                 id="youtube-player-container"
                 ref={playerContainerRef}

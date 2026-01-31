@@ -720,69 +720,72 @@ function HomePageContent() {
             />
           </div>
 
-          {/* Floating category filter - top left */}
-          <div className="absolute top-4 left-14 z-[1001] flex flex-wrap gap-1.5 max-w-[60%]">
-            <button
-              onClick={() => setCategoryFilter(null)}
-              className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-medium transition-all whitespace-nowrap border-2 border-white shadow-[0_2px_8px_rgba(0,0,0,0.3)] ${
-                categoryFilter === null
-                  ? "bg-white text-black"
-                  : "bg-white text-black hover:bg-gray-100"
-              }`}
-            >
-              <span className="w-2.5 h-2.5 rounded-full bg-gradient-to-r from-[--color-green] to-[--color-brand]" />
-              <span>All</span>
-            </button>
-            {Object.entries(categoryColors).map(([category, color]) => {
-              const isActive = categoryFilter === category;
-              return (
-                <button
-                  key={`fs-${category}`}
-                  onClick={() => setCategoryFilter(isActive ? null : category)}
-                  className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-medium transition-all whitespace-nowrap border-2 border-white shadow-[0_2px_8px_rgba(0,0,0,0.3)] ${
-                    isActive
-                      ? "bg-gray-100 text-black"
-                      : "bg-white text-black hover:bg-gray-100"
-                  }`}
-                >
-                  <span
-                    className={`w-2.5 h-2.5 rounded-full transition-transform ${isActive ? "scale-125" : ""}`}
-                    style={{ backgroundColor: color }}
-                  />
-                  <span>{category}</span>
-                </button>
-              );
-            })}
-          </div>
-
-          {/* Floating search input - top right */}
-          <div className="absolute top-4 right-14 z-[1001] w-56">
-            <svg
-              className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[--color-text-tertiary]"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              strokeWidth={2}
-            >
-              <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-            </svg>
-            <input
-              type="text"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Search..."
-              className="w-full pl-10 pr-9 py-2 bg-white border-2 border-white rounded-lg text-sm text-black placeholder:text-gray-400 focus:outline-none focus:border-[--color-brand] shadow-[0_2px_8px_rgba(0,0,0,0.3)] transition-colors"
-            />
-            {searchQuery && (
+          {/* Floating controls bar - filters left, search right */}
+          <div className="absolute top-4 left-14 right-20 z-[1001] flex items-start justify-between gap-4">
+            {/* Category filters */}
+            <div className="flex flex-wrap gap-1.5 flex-1">
               <button
-                onClick={() => setSearchQuery("")}
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-[--color-text-tertiary] hover:text-[--color-text-secondary] transition-colors"
+                onClick={() => setCategoryFilter(null)}
+                className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-medium transition-all whitespace-nowrap border-2 border-white shadow-[0_2px_8px_rgba(0,0,0,0.3)] ${
+                  categoryFilter === null
+                    ? "bg-white text-black"
+                    : "bg-white text-black hover:bg-gray-100"
+                }`}
               >
-                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-                </svg>
+                <span className="w-2.5 h-2.5 rounded-full bg-gradient-to-r from-[--color-green] to-[--color-brand]" />
+                <span>All</span>
               </button>
-            )}
+              {Object.entries(categoryColors).map(([category, color]) => {
+                const isActive = categoryFilter === category;
+                return (
+                  <button
+                    key={`fs-${category}`}
+                    onClick={() => setCategoryFilter(isActive ? null : category)}
+                    className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-medium transition-all whitespace-nowrap border-2 border-white shadow-[0_2px_8px_rgba(0,0,0,0.3)] ${
+                      isActive
+                        ? "bg-gray-100 text-black"
+                        : "bg-white text-black hover:bg-gray-100"
+                    }`}
+                  >
+                    <span
+                      className={`w-2.5 h-2.5 rounded-full transition-transform ${isActive ? "scale-125" : ""}`}
+                      style={{ backgroundColor: color }}
+                    />
+                    <span>{category}</span>
+                  </button>
+                );
+              })}
+            </div>
+
+            {/* Search input */}
+            <div className="relative w-48 flex-shrink-0">
+              <svg
+                className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[--color-text-tertiary]"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth={2}
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+              </svg>
+              <input
+                type="text"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                placeholder="Search..."
+                className="w-full pl-10 pr-9 py-2 bg-white border-2 border-white rounded-lg text-sm text-black placeholder:text-gray-400 focus:outline-none focus:border-[--color-brand] shadow-[0_2px_8px_rgba(0,0,0,0.3)] transition-colors"
+              />
+              {searchQuery && (
+                <button
+                  onClick={() => setSearchQuery("")}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-[--color-text-tertiary] hover:text-[--color-text-secondary] transition-colors"
+                >
+                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
+              )}
+            </div>
           </div>
 
           {/* Floating close button - top right corner */}
@@ -958,7 +961,7 @@ function HomePageContent() {
                 )}
               </div>
             ) : (
-              <div className="aspect-video flex-shrink-0 m-4 mb-0 rounded-xl overflow-hidden bg-black">
+              <div className="aspect-video flex-shrink-0 w-full overflow-hidden bg-black">
                 <div
                   id="youtube-player-container"
                   ref={playerContainerRef}
