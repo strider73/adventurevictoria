@@ -1115,7 +1115,7 @@ function MapKoreaPageContent() {
             {/* Left Side - Video Player and Info */}
             <div className="flex flex-col lg:flex-1 lg:min-w-0">
               {/* Video Player */}
-              <div className="aspect-video flex-shrink-0 w-full overflow-hidden bg-black rounded-t-2xl lg:rounded-tr-none">
+              <div className="aspect-video flex-shrink-0 w-full overflow-hidden bg-black rounded-2xl lg:rounded-r-none m-0">
                 <div
                   id="youtube-player-container"
                   ref={playerContainerRef}
@@ -1509,8 +1509,7 @@ function MapKoreaPageContent() {
                 {!showSubmitForm ? (
                   <button
                     onClick={() => setShowSubmitForm(true)}
-                    className="w-full px-4 py-2.5 text-white text-sm font-medium rounded-lg transition-colors flex items-center justify-center gap-2"
-                    style={{ backgroundColor: 'var(--color-brand)' }}
+                    className="w-full px-4 py-2 text-white text-sm font-medium rounded-full transition-colors flex items-center justify-center gap-2 bg-[--color-brand] hover:bg-[--color-brand-hover]"
                   >
                     <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />

@@ -98,7 +98,7 @@ export function FeedbackButtons({
       type: "helpful",
       label: "Helpful",
       count: stats.helpfulCount,
-      activeColor: "bg-[--color-green]/20 text-[--color-green] border-[--color-green]",
+      activeColor: "bg-[--color-green] text-white",
       icon: (
         <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
           <path strokeLinecap="round" strokeLinejoin="round" d="M14 9V5a3 3 0 00-3-3l-4 9v11h11.28a2 2 0 002-1.7l1.38-9a2 2 0 00-2-2.3H14zM7 22H4a2 2 0 01-2-2v-7a2 2 0 012-2h3" />
@@ -109,7 +109,7 @@ export function FeedbackButtons({
       type: "wrongInfo",
       label: "Wrong",
       count: stats.wrongInfoCount,
-      activeColor: "bg-[--color-orange]/20 text-[--color-orange] border-[--color-orange]",
+      activeColor: "bg-[--color-orange] text-white",
       icon: (
         <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
           <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
@@ -120,7 +120,7 @@ export function FeedbackButtons({
       type: "lowQuality",
       label: "Low",
       count: stats.lowQualityCount,
-      activeColor: "bg-[--color-red]/20 text-[--color-red] border-[--color-red]",
+      activeColor: "bg-[--color-red] text-white",
       icon: (
         <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
           <path strokeLinecap="round" strokeLinejoin="round" d="M13 17h8m0 0V9m0 8l-8-8-4 4-6-6" />
@@ -140,10 +140,10 @@ export function FeedbackButtons({
             key={type}
             onClick={() => handleVote(type)}
             disabled={disabled || isLoading}
-            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium border transition-all cursor-pointer ${
+            className={`flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium transition-all cursor-pointer ${
               hasVoted
                 ? activeColor
-                : "bg-[--color-bg-tertiary] text-[--color-text-secondary] border-transparent hover:bg-[--color-bg-secondary] hover:border-[--color-border-primary]"
+                : "bg-[--color-bg-tertiary] text-[--color-text-secondary] hover:bg-[--color-border-primary]"
             } ${disabled ? "opacity-50 cursor-not-allowed" : ""}`}
           >
             {isLoading ? (
