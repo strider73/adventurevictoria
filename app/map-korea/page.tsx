@@ -1104,7 +1104,7 @@ function MapKoreaPageContent() {
           onClick={closeModal}
         >
           <div
-            className="bg-[--color-bg-secondary] rounded-2xl overflow-hidden max-w-4xl w-full max-h-[90vh] flex flex-col"
+            className="bg-[--color-bg-secondary] rounded-2xl overflow-hidden max-w-6xl w-[95vw] max-h-[90vh] flex flex-col"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Video Player */}
