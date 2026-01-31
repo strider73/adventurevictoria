@@ -942,7 +942,7 @@ function HomePageContent() {
           onClick={closeModalAndShowPopup}
         >
           <div
-            className="bg-[--color-bg-secondary] rounded-2xl overflow-hidden max-w-3xl w-full max-h-[90vh] flex flex-col"
+            className="bg-[--color-bg-secondary] rounded-2xl overflow-hidden max-w-4xl w-full max-h-[90vh] flex flex-col"
             onClick={(e) => e.stopPropagation()}
           >
             {!currentPlayingVideoId ? (
