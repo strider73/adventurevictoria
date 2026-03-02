@@ -13,7 +13,7 @@ pipeline {
             agent any
             steps {
                 withCredentials([file(credentialsId: 'env-local', variable: 'ENV_FILE')]) {
-                    sh 'rm -f .env.local && cp $ENV_FILE .env.local'
+                    sh 'rm -f env-local && cp $ENV_FILE env-local'
                     sh 'docker compose build --no-cache'
                 }
             }
@@ -27,7 +27,7 @@ pipeline {
                     }
                     steps {
                         withCredentials([file(credentialsId: 'env-local', variable: 'ENV_FILE')]) {
-                            sh 'rm -f .env.local && cp $ENV_FILE .env.local'
+                            sh 'rm -f env-local && cp $ENV_FILE env-local'
                             sh 'docker compose down || true'
                             sh 'docker compose up -d'
                         }
@@ -39,7 +39,7 @@ pipeline {
                     }
                     steps {
                         withCredentials([file(credentialsId: 'env-local', variable: 'ENV_FILE')]) {
-                            sh 'rm -f .env.local && cp $ENV_FILE .env.local'
+                            sh 'rm -f env-local && cp $ENV_FILE env-local'
                             sh 'docker compose down || true'
                             sh 'docker compose up -d'
                         }
