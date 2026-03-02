@@ -311,50 +311,57 @@ function TestMapPageContent() {
     }
   }, []);
 
-  // TODO: Replace with fetch from gateway:8030/web-service/api/v1/sites/victoria/videos
-  // TODO: Replace with fetch from gateway:8030/web-service/api/v1/sites/victoria
-  // TODO: Replace with fetch from gateway:8030/web-service/api/v1/community-videos/victoria
   useEffect(() => {
     async function fetchData() {
       try {
-        // ---- Empty data: no API calls ----
-        // When microservice is ready, replace with:
-        //   const sitesRes = await fetch("http://gateway:8030/web-service/api/v1/sites/victoria");
-        //   const videosRes = await fetch("http://gateway:8030/web-service/api/v1/sites/victoria/videos");
-        //   const communityRes = await fetch("http://gateway:8030/web-service/api/v1/community-videos/victoria");
+        const res = await fetch("/api/proxy/geo/data");
+        if (!res.ok) throw new Error(`API error: ${res.status}`);
+        const json = await res.json();
+        const apiData = json.data || json;
 
-        const campingSites: CampingSite[] = [];
-        const videos: Video[] = [];
-        const communityVideoEntries: CommunityVideoEntry[] = [];
+        // Transform API data into VideoLocation objects
+        // Each API entry is a video with multiple places — create one marker per place
+        const locations: VideoLocation[] = [];
 
-        // Create a map of campingSiteId to video data for quick lookup
-        const videosByCampingSiteId = new Map(
-          videos
-            .filter((v) => v.campingSiteId)
-            .map((v) => [v.campingSiteId, v])
-        );
+        for (const entry of apiData) {
+          if (!entry.places || entry.places.length === 0) continue;
 
-        // Build video locations from camping sites + linked videos
-        const locations: VideoLocation[] = campingSites.map((site) => {
-          const linkedVideo = videosByCampingSiteId.get(site.id);
-          return {
-            id: site.id,
-            title: site.title,
-            location: site.location,
-            lat: site.lat,
-            lng: site.lng,
-            category: site.category,
-            description: site.description,
-            youtubeId: linkedVideo?.videoId || null,
-            videoTitle: linkedVideo?.title || null,
-            duration: linkedVideo?.duration || null,
-            views: linkedVideo?.views || null,
-            hasVideo: !!linkedVideo,
-          };
-        });
+          // Determine category: use userContentType, fall back to first userContentCategory
+          let category = entry.userContentType || "";
+          if (category === "family" || category === "daytrip" || !categoryColors[category]) {
+            const cats = entry.userContentCategory;
+            if (Array.isArray(cats) && cats.length > 0) {
+              // Capitalize first letter of each word for matching categoryColors keys
+              const mapped = cats[0].replace(/\b\w/g, (c: string) => c.toUpperCase());
+              category = categoryColors[mapped] ? mapped : "Family Holidays";
+            } else {
+              category = "Family Holidays";
+            }
+          }
+
+          for (const place of entry.places) {
+            if (!place.location?.coordinates) continue;
+            const [lng, lat] = place.location.coordinates; // GeoJSON: [lng, lat]
+
+            locations.push({
+              id: `${entry.id}-${place.name}`,
+              title: place.name,
+              location: entry.youtubeTitle,
+              lat,
+              lng,
+              category,
+              description: entry.youtubeDescription || entry.youtubeTitle,
+              youtubeId: entry.youtubeContentID || null,
+              videoTitle: entry.youtubeTitle || null,
+              duration: null,
+              views: null,
+              hasVideo: !!entry.youtubeContentID,
+            });
+          }
+        }
 
         setVideoLocations(locations);
-        setCommunityVideos(getCommunityVideos(communityVideoEntries));
+        setCommunityVideos({});
 
         // Check for site query parameter to auto-open popup
         const siteId = searchParams.get("site");
