@@ -12,8 +12,8 @@ pipeline {
         stage('Build Image') {
             agent any
             steps {
-                withCredentials([file(credentialsId: '.env.local', variable: 'ENV_FILE')]) {
-                    sh 'rm -f .env.local && cp $ENV_FILE .env.local'
+                withCredentials([file(credentialsId: 'env-local', variable: 'ENV_FILE')]) {
+                    sh 'rm -f env-local && cp $ENV_FILE env-local'
                     sh 'docker compose build --no-cache'
                 }
             }
@@ -26,8 +26,8 @@ pipeline {
                         label 'jenkins-agent2'
                     }
                     steps {
-                        withCredentials([file(credentialsId: '.env.local', variable: 'ENV_FILE')]) {
-                            sh 'rm -f .env.local && cp $ENV_FILE .env.local'
+                        withCredentials([file(credentialsId: 'env-local', variable: 'ENV_FILE')]) {
+                            sh 'rm -f env-local && cp $ENV_FILE env-local'
                             sh 'docker compose down || true'
                             sh 'docker compose up -d'
                         }
@@ -38,8 +38,8 @@ pipeline {
                         label 'jenkins-agent3'
                     }
                     steps {
-                        withCredentials([file(credentialsId: '.env.local', variable: 'ENV_FILE')]) {
-                            sh 'rm -f .env.local && cp $ENV_FILE .env.local'
+                        withCredentials([file(credentialsId: 'env-local', variable: 'ENV_FILE')]) {
+                            sh 'rm -f env-local && cp $ENV_FILE env-local'
                             sh 'docker compose down || true'
                             sh 'docker compose up -d'
                         }
