@@ -23,5 +23,130 @@
     "siteId": "marysville-holiday-park",
     "title": "Marysville Holiday Park",
     "count": 4
+  },
+  {
+    "siteId": "beechworth-holiday-park",
+    "title": "Beechworth Holiday Park",
+    "count": 4
+  },
+  {
+    "siteId": "chiltern-reedy-creek",
+    "title": "Reedy Creek Bush Camp",
+    "count": 4
+  },
+  {
+    "siteId": "warby-ovens-wenhams",
+    "title": "Wenhams Camp",
+    "count": 4
+  },
+  {
+    "siteId": "warby-ovens-killawarra",
+    "title": "Killawarra Forest Camp",
+    "count": 3
+  },
+  {
+    "siteId": "warby-ovens-wilsons-bend",
+    "title": "Wilsons Bend",
+    "count": 1
+  },
+  {
+    "siteId": "queenscliff-tourist-park",
+    "title": "Queenscliff Tourist Park",
+    "count": 4
+  },
+  {
+    "siteId": "barwon-heads-riverside",
+    "title": "Barwon Heads Riverside",
+    "count": 4
+  },
+  {
+    "siteId": "hammonds-campground",
+    "title": "Hammonds Campground",
+    "count": 4
+  },
+  {
+    "siteId": "dargo-river-crown",
+    "title": "Dargo River Camping",
+    "count": 4
+  },
+  {
+    "siteId": "point-nepean-discovery",
+    "title": "Point Nepean Discovery Tents",
+    "count": 4
+  },
+  {
+    "siteId": "bendigo-larni-yirrip",
+    "title": "Larni Yirrip Camping Village",
+    "count": 0
+  },
+  {
+    "siteId": "enfield-state-park",
+    "title": "Enfield State Park",
+    "count": 4
+  },
+  {
+    "siteId": "glenelg-river-wilson-hall",
+    "title": "Wilson Hall Campground",
+    "count": 2
+  },
+  {
+    "siteId": "warragul-gardens",
+    "title": "Warragul Gardens Holiday Park",
+    "count": 3
+  },
+  {
+    "siteId": "gellibrand-river-camp",
+    "title": "Gellibrand River Camp",
+    "count": 4
+  },
+  {
+    "siteId": "princetown-recreation",
+    "title": "Princetown Recreation Reserve",
+    "count": 4
+  },
+  {
+    "siteId": "woolshed-falls-beechworth",
+    "title": "Woolshed Falls Area",
+    "count": 3
+  },
+  {
+    "siteId": "tin-hut-track",
+    "title": "Tin Hut Track",
+    "count": 4
+  },
+  {
+    "siteId": "koroit-tower-hill",
+    "title": "Koroit Caravan Park",
+    "count": 4
+  },
+  {
+    "siteId": "omeo-bush-camp",
+    "title": "Omeo Bush Camp",
+    "count": 4
+  },
+  {
+    "siteId": "marlo-free-camp",
+    "title": "Marlo Free Camp",
+    "count": 4
+  },
+  {
+    "siteId": "lind-np-euchre-valley",
+    "title": "Euchre Valley Campground",
+    "count": 0
+  },
+  {
+    "siteId": "coopracambra-beehive-creek",
+    "title": "Beehive Creek Falls",
+    "count": 4
+  },
+  {
+    "siteId": "grampians-zumsteins",
+    "title": "Zumsteins Campground",
+    "count": 4
+  },
+  {
+    "siteId": "wilsons-prom-stockyard",
+    "title": "Stockyard Camp",
+    "count": 3
   }
 ]

@@ -261,6 +261,7 @@ function TestMapPageContent() {
   const searchParams = useSearchParams();
   const [videoLocations, setVideoLocations] = useState<VideoLocation[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [fetchError, setFetchError] = useState<string | null>(null);
   const [selectedVideo, setSelectedVideo] = useState<VideoLocation | null>(null);
   const [categoryFilter, setCategoryFilter] = useState<string | null>(null);
   const [searchQuery, setSearchQuery] = useState("");
@@ -383,6 +384,7 @@ function TestMapPageContent() {
         }
       } catch (error) {
         console.error("Failed to fetch data:", error);
+        setFetchError("Unable to load map data — the backend server may be down. Please try again later.");
       } finally {
         setIsLoading(false);
       }
@@ -823,6 +825,13 @@ function TestMapPageContent() {
               Discover {totalCount} camping spots across Victoria. Click any marker to watch our adventure videos and plan your next family trip.
             </p>
           </div>
+
+          {/* API Error Banner */}
+          {fetchError && (
+            <div className="mb-6 mx-auto max-w-2xl px-4 py-3 rounded-lg bg-[--color-red]/10 border border-[--color-red]/30 text-[--color-red] text-sm text-center">
+              {fetchError}
+            </div>
+          )}
 
           {/* Category Filter */}
           <div className="mb-6 flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm">

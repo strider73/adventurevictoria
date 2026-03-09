@@ -7,4 +7,4 @@ services:
     restart: unless-stopped
     environment:
       - NODE_ENV=production
-      - MONGODB_URI=mongodb://strider:5785Ch00@mongodb.adventuretube.net:27017/adventuretube?authSource=admin
+      - MONGODB_URI=mongodb://strider:5785Ch00@mongodb.travel-tube.com:27017/adventuretube?authSource=admin

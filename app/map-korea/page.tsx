@@ -488,6 +488,18 @@ function MapKoreaPageContent() {
     };
   }, [searchQuery]);
 
+  // Prevent body scroll when modal is open
+  useEffect(() => {
+    if (selectedLocation) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [selectedLocation]);
+
   // Reset form state when modal closes or location changes
   useEffect(() => {
     setVideoUrl("");
@@ -1114,8 +1126,14 @@ function MapKoreaPageContent() {
           >
             {/* Left Side - Video Player and Info */}
             <div className="flex flex-col lg:flex-1 lg:min-w-0">
-              {/* Video Player */}
-              <div className="aspect-video flex-shrink-0 w-full overflow-hidden bg-black rounded-2xl lg:rounded-r-none m-0">
+              {/* Video Player - clip-path for rounded corners that work with iframe */}
+              <div
+                className="aspect-video flex-shrink-0 w-full bg-black relative"
+                style={{
+                  clipPath: 'inset(0 round 16px 0 0 0)',
+                  WebkitClipPath: 'inset(0 round 16px 0 0 0)'
+                }}
+              >
                 <div
                   id="youtube-player-container"
                   ref={playerContainerRef}

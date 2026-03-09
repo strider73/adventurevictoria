@@ -76,7 +76,7 @@
       "location": "Namyangju",
       "lat": 37.65,
       "lng": 127.2167,
-      "category": "Camping",
+      "category": "Mountain",
       "description": "Featured in OutboundScape video: 천마산 팔현 - 자연 그대로 잣나무숲에서의 캠핑을 느끼고 싶다면 | Cinematic Sc...",
       "originalVideoId": "9BynWve3f5c"
     },
@@ -1772,6 +1772,340 @@
       "lng": 127.8925,
       "category": "Food Tour",
       "description": "53년 남해 토박이 보증 맛집. 싱싱한 멸치쌈밥과 멸치회."
+    },
+    {
+      "id": "hwacheon-sancheoneo-festival",
+      "title": "화천 산천어축제",
+      "location": "Hwacheon, Gangwon",
+      "lat": 38.1064,
+      "lng": 127.7086,
+      "category": "Festival",
+      "description": "Korea's biggest winter ice fishing festival. Over 1 million visitors catch mountain trout on a frozen river every January.",
+      "originalVideoId": null
+    },
+    {
+      "id": "daegu",
+      "title": "Daegu",
+      "location": "Daegu",
+      "lat": 35.8714,
+      "lng": 128.6014,
+      "category": "Food",
+      "description": "Fourth-largest city in Korea, famous for local food specialties"
+    },
+    {
+      "id": "gyeryongsan",
+      "title": "Gyeryongsan",
+      "location": "Chungnam",
+      "lat": 36.3428,
+      "lng": 127.2056,
+      "category": "Mountain",
+      "description": "Mountain known for its spiritual significance and beautiful trails"
+    },
+    {
+      "id": "hallasan",
+      "title": "Hallasan",
+      "location": "Jeju",
+      "lat": 33.3617,
+      "lng": 126.5292,
+      "category": "Mountain",
+      "description": "Highest mountain in South Korea, UNESCO World Heritage Site on Jeju Island"
+    },
+    {
+      "id": "hongcheon",
+      "title": "Hongcheon",
+      "location": "Gangwon",
+      "lat": 37.6969,
+      "lng": 127.8889,
+      "category": "Mountain",
+      "description": "Known for Palbongsan mountain with challenging hiking trails"
+    },
+    {
+      "id": "jirisan",
+      "title": "Jirisan",
+      "location": "Gyeongnam",
+      "lat": 35.3375,
+      "lng": 127.7311,
+      "category": "Mountain",
+      "description": "First national park in Korea, second-highest peak on Korean mainland"
+    },
+    {
+      "id": "juwangsan",
+      "title": "Juwangsan",
+      "location": "Gyeongbuk",
+      "lat": 36.3908,
+      "lng": 129.1603,
+      "category": "Mountain",
+      "description": "National park famous for stunning rock formations and waterfalls"
+    },
+    {
+      "id": "naejangsan",
+      "title": "Naejangsan",
+      "location": "Jeonbuk",
+      "lat": 35.4831,
+      "lng": 126.8892,
+      "category": "Mountain",
+      "description": "National park renowned for spectacular autumn foliage"
+    },
+    {
+      "id": "pohang",
+      "title": "Pohang",
+      "location": "Gyeongbuk",
+      "lat": 36.019,
+      "lng": 129.3435,
+      "category": "Beach",
+      "description": "Coastal city known for seafood and Homigot sunrise spot"
+    },
+    {
+      "id": "seoraksan",
+      "title": "Seoraksan",
+      "location": "Gangwon",
+      "lat": 38.1194,
+      "lng": 128.4656,
+      "category": "Mountain",
+      "description": "Most popular mountain in Korea, famous for rock formations and fall colors"
+    },
+    {
+      "id": "tongdosa",
+      "title": "Tongdosa Temple",
+      "location": "Gyeongnam",
+      "lat": 35.475,
+      "lng": 129.0556,
+      "category": "Cultural",
+      "description": "One of the Three Jewel Temples of Korea, UNESCO World Heritage"
+    },
+    {
+      "id": "ulleungdo",
+      "title": "Ulleungdo",
+      "location": "Gyeongbuk",
+      "lat": 37.4844,
+      "lng": 130.9057,
+      "category": "Island",
+      "description": "Volcanic island in the East Sea with dramatic cliffs and pristine nature"
+    },
+    {
+      "id": "wolchulsan",
+      "title": "Wolchulsan",
+      "location": "Jeonnam",
+      "lat": 34.7628,
+      "lng": 126.7031,
+      "category": "Mountain",
+      "description": "National park known as one of Korea's three great rock mountains"
+    },
+    {
+      "id": "woraksan",
+      "title": "Woraksan",
+      "location": "Chungbuk",
+      "lat": 36.8833,
+      "lng": 128.0833,
+      "category": "Mountain",
+      "description": "National park with scenic Chungju Lake views"
+    },
+    {
+      "id": "yeosu",
+      "title": "Yeosu",
+      "location": "Jeonnam",
+      "lat": 34.7604,
+      "lng": 127.6622,
+      "category": "Beach",
+      "description": "Beautiful coastal city famous for night views and seafood"
+    },
+    {
+      "id": "gimpo-positive-space",
+      "title": "Positive Space 566",
+      "location": "Gimpo",
+      "lat": 37.6147,
+      "lng": 126.7156,
+      "category": "Cafe",
+      "description": "World's largest cafe, Guinness World Record holder with 566 pyeong space"
+    },
+    {
+      "id": "seoul-bookcafe",
+      "title": "Seoul Book Cafes",
+      "location": "Seoul",
+      "lat": 37.5665,
+      "lng": 126.978,
+      "category": "Cafe",
+      "description": "Collection of unique book cafes in Seoul including manga cafes and themed reading spaces"
+    },
+    {
+      "id": "chaegro-hangang",
+      "title": "Chaegro Book Cafe",
+      "location": "Seoul",
+      "lat": 37.5171,
+      "lng": 126.9395,
+      "category": "Cafe",
+      "description": "Han River view book cafe, famous for sunset views and cozy reading atmosphere"
+    },
+    {
+      "id": "muuido-incheon",
+      "title": "Muuido Island",
+      "location": "Incheon",
+      "lat": 37.3917,
+      "lng": 126.4194,
+      "category": "Island",
+      "description": "CNN-selected must-visit Korean island with famous coastal walking trail"
+    },
+    {
+      "id": "gogaedo-geoje",
+      "title": "Gogaedo Island",
+      "location": "Geoje",
+      "lat": 34.8833,
+      "lng": 128.6167,
+      "category": "Island",
+      "description": "Tiny remote island with only 3 residents, perfect for healing retreat"
+    },
+    {
+      "id": "nangdo-yeosu",
+      "title": "Nangdo Island",
+      "location": "Yeosu",
+      "lat": 34.6083,
+      "lng": 127.4917,
+      "category": "Island",
+      "description": "Beautiful island on scenic Yeosu-Goheung sea drive route"
+    },
+    {
+      "id": "saryangdo-tongyeong",
+      "title": "Saryangdo Island",
+      "location": "Tongyeong",
+      "lat": 34.8333,
+      "lng": 128.0667,
+      "category": "Island",
+      "description": "Remote island village with traditional Korean countryside atmosphere"
+    },
+    {
+      "id": "oido-siheung",
+      "title": "Oido Island",
+      "location": "Siheung",
+      "lat": 37.3453,
+      "lng": 126.6872,
+      "category": "Island",
+      "description": "Accessible island near Seoul, famous for seafood and mudflats"
+    },
+    {
+      "id": "galcheon-camping-yangyang",
+      "title": "Galcheon Auto Camping",
+      "location": "Yangyang",
+      "lat": 37.9122709,
+      "lng": 128.4998112,
+      "category": "Camping",
+      "description": "Popular auto camping site in Yangyang, Gangwon-do with forest setting"
+    },
+    {
+      "id": "neutinamu-camping-yeongwol",
+      "title": "Neutinamu Camping",
+      "location": "Yeongwol",
+      "lat": 37.1038889,
+      "lng": 128.6786111,
+      "category": "Camping",
+      "description": "Mountain camping site in Yeongwol, featured on human documentary"
+    },
+    {
+      "id": "gamasil-camping-jecheon",
+      "title": "Gamasil Camping",
+      "location": "Jecheon",
+      "lat": 37.1216318,
+      "lng": 128.2967169,
+      "category": "Camping",
+      "description": "24-hour fishing available auto camping site in Jecheon"
+    },
+    {
+      "id": "solbada-camping-yangyang",
+      "title": "Solbada Camping",
+      "location": "Yangyang",
+      "lat": 38.0926622,
+      "lng": 128.6518946,
+      "category": "Camping",
+      "description": "Beachfront pine forest camping in Yangyang, budget-friendly"
+    },
+    {
+      "id": "lapland-glamping-pyeongchang",
+      "title": "Lapland Glamping",
+      "location": "Pyeongchang",
+      "lat": 37.6483513,
+      "lng": 128.3144882,
+      "category": "Glamping",
+      "description": "Nordic-style 5-star glamping in Pyeongchang mountains"
+    },
+    {
+      "id": "gardenstay-suncheon",
+      "title": "Garden Stay Suncheon",
+      "location": "Suncheon",
+      "lat": 34.924043,
+      "lng": 127.5123648,
+      "category": "Glamping",
+      "description": "Glamping at Suncheonman National Garden, meals included"
+    },
+    {
+      "id": "bukhansan-glamping-seoul",
+      "title": "Seoul Bukhansan Glamping",
+      "location": "Seoul",
+      "lat": 37.6505811,
+      "lng": 126.9377606,
+      "category": "Glamping",
+      "description": "5-star glamping near Bukhansan National Park, 40 min from Seoul"
+    },
+    {
+      "id": "geumgang-camping-gongju",
+      "title": "Geumgang Natural Recreation Forest Camping",
+      "location": "Gongju",
+      "lat": 36.4355248,
+      "lng": 127.227202,
+      "category": "Camping",
+      "description": "Forest camping with Geumgang River views near Daejeon"
+    },
+    {
+      "id": "donghwa-glamping-paju",
+      "title": "Donghwa Healing Camp Glamping",
+      "location": "Paju",
+      "lat": 37.89124899999999,
+      "lng": 126.8409555,
+      "category": "Glamping",
+      "description": "Glamping and caravan site in Paju, near DMZ area"
+    },
+    {
+      "id": "myeongjisan-caravan-gapyeong",
+      "title": "Gapyeong Myeongjisan Caravan Glamping",
+      "location": "Gapyeong",
+      "lat": 37.9814193,
+      "lng": 127.4475788,
+      "category": "Glamping",
+      "description": "Caravan glamping in Gapyeong mountain area"
+    },
+    {
+      "id": "jade-starlight-chuncheon",
+      "title": "Jade Starlight Caravan",
+      "location": "Chuncheon",
+      "lat": 37.8343423,
+      "lng": 127.5378131,
+      "category": "Glamping",
+      "description": "Stargazing caravan glamping in Chuncheon"
+    },
+    {
+      "id": "arboretum-camping-yangpyeong",
+      "title": "Yangpyeong Arboretum Auto Camping",
+      "location": "Yangpyeong",
+      "lat": 37.4495784,
+      "lng": 127.614338,
+      "category": "Camping",
+      "description": "Auto camping near arboretum in Yangpyeong"
+    },
+    {
+      "id": "glampark-pocheon",
+      "title": "Glam Park Camping",
+      "location": "Pocheon",
+      "lat": 38.0186133,
+      "lng": 127.3642519,
+      "category": "Glamping",
+      "description": "Premium glamping park in Pocheon mountains"
+    },
+    {
+      "id": "peace-village-cheorwon",
+      "title": "Cheorwon Peace Village Seoul Camping",
+      "location": "Cheorwon",
+      "lat": 38.3014668,
+      "lng": 127.3988577,
+      "category": "Camping",
+      "description": "Camping near DMZ in Cheorwon Peace Village"
     }
   ],
   "metadata": {

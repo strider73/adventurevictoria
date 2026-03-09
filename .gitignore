@@ -45,6 +45,7 @@ TODO.md
 
 # env files (can opt-in for committing if needed)
 .env*
+env-local
 
 # vercel
 .vercel
@@ -61,5 +62,9 @@ next-env.d.ts
 
 # Data files (seeded to MongoDB, not part of app)
 /data/
+
+# Planmode docs
 /planmode/
+
+# Python scripts
 /scripts/*.py
