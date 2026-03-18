@@ -1,59 +1,54 @@
 pipeline {
-    agent none
+    agent {label 'jenkins-agent3'}
 
     stages {
         stage('Pull Code') {
-            agent any
             steps {
                 checkout scm
             }
         }
 
-        stage('Build Image') {
-            agent any
+        stage('Setup Environment Files') {
             steps {
-                withCredentials([file(credentialsId: 'env-local', variable: 'ENV_FILE')]) {
-                    sh 'rm -f env-local && cp $ENV_FILE env-local'
-                    sh 'docker compose build --no-cache'
+                withCredentials([
+                    file(credentialsId: 'env.pi3', variable: 'ENV_PI3_FILE')
+                ]) {
+                    sh '''
+                        rm -f env.pi3
+                        cp $ENV_PI3_FILE ./env.pi3
+                        chmod 644 env.pi3
+                    '''
                 }
             }
         }
 
-        stage('Deploy to Both Agents') {
-            parallel {
-                stage('Deploy to Agent 2') {
-                    agent {
-                        label 'jenkins-agent2'
-                    }
-                    steps {
-                        withCredentials([file(credentialsId: 'env-local', variable: 'ENV_FILE')]) {
-                            sh 'rm -f env-local && cp $ENV_FILE env-local'
-                            sh 'docker compose down || true'
-                            sh 'docker compose up -d'
-                        }
-                    }
-                }
-                stage('Deploy to Agent 3') {
-                    agent {
-                        label 'jenkins-agent3'
-                    }
-                    steps {
-                        // Sync host repo: Jenkins agent container SSHs into Pi3 as yegun, then pulls from GitHub
-                        sh 'ssh -i /home/jenkins/.ssh/id_rsa -o StrictHostKeyChecking=no yegun@192.168.1.141 "cd ~/adventurevictoria && git checkout -- . && git pull"'
-                        withCredentials([file(credentialsId: 'env-local', variable: 'ENV_FILE')]) {
-                            sh 'rm -f env-local && cp $ENV_FILE env-local'
-                            sh 'docker compose down || true'
-                            sh 'docker compose up -d'
-                        }
-                    }
-                }
+        stage('Sync Host Repo') {
+            steps {
+                // Jenkins agent container SSHs into Pi3 as yegun, then yegun pulls from GitHub
+                sh '''
+                    . ./env.pi3
+                    ssh -i /home/jenkins/.ssh/id_rsa -o StrictHostKeyChecking=no yegun@${PI3_HOST} "cd ~/adventurevictoria && git checkout -- . && git pull"
+                '''
+            }
+        }
+
+        stage('Build Image') {
+            steps {
+                sh 'docker compose build --no-cache'
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                sh 'docker compose down || true'
+                sh 'docker compose up -d'
             }
         }
     }
 
     post {
         success {
-            echo 'Deployment successful on both agents! Site is live.'
+            echo 'Deployment successful on Agent 3! Site is live.'
         }
         failure {
             echo 'Deployment failed. Check the logs.'
