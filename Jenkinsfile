@@ -38,6 +38,8 @@ pipeline {
                         label 'jenkins-agent3'
                     }
                     steps {
+                        // Sync host repo: Jenkins agent container SSHs into Pi3 as yegun, then pulls from GitHub
+                        sh 'ssh -i /home/jenkins/.ssh/id_rsa -o StrictHostKeyChecking=no yegun@192.168.1.141 "cd ~/adventurevictoria && git checkout -- . && git pull"'
                         withCredentials([file(credentialsId: 'env-local', variable: 'ENV_FILE')]) {
                             sh 'rm -f env-local && cp $ENV_FILE env-local'
                             sh 'docker compose down || true'
