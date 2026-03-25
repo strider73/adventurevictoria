@@ -10,6 +10,10 @@ pipeline {
 
         stage('Setup Environment Files') {
             steps {
+                // env.pi3 contains:
+                //   MONGODB_URI  - MongoDB connection string for the app
+                //   PI3_HOST     - PI3 worker node IP (build, image import, repo sync)
+                //   PI1_HOST     - PI1 control plane IP (kubectl commands)
                 withCredentials([
                     file(credentialsId: 'env.pi3', variable: 'ENV_PI3_FILE')
                 ]) {
@@ -40,6 +44,7 @@ pipeline {
 
         stage('Import Image to K3s') {
             steps {
+                // Export Docker image and import into K3s containerd on PI3
                 sh '''
                     . ./env.pi3
                     ssh -i /home/jenkins/.ssh/id_rsa -o StrictHostKeyChecking=no yegun@${PI3_HOST} "docker save adventuretube-web:latest | sudo k3s ctr images import -"
@@ -49,9 +54,12 @@ pipeline {
 
         stage('Deploy to K3s') {
             steps {
+                // kubectl must run on PI1 (control plane) because worker nodes (PI2/PI3)
+                // don't have access to the K3s API server.
+                // The deployment YAML is piped via stdin to avoid needing the file on PI1.
                 sh '''
                     . ./env.pi3
-                    ssh -i /home/jenkins/.ssh/id_rsa -o StrictHostKeyChecking=no yegun@${PI3_HOST} "cd ~/adventurevictoria && sudo kubectl apply --validate=false -f k8s/adventurevictoria-deployment.yaml && sudo kubectl rollout restart deployment/adventurevictoria"
+                    ssh -i /home/jenkins/.ssh/id_rsa -o StrictHostKeyChecking=no strider@${PI1_HOST} "sudo kubectl apply -f - && sudo kubectl rollout restart deployment/adventurevictoria" < k8s/adventurevictoria-deployment.yaml
                 '''
             }
         }
