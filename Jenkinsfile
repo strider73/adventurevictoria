@@ -51,7 +51,7 @@ pipeline {
             steps {
                 sh '''
                     . ./env.pi3
-                    ssh -i /home/jenkins/.ssh/id_rsa -o StrictHostKeyChecking=no yegun@${PI3_HOST} "cd ~/adventurevictoria && sudo kubectl apply -f k8s/adventurevictoria-deployment.yaml && sudo kubectl rollout restart deployment/adventurevictoria"
+                    ssh -i /home/jenkins/.ssh/id_rsa -o StrictHostKeyChecking=no yegun@${PI3_HOST} "cd ~/adventurevictoria && sudo kubectl apply --validate=false -f k8s/adventurevictoria-deployment.yaml && sudo kubectl rollout restart deployment/adventurevictoria"
                 '''
             }
         }
