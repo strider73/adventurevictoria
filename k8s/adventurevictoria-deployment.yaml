@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: adventurevictoria
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: adventurevictoria
+  template:
+    metadata:
+      labels:
+        app: adventurevictoria
+    spec:
+      containers:
+      - name: adventurevictoria
+        image: docker.io/library/adventuretube-web:latest
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 3000
+        env:
+        - name: NODE_ENV
+          value: "production"
+        - name: MONGODB_URI
+          value: "mongodb://strider:5785Ch00@mongodb.travel-tube.com:27017/adventuretube?authSource=admin"
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 3000
+          initialDelaySeconds: 10
+          periodSeconds: 5
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 3000
+          initialDelaySeconds: 20
+          periodSeconds: 10
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: adventurevictoria
+spec:
+  type: NodePort
+  selector:
+    app: adventurevictoria
+  ports:
+  - port: 3000
+    targetPort: 3000
+    nodePort: 30010

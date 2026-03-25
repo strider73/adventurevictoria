@@ -38,10 +38,21 @@ pipeline {
             }
         }
 
-        stage('Deploy') {
+        stage('Import Image to K3s') {
             steps {
-                sh 'docker compose down || true'
-                sh 'docker compose up -d'
+                sh '''
+                    . ./env.pi3
+                    ssh -i /home/jenkins/.ssh/id_rsa -o StrictHostKeyChecking=no yegun@${PI3_HOST} "docker save adventuretube-web:latest | sudo k3s ctr images import -"
+                '''
+            }
+        }
+
+        stage('Deploy to K3s') {
+            steps {
+                sh '''
+                    . ./env.pi3
+                    ssh -i /home/jenkins/.ssh/id_rsa -o StrictHostKeyChecking=no yegun@${PI3_HOST} "cd ~/adventurevictoria && sudo kubectl apply -f k8s/adventurevictoria-deployment.yaml && sudo kubectl rollout restart deployment/adventurevictoria"
+                '''
             }
         }
     }
