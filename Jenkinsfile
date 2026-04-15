@@ -62,7 +62,7 @@ pipeline {
                 // The deployment YAML is piped via stdin to avoid needing the file on PI1.
                 sh '''
                     . ./env.pi3
-                    ssh -i /home/jenkins/.ssh/id_rsa -o StrictHostKeyChecking=no strider@${PI1_HOST} "sudo kubectl apply -f - && sudo kubectl rollout restart deployment/adventurevictoria" < k8s/adventurevictoria-deployment.yaml
+                    ssh -i /home/jenkins/.ssh/id_rsa -o StrictHostKeyChecking=no strider@${PI1_HOST} "sudo kubectl apply -n adventuretube -f - && sudo kubectl rollout restart deployment/adventurevictoria -n adventuretube" < k8s/adventurevictoria-deployment.yaml
                 '''
             }
         }
