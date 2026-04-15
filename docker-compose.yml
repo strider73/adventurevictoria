@@ -1,6 +1,7 @@
 services:
   web:
     build: .
+    image: docker.io/library/adventuretube-web:latest
     container_name: adventurevictoria
     ports:
       - "3010:3000"

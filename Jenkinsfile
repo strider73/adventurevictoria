@@ -36,18 +36,21 @@ pipeline {
             }
         }
 
-        stage('Build Image') {
+        stage('Build Image with nerdctl') {
             steps {
-                sh 'docker compose build --no-cache'
-            }
-        }
-
-        stage('Import Image to K3s') {
-            steps {
-                // Export Docker image and import into K3s containerd on PI3
+                // Build directly into K3s containerd (namespace=k8s.io) via nerdctl+buildkit on PI3.
+                // Replaces old docker build + `docker save | k3s ctr images import` flow, which
+                // was slow and memory-heavy on PI3 (only 1.8 GB RAM).
+                // Buildkit cache is pruned (>24h old) to keep disk usage bounded.
                 sh '''
                     . ./env.pi3
-                    ssh -i /home/jenkins/.ssh/id_rsa -o StrictHostKeyChecking=no yegun@${PI3_HOST} "docker save adventuretube-web:latest | sudo k3s ctr images import -"
+                    ssh -i /home/jenkins/.ssh/id_rsa -o StrictHostKeyChecking=no yegun@${PI3_HOST} '
+                        set -e
+                        cd ~/adventurevictoria
+                        sudo nerdctl --address /run/k3s/containerd/containerd.sock --namespace k8s.io \
+                            compose -f docker-compose.yml build web
+                        sudo buildctl --addr unix:///run/buildkit/buildkitd.sock prune --keep-duration 24h || true
+                    '
                 '''
             }
         }
