@@ -70,3 +70,6 @@ next-env.d.ts
 
 # Python scripts
 /scripts/*.py
+
+# private static page, deployed by copying to the build host
+/public/moving/
