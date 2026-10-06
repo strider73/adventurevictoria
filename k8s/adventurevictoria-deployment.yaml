@@ -13,6 +13,8 @@ spec:
       labels:
         app: adventurevictoria
     spec:
+      nodeSelector:
+        kubernetes.io/hostname: yegun-pi
       containers:
       - name: adventurevictoria
         image: docker.io/library/adventuretube-web:latest
