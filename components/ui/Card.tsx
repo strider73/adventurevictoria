@@ -23,9 +23,9 @@ export interface CardImageProps extends HTMLAttributes<HTMLDivElement> {
   aspectRatio?: "video" | "square" | "wide";
 }
 
-export interface CardContentProps extends HTMLAttributes<HTMLDivElement> {}
+export type CardContentProps = HTMLAttributes<HTMLDivElement>;
 
-export interface CardFooterProps extends HTMLAttributes<HTMLDivElement> {}
+export type CardFooterProps = HTMLAttributes<HTMLDivElement>;
 
 const variantStyles: Record<CardVariant, string> = {
   default: `

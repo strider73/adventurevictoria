@@ -26,6 +26,26 @@ spec:
           value: "production"
         - name: MONGODB_URI
           value: "mongodb://strider:5785Ch00@mongodb.travel-tube.com:27017/adventuretube?authSource=admin"
+        - name: RENTAL_DATABASE_URL
+          valueFrom:
+            secretKeyRef:
+              name: rental-secrets
+              key: RENTAL_DATABASE_URL
+        - name: RENTAL_SITE_KEY
+          valueFrom:
+            secretKeyRef:
+              name: rental-secrets
+              key: RENTAL_SITE_KEY
+        - name: RENTAL_HOME_LAT
+          valueFrom:
+            secretKeyRef:
+              name: rental-secrets
+              key: RENTAL_HOME_LAT
+        - name: RENTAL_HOME_LON
+          valueFrom:
+            secretKeyRef:
+              name: rental-secrets
+              key: RENTAL_HOME_LON
         readinessProbe:
           httpGet:
             path: /

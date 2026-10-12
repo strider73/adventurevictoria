@@ -63,7 +63,7 @@ const CampingLogo = () => (
   </svg>
 );
 
-export default function iOSAdventuretubePage() {
+export default function IOSAdventuretubePage() {
   const [selectedFlow, setSelectedFlow] = useState(flows[0]);
 
   // Generate Figma embed URL based on selected flow
